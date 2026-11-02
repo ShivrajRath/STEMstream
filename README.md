@@ -10,7 +10,7 @@ be hosted on GitHub Pages.
 
 ## What it does
 
-- **528 hand-picked videos** across seven disciplines.
+- **700 hand-picked videos** across seven disciplines — 100 per category.
 - **Content-first cards**: the idea, the question it answers, and the takeaway
   come before the channel name.
 - **Search** across titles, concepts, descriptions, channels, and takeaways.
