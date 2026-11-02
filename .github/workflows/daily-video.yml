@@ -38,8 +38,9 @@ jobs:
 
       - name: Add one new video per section
         env:
+          # The model is hardcoded in the script (gemini-3.8-flash, falling
+          # back to gemini-3.6-flash), so no repository variable is needed.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
         run: python3 scripts/add_daily_video.py
 
       - name: Validate the updated catalogue
