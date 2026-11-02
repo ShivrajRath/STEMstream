@@ -1,7 +1,7 @@
 # STEMStream
 
-A curated, single-page video library for the best science, space, engineering,
-biology, chemistry, computer science, and mathematics content on YouTube.
+A curated, single-page video library for the best science, space, emerging
+technology, engineering, biology, chemistry, and mathematics content on YouTube.
 
 The catalogue lives **inside this repository** in
 [`src/data/data.json`](src/data/data.json). There is no Google Sheet, no API key,
@@ -10,7 +10,11 @@ be hosted on GitHub Pages.
 
 ## What it does
 
-- **700 hand-picked videos** across seven disciplines — 100 per category.
+- **744 hand-picked videos** across seven disciplines — 100 per category, plus
+  the strongest reassigned videos from the retired Computer Science category.
+- **Emerging Technology**: AI and machine learning, quantum computing, nanotech
+  and advanced materials, biotechnology, robotics, clean energy, space
+  technology, and the chipmaking that makes it all possible.
 - **Content-first cards**: the idea, the question it answers, and the takeaway
   come before the channel name.
 - **Search** across titles, concepts, descriptions, channels, and takeaways.
@@ -115,7 +119,7 @@ python3 scripts/update_content.py --check --check-links
 | `title` | yes | Shown on the card and in the player. |
 | `coreQuestion` | recommended | The curiosity hook shown under the title. |
 | `channel` | yes | Displayed as a subtle credit, not the focus. |
-| `category` | yes | One of `Physics`, `Space`, `Computer Science`, `Engineering`, `Biology`, `Chemistry`, `Math`. |
+| `category` | yes | One of `Physics`, `Space`, `Emerging Technology`, `Engineering`, `Biology`, `Chemistry`, `Math`. |
 | `difficulty` | recommended | `Foundational`, `Intermediate`, or `Deep Dive`. |
 | `duration` | recommended | Human-readable, e.g. `"22 min"`. |
 | `concepts` | recommended | Array of strings; shown in the player. |
