@@ -54,10 +54,13 @@ function OrbitGraphic() {
   );
 }
 
+const PAGE_SIZE = 24;
+
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const closeVideo = useCallback(() => setSelectedVideo(null), []);
 
@@ -92,6 +95,24 @@ export default function App() {
       return tokens.every((token) => haystack.includes(token));
     });
   }, [activeCategory, searchQuery]);
+
+  const filterKey = `${activeCategory}|${searchQuery}`;
+  const [trackedFilterKey, setTrackedFilterKey] = useState(filterKey);
+  if (filterKey !== trackedFilterKey) {
+    setTrackedFilterKey(filterKey);
+    setVisibleCount(PAGE_SIZE);
+  }
+
+  const visibleVideos = useMemo(
+    () => filteredVideos.slice(0, visibleCount),
+    [filteredVideos, visibleCount],
+  );
+
+  const hasMore = visibleCount < filteredVideos.length;
+
+  const loadMore = useCallback(() => {
+    setVisibleCount((count) => Math.min(count + PAGE_SIZE, filteredVideos.length));
+  }, [filteredVideos.length]);
 
   const hasActiveFilters = searchQuery.trim() !== '' || activeCategory !== 'All';
   const collectionTitle =
@@ -227,11 +248,26 @@ export default function App() {
 
           <div className="mt-6">
             <VideoGrid
-              videos={filteredVideos}
+              videos={visibleVideos}
               onSelectVideo={setSelectedVideo}
               onReset={resetFilters}
             />
           </div>
+
+          {hasMore && (
+            <div className="mt-10 flex flex-col items-center gap-3">
+              <p className="text-xs text-white/40">
+                Showing {visibleVideos.length} of {filteredVideos.length} videos
+              </p>
+              <button
+                type="button"
+                onClick={loadMore}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/25 hover:bg-white/[0.1] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              >
+                Load more
+              </button>
+            </div>
+          )}
         </section>
       </main>
 
