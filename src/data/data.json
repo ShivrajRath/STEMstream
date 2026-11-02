@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-745",
+    "youtubeId": "uD4izuDMUQA",
+    "title": "TIMELAPSE OF THE FUTURE: A Journey to the End of Time (4K)",
+    "coreQuestion": "How will the universe evolve and ultimately end over trillions of years?",
+    "channel": "melodysheep",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "29 min",
+    "concepts": [
+      "Stelliferous Era",
+      "Degenerate Era",
+      "Hawking Radiation",
+      "Heat Death"
+    ],
+    "description": "This video takes viewers on a visual journey through cosmic time, starting from the present day and accelerating exponentially toward the ultimate end of the cosmos. It details the life cycles of stars, the decay of matter, the domination and eventual evaporation of black holes, and the final state of maximum entropy.",
+    "takeaway": "The universe is currently in its brief, luminous youth, and the vast majority of cosmic time will be spent in dark, cold silence long after every star has burned out."
+  },
+  {
     "id": "stem-001",
     "youtubeId": "AF8d72mA41M",
     "title": "Why It Was Almost Impossible to Make the Blue LED",
