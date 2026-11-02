@@ -144,6 +144,14 @@ export default function App() {
   const changeCategory = useCallback((category) => {
     setActiveCategory(category);
     setVisibleCount(PAGE_SIZE);
+    // The new category is a different list, so the old scroll offset would
+    // leave the viewport parked on a row that no longer exists. Bring the
+    // collection top back into view so the first video is what you see. The
+    // section already carries the sticky-header scroll margin.
+    document.getElementById('collection')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   }, []);
 
   const resetFilters = useCallback(() => {
