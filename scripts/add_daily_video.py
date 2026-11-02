@@ -3,9 +3,13 @@
 STEMStream daily picks
 ======================
 
-Asks Gemini for one fresh video recommendation per section and prepends the
-accepted entries to ``src/data/data.json``, so each new video is the first card
-in its section (and in the combined collection).
+Asks Gemini for one fresh video recommendation and prepends the accepted entry
+to ``src/data/data.json``, so the new video is the first card in its section
+(and in the combined collection).
+
+One section is curated per day, rotating through ``VALID_CATEGORIES`` on the
+date, so every section gets a new pick each week while a run spends only one or
+two requests instead of seven.
 
 Every recommendation is verified against YouTube's public oEmbed endpoint
 before it is written: the id must resolve, the upload must allow embedding
@@ -17,6 +21,7 @@ Usage
 -----
     GEMINI_API_KEY=... python3 scripts/add_daily_video.py
     GEMINI_API_KEY=... python3 scripts/add_daily_video.py --dry-run
+    GEMINI_API_KEY=... python3 scripts/add_daily_video.py --category Space
 
 Environment
 -----------
@@ -40,6 +45,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import date
 from typing import Any
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -54,10 +60,21 @@ USER_AGENT = "STEMStream-Curation/1.0 (+https://github.com/)"
 GEMINI_ENDPOINT = (
     "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 )
-# Hardcoded so the workflow needs no repository variable. The second entry is
-# used automatically if the first model id stops existing for the given key.
+# Hardcoded so the workflow needs no repository variable. Models are tried in
+# order: an id that no longer exists, a model under load (503) or a model out of
+# free-tier quota (429) hands the pick to the next one, so a busy tier cannot
+# lose the day's video.
 DEFAULT_MODEL = "gemini-3.8-flash"
-DEFAULT_MODELS = (DEFAULT_MODEL, "gemini-3.6-flash")
+FALLBACK_MODELS = (
+    "gemini-3.6-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
+)
+DEFAULT_MODELS = (DEFAULT_MODEL, *FALLBACK_MODELS)
+# A quota hint longer than this is not worth blocking the job for; the next
+# model answers instead.
+MAX_RETRY_WAIT = 65.0
+RETRY_HINT_RE = re.compile(r"retry in (\d+(?:\.\d+)?)\s*s", re.IGNORECASE)
 MAX_ATTEMPTS_PER_SECTION = 3
 RETRYABLE_STATUS = (408, 429, 500, 502, 503, 504)
 ID_SUFFIX_RE = re.compile(r"^stem-(\d+)$")
@@ -107,6 +124,10 @@ class ModelUnavailable(GeminiError):
     """The requested model id does not exist for this key; try the next one."""
 
 
+class ModelBusy(GeminiError):
+    """The model is overloaded or out of quota; a lighter model may answer."""
+
+
 class LookupFailed(RuntimeError):
     """A transient failure while checking a video with YouTube."""
 
@@ -115,7 +136,14 @@ class LookupFailed(RuntimeError):
 # HTTP helpers
 # ---------------------------------------------------------------------------
 
-def _retry_delay(error: urllib.error.HTTPError | None, attempt: int) -> float:
+def _retry_delay(
+    error: urllib.error.HTTPError | None, attempt: int, detail: str = ""
+) -> float:
+    # Gemini puts the useful hint in the message body ("Please retry in 46.7s")
+    # rather than in a Retry-After header, and it is a hard quota window.
+    hint = RETRY_HINT_RE.search(detail or "")
+    if hint:
+        return min(max(float(hint.group(1)), 1.0), MAX_RETRY_WAIT)
     if error is not None and error.headers is not None:
         retry_after = error.headers.get("Retry-After")
         if retry_after and retry_after.strip().isdigit():
@@ -217,10 +245,18 @@ def generate(
             if error.code == 404:
                 raise ModelUnavailable(f"{model} is not available: {detail}") from error
             if error.code in RETRYABLE_STATUS and attempt < 3:
-                delay = _retry_delay(error, attempt)
-                print(f"  - Gemini {error.code} for {category}, retrying in {delay:.0f}s")
-                time.sleep(delay)
-                continue
+                delay = _retry_delay(error, attempt, detail)
+                if delay <= MAX_RETRY_WAIT:
+                    print(
+                        f"  - Gemini {error.code} for {category}, "
+                        f"retrying in {delay:.0f}s"
+                    )
+                    time.sleep(delay)
+                    continue
+            if error.code in RETRYABLE_STATUS:
+                # Busy or rate limited: a lighter model is more likely to answer
+                # than yet another attempt against this one.
+                raise ModelBusy(f"{model} responded {error.code}: {detail}") from error
             raise GeminiError(f"Gemini responded {error.code}: {detail}") from error
         except urllib.error.URLError as error:
             if attempt < 3:
@@ -372,14 +408,22 @@ def _pick_entry(
     return None
 
 
+def _sections_for(day: date) -> list[str]:
+    """The single section that is due on the given day."""
+    index = day.toordinal() % len(catalogue.VALID_CATEGORIES)
+    return [catalogue.VALID_CATEGORIES[index]]
+
+
 def add_daily_videos(
     *,
     api_key: str,
     models: list[str] | None = None,
     path: str = DATA_PATH,
     dry_run: bool = False,
+    categories: list[str] | None = None,
+    day: date | None = None,
 ) -> int:
-    """Add one verified video per section. Returns how many were added."""
+    """Add one verified video for the section due that day. Returns the count."""
     with open(path, "r", encoding="utf-8") as handle:
         entries = json.load(handle)
     if not isinstance(entries, list) or not entries:
@@ -388,11 +432,12 @@ def add_daily_videos(
     remaining_models = list(models or DEFAULT_MODELS)
     taken = {str(entry.get("youtubeId", "")) for entry in entries}
     number = _next_id_number(entries)
+    sections = list(categories or _sections_for(day or date.today()))
 
     added: list[dict[str, Any]] = []
     skipped: list[str] = []
 
-    for category in catalogue.VALID_CATEGORIES:
+    for category in sections:
         library = [entry for entry in entries if entry.get("category") == category]
         entry = None
 
@@ -400,7 +445,7 @@ def add_daily_videos(
             model = remaining_models[0]
             try:
                 entry = _pick_entry(model, api_key, category, library, taken, number)
-            except ModelUnavailable as error:
+            except (ModelUnavailable, ModelBusy) as error:
                 print(f"  - {error}; trying the next model", file=sys.stderr)
                 remaining_models.pop(0)
                 continue
@@ -439,12 +484,17 @@ def add_daily_videos(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Add one Gemini-recommended video to every STEMStream section."
+        description="Add one Gemini-recommended video to today's STEMStream section."
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
         help="ask Gemini and verify, but do not write data.json",
+    )
+    parser.add_argument(
+        "--category",
+        choices=list(catalogue.VALID_CATEGORIES),
+        help="curate this section instead of the one the date selects",
     )
     args = parser.parse_args()
 
@@ -465,9 +515,16 @@ def main() -> int:
         if model not in models:
             models.append(model)
 
-    print(f"STEMStream daily picks: {len(catalogue.VALID_CATEGORIES)} sections")
+    sections = [args.category] if args.category else _sections_for(date.today())
+
+    print(f"STEMStream daily picks: {', '.join(sections)}")
     try:
-        added = add_daily_videos(api_key=api_key, models=models, dry_run=args.dry_run)
+        added = add_daily_videos(
+            api_key=api_key,
+            models=models,
+            dry_run=args.dry_run,
+            categories=sections,
+        )
     except (GeminiError, OSError, json.JSONDecodeError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
