@@ -71,11 +71,14 @@ python3 scripts/update_content.py --check --check-links
 
 ```text
 .
-├── .github/workflows/deploy.yml   # Push + weekly schedule → build → Pages
+├── .github/workflows/
+│   ├── deploy.yml                 # Push + weekly schedule → build → Pages
+│   └── daily-video.yml            # Daily Gemini pick → commit → build → Pages
 ├── public/
 │   ├── .nojekyll
 │   └── favicon.svg
 ├── scripts/
+│   ├── add_daily_video.py         # daily Gemini picks, verified against YouTube
 │   └── update_content.py          # schema validation + normalisation + audit
 ├── src/
 │   ├── components/
@@ -162,6 +165,42 @@ python3 scripts/update_content.py --check-links --strict-links
 `--check-links` reports problems but exits successfully by default so a deleted
 video or a transient YouTube response cannot block a deployment. Add
 `--strict-links` if you want the audit to fail the job.
+
+## Daily automated picks
+
+`.github/workflows/daily-video.yml` runs every day at 05:17 UTC. It asks Gemini
+for one new video in each of the seven sections, verifies every recommendation
+against YouTube, prepends the accepted entries to `src/data/data.json`, commits
+the change to `main`, and then builds and deploys the site in the same run.
+
+A prepended entry is the first record in the file, so it becomes the first card
+both in the full collection and in its own category.
+
+Nothing is written until a suggestion passes every check:
+
+- the id must resolve through YouTube's public oEmbed endpoint;
+- the upload must allow embedding, because the site plays videos in an iframe;
+- the id must not already be in the catalogue.
+
+The title and channel come from YouTube itself rather than from the model, so a
+card always names the real upload. When a suggestion fails a check the script
+asks Gemini again, up to three times per section. A section with nothing
+verifiable is skipped and the others are still added.
+
+Configure the key in **Settings → Secrets and variables → Actions**:
+
+| Name | Type | Required | Purpose |
+| --- | --- | --- | --- |
+| `GEMINI_API_KEY` | secret | yes | API key from [Google AI Studio](https://aistudio.google.com/apikey). |
+| `GEMINI_MODEL` | variable | no | Model override. Defaults to `gemini-3.8-flash`, falling back to `gemini-3.6-flash`. |
+
+Run it by hand from the **Actions** tab (**Add daily video → Run workflow**), or
+locally:
+
+```bash
+GEMINI_API_KEY=... python3 scripts/add_daily_video.py --dry-run   # verify only
+GEMINI_API_KEY=... python3 scripts/add_daily_video.py             # write the file
+```
 
 ## GitHub Pages deployment
 
