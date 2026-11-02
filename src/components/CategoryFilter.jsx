@@ -178,7 +178,7 @@ export default function CategoryFilter({
               type="button"
               onClick={() => scrollBy(-1)}
               aria-label="Scroll categories left"
-              className="absolute left-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#17181c]/90 text-white/60 shadow-lg backdrop-blur transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              className="absolute left-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#17181c]/90 text-white/60 shadow-lg transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               <ChevronLeft className="h-4 w-4" aria-hidden="true" />
             </button>
@@ -195,7 +195,7 @@ export default function CategoryFilter({
               type="button"
               onClick={() => scrollBy(1)}
               aria-label="Scroll categories right"
-              className="absolute right-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#17181c]/90 text-white/60 shadow-lg backdrop-blur transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+              className="absolute right-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#17181c]/90 text-white/60 shadow-lg transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </button>
