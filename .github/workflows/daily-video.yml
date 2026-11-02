@@ -1,0 +1,119 @@
+name: Add daily video
+
+on:
+  schedule:
+    # Every day at 05:17 UTC, before the weekly rebuild in deploy.yml.
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+# Only the curate job needs to commit; the deploy job reuses the same artifact
+# pipeline as deploy.yml.
+permissions:
+  contents: read
+
+# Share the Pages queue with deploy.yml so two deployments never overlap.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  curate:
+    name: Curate with Gemini
+    # Everything is committed to and deployed from main, so a run started on a
+    # side branch would push content that does not belong in the deploy.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Add one new video per section
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: python3 scripts/add_daily_video.py
+
+      - name: Validate the updated catalogue
+        run: python3 scripts/update_content.py --check
+
+      - name: Commit and push
+        id: commit
+        run: |
+          if git diff --quiet -- src/data/data.json; then
+            echo "No catalogue changes to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/data.json
+          git commit \
+            -m "Add the $(date -u +%Y-%m-%d) daily pick to every section" \
+            -m "Curated by scripts/add_daily_video.py and verified against YouTube."
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    name: Build and deploy
+    needs: curate
+    if: needs.curate.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the commit just pushed
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate the curated catalogue
+        run: python3 scripts/update_content.py --check
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
