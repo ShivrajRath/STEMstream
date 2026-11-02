@@ -3,6 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Old televisions ignore `width=device-width`: their browsers lay out at a
+      // phone-sized viewport (typically 480-960 CSS px on a 1080p panel), so the
+      // page collapses into a single oversized column. Pinning a 1280 px layout
+      // width makes those browsers lay out like a TV and scale the result to the
+      // panel. This must run before the first layout, hence an inline script.
+      // Keep the pattern in sync with TV_USER_AGENT_PATTERN in src/lib/tv.js.
+      (function () {
+        var ua = navigator.userAgent || '';
+        var isTv =
+          /(smart-?tv|smarttv|hbbtv|netcast|webos|web0s|tizen|viera|bravia|aquos|googletv|google tv|android tv|appletv|apple tv|roku|crkey|firetv|fire tv|aft[a-z0-9]{1,3}\b|nettv|opera tv|philipstv|hisense)/i.test(
+            ua,
+          );
+        if (!isTv) return;
+
+        var screenWidth = window.screen ? window.screen.width : 0;
+        // A panel that already reports a TV-sized viewport does not need help.
+        if (!screenWidth || screenWidth >= 1000) return;
+
+        var viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) viewport.setAttribute('content', 'width=1280');
+      })();
+    </script>
     <meta name="theme-color" content="#08090a" />
     <meta name="color-scheme" content="dark" />
 

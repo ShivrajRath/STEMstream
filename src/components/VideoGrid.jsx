@@ -2,6 +2,26 @@ import { useEffect, useRef, useState } from 'react';
 import { RotateCcw, Telescope } from 'lucide-react';
 import VideoCard from './VideoCard';
 
+// Grid columns are measured from the rendered cards rather than duplicated from
+// the Tailwind classes. Televisions report unusual CSS viewport widths (a 1080p
+// panel often reports 960 CSS px at devicePixelRatio 2), so a hard-coded
+// breakpoint table drifts from the real layout and arrow-key navigation skips
+// or repeats cards.
+function countRenderedColumns() {
+  const cards = document.querySelectorAll('[data-video-card]');
+  if (cards.length < 2) return 1;
+
+  const firstRowTop = cards[0].offsetTop;
+  let columns = 1;
+
+  for (let index = 1; index < cards.length; index += 1) {
+    if (cards[index].offsetTop !== firstRowTop) break;
+    columns += 1;
+  }
+
+  return columns;
+}
+
 export default function VideoGrid({
   videos,
   onSelectVideo,
@@ -13,19 +33,6 @@ export default function VideoGrid({
 }) {
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const didNavigateRef = useRef(false);
-
-  // Must match the Tailwind grid classes below, or vertical navigation drifts.
-  const getColumns = () => {
-    if (tvMode) {
-      if (window.innerWidth >= 1280) return 3;
-      if (window.innerWidth >= 1024) return 2;
-      return 1;
-    }
-    if (window.innerWidth >= 1280) return 4;
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 640) return 2;
-    return 1;
-  };
 
   // Reset or repair the focused card when TV mode or the visible set changes.
   useEffect(() => {
@@ -51,7 +58,7 @@ export default function VideoGrid({
       const total = videos.length;
       if (total === 0) return;
 
-      const columns = getColumns();
+      const columns = countRenderedColumns();
       const current = focusedIndex >= 0 ? focusedIndex : 0;
 
       const moveTo = (nextIndex) => {
@@ -144,7 +151,15 @@ export default function VideoGrid({
   }
 
   return (
-    <div className={`grid gap-x-5 gap-y-8 ${tvMode ? 'grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}`}>
+    <div
+      className={`grid gap-x-5 gap-y-8 ${
+        tvMode
+          ? // TV mode keeps the 10-foot type sizes, so it must stay multi-column
+            // at the widths living-room boxes actually report (>= 560 CSS px).
+            'grid-cols-1 min-[560px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
+          : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+      }`}
+    >
       {videos.map((video, index) => (
         <VideoCard
           key={video.id}
