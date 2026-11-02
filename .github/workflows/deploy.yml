@@ -1,0 +1,76 @@
+name: Deploy STEMStream
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Every Saturday at 06:00 UTC — validate the catalogue, rebuild and redeploy.
+    - cron: '0 6 * * 6'
+  workflow_dispatch:
+
+# GitHub Pages deployment needs these permissions.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel a deployment that is already publishing.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate and build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate the curated catalogue
+        run: python3 scripts/update_content.py --check
+
+      - name: Audit video and thumbnail availability
+        # A weekly health report; never block a deploy on a transient network error.
+        continue-on-error: true
+        run: python3 scripts/update_content.py --check --check-links
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

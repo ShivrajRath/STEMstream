@@ -1,0 +1,434 @@
+[
+  {
+    "id": "stem-001",
+    "youtubeId": "AF8d72mA41M",
+    "title": "Why It Was Almost Impossible to Make the Blue LED",
+    "coreQuestion": "Why did red and green LEDs exist for decades while blue remained out of reach?",
+    "channel": "Veritasium",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "34 min",
+    "concepts": [
+      "Semiconductors",
+      "Gallium Nitride",
+      "Band Gap",
+      "Materials Science"
+    ],
+    "description": "The decades-long hunt for a blue light-emitting diode, and how Shuji Nakamura's stubborn work on gallium nitride turned a materials-science dead end into the foundation of modern white LED lighting.",
+    "takeaway": "A material that seemed impossible to manufacture well became the basis of energy-efficient lighting used across the world."
+  },
+  {
+    "id": "stem-002",
+    "youtubeId": "DxL2HoqLbyA",
+    "title": "The Most Misunderstood Concept in Physics",
+    "coreQuestion": "Why does heat flow one way, and what does that reveal about the beginning of the universe?",
+    "channel": "Veritasium",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "27 min",
+    "concepts": [
+      "Entropy",
+      "Second Law of Thermodynamics",
+      "Information",
+      "Heat Death"
+    ],
+    "description": "Entropy is often described as disorder, but that shorthand hides the real idea: energy spreading into more probable arrangements. This tour connects steam engines, information and the remarkably low-entropy start of the universe.",
+    "takeaway": "The arrow of time emerges from probability: there are simply far more ways for energy to be spread out than concentrated."
+  },
+  {
+    "id": "stem-003",
+    "youtubeId": "JyECrGp-Sw8",
+    "title": "What If We Detonated All Nuclear Bombs at Once?",
+    "coreQuestion": "How large is humanity's entire nuclear arsenal compared with the forces that shape planets?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Space",
+    "difficulty": "Foundational",
+    "duration": "7 min",
+    "concepts": [
+      "Nuclear Fission",
+      "Energy Scales",
+      "Blast Physics",
+      "Atmospheric Effects"
+    ],
+    "description": "All the world's nuclear warheads contain an almost unimaginable amount of energy. Kurzgesagt scales that stockpile into a single detonation and compares it with volcanoes, asteroids and the forces that shape planets.",
+    "takeaway": "Our whole arsenal is terrifying, yet still small beside the energy released by large asteroid impacts and volcanic eruptions."
+  },
+  {
+    "id": "stem-004",
+    "youtubeId": "aircAruvnKk",
+    "title": "But What Is a Neural Network?",
+    "coreQuestion": "How do layers of simple mathematical units learn to recognise handwritten digits?",
+    "channel": "3Blue1Brown",
+    "category": "Computer Science",
+    "difficulty": "Foundational",
+    "duration": "19 min",
+    "concepts": [
+      "Neural Networks",
+      "Weights and Biases",
+      "Activation Functions",
+      "Linear Algebra"
+    ],
+    "description": "3Blue1Brown builds an intuitive picture of a neural network: layers of neurons, adjustable weights and biases, and the geometry of transforming pixels into a classification.",
+    "takeaway": "A network is a large function shaped by its weights; learning is the search for weights that make the right answer more likely."
+  },
+  {
+    "id": "stem-005",
+    "youtubeId": "DPZzrlFCD_I",
+    "title": "World's Largest Jello Pool - Can You Swim in Jello?",
+    "coreQuestion": "What does it take to make — and swim through — a pool-sized batch of gelatin?",
+    "channel": "Mark Rober",
+    "category": "Engineering",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Viscosity",
+      "Heat Transfer",
+      "Scale",
+      "Fluid Dynamics"
+    ],
+    "description": "Mark Rober scales up a childhood experiment to a pool-sized gelatin challenge, wrestling with cooling, mixing and the surprisingly difficult physics of moving through a dense gel.",
+    "takeaway": "Scaling a recipe up by thousands of times changes everything, from cooling time to how your body moves through the fluid."
+  },
+  {
+    "id": "stem-006",
+    "youtubeId": "9XkHBmE-N34",
+    "title": "The Black Hole Information Paradox",
+    "coreQuestion": "If a black hole evaporates completely, what happens to the quantum information that fell in?",
+    "channel": "PBS Space Time",
+    "category": "Space",
+    "difficulty": "Deep Dive",
+    "duration": "16 min",
+    "concepts": [
+      "Hawking Radiation",
+      "Unitarity",
+      "Event Horizon",
+      "Quantum Gravity"
+    ],
+    "description": "General relativity says nothing escapes a black hole; quantum mechanics says information can never be destroyed. PBS Space Time explains why this clash remains one of the deepest problems in modern physics.",
+    "takeaway": "The paradox signals that a full theory of quantum gravity must reconcile horizons, evaporation and the conservation of information."
+  },
+  {
+    "id": "stem-007",
+    "youtubeId": "HeQX2HjkcNo",
+    "title": "Math's Fundamental Flaw",
+    "coreQuestion": "Are there true mathematical statements that can never be proved?",
+    "channel": "Veritasium",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "34 min",
+    "concepts": [
+      "Gödel Numbering",
+      "Incompleteness Theorems",
+      "Formal Systems",
+      "Computability"
+    ],
+    "description": "Veritasium tells the story of Kurt Gödel, whose incompleteness theorems showed that any consistent formal system rich enough for arithmetic contains truths it cannot prove.",
+    "takeaway": "Mathematics cannot be fully captured by a single formal system: truth outruns provability."
+  },
+  {
+    "id": "stem-008",
+    "youtubeId": "spUNpyF58BY",
+    "title": "But What Is the Fourier Transform?",
+    "coreQuestion": "How can any signal be rebuilt from spinning circles at different frequencies?",
+    "channel": "3Blue1Brown",
+    "category": "Computer Science",
+    "difficulty": "Intermediate",
+    "duration": "20 min",
+    "concepts": [
+      "Fourier Transform",
+      "Frequency Domain",
+      "Signals",
+      "Complex Numbers"
+    ],
+    "description": "A visual introduction to the Fourier transform, using winding machines and rotating vectors to show how a signal splits into its constituent frequencies and back again.",
+    "takeaway": "The Fourier transform is a change of perspective: the same information seen as a function of time or of frequency."
+  },
+  {
+    "id": "stem-009",
+    "youtubeId": "lXfEK8G8CUI",
+    "title": "How the Immune System ACTUALLY Works",
+    "coreQuestion": "How does the body distinguish self from invader and mount a response without attacking itself?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Innate Immunity",
+      "Adaptive Immunity",
+      "Antibodies",
+      "T Cells"
+    ],
+    "description": "Kurzgesagt's animated tour follows a bacterial invasion from the first responders to antibody-producing B cells and the memory that makes vaccines work.",
+    "takeaway": "Immunity is layered and collaborative: fast innate defences buy time for precise adaptive responses to be selected and remembered."
+  },
+  {
+    "id": "stem-010",
+    "youtubeId": "pTn6Ewhb27k",
+    "title": "Why No One Has Measured the Speed of Light",
+    "coreQuestion": "Is it possible to measure light travelling in one direction, or only its round-trip speed?",
+    "channel": "Veritasium",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Special Relativity",
+      "Einstein Synchronisation",
+      "One-Way Speed",
+      "Time Dilation"
+    ],
+    "description": "Every experiment that appears to measure the speed of light actually measures a round trip. Veritasium explores why one-way light speed may be a convention rather than a measurable fact.",
+    "takeaway": "The constancy of one-way light speed is a postulate we choose; no experiment has yet distinguished it from an alternative synchronisation convention."
+  },
+  {
+    "id": "stem-011",
+    "youtubeId": "0FH9cgRhQ-k",
+    "title": "The Largest Black Hole in the Universe",
+    "coreQuestion": "How large can a black hole grow, and how do the biggest event horizons compare with our solar system?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Space",
+    "difficulty": "Foundational",
+    "duration": "14 min",
+    "concepts": [
+      "Event Horizon",
+      "Supermassive Black Holes",
+      "Accretion",
+      "Cosmic Scale"
+    ],
+    "description": "From stellar-mass black holes to the largest known ultramassive giants, Kurzgesagt visualises the extreme scale of these collapsed objects and the event horizons that define them.",
+    "takeaway": "Black holes span an astonishing range of sizes, and the largest are billions of times more massive than the Sun."
+  },
+  {
+    "id": "stem-012",
+    "youtubeId": "sj8Sg8qnjOg",
+    "title": "The Golden Ratio (Why It Is So Irrational)",
+    "coreQuestion": "Why is the golden ratio the hardest number to approximate with fractions?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Continued Fractions",
+      "Rational Approximation",
+      "Fibonacci",
+      "Irrationality"
+    ],
+    "description": "Numberphile explains why phi's continued fraction of all ones makes it the most stubbornly irrational number, and why that matters for approximation.",
+    "takeaway": "The golden ratio is not mystical; its extreme irrationality is a precise consequence of its continued fraction."
+  },
+  {
+    "id": "stem-013",
+    "youtubeId": "AeJ9q45PfD0",
+    "title": "World's Lightest Solid!",
+    "coreQuestion": "How can a solid be almost entirely air and still hold its shape?",
+    "channel": "Veritasium",
+    "category": "Engineering",
+    "difficulty": "Foundational",
+    "duration": "12 min",
+    "concepts": [
+      "Aerogel",
+      "Supercritical Drying",
+      "Nanostructures",
+      "Insulation"
+    ],
+    "description": "Veritasium explores silica aerogel, a ghostly material made by removing liquid from a gel without collapsing its nanoscale skeleton, and demonstrates its strange thermal properties.",
+    "takeaway": "Aerogel's record-low density comes from a nanoporous network that traps air and suppresses heat transport."
+  },
+  {
+    "id": "stem-014",
+    "youtubeId": "PZRI1IfStY0",
+    "title": "Floating Point Numbers",
+    "coreQuestion": "Why does a computer say that 0.1 + 0.2 is not exactly 0.3?",
+    "channel": "Computerphile",
+    "category": "Computer Science",
+    "difficulty": "Foundational",
+    "duration": "9 min",
+    "concepts": [
+      "IEEE 754",
+      "Binary Fractions",
+      "Rounding Error",
+      "Numerical Computing"
+    ],
+    "description": "Computerphile explains how computers represent real numbers with a fixed number of bits, why some decimals cannot be stored exactly, and how those tiny errors compound.",
+    "takeaway": "Floating point is a clever approximation, not exact arithmetic; understanding its limits is essential for reliable scientific software."
+  },
+  {
+    "id": "stem-015",
+    "youtubeId": "kux1j1ccsgg",
+    "title": "Tardigrades: Chubby, Misunderstood, and Not Immortal",
+    "coreQuestion": "What can a tardigrade actually survive, and what does its 'immortality' really mean?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "13 min",
+    "concepts": [
+      "Cryptobiosis",
+      "Tardigrades",
+      "Desiccation",
+      "Extremophiles"
+    ],
+    "description": "Journey to the Microcosmos looks past the internet myth of the indestructible water bear to explain cryptobiosis, the reversible shutdown that lets tardigrades endure extreme conditions.",
+    "takeaway": "Tardigrades are not immortal; they are masters of pausing biology until conditions improve."
+  },
+  {
+    "id": "stem-016",
+    "youtubeId": "tafGL02EUOA",
+    "title": "Quantum Entanglement and the Great Bohr-Einstein Debate",
+    "coreQuestion": "Can quantum mechanics be complete if entangled particles seem to influence each other instantly?",
+    "channel": "PBS Space Time",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "14 min",
+    "concepts": [
+      "EPR Paradox",
+      "Bell's Theorem",
+      "Quantum Entanglement",
+      "Local Realism"
+    ],
+    "description": "Einstein called entanglement 'spooky action at a distance.' PBS Space Time follows the Bohr-Einstein debate from the Solvay Conference to Bell's theorem and the experiments that tested it.",
+    "takeaway": "Experiment rules out local hidden variables, forcing us to abandon either locality or the idea that measurement merely reveals pre-existing values."
+  },
+  {
+    "id": "stem-017",
+    "youtubeId": "qTLR7FwXUU4",
+    "title": "World Record Chain Fountain? The Mould Effect Explained",
+    "coreQuestion": "Why does a falling chain leap upward out of its container instead of simply pouring down?",
+    "channel": "Steve Mould",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Mould Effect",
+      "Normal Force",
+      "Momentum",
+      "Chain Dynamics"
+    ],
+    "description": "Steve Mould investigates the counter-intuitive fountain that forms when a beaded chain falls from a beaker, testing competing explanations and pushing the effect to its limits.",
+    "takeaway": "The container's floor pushes up on each link as it leaves, supplying the extra upward momentum that makes the chain rise."
+  },
+  {
+    "id": "stem-018",
+    "youtubeId": "AwwIFcdUFrE",
+    "title": "What Happens at the Edge of the Universe?",
+    "coreQuestion": "If the universe is expanding, what lies beyond the observable horizon — and is there even an edge?",
+    "channel": "PBS Space Time",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "10 min",
+    "concepts": [
+      "Observable Universe",
+      "Cosmic Expansion",
+      "Cosmic Horizon",
+      "Inflation"
+    ],
+    "description": "The observable universe has a boundary set by the speed of light and the age of the cosmos, but that boundary is not a wall. PBS Space Time unpacks what happens as galaxies cross the cosmic horizon.",
+    "takeaway": "There is no known edge in space; the horizon is a limit of what can have influenced us since the Big Bang."
+  },
+  {
+    "id": "stem-019",
+    "youtubeId": "2pp17E4E-O8",
+    "title": "Genome Editing with CRISPR-Cas9",
+    "coreQuestion": "How does a bacterial immune system become a precise tool for rewriting DNA?",
+    "channel": "McGovern Institute",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "4 min",
+    "concepts": [
+      "CRISPR",
+      "Cas9",
+      "Guide RNA",
+      "DNA Repair"
+    ],
+    "description": "The McGovern Institute explains how Cas9 follows a guide RNA to a matching DNA sequence, cuts it, and lets the cell's repair machinery introduce or correct a change.",
+    "takeaway": "CRISPR is programmable because the target is specified by a short RNA sequence, making genome editing accessible to almost any lab."
+  },
+  {
+    "id": "stem-020",
+    "youtubeId": "094y1Z2wpJg",
+    "title": "The Simplest Math Problem No One Can Solve",
+    "coreQuestion": "Does every positive integer eventually reach 1 under the Collatz rules?",
+    "channel": "Veritasium",
+    "category": "Math",
+    "difficulty": "Foundational",
+    "duration": "22 min",
+    "concepts": [
+      "Collatz Conjecture",
+      "Iteration",
+      "Undecidability",
+      "Open Problems"
+    ],
+    "description": "A rule simple enough for a child — if odd, triple and add one; if even, halve — generates a famously unsolved problem. Veritasium explores why mathematicians still cannot prove that every starting number reaches 1.",
+    "takeaway": "Simple rules can create intractable behaviour; the Collatz conjecture remains open despite enormous computational evidence."
+  },
+  {
+    "id": "stem-021",
+    "youtubeId": "eXR1olg_I0w",
+    "title": "Hovering a Helicopter Is Hilariously Hard",
+    "coreQuestion": "Why does a helicopter drift when you try to hold it perfectly still?",
+    "channel": "SmarterEveryDay",
+    "category": "Engineering",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Cyclic Control",
+      "Translational Lift",
+      "Torque",
+      "Feedback Control"
+    ],
+    "description": "Smarter Every Day climbs into a helicopter to learn why hovering is a constant negotiation between rotor thrust, wind, torque and the pilot's reflexes.",
+    "takeaway": "Stable hovering is an active control problem: the pilot continuously corrects forces that never quite balance on their own."
+  },
+  {
+    "id": "stem-022",
+    "youtubeId": "bre7MVlxq7o",
+    "title": "How Computers Calculate Sine, Cosine, and More",
+    "coreQuestion": "How can silicon compute trigonometry using only addition and bit shifts?",
+    "channel": "Bobater",
+    "category": "Computer Science",
+    "difficulty": "Intermediate",
+    "duration": "18 min",
+    "concepts": [
+      "CORDIC",
+      "Fixed-Point Arithmetic",
+      "Vector Rotation",
+      "Hardware Algorithms"
+    ],
+    "description": "An introduction to CORDIC, the elegant algorithm that rotates vectors by shrinking angles, letting calculators and embedded chips evaluate trigonometric functions without needing a multiplier.",
+    "takeaway": "CORDIC trades storage and iterations for arithmetic simplicity, making trigonometry cheap enough to run in tiny hardware."
+  },
+  {
+    "id": "stem-023",
+    "youtubeId": "OZG8M_ldA1M",
+    "title": "The Nervous System: Action Potential",
+    "coreQuestion": "How does a neuron turn chemistry into an electrical signal?",
+    "channel": "CrashCourse",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "12 min",
+    "concepts": [
+      "Action Potential",
+      "Ion Channels",
+      "Resting Potential",
+      "Neurotransmission"
+    ],
+    "description": "CrashCourse walks through the sodium-potassium pump, threshold, depolarisation and repolarisation that carry a signal down an axon in milliseconds.",
+    "takeaway": "A nerve impulse is a self-propagating wave of ion flow, powered by gradients the cell pays for in advance."
+  },
+  {
+    "id": "stem-024",
+    "youtubeId": "sD0NjbwqlYw",
+    "title": "But What Is the Riemann Zeta Function?",
+    "coreQuestion": "What does the Riemann zeta function look like beyond the infinite sum that defines it?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "22 min",
+    "concepts": [
+      "Riemann Zeta Function",
+      "Analytic Continuation",
+      "Complex Analysis",
+      "Riemann Hypothesis"
+    ],
+    "description": "3Blue1Brown starts with the zeta function's infinite sum and follows its analytic continuation into the complex plane, revealing the critical strip where the Riemann hypothesis lives.",
+    "takeaway": "Analytic continuation extends a function beyond its original domain, exposing a hidden landscape whose zeros encode deep structure in the primes."
+  }
+]

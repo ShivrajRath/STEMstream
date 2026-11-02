@@ -1,0 +1,125 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { CATEGORIES, getCategoryMeta } from '../lib/categories';
+
+export default function CategoryFilter({ activeCategory, counts, onChange }) {
+  const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollState = useCallback(() => {
+    const element = scrollRef.current;
+    if (!element) return;
+
+    const maxScroll = element.scrollWidth - element.clientWidth;
+    setCanScrollLeft(element.scrollLeft > 4);
+    setCanScrollRight(maxScroll > 4 && element.scrollLeft < maxScroll - 4);
+  }, []);
+
+  useEffect(() => {
+    const element = scrollRef.current;
+    if (!element) return undefined;
+
+    updateScrollState();
+    element.addEventListener('scroll', updateScrollState, { passive: true });
+
+    const observer = new ResizeObserver(updateScrollState);
+    observer.observe(element);
+
+    return () => {
+      element.removeEventListener('scroll', updateScrollState);
+      observer.disconnect();
+    };
+  }, [updateScrollState]);
+
+  const scrollBy = (direction) => {
+    scrollRef.current?.scrollBy({
+      left: direction * 260,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <div className="border-t border-white/[0.045]">
+      <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
+        <div
+          ref={scrollRef}
+          className="no-scrollbar flex items-center gap-2 overflow-x-auto py-2.5"
+          role="group"
+          aria-label="Filter videos by category"
+        >
+          {CATEGORIES.map((category) => {
+            const meta = getCategoryMeta(category);
+            const Icon = meta.icon;
+            const active = activeCategory === category;
+
+            return (
+              <button
+                key={category}
+                type="button"
+                aria-pressed={active}
+                onClick={() => onChange(category)}
+                className={`group inline-flex shrink-0 items-center gap-2 rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090a] ${
+                  active
+                    ? 'border-white bg-white text-[#0b0c0e] shadow-[0_2px_12px_rgba(255,255,255,0.12)]'
+                    : 'border-white/[0.08] bg-white/[0.035] text-white/60 hover:border-white/20 hover:bg-white/[0.07] hover:text-white'
+                }`}
+              >
+                <Icon
+                  aria-hidden="true"
+                  className={`h-3.5 w-3.5 ${
+                    active ? 'text-[#0b0c0e]' : meta.text
+                  }`}
+                />
+                <span>{category}</span>
+                <span
+                  className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums ${
+                    active
+                      ? 'bg-black/10 text-black/60'
+                      : 'bg-white/[0.06] text-white/30 group-hover:text-white/50'
+                  }`}
+                >
+                  {counts[category] ?? 0}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {canScrollLeft && (
+          <>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-[#08090a] via-[#08090a]/80 to-transparent"
+            />
+            <button
+              type="button"
+              onClick={() => scrollBy(-1)}
+              aria-label="Scroll categories left"
+              className="absolute left-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#17181c]/90 text-white/60 shadow-lg backdrop-blur transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+            >
+              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </>
+        )}
+
+        {canScrollRight && (
+          <>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#08090a] via-[#08090a]/80 to-transparent"
+            />
+            <button
+              type="button"
+              onClick={() => scrollBy(1)}
+              aria-label="Scroll categories right"
+              className="absolute right-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#17181c]/90 text-white/60 shadow-lg backdrop-blur transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+            >
+              <ChevronRight className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
