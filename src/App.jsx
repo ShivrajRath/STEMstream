@@ -1,13 +1,15 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   ArrowUp,
   Atom,
   Dice4,
   Film,
   Layers3,
+  Monitor,
   RotateCcw,
   ShieldCheck,
   Sparkles,
+  Tv,
 } from 'lucide-react';
 import Header from './components/Header';
 import CategoryFilter from './components/CategoryFilter';
@@ -62,6 +64,21 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [tvMode, setTvMode] = useState(false);
+
+  // Auto-detect TV mode based on screen size and lack of touch
+  useEffect(() => {
+    const detectTvMode = () => {
+      const isLargeScreen = window.innerWidth >= 1920 && window.innerHeight >= 1080;
+      const isNotTouch = !('ontouchstart' in window) || navigator.maxTouchPoints === 0;
+      const isTv = isLargeScreen && isNotTouch;
+      setTvMode(isTv);
+    };
+
+    detectTvMode();
+    window.addEventListener('resize', detectTvMode);
+    return () => window.removeEventListener('resize', detectTvMode);
+  }, []);
 
   const closeVideo = useCallback(() => setSelectedVideo(null), []);
 
@@ -143,75 +160,80 @@ export default function App() {
           onReset={resetFilters}
           onFeelingLucky={playRandomVideo}
           shortcutsEnabled={!selectedVideo}
+          tvMode={tvMode}
+          onToggleTvMode={() => setTvMode(!tvMode)}
         />
         <CategoryFilter
           activeCategory={activeCategory}
           counts={categoryCounts}
           onChange={setActiveCategory}
+          tvMode={tvMode}
         />
       </div>
 
       <main>
-        <section className="relative isolate overflow-hidden border-b border-white/[0.06]">
-          <div aria-hidden="true" className="absolute inset-0 -z-10">
-            <div className="absolute -left-24 top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-red-600/[0.09] blur-[130px]" />
-            <div className="absolute -right-20 top-[-6rem] h-[28rem] w-[28rem] rounded-full bg-violet-600/[0.08] blur-[120px]" />
-            <div
-              className="absolute inset-0 opacity-40"
-              style={{
-                backgroundImage:
-                  'linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px)',
-                backgroundSize: '72px 72px',
-                maskImage:
-                  'radial-gradient(ellipse at center, black 15%, transparent 72%)',
-                WebkitMaskImage:
-                  'radial-gradient(ellipse at center, black 15%, transparent 72%)',
-              }}
-            />
-          </div>
-
-          <div className="mx-auto flex max-w-[1600px] flex-col gap-8 px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-12 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-8 lg:py-10">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium tracking-wide text-white/55">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-400" />
-                </span>
-                Curated, not algorithmic
-              </span>
-
-              <h1 className="mt-5 text-balance font-display text-[clamp(2.5rem,5.5vw,3.75rem)] font-bold leading-[0.98] tracking-[-0.045em] text-white">
-                Feed your{' '}
-                <span className="block bg-gradient-to-r from-[#ff7a66] via-[#ff2d55] to-[#ff9a3c] bg-clip-text text-transparent">
-                  curiosity.
-                </span>
-              </h1>
-
-              <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-white/55">
-                A hand-picked library of the internet's best science, space,
-                engineering and mathematics videos. Chosen for the idea — not the
-                algorithm, and not the channel.
-              </p>
-
-              <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px] text-white/45">
-                <li className="inline-flex items-center gap-2">
-                  <Film className="h-4 w-4 text-white/25" aria-hidden="true" />
-                  {videos.length} curated videos
-                </li>
-                <li className="inline-flex items-center gap-2">
-                  <Layers3 className="h-4 w-4 text-white/25" aria-hidden="true" />
-                  {CATEGORIES.length - 1} disciplines
-                </li>
-                <li className="inline-flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-white/25" aria-hidden="true" />
-                  Chosen by humans
-                </li>
-              </ul>
+        {!tvMode && (
+          <section className="relative isolate overflow-hidden border-b border-white/[0.06]">
+            <div aria-hidden="true" className="absolute inset-0 -z-10">
+              <div className="absolute -left-24 top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-red-600/[0.09] blur-[130px]" />
+              <div className="absolute -right-20 top-[-6rem] h-[28rem] w-[28rem] rounded-full bg-violet-600/[0.08] blur-[120px]" />
+              <div
+                className="absolute inset-0 opacity-40"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px)',
+                  backgroundSize: '72px 72px',
+                  maskImage:
+                    'radial-gradient(ellipse at center, black 15%, transparent 72%)',
+                  WebkitMaskImage:
+                    'radial-gradient(ellipse at center, black 15%, transparent 72%)',
+                }}
+              />
             </div>
 
-            <OrbitGraphic />
-          </div>
-        </section>
+            <div className="mx-auto flex max-w-[1600px] flex-col gap-8 px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-12 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-8 lg:py-10">
+              <div className="max-w-2xl">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium tracking-wide text-white/55">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-400" />
+                  </span>
+                  Curated, not algorithmic
+                </span>
+
+                <h1 className="mt-5 text-balance font-display text-[clamp(2.5rem,5.5vw,3.75rem)] font-bold leading-[0.98] tracking-[-0.045em] text-white">
+                  Feed your{' '}
+                  <span className="block bg-gradient-to-r from-[#ff7a66] via-[#ff2d55] to-[#ff9a3c] bg-clip-text text-transparent">
+                    curiosity.
+                  </span>
+                </h1>
+
+                <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-white/55">
+                  A hand-picked library of the internet's best science, space,
+                  engineering and mathematics videos. Chosen for the idea — not the
+                  algorithm, and not the channel.
+                </p>
+
+                <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-[13px] text-white/45">
+                  <li className="inline-flex items-center gap-2">
+                    <Film className="h-4 w-4 text-white/25" aria-hidden="true" />
+                    {videos.length} curated videos
+                  </li>
+                  <li className="inline-flex items-center gap-2">
+                    <Layers3 className="h-4 w-4 text-white/25" aria-hidden="true" />
+                    {CATEGORIES.length - 1} disciplines
+                  </li>
+                  <li className="inline-flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-white/25" aria-hidden="true" />
+                    Chosen by humans
+                  </li>
+                </ul>
+              </div>
+
+              <OrbitGraphic />
+            </div>
+          </section>
+        )}
 
         <section
           id="collection"
@@ -259,6 +281,7 @@ export default function App() {
               videos={visibleVideos}
               onSelectVideo={setSelectedVideo}
               onReset={resetFilters}
+              tvMode={tvMode}
             />
           </div>
 
@@ -307,7 +330,7 @@ export default function App() {
       </footer>
 
       {selectedVideo && (
-        <ModalPlayer video={selectedVideo} onClose={closeVideo} />
+        <ModalPlayer video={selectedVideo} onClose={closeVideo} tvMode={tvMode} />
       )}
     </div>
   );
