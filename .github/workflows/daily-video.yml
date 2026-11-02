@@ -5,6 +5,11 @@ on:
     # Every day at 05:17 UTC, before the weekly rebuild in deploy.yml.
     - cron: '17 5 * * *'
   workflow_dispatch:
+    inputs:
+      category:
+        description: 'Section to curate (leave empty for the daily rotation)'
+        required: false
+        type: string
 
 # Only the curate job needs to commit; the deploy job reuses the same artifact
 # pipeline as deploy.yml.
@@ -36,12 +41,21 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Add one new video per section
+      # One section per day, rotating on the date; the manual dispatch input
+      # curates a section out of turn.
+      - name: Add today's video
         env:
           # The model is hardcoded in the script (gemini-3.8-flash, falling
-          # back to gemini-3.6-flash), so no repository variable is needed.
+          # back to gemini-3.6-flash, then the lite models), so no repository
+          # variable is needed.
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python3 scripts/add_daily_video.py
+          CATEGORY: ${{ inputs.category }}
+        run: |
+          if [ -n "$CATEGORY" ]; then
+            python3 scripts/add_daily_video.py --category "$CATEGORY"
+          else
+            python3 scripts/add_daily_video.py
+          fi
 
       - name: Validate the updated catalogue
         run: python3 scripts/update_content.py --check
@@ -59,7 +73,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/data/data.json
           git commit \
-            -m "Add the $(date -u +%Y-%m-%d) daily pick to every section" \
+            -m "Add the $(date -u +%Y-%m-%d) daily pick" \
             -m "Curated by scripts/add_daily_video.py and verified against YouTube."
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"

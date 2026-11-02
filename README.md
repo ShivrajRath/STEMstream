@@ -169,9 +169,14 @@ video or a transient YouTube response cannot block a deployment. Add
 ## Daily automated picks
 
 `.github/workflows/daily-video.yml` runs every day at 05:17 UTC. It asks Gemini
-for one new video in each of the seven sections, verifies every recommendation
-against YouTube, prepends the accepted entries to `src/data/data.json`, commits
-the change to `main`, and then builds and deploys the site in the same run.
+for one new video, verifies the recommendation against YouTube, prepends the
+accepted entry to `src/data/data.json`, commits the change to `main`, and then
+builds and deploys the site in the same run.
+
+One section is curated per day: the section is picked by rotating through the
+seven of them on the date, so each section gains a video every week while a run
+costs one or two API requests instead of seven. Start the workflow by hand with
+a section name to curate that section out of turn.
 
 A prepended entry is the first record in the file, so it becomes the first card
 both in the full collection and in its own category.
@@ -184,8 +189,9 @@ Nothing is written until a suggestion passes every check:
 
 The title and channel come from YouTube itself rather than from the model, so a
 card always names the real upload. When a suggestion fails a check the script
-asks Gemini again, up to three times per section. A section with nothing
-verifiable is skipped and the others are still added.
+asks Gemini again, up to three times. A day with nothing verifiable writes
+nothing and fails the job, so a broken key or an exhausted quota is visible
+instead of silently skipping.
 
 Configure the key in **Settings → Secrets and variables → Actions**:
 
@@ -193,17 +199,20 @@ Configure the key in **Settings → Secrets and variables → Actions**:
 | --- | --- | --- | --- |
 | `GEMINI_API_KEY` | secret | yes | API key from [Google AI Studio](https://aistudio.google.com/apikey). |
 
-The model is hardcoded in the script, so no repository variable is needed:
-`gemini-3.8-flash`, falling back to `gemini-3.6-flash` if that id is
-unavailable for the key. To try a different model locally, set `GEMINI_MODEL`
-in your own shell; an empty value is ignored.
+The model is hardcoded in the script, so no repository variable is needed. The
+chain is `gemini-3.8-flash` → `gemini-3.6-flash` → `gemini-3.5-flash-lite` →
+`gemini-3.1-flash-lite`. A model that no longer exists, is overloaded (`503`) or
+is out of free-tier quota (`429`) hands the pick to the next model, so a busy
+model does not cost the day's video. To try a different model locally, set
+`GEMINI_MODEL` in your own shell; an empty value is ignored.
 
 Run it by hand from the **Actions** tab (**Add daily video → Run workflow**), or
 locally:
 
 ```bash
-GEMINI_API_KEY=... python3 scripts/add_daily_video.py --dry-run   # verify only
-GEMINI_API_KEY=... python3 scripts/add_daily_video.py             # write the file
+GEMINI_API_KEY=... python3 scripts/add_daily_video.py --dry-run           # verify only
+GEMINI_API_KEY=... python3 scripts/add_daily_video.py                     # write the file
+GEMINI_API_KEY=... python3 scripts/add_daily_video.py --category Space    # today's pick, other section
 ```
 
 ## GitHub Pages deployment
