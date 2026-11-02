@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import {
   ArrowUp,
   Atom,
@@ -18,6 +18,7 @@ import ModalPlayer from './components/ModalPlayer';
 import Logo from './components/Logo';
 import { CATEGORIES } from './lib/categories';
 import videos from './data/data.json';
+import { getInitialTvMode, saveTvModePreference } from './lib/tv';
 
 const categoryCounts = { All: videos.length };
 
@@ -64,23 +65,48 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const [tvMode, setTvMode] = useState(false);
+  // Televisions start in TV mode; every other device starts in desktop mode
+  // unless the viewer has made an explicit choice.
+  const [tvMode, setTvMode] = useState(() => getInitialTvMode());
+  const [tvFocusZone, setTvFocusZone] = useState('grid');
 
-  // Auto-detect TV mode based on screen size and lack of touch
-  useEffect(() => {
-    const detectTvMode = () => {
-      const isLargeScreen = window.innerWidth >= 1920 && window.innerHeight >= 1080;
-      const isNotTouch = !('ontouchstart' in window) || navigator.maxTouchPoints === 0;
-      const isTv = isLargeScreen && isNotTouch;
-      setTvMode(isTv);
-    };
-
-    detectTvMode();
-    window.addEventListener('resize', detectTvMode);
-    return () => window.removeEventListener('resize', detectTvMode);
+  const toggleTvMode = useCallback(() => {
+    setTvMode((current) => {
+      const next = !current;
+      saveTvModePreference(next);
+      return next;
+    });
+    setTvFocusZone('grid');
   }, []);
 
-  const closeVideo = useCallback(() => setSelectedVideo(null), []);
+  const focusVideos = useCallback(() => setTvFocusZone('grid'), []);
+  const focusCategories = useCallback(() => setTvFocusZone('categories'), []);
+
+  const selectVideo = useCallback(
+    (video) => {
+      // Ask for full screen inside the click handler: browsers only grant it
+      // while the user activation is fresh. The player itself also fills the
+      // viewport, so TVs that refuse the Fullscreen API still get an
+      // edge-to-edge video.
+      if (tvMode && !document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {
+          // Fullscreen is a nice-to-have; never block playback on it.
+        });
+      }
+      setSelectedVideo(video);
+    },
+    [tvMode],
+  );
+
+  const closeVideo = useCallback(() => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen?.().catch(() => {
+        // The browser may already be leaving full screen.
+      });
+    }
+    setSelectedVideo(null);
+    setTvFocusZone('grid');
+  }, []);
 
   const resetFilters = useCallback(() => {
     setSearchQuery('');
@@ -117,8 +143,8 @@ export default function App() {
   const playRandomVideo = useCallback(() => {
     if (filteredVideos.length === 0) return;
     const randomIndex = Math.floor(Math.random() * filteredVideos.length);
-    setSelectedVideo(filteredVideos[randomIndex]);
-  }, [filteredVideos]);
+    selectVideo(filteredVideos[randomIndex]);
+  }, [filteredVideos, selectVideo]);
 
   const filterKey = `${activeCategory}|${searchQuery}`;
   const [trackedFilterKey, setTrackedFilterKey] = useState(filterKey);
@@ -161,13 +187,16 @@ export default function App() {
           onFeelingLucky={playRandomVideo}
           shortcutsEnabled={!selectedVideo}
           tvMode={tvMode}
-          onToggleTvMode={() => setTvMode(!tvMode)}
+          onToggleTvMode={toggleTvMode}
         />
         <CategoryFilter
           activeCategory={activeCategory}
           counts={categoryCounts}
           onChange={setActiveCategory}
           tvMode={tvMode}
+          keyboardEnabled={!selectedVideo}
+          focused={tvFocusZone === 'categories'}
+          onNavigateToVideos={focusVideos}
         />
       </div>
 
@@ -279,9 +308,12 @@ export default function App() {
           <div className="mt-6">
             <VideoGrid
               videos={visibleVideos}
-              onSelectVideo={setSelectedVideo}
+              onSelectVideo={selectVideo}
               onReset={resetFilters}
               tvMode={tvMode}
+              keyboardEnabled={!selectedVideo}
+              focused={tvFocusZone === 'grid'}
+              onNavigateToCategories={focusCategories}
             />
           </div>
 

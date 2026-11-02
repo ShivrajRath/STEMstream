@@ -1,99 +1,123 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RotateCcw, Telescope } from 'lucide-react';
 import VideoCard from './VideoCard';
 
-export default function VideoGrid({ videos, onSelectVideo, onReset, tvMode = false }) {
+export default function VideoGrid({
+  videos,
+  onSelectVideo,
+  onReset,
+  tvMode = false,
+  keyboardEnabled = true,
+  focused = false,
+  onNavigateToCategories,
+}) {
   const [focusedIndex, setFocusedIndex] = useState(-1);
+  const didNavigateRef = useRef(false);
 
-  // Determine grid columns based on screen size and TV mode
+  // Must match the Tailwind grid classes below, or vertical navigation drifts.
   const getColumns = () => {
     if (tvMode) {
-      if (window.innerWidth >= 1280) return 3; // xl
-      if (window.innerWidth >= 1024) return 2; // lg
-      return 1; // sm
+      if (window.innerWidth >= 1280) return 3;
+      if (window.innerWidth >= 1024) return 2;
+      return 1;
     }
-    if (window.innerWidth >= 1280) return 4; // xl
-    if (window.innerWidth >= 1024) return 3; // lg
-    if (window.innerWidth >= 640) return 2; // sm
+    if (window.innerWidth >= 1280) return 4;
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 640) return 2;
     return 1;
   };
 
+  // Reset or repair the focused card when TV mode or the visible set changes.
   useEffect(() => {
     if (!tvMode) {
       setFocusedIndex(-1);
       return;
     }
 
-    // Set initial focus to first video when TV mode is enabled
-    if (focusedIndex === -1 && videos.length > 0) {
-      setFocusedIndex(0);
-    }
+    setFocusedIndex((current) => {
+      if (current >= 0 && current < videos.length) return current;
+      return videos.length > 0 ? 0 : -1;
+    });
+  }, [tvMode, videos.length]);
+
+  // The grid handles arrow keys only while it owns focus and the player is
+  // closed, so navigation never happens behind an open video.
+  useEffect(() => {
+    if (!tvMode || !keyboardEnabled || !focused) return undefined;
 
     const handleKeyDown = (event) => {
+      if (event.defaultPrevented) return;
+
+      const total = videos.length;
+      if (total === 0) return;
+
       const columns = getColumns();
-      const rows = Math.ceil(videos.length / columns);
+      const current = focusedIndex >= 0 ? focusedIndex : 0;
+
+      const moveTo = (nextIndex) => {
+        event.preventDefault();
+        didNavigateRef.current = true;
+        setFocusedIndex(nextIndex);
+      };
 
       switch (event.key) {
         case 'ArrowRight':
-          event.preventDefault();
-          setFocusedIndex((prev) => {
-            if (prev < videos.length - 1) return prev + 1;
-            return prev;
-          });
+          if (current < total - 1) moveTo(current + 1);
           break;
         case 'ArrowLeft':
-          event.preventDefault();
-          setFocusedIndex((prev) => {
-            if (prev > 0) return prev - 1;
-            return prev;
-          });
+          if (current > 0) moveTo(current - 1);
           break;
-        case 'ArrowDown':
-          event.preventDefault();
-          setFocusedIndex((prev) => {
-            const newRow = Math.floor(prev / columns) + 1;
-            const newCol = prev % columns;
-            const newIndex = newRow * columns + newCol;
-            if (newIndex < videos.length) return newIndex;
-            return prev;
-          });
+        case 'ArrowDown': {
+          const next = current + columns;
+          if (next < total) moveTo(next);
           break;
-        case 'ArrowUp':
-          event.preventDefault();
-          setFocusedIndex((prev) => {
-            const newRow = Math.floor(prev / columns) - 1;
-            const newCol = prev % columns;
-            const newIndex = newRow * columns + newCol;
-            if (newRow >= 0) return newIndex;
-            return prev;
-          });
+        }
+        case 'ArrowUp': {
+          const previous = current - columns;
+          if (previous >= 0) {
+            moveTo(previous);
+          } else {
+            event.preventDefault();
+            onNavigateToCategories?.();
+          }
           break;
+        }
         case 'Enter':
-          setFocusedIndex((prev) => {
-            if (prev >= 0 && prev < videos.length) {
-              event.preventDefault();
-              onSelectVideo(videos[prev]);
-            }
-            return prev;
-          });
+        case ' ':
+          if (focusedIndex >= 0 && focusedIndex < total) {
+            event.preventDefault();
+            onSelectVideo(videos[focusedIndex]);
+          }
+          break;
+        default:
           break;
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [tvMode, videos, onSelectVideo]);
+  }, [
+    tvMode,
+    keyboardEnabled,
+    focused,
+    focusedIndex,
+    videos,
+    onSelectVideo,
+    onNavigateToCategories,
+  ]);
 
-  // Scroll focused video into view
+  // Follow the focused card with minimal scrolling. The initial focus should
+  // not yank the page down when TV mode is switched on.
   useEffect(() => {
-    if (tvMode && focusedIndex >= 0) {
-      const cards = document.querySelectorAll('[data-video-card]');
-      const focusedCard = cards[focusedIndex];
-      if (focusedCard) {
-        focusedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
+    if (!tvMode || focusedIndex < 0 || !didNavigateRef.current) return;
+    const cards = document.querySelectorAll('[data-video-card]');
+    cards[focusedIndex]?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'nearest',
+      block: 'nearest',
+    });
   }, [focusedIndex, tvMode]);
+
   if (videos.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-white/[0.02] px-6 py-20 text-center">
@@ -120,7 +144,7 @@ export default function VideoGrid({ videos, onSelectVideo, onReset, tvMode = fal
   }
 
   return (
-    <div className={`grid gap-x-5 gap-y-8 ${tvMode ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}`}>
+    <div className={`grid gap-x-5 gap-y-8 ${tvMode ? 'grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}`}>
       {videos.map((video, index) => (
         <VideoCard
           key={video.id}
@@ -128,7 +152,7 @@ export default function VideoGrid({ videos, onSelectVideo, onReset, tvMode = fal
           onSelect={onSelectVideo}
           priority={index < 4}
           tvMode={tvMode}
-          isFocused={tvMode && focusedIndex === index}
+          isFocused={tvMode && focused && focusedIndex === index}
         />
       ))}
     </div>

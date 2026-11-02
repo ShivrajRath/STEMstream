@@ -2,7 +2,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CATEGORIES, getCategoryMeta } from '../lib/categories';
 
-export default function CategoryFilter({ activeCategory, counts, onChange, tvMode = false }) {
+export default function CategoryFilter({
+  activeCategory,
+  counts,
+  onChange,
+  tvMode = false,
+  keyboardEnabled = true,
+  focused = false,
+  onNavigateToVideos,
+}) {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -33,50 +41,68 @@ export default function CategoryFilter({ activeCategory, counts, onChange, tvMod
     };
   }, [updateScrollState]);
 
-  // TV mode keyboard navigation for categories
+  // Keep a valid chip highlighted whenever TV mode or the active category
+  // changes.
   useEffect(() => {
     if (!tvMode) {
       setFocusedIndex(-1);
       return;
     }
 
-    // Set initial focus to first category when TV mode is enabled
-    if (focusedIndex === -1) {
+    setFocusedIndex((current) => {
+      if (current >= 0 && current < CATEGORIES.length) return current;
       const activeIndex = CATEGORIES.indexOf(activeCategory);
-      setFocusedIndex(activeIndex >= 0 ? activeIndex : 0);
-    }
+      return activeIndex >= 0 ? activeIndex : 0;
+    });
+  }, [tvMode, activeCategory]);
+
+  // TV mode keyboard navigation only runs while the category row owns focus,
+  // so arrow keys cannot move the categories and the video grid at once.
+  useEffect(() => {
+    if (!tvMode || !keyboardEnabled || !focused) return undefined;
 
     const handleKeyDown = (event) => {
+      if (event.defaultPrevented) return;
+
       switch (event.key) {
         case 'ArrowRight':
           event.preventDefault();
-          setFocusedIndex((prev) => {
-            if (prev < CATEGORIES.length - 1) return prev + 1;
-            return prev;
-          });
+          setFocusedIndex((prev) => Math.min(prev + 1, CATEGORIES.length - 1));
           break;
         case 'ArrowLeft':
           event.preventDefault();
-          setFocusedIndex((prev) => {
-            if (prev > 0) return prev - 1;
-            return prev;
-          });
+          setFocusedIndex((prev) => Math.max(prev - 1, 0));
           break;
         case 'ArrowDown':
-          // Allow navigation to videos
+          event.preventDefault();
+          onNavigateToVideos?.();
           break;
         case 'Enter':
+        case ' ':
           if (focusedIndex >= 0 && focusedIndex < CATEGORIES.length) {
             event.preventDefault();
             onChange(CATEGORIES[focusedIndex]);
           }
+          break;
+        default:
           break;
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [tvMode, activeCategory, onChange]);
+  }, [tvMode, keyboardEnabled, focused, focusedIndex, onChange, onNavigateToVideos]);
+
+  // Keep the highlighted chip inside the horizontally scrolling row.
+  useEffect(() => {
+    if (!tvMode || focusedIndex < 0) return;
+    const chips = scrollRef.current?.querySelectorAll('[data-category-chip]');
+    chips?.[focusedIndex]?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'nearest',
+      block: 'nearest',
+    });
+  }, [tvMode, focusedIndex]);
 
   const scrollBy = (direction) => {
     scrollRef.current?.scrollBy({
@@ -98,13 +124,14 @@ export default function CategoryFilter({ activeCategory, counts, onChange, tvMod
             const meta = getCategoryMeta(category);
             const Icon = meta.icon;
             const active = activeCategory === category;
-            const isFocused = tvMode && focusedIndex === index;
+            const isFocused = tvMode && focused && focusedIndex === index;
 
             return (
               <button
                 key={category}
                 type="button"
                 aria-pressed={active}
+                data-category-chip
                 onClick={() => onChange(category)}
                 className={`group inline-flex shrink-0 items-center gap-2 rounded-full border font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090a] ${
                   tvMode
