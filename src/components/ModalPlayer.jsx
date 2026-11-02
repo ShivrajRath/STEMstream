@@ -27,6 +27,88 @@ const FOCUSABLE_SELECTOR = [
 const IFRAME_ALLOW =
   'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';
 
+// Embeds start with captions off, but YouTube still shows them when the
+// viewer's own caption preference is on, so the player is asked to unload its
+// captions module as well. That command is only accepted once the player is
+// ready and needs the JavaScript API enabled and the embedding origin set.
+function buildEmbedUrl(youtubeId) {
+  const params = new URLSearchParams({
+    autoplay: '1',
+    rel: '0',
+    modestbranding: '1',
+    playsinline: '1',
+    fs: '1',
+    cc_load_policy: '0',
+    enablejsapi: '1',
+  });
+
+  if (/^https?:$/.test(window.location.protocol)) {
+    params.set('origin', window.location.origin);
+  }
+
+  return `https://www.youtube-nocookie.com/embed/${youtubeId}?${params.toString()}`;
+}
+
+function VideoEmbed({ videoId, title, className }) {
+  const iframeRef = useRef(null);
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return undefined;
+
+    let cancelled = false;
+
+    const hideCaptions = () => {
+      if (cancelled) return;
+      iframe.contentWindow?.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func: 'unloadModule',
+          args: ['captions'],
+        }),
+        '*',
+      );
+    };
+
+    const handleMessage = (event) => {
+      if (event.source !== iframe.contentWindow) return;
+      if (typeof event.data !== 'string') return;
+
+      let payload;
+      try {
+        payload = JSON.parse(event.data);
+      } catch {
+        return;
+      }
+
+      if (payload?.event === 'onReady' || payload?.event === 'initialDelivery') {
+        hideCaptions();
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    iframe.addEventListener('load', hideCaptions);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener('message', handleMessage);
+      iframe.removeEventListener('load', hideCaptions);
+    };
+  }, [videoId]);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      src={buildEmbedUrl(videoId)}
+      title={title}
+      allow={IFRAME_ALLOW}
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+      className={className}
+    />
+  );
+}
+
 export default function ModalPlayer({ video, onClose, tvMode = false }) {
   const dialogRef = useRef(null);
   const detailsRef = useRef(null);
@@ -297,12 +379,9 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
             style={{ maxWidth: 'min(100vw, calc(100dvh * 16 / 9))' }}
             onMouseDown={(event) => event.stopPropagation()}
           >
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&fs=1`}
+            <VideoEmbed
+              videoId={video.youtubeId}
               title={video.title}
-              allow={IFRAME_ALLOW}
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
               className="absolute inset-0 h-full w-full border-0"
             />
           </div>
@@ -389,12 +468,9 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
           className="flex max-h-[calc(100dvh_-_1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101114] shadow-[0_32px_100px_rgba(0,0,0,0.85)] outline-none animate-scale-up"
         >
           <div className="relative aspect-video w-full shrink-0 bg-black">
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&fs=1`}
+            <VideoEmbed
+              videoId={video.youtubeId}
               title={video.title}
-              allow={IFRAME_ALLOW}
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
               className="absolute inset-0 h-full w-full border-0"
             />
 
