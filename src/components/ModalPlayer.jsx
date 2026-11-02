@@ -390,7 +390,7 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
             <div
               ref={detailsRef}
               tabIndex={-1}
-              className="absolute inset-x-0 bottom-0 top-24 z-20 overflow-y-auto border-t border-white/10 bg-[#08090a]/95 px-6 py-8 outline-none backdrop-blur-xl sm:px-10"
+              className="absolute inset-x-0 bottom-0 top-24 z-20 overflow-y-auto border-t border-white/10 bg-[#08090a] px-6 py-8 outline-none sm:px-10"
               onMouseDown={(event) => event.stopPropagation()}
             >
               <div className="mx-auto max-w-4xl">{details}</div>
@@ -415,7 +415,7 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
                 type="button"
                 onClick={() => setShowDetails((current) => !current)}
                 aria-pressed={showDetails}
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/55 px-4 py-2.5 text-sm font-semibold text-white/80 backdrop-blur-md transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/70 px-4 py-2.5 text-sm font-semibold text-white/80 transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
               >
                 <Info className="h-5 w-5" aria-hidden="true" />
                 <span className="hidden sm:inline">
@@ -427,7 +427,7 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
                 onClick={toggleFullscreen}
                 aria-label={isFullscreen ? 'Exit full screen' : 'Enter full screen'}
                 title={isFullscreen ? 'Exit full screen' : 'Enter full screen'}
-                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/55 p-2.5 text-white/80 backdrop-blur-md transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                className="inline-flex items-center justify-center rounded-full border border-white/15 bg-black/70 p-2.5 text-white/80 transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
               >
                 {isFullscreen ? (
                   <Minimize2 className="h-5 w-5" aria-hidden="true" />
@@ -440,7 +440,7 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close video player"
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/55 px-4 py-2.5 text-sm font-semibold text-white/80 backdrop-blur-md transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-4 py-2.5 text-sm font-semibold text-white/80 transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
               >
                 <X className="h-6 w-6" aria-hidden="true" />
                 <span className="hidden sm:inline">Esc</span>
@@ -454,7 +454,7 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-black/85 p-3 backdrop-blur-md animate-fade-in sm:p-6"
+      className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-black/90 p-3 animate-fade-in sm:p-6"
       onMouseDown={onClose}
     >
       <div className="flex min-h-full items-center justify-center">
@@ -465,7 +465,7 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
           aria-label={video.title}
           tabIndex={-1}
           onMouseDown={(event) => event.stopPropagation()}
-          className="flex max-h-[calc(100dvh_-_1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101114] shadow-[0_32px_100px_rgba(0,0,0,0.85)] outline-none animate-scale-up"
+          className="flex max-h-[calc(100dvh_-_1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101114] shadow-2xl outline-none animate-scale-up"
         >
           <div className="relative aspect-video w-full shrink-0 bg-black">
             <VideoEmbed
@@ -484,7 +484,7 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
               type="button"
               onClick={onClose}
               aria-label="Close video player"
-              className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/55 px-2.5 py-2 text-white/80 backdrop-blur-md transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/70 px-2.5 py-2 text-white/80 transition hover:bg-white hover:text-[#0b0c0e] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
             >
               <X className="h-4 w-4" aria-hidden="true" />
               <span className="hidden text-[11px] font-semibold sm:inline">Esc</span>

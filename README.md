@@ -24,8 +24,11 @@ be hosted on GitHub Pages.
 - **Responsive grid**: 1 column on phones, 2 on tablets, 3–4 on desktop.
 - **YouTube-style dark theme**, accessible focus states, keyboard support, and
   reduced-motion-friendly transitions.
-- **Thumbnail resilience**: `maxresdefault.jpg` first, then `hqdefault.jpg`, then
-  a styled placeholder.
+- **Responsive thumbnails**: cards use `srcset` and `sizes` so phones, laptops
+  and TVs download a 320–480 px still instead of a 1280×720 one, with
+  `hqdefault.jpg` and a styled placeholder as fallbacks.
+- **Light on slow hardware**: no full-page backdrop blur, decorative animations
+  pause while a video is playing, and `prefers-reduced-motion` disables motion.
 
 ## Stack
 

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useDeferredValue, useMemo, useState } from 'react';
 import {
   ArrowUp,
   Atom,
@@ -40,18 +40,18 @@ function OrbitGraphic() {
       <div className="absolute inset-10 rounded-full border border-white/[0.08]" />
       <div className="absolute inset-20 rounded-full border border-dashed border-white/[0.1]" />
 
-      <div className="absolute inset-0 animate-[spin_60s_linear_infinite]">
+      <div className="ambient-spin absolute inset-0 animate-[spin_60s_linear_infinite]">
         <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400 shadow-[0_0_24px_6px_rgba(56,189,248,0.35)]" />
       </div>
-      <div className="absolute inset-10 animate-[spin_42s_linear_infinite_reverse]">
+      <div className="ambient-spin absolute inset-10 animate-[spin_42s_linear_infinite_reverse]">
         <span className="absolute right-0 top-1/2 h-2.5 w-2.5 translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-400 shadow-[0_0_26px_7px_rgba(244,114,182,0.3)]" />
       </div>
-      <div className="absolute inset-20 animate-[spin_52s_linear_infinite]">
+      <div className="ambient-spin absolute inset-20 animate-[spin_52s_linear_infinite]">
         <span className="absolute bottom-0 left-1/2 h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full bg-amber-300 shadow-[0_0_24px_6px_rgba(252,211,77,0.3)]" />
       </div>
 
       <div className="absolute inset-[5.5rem] rounded-full bg-red-500/10 blur-3xl" />
-      <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] shadow-[0_0_80px_rgba(255,0,51,0.16)] backdrop-blur-sm">
+      <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] shadow-[0_0_80px_rgba(255,0,51,0.16)]">
         <Atom className="h-12 w-12 text-white/75" strokeWidth={1.1} />
       </div>
     </div>
@@ -60,11 +60,39 @@ function OrbitGraphic() {
 
 const PAGE_SIZE = 24;
 
+// Search haystacks are built once per video and reused. Rebuilding them inside
+// the filter loop would allocate a string per video on every keystroke, which is
+// noticeable on low-powered TVs and phones.
+const searchHaystacks = new WeakMap();
+
+function getSearchableText(video) {
+  let haystack = searchHaystacks.get(video);
+  if (haystack === undefined) {
+    haystack = [
+      video.title,
+      video.coreQuestion,
+      video.channel,
+      video.category,
+      video.difficulty,
+      video.description,
+      video.takeaway,
+      ...(video.concepts ?? []),
+    ]
+      .join(' ')
+      .toLowerCase();
+    searchHaystacks.set(video, haystack);
+  }
+  return haystack;
+}
+
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  // Typing stays instant; the (much heavier) result list catches up at a lower
+  // priority so a slow device never blocks the search input.
+  const deferredSearchQuery = useDeferredValue(searchQuery);
   // Televisions start in TV mode; every other device starts in desktop mode
   // unless the viewer has made an explicit choice.
   const [tvMode, setTvMode] = useState(() => getInitialTvMode());
@@ -108,50 +136,42 @@ export default function App() {
     setTvFocusZone('grid');
   }, []);
 
+  const changeSearch = useCallback((value) => {
+    setSearchQuery(value);
+    setVisibleCount(PAGE_SIZE);
+  }, []);
+
+  const changeCategory = useCallback((category) => {
+    setActiveCategory(category);
+    setVisibleCount(PAGE_SIZE);
+  }, []);
+
   const resetFilters = useCallback(() => {
     setSearchQuery('');
     setActiveCategory('All');
+    setVisibleCount(PAGE_SIZE);
   }, []);
 
   const filteredVideos = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
+    const query = deferredSearchQuery.trim().toLowerCase();
     const tokens = query ? query.split(/\s+/) : [];
 
     return videos.filter((video) => {
-      const matchesCategory =
-        activeCategory === 'All' || video.category === activeCategory;
-      if (!matchesCategory) return false;
+      if (activeCategory !== 'All' && video.category !== activeCategory) {
+        return false;
+      }
       if (tokens.length === 0) return true;
 
-      const haystack = [
-        video.title,
-        video.coreQuestion,
-        video.channel,
-        video.category,
-        video.difficulty,
-        video.description,
-        video.takeaway,
-        ...(video.concepts ?? []),
-      ]
-        .join(' ')
-        .toLowerCase();
-
+      const haystack = getSearchableText(video);
       return tokens.every((token) => haystack.includes(token));
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeCategory, deferredSearchQuery]);
 
   const playRandomVideo = useCallback(() => {
     if (filteredVideos.length === 0) return;
     const randomIndex = Math.floor(Math.random() * filteredVideos.length);
     selectVideo(filteredVideos[randomIndex]);
   }, [filteredVideos, selectVideo]);
-
-  const filterKey = `${activeCategory}|${searchQuery}`;
-  const [trackedFilterKey, setTrackedFilterKey] = useState(filterKey);
-  if (filterKey !== trackedFilterKey) {
-    setTrackedFilterKey(filterKey);
-    setVisibleCount(PAGE_SIZE);
-  }
 
   const visibleVideos = useMemo(
     () => filteredVideos.slice(0, visibleCount),
@@ -169,7 +189,10 @@ export default function App() {
     activeCategory === 'All' ? 'Start anywhere. Get curious.' : activeCategory;
 
   return (
-    <div id="top" className="min-h-screen bg-[#08090a] text-white">
+    <div
+      id="top"
+      className={`min-h-screen bg-[#08090a] text-white ${selectedVideo ? 'is-playing' : ''}`}
+    >
       <a
         href="#collection"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-black"
@@ -177,10 +200,10 @@ export default function App() {
         Skip to the collection
       </a>
 
-      <div className="sticky top-0 z-40 border-b border-white/[0.06] bg-[#08090a]/85 backdrop-blur-xl">
+      <div className="sticky top-0 z-40 border-b border-white/[0.06] bg-[#08090a]">
         <Header
           searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
+          onSearchChange={changeSearch}
           resultCount={filteredVideos.length}
           totalCount={videos.length}
           onReset={resetFilters}
@@ -192,7 +215,7 @@ export default function App() {
         <CategoryFilter
           activeCategory={activeCategory}
           counts={categoryCounts}
-          onChange={setActiveCategory}
+          onChange={changeCategory}
           tvMode={tvMode}
           keyboardEnabled={!selectedVideo}
           focused={tvFocusZone === 'categories'}
@@ -224,7 +247,7 @@ export default function App() {
               <div className="max-w-2xl">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium tracking-wide text-white/55">
                   <span className="relative flex h-1.5 w-1.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60" />
+                    <span className="ambient-ping absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60" />
                     <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-400" />
                   </span>
                   Curated, not algorithmic

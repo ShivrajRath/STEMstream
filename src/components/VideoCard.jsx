@@ -1,18 +1,21 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Clock3, Play } from 'lucide-react';
 import { getCategoryMeta } from '../lib/categories';
+import {
+  THUMBNAIL_SIZES,
+  thumbnailSrcSet,
+  thumbnailUrl,
+} from '../lib/thumbnails';
 
-export default function VideoCard({ video, onSelect, priority = false, tvMode = false, isFocused = false }) {
+function VideoCard({ video, onSelect, priority = false, tvMode = false, isFocused = false }) {
   const meta = getCategoryMeta(video.category);
   const Icon = meta.icon;
 
-  // maxresdefault is the preferred thumbnail, but YouTube does not generate it
-  // for every upload. Fall back to hqdefault and finally to a styled placeholder.
+  // `srcset` lets the browser pick the cheapest rendition that fits the card.
+  // maxresdefault is not generated for every upload, so an error drops back to
+  // hqdefault (which almost always exists) and finally to a styled placeholder.
   const [thumbnailStage, setThumbnailStage] = useState(0);
-  const thumbnailUrl =
-    thumbnailStage === 0
-      ? `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`
-      : `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+  const thumbnailUrlFallback = thumbnailUrl(video.youtubeId, 'hqdefault');
 
   return (
     <button
@@ -27,10 +30,15 @@ export default function VideoCard({ video, onSelect, priority = false, tvMode = 
       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/[0.08] bg-[#141518] shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] transition-colors duration-300 group-hover:border-white/20">
         {thumbnailStage < 2 ? (
           <img
-            src={thumbnailUrl}
+            src={thumbnailUrlFallback}
+            srcSet={thumbnailStage === 0 ? thumbnailSrcSet(video.youtubeId) : undefined}
+            sizes={thumbnailStage === 0 ? THUMBNAIL_SIZES : undefined}
             alt={`Thumbnail for ${video.title}`}
+            width="1280"
+            height="720"
             onError={() => setThumbnailStage((stage) => stage + 1)}
             loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : undefined}
             decoding="async"
             className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.045]"
           />
@@ -48,7 +56,7 @@ export default function VideoCard({ video, onSelect, priority = false, tvMode = 
           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/10 opacity-80"
         />
 
-        <span className={`absolute bottom-2.5 right-2.5 inline-flex items-center gap-1 rounded-md bg-black/75 px-1.5 py-0.5 font-medium tabular-nums text-white/90 backdrop-blur-md ${tvMode ? 'text-sm' : 'text-[11px]'}`}>
+        <span className={`absolute bottom-2.5 right-2.5 inline-flex items-center gap-1 rounded-md bg-black/80 px-1.5 py-0.5 font-medium tabular-nums text-white/90 ${tvMode ? 'text-sm' : 'text-[11px]'}`}>
           <Clock3 className={tvMode ? 'h-4 w-4' : 'h-3 w-3'} aria-hidden="true" />
           {video.duration}
         </span>
@@ -98,3 +106,7 @@ export default function VideoCard({ video, onSelect, priority = false, tvMode = 
     </button>
   );
 }
+
+// Cards only change when their video, focus state or layout mode changes, so
+// search typing and opening the player do not re-render the whole grid.
+export default memo(VideoCard);

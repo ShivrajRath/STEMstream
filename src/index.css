@@ -67,3 +67,30 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
+/* While a video is open, pause decorative animations so the compositor can
+   give playback its full budget on low-powered devices. */
+.is-playing .ambient-spin,
+.is-playing .ambient-ping {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ambient-spin,
+  .ambient-ping,
+  .animate-fade-in,
+  .animate-scale-up {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
