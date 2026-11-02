@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Search, Sparkles, X } from 'lucide-react';
+import { Dice4, Search, Sparkles, X } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Header({
@@ -8,6 +8,7 @@ export default function Header({
   resultCount,
   totalCount,
   onReset,
+  onFeelingLucky,
   shortcutsEnabled = true,
 }) {
   const inputRef = useRef(null);
@@ -39,11 +40,22 @@ export default function Header({
         onSearchChange('');
         inputRef.current?.blur();
       }
+
+      if (
+        event.key === 'l' &&
+        !isTyping &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey
+      ) {
+        event.preventDefault();
+        onFeelingLucky?.();
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onSearchChange, shortcutsEnabled]);
+  }, [onSearchChange, onFeelingLucky, shortcutsEnabled]);
 
   const searchField = (
     <form
@@ -105,6 +117,17 @@ export default function Header({
         </div>
 
         <div className="order-2 ml-auto flex shrink-0 items-center gap-3 sm:order-3">
+          <button
+            type="button"
+            onClick={onFeelingLucky}
+            disabled={resultCount === 0}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-xs font-medium text-white/50 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white disabled:opacity-40 disabled:hover:border-white/10 disabled:hover:bg-white/[0.035] disabled:hover:text-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            aria-label="Play a random video"
+            title="Play a random video (press L)"
+          >
+            <Dice4 className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="hidden sm:inline">I'm feeling lucky</span>
+          </button>
           <span className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-xs text-white/50 lg:inline-flex">
             <Sparkles className="h-3.5 w-3.5 text-amber-300/80" aria-hidden="true" />
             Human-curated

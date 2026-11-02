@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import {
   ArrowUp,
   Atom,
+  Dice4,
   Film,
   Layers3,
   RotateCcw,
@@ -96,6 +97,12 @@ export default function App() {
     });
   }, [activeCategory, searchQuery]);
 
+  const playRandomVideo = useCallback(() => {
+    if (filteredVideos.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * filteredVideos.length);
+    setSelectedVideo(filteredVideos[randomIndex]);
+  }, [filteredVideos]);
+
   const filterKey = `${activeCategory}|${searchQuery}`;
   const [trackedFilterKey, setTrackedFilterKey] = useState(filterKey);
   if (filterKey !== trackedFilterKey) {
@@ -134,6 +141,7 @@ export default function App() {
           resultCount={filteredVideos.length}
           totalCount={videos.length}
           onReset={resetFilters}
+          onFeelingLucky={playRandomVideo}
           shortcutsEnabled={!selectedVideo}
         />
         <CategoryFilter
