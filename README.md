@@ -1,7 +1,7 @@
 # STEMStream
 
 A curated, single-page video library for the best science, space, engineering,
-biology, computer science, and mathematics content on YouTube.
+biology, chemistry, computer science, and mathematics content on YouTube.
 
 The catalogue lives **inside this repository** in
 [`src/data/data.json`](src/data/data.json). There is no Google Sheet, no API key,
@@ -10,7 +10,7 @@ be hosted on GitHub Pages.
 
 ## What it does
 
-- **24 hand-picked videos**, four in each of six disciplines.
+- **528 hand-picked videos** across seven disciplines.
 - **Content-first cards**: the idea, the question it answers, and the takeaway
   come before the channel name.
 - **Search** across titles, concepts, descriptions, channels, and takeaways.
@@ -115,7 +115,7 @@ python3 scripts/update_content.py --check --check-links
 | `title` | yes | Shown on the card and in the player. |
 | `coreQuestion` | recommended | The curiosity hook shown under the title. |
 | `channel` | yes | Displayed as a subtle credit, not the focus. |
-| `category` | yes | One of `Physics`, `Space`, `Computer Science`, `Engineering`, `Biology`, `Math`. |
+| `category` | yes | One of `Physics`, `Space`, `Computer Science`, `Engineering`, `Biology`, `Chemistry`, `Math`. |
 | `difficulty` | recommended | `Foundational`, `Intermediate`, or `Deep Dive`. |
 | `duration` | recommended | Human-readable, e.g. `"22 min"`. |
 | `concepts` | recommended | Array of strings; shown in the player. |

@@ -48,6 +48,7 @@ VALID_CATEGORIES = (
     "Engineering",
     "Biology",
     "Math",
+    "Chemistry",
 )
 VALID_DIFFICULTIES = ("Foundational", "Intermediate", "Deep Dive")
 
