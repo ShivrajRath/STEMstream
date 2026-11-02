@@ -9501,5 +9501,3101 @@
     ],
     "description": "The American Chemical Society's Reactions series explains how air conditioners use evaporating and condensing refrigerant to move heat against the temperature gradient.",
     "takeaway": "Air conditioners don't create cold; they move heat from inside a building to the outside using a refrigerant that cycles between liquid and gas."
+  },
+  {
+    "id": "stem-529",
+    "youtubeId": "hslrOcVyY-w",
+    "title": "The Evolution of Scorpions",
+    "coreQuestion": "How did an ancient marine arthropod become one of the most successful land predators?",
+    "channel": "Moth Light Media",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Arachnids",
+      "Fossil Record",
+      "Venom",
+      "Terrestrialisation"
+    ],
+    "description": "A palaeontological tour of scorpion ancestry, from Silurian sea scorpions to the armoured, venomous land predators that survive today, and the adaptations that let them exploit deserts.",
+    "takeaway": "Scorpions are a rare case of an ancient body plan staying competitive for hundreds of millions of years with modest changes."
+  },
+  {
+    "id": "stem-530",
+    "youtubeId": "QXvS_mlfPfg",
+    "title": "Why Did Mammals Survive When Dinosaurs Didn't?",
+    "coreQuestion": "What did mammals have that let them inherit the Earth after the asteroid?",
+    "channel": "Animalogic",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "86 min",
+    "concepts": [
+      "K-Pg Extinction",
+      "Mammalian Radiation",
+      "Endothermy",
+      "Ecological Niches"
+    ],
+    "description": "A feature-length look at the extinction that ended the dinosaurs and the small, warm-blooded animals that came through it, tracing how body size, diet and reproduction shaped who survived.",
+    "takeaway": "Surviving a mass extinction is less about being powerful than about being able to wait out a collapsed food web."
+  },
+  {
+    "id": "stem-531",
+    "youtubeId": "JUPrdUvB58c",
+    "title": "The Insane Biology of: The Greenland Shark",
+    "coreQuestion": "How does a shark survive for four centuries in near-freezing darkness?",
+    "channel": "Real Science",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "26 min",
+    "concepts": [
+      "Longevity",
+      "Ectothermy",
+      "Deep Sea",
+      "Metabolism"
+    ],
+    "description": "An examination of the Greenland shark's extraordinary lifespan, slow metabolism and parasite-loaded eyes, and what its biology implies about ageing in cold-water vertebrates.",
+    "takeaway": "Extreme longevity often comes from doing everything slowly, and the Greenland shark has made that strategy work for centuries."
+  },
+  {
+    "id": "stem-532",
+    "youtubeId": "sQcC_fQ21LI",
+    "title": "The Truth of Elephant Evolution",
+    "coreQuestion": "Why have elephants repeatedly evolved enormous size and then lost it again?",
+    "channel": "Ben G Thomas",
+    "category": "Biology",
+    "difficulty": "Deep Dive",
+    "duration": "59 min",
+    "concepts": [
+      "Proboscidea",
+      "Convergent Evolution",
+      "Island Dwarfism",
+      "Fossil Record"
+    ],
+    "description": "A detailed phylogeny of elephants and their extinct relatives, from the swamp-dwelling Moeritherium to mammoths and the dwarf elephants that evolved on islands with limited resources.",
+    "takeaway": "Body size is a response to available resources, and elephants have grown and shrunk many times as their environments changed."
+  },
+  {
+    "id": "stem-533",
+    "youtubeId": "QImCld9YubE",
+    "title": "Why Are You Alive: Life, Energy and ATP",
+    "coreQuestion": "What is the chemical difference between a living cell and the same molecules arranged randomly?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "ATP",
+      "Metabolism",
+      "Cellular Respiration",
+      "Energy Flow"
+    ],
+    "description": "A visual account of how cells use ATP as a rechargeable energy currency, why every living thing is running a continuous energy gradient, and what death means in metabolic terms.",
+    "takeaway": "Life is a process that keeps itself ordered by spending a constant flow of energy, and ATP is how that energy is traded inside cells."
+  },
+  {
+    "id": "stem-534",
+    "youtubeId": "4VThNjOBPNA",
+    "title": "Here's What DNA Really Looks Like",
+    "coreQuestion": "What does DNA actually look like when you can see it with modern microscopy?",
+    "channel": "SciShow",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "DNA Structure",
+      "Chromatin",
+      "Nucleosomes",
+      "Microscopy"
+    ],
+    "description": "The double helix diagram is a simplification; this explainer shows how DNA is packed around histone proteins, folded into chromatin, and organised inside a nucleus.",
+    "takeaway": "DNA is not a loose ladder in a cell; it is a densely packaged polymer whose folding is part of how genes are controlled."
+  },
+  {
+    "id": "stem-535",
+    "youtubeId": "O5H7g4RCRnw",
+    "title": "Pumpkins Shouldn't Exist",
+    "coreQuestion": "Why does a fruit that cannot survive in the wild cover the world's fields?",
+    "channel": "PBS Eons",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "14 min",
+    "concepts": [
+      "Domestication",
+      "Megafauna",
+      "Seed Dispersal",
+      "Artificial Selection"
+    ],
+    "description": "The evolutionary history of the pumpkin family, whose bitter, toxic ancestors depended on large animals to spread their seeds, and how humans bred away the defences that once protected them.",
+    "takeaway": "Domesticated plants are evolutionary orphans, and many of their traits only make sense in the context of extinct dispersers."
+  },
+  {
+    "id": "stem-536",
+    "youtubeId": "BfEboMmwAMw",
+    "title": "How Do Pelicans Survive Their Death-Defying Dives?",
+    "coreQuestion": "How does a pelican hit the water at speed without breaking its neck?",
+    "channel": "Deep Look",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "4 min",
+    "concepts": [
+      "Anatomy",
+      "Shock Absorption",
+      "Feeding Behaviour",
+      "Biomechanics"
+    ],
+    "description": "High-speed footage shows how a pelican's pouch, reinforced skull and air-filled body structures absorb impact, and how it drains water before swallowing the fish it caught.",
+    "takeaway": "Every violent feeding strategy comes with an anatomy engineered to tolerate it."
+  },
+  {
+    "id": "stem-537",
+    "youtubeId": "hyV3iKiP_1g",
+    "title": "Bursaria: Giant Gravity-Sensing Vacuums",
+    "coreQuestion": "How does a single-celled organism with no brain find its way in the water?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Ciliates",
+      "Gravitaxis",
+      "Organelles",
+      "Microscopy"
+    ],
+    "description": "A portrait of Bursaria, a huge ciliate that sweeps in food with a vortex and orients itself using sensors that detect gravity, all inside a single cell.",
+    "takeaway": "Single cells carry out navigation and feeding with the same physical principles multicellular animals use."
+  },
+  {
+    "id": "stem-538",
+    "youtubeId": "xDiVRsBskuo",
+    "title": "How Your Immune System ACTUALLY Works",
+    "coreQuestion": "What is the immune system physically made of, and where does it do its work?",
+    "channel": "Institute of Human Anatomy",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Innate Immunity",
+      "Lymphatic System",
+      "Macrophages",
+      "Adaptive Immunity"
+    ],
+    "description": "A cadaver-based anatomy walkthrough of immune organs and tissues, connecting the textbook charts to visible structures and explaining the division of labour between innate and adaptive defences.",
+    "takeaway": "Immunity is an anatomical system with organs, vessels and traffic patterns, not a free-floating concept."
+  },
+  {
+    "id": "stem-539",
+    "youtubeId": "w4sLAQvEH-M",
+    "title": "The Longest-Running Evolution Experiment",
+    "coreQuestion": "What does decades of watching bacteria evolve reveal about natural selection?",
+    "channel": "Veritasium",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Experimental Evolution",
+      "Mutation",
+      "Natural Selection",
+      "E. coli"
+    ],
+    "description": "Inside Richard Lenski's E. coli experiment, running since 1988, where frozen generations and a sudden ability to eat citrate turned a long-term study into a way of watching evolution happen in real time.",
+    "takeaway": "Evolution is reproducible, observable and often contingent on mutations that only pay off in a particular history."
+  },
+  {
+    "id": "stem-540",
+    "youtubeId": "-sEpBGF106k",
+    "title": "Why Don't Poisonous Animals Poison Themselves?",
+    "coreQuestion": "How do animals store lethal toxins without being killed by them?",
+    "channel": "TED-Ed",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "5 min",
+    "concepts": [
+      "Toxins",
+      "Sequestering",
+      "Molecular Evolution",
+      "Defence Mechanisms"
+    ],
+    "description": "An animated explanation of how poison dart frogs, pufferfish and monarch butterflies acquire or manufacture toxins, then keep them away from the cellular machinery they would otherwise disable.",
+    "takeaway": "Toxin resistance usually requires a specific molecular change, which is why only certain lineages can borrow poison from their food."
+  },
+  {
+    "id": "stem-541",
+    "youtubeId": "QiiyvzZBKT8",
+    "title": "The Creation of Chemistry: The Fundamental Laws",
+    "coreQuestion": "How did alchemy become a science with laws you can test?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Conservation of Mass",
+      "Law of Definite Proportions",
+      "Lavoisier",
+      "Chemical Laws"
+    ],
+    "description": "The third episode of Crash Course Chemistry traces the shift from alchemical recipes to quantitative laws, showing how careful weighing established that matter is conserved and compounds have fixed compositions.",
+    "takeaway": "Chemistry became a science when chemists started measuring mass instead of describing appearances."
+  },
+  {
+    "id": "stem-542",
+    "youtubeId": "0RRVV4Diomg",
+    "title": "The Periodic Table",
+    "coreQuestion": "Why does arranging elements by mass and property predict ones nobody has found yet?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Periodic Table",
+      "Mendeleev",
+      "Periodicity",
+      "Atomic Number"
+    ],
+    "description": "How Mendeleev's table turned a list of known substances into a predictive system, why gaps in the table were meaningful, and how the modern table is ordered by protons rather than weight.",
+    "takeaway": "The periodic table works because chemical behaviour repeats as electron configurations repeat."
+  },
+  {
+    "id": "stem-543",
+    "youtubeId": "rcKilE9CdaA",
+    "title": "The Electron",
+    "coreQuestion": "How was a particle too small to see discovered and then weighed?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "13 min",
+    "concepts": [
+      "Cathode Rays",
+      "J.J. Thomson",
+      "Millikan Oil Drop",
+      "Subatomic Particles"
+    ],
+    "description": "The experimental story of the electron, from cathode ray tubes to the oil drop experiment, including how each measurement constrained the charge and mass of a particle no one could observe directly.",
+    "takeaway": "The electron was characterised entirely through indirect measurements, and those measurements are the foundation of modern chemistry."
+  },
+  {
+    "id": "stem-544",
+    "youtubeId": "UL1jmJaUkaQ",
+    "title": "Stoichiometry: Chemistry for Massive Creatures",
+    "coreQuestion": "How do chemists know exactly how much of each reactant a reaction needs?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "13 min",
+    "concepts": [
+      "Mole Ratios",
+      "Balanced Equations",
+      "Limiting Reagent",
+      "Yield"
+    ],
+    "description": "A practical introduction to stoichiometry that treats a balanced equation as a recipe, showing how mole ratios translate between what you weigh out and what the reaction actually consumes.",
+    "takeaway": "A balanced equation is a ratio, and stoichiometry is the accounting that turns that ratio into real quantities."
+  },
+  {
+    "id": "stem-545",
+    "youtubeId": "AN4KifV12DA",
+    "title": "Water and Solutions: For Dirty Laundry",
+    "coreQuestion": "Why is water such an effective solvent for so many different substances?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "14 min",
+    "concepts": [
+      "Polarity",
+      "Hydrogen Bonding",
+      "Solubility",
+      "Dissociation"
+    ],
+    "description": "Water's bent shape and polar bonds explain why it dissolves salts and sugars, why soap works, and how solvation actually happens at the molecular level.",
+    "takeaway": "Water dissolves what it does because its charge distribution can surround and stabilise ions and polar molecules."
+  },
+  {
+    "id": "stem-546",
+    "youtubeId": "ANi709MYnWg",
+    "title": "Acid-Base Reactions in Solution",
+    "coreQuestion": "What is really happening when an acid neutralises a base?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Acids and Bases",
+      "Neutralisation",
+      "Brønsted-Lowry",
+      "Ionic Equations"
+    ],
+    "description": "A tour of acid-base chemistry in solution that distinguishes the Arrhenius, Brønsted-Lowry and Lewis definitions, then follows protons and spectator ions through a neutralisation reaction.",
+    "takeaway": "Neutralisation is proton transfer, and the salt that appears is simply what is left when the transfer finishes."
+  },
+  {
+    "id": "stem-547",
+    "youtubeId": "IIu16dy3ThI",
+    "title": "Precipitation Reactions",
+    "coreQuestion": "Why do some clear solutions turn cloudy the moment you mix them?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "Precipitation",
+      "Solubility Rules",
+      "Double Replacement",
+      "Net Ionic Equations"
+    ],
+    "description": "How solubility rules predict which ion pairs will leave solution as a solid, with worked examples of double replacement reactions and a clear method for writing net ionic equations.",
+    "takeaway": "A precipitate forms when the combination of ions exceeds what the solvent can keep dissolved."
+  },
+  {
+    "id": "stem-548",
+    "youtubeId": "lQ6FBA1HM3s",
+    "title": "Redox Reactions",
+    "coreQuestion": "How do you track electrons that are never free in solution?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Oxidation States",
+      "Electron Transfer",
+      "Reduction",
+      "Half Reactions"
+    ],
+    "description": "An introduction to oxidation and reduction that focuses on assigning oxidation states, identifying what is oxidised and reduced, and balancing half reactions in acidic and basic conditions.",
+    "takeaway": "Redox chemistry is electron bookkeeping: oxidation numbers let you track electrons that are always transferred, never loose."
+  },
+  {
+    "id": "stem-549",
+    "youtubeId": "BxUS1K7xu30",
+    "title": "The Ideal Gas Law",
+    "coreQuestion": "How can one equation describe the behaviour of every gas?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "9 min",
+    "concepts": [
+      "Ideal Gas Law",
+      "Pressure",
+      "Temperature",
+      "Kinetic Theory"
+    ],
+    "description": "The derivation and use of PV equals nRT, with an explanation of the assumptions that make a gas ideal and why those assumptions are reasonable at ordinary pressures.",
+    "takeaway": "The ideal gas law works because, at low density, the identity of the gas molecules barely matters."
+  },
+  {
+    "id": "stem-550",
+    "youtubeId": "GIPrsWuSkQc",
+    "title": "Real Gases",
+    "coreQuestion": "Where does the ideal gas law break down, and why?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "van der Waals Equation",
+      "Intermolecular Forces",
+      "Compressibility",
+      "Phase Behaviour"
+    ],
+    "description": "An examination of the two ways real gases deviate from ideal behaviour, molecular volume and intermolecular attraction, and how corrections to the ideal law recover the behaviour of gases under pressure.",
+    "takeaway": "Real gases deviate when molecules are close enough to feel each other, which is exactly when chemistry gets interesting."
+  },
+  {
+    "id": "stem-551",
+    "youtubeId": "JbqtqCunYzA",
+    "title": "Partial Pressures and Vapor Pressure",
+    "coreQuestion": "How do gases in a mixture behave independently of each other?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "12 min",
+    "concepts": [
+      "Dalton's Law",
+      "Vapor Pressure",
+      "Mole Fraction",
+      "Raoult's Law"
+    ],
+    "description": "Dalton's law of partial pressures and the vapour pressure of volatile liquids, including why a sealed container of water and air reaches an equilibrium humidity that depends on temperature.",
+    "takeaway": "Each gas in a mixture contributes pressure as if it were alone, and liquids add their own vapour on top of that."
+  },
+  {
+    "id": "stem-552",
+    "youtubeId": "GqtUWyDR1fg",
+    "title": "Energy and Chemistry",
+    "coreQuestion": "Where does the heat from a chemical reaction actually come from?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "9 min",
+    "concepts": [
+      "Thermochemistry",
+      "Bond Energy",
+      "Exothermic",
+      "Endothermic"
+    ],
+    "description": "An introduction to energy changes in reactions that frames bond breaking as an energy cost and bond forming as an energy payoff, explaining why some reactions release heat and others absorb it.",
+    "takeaway": "Reaction heat is the net difference between the energy needed to break bonds and the energy released when new ones form."
+  },
+  {
+    "id": "stem-553",
+    "youtubeId": "SV7U4yAXL5I",
+    "title": "Enthalpy",
+    "coreQuestion": "Why do chemists measure heat at constant pressure rather than constant volume?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Enthalpy",
+      "Hess's Law",
+      "Standard State",
+      "Thermochemical Equations"
+    ],
+    "description": "How enthalpy packages internal energy and pressure-volume work into a quantity that is convenient in the lab, plus Hess's law and the idea that path does not matter for a state function.",
+    "takeaway": "Because enthalpy is a state function, you can calculate a reaction's heat from tabulated values without ever running it."
+  },
+  {
+    "id": "stem-554",
+    "youtubeId": "JuWtBR-rDQk",
+    "title": "Calorimetry",
+    "coreQuestion": "How do you measure the heat of a reaction you cannot see directly?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "Calorimetry",
+      "Specific Heat",
+      "Bomb Calorimeter",
+      "Heat Transfer"
+    ],
+    "description": "A walkthrough of constant-pressure and bomb calorimetry, including the specific heat calculations that turn a temperature change in a known mass of water into a reaction enthalpy.",
+    "takeaway": "Calorimetry works by making the reaction's heat do something measurable, usually warming a known quantity of water."
+  },
+  {
+    "id": "stem-555",
+    "youtubeId": "VRWRmIEHr3A",
+    "title": "Lab Techniques and Safety",
+    "coreQuestion": "Which habits keep a chemistry lab safe when everything around you is hazardous?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "9 min",
+    "concepts": [
+      "Lab Safety",
+      "Glassware",
+      "Measuring Volume",
+      "Waste Disposal"
+    ],
+    "description": "A grounded introduction to working in a lab: reading glassware properly, handling hazardous reagents, why ventilation and eye protection matter, and how to dispose of waste without creating new problems.",
+    "takeaway": "Lab safety is mostly a set of habits that assume the accident will happen and limit what it can damage."
+  },
+  {
+    "id": "stem-556",
+    "youtubeId": "QXT4OVM4vXI",
+    "title": "Atomic Hook-Ups: Types of Chemical Bonds",
+    "coreQuestion": "Why do atoms bond at all, and why in different ways?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Ionic Bonds",
+      "Covalent Bonds",
+      "Metallic Bonds",
+      "Electronegativity"
+    ],
+    "description": "The three main bonding models, explained through the electronegativity difference between the atoms involved, and why most real substances sit on a spectrum rather than in a neat category.",
+    "takeaway": "Bond type is a function of how unequally electrons are shared, not a fixed property of an element."
+  },
+  {
+    "id": "stem-557",
+    "youtubeId": "PVL24HAesnc",
+    "title": "Polar and Non-Polar Molecules",
+    "coreQuestion": "Why can a molecule with polar bonds be non-polar overall?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Molecular Polarity",
+      "Dipole Moment",
+      "Symmetry",
+      "Electronegativity"
+    ],
+    "description": "How bond dipoles add as vectors, why symmetry can cancel them completely, and how the resulting molecular polarity determines what a substance dissolves in and how it boils.",
+    "takeaway": "Polarity is a property of the whole molecule, and geometry can cancel the effect of individual polar bonds."
+  },
+  {
+    "id": "stem-558",
+    "youtubeId": "a8LF7JEb0IA",
+    "title": "Bonding Models and Lewis Structures",
+    "coreQuestion": "How far can dots and lines take you in predicting molecular behaviour?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "Lewis Structures",
+      "Octet Rule",
+      "Formal Charge",
+      "Resonance"
+    ],
+    "description": "A systematic method for drawing Lewis structures, from counting valence electrons to handling resonance and formal charge, along with the model's known blind spots.",
+    "takeaway": "Lewis structures are a useful simplification that predicts connectivity well and electron distribution only approximately."
+  },
+  {
+    "id": "stem-559",
+    "youtubeId": "cPDptc0wUYI",
+    "title": "Orbitals",
+    "coreQuestion": "What does it mean for an electron to occupy a shape rather than an orbit?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "11 min",
+    "concepts": [
+      "Atomic Orbitals",
+      "Quantum Numbers",
+      "Electron Configuration",
+      "Probability Density"
+    ],
+    "description": "An introduction to s, p, d and f orbitals as probability distributions, how quantum numbers constrain them, and why orbital shape explains the structure of the periodic table.",
+    "takeaway": "An orbital is a map of where an electron is likely to be found, and its shape is what organises the periodic table."
+  },
+  {
+    "id": "stem-560",
+    "youtubeId": "BqQJPCdmIp8",
+    "title": "Liquids",
+    "coreQuestion": "What holds a liquid together when its molecules are free to move?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Intermolecular Forces",
+      "Surface Tension",
+      "Viscosity",
+      "Capillary Action"
+    ],
+    "description": "A look at the forces that give liquids their cohesion, and how they produce surface tension, viscosity and capillary action without forming permanent bonds.",
+    "takeaway": "Liquid behaviour is dominated by weak intermolecular attractions, which are individually feeble but collectively decisive."
+  },
+  {
+    "id": "stem-561",
+    "youtubeId": "9h2f1Bjr0p4",
+    "title": "Solutions",
+    "coreQuestion": "What happens at the molecular level when something dissolves?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "8 min",
+    "concepts": [
+      "Dissolution",
+      "Molarity",
+      "Solvation",
+      "Concentration"
+    ],
+    "description": "How dissolving works as a competition between solute-solute, solvent-solvent and solute-solvent interactions, plus the concentration units chemists actually use in the lab.",
+    "takeaway": "Dissolving happens when the solvent interacts with the solute more strongly than the solute interacts with itself."
+  },
+  {
+    "id": "stem-562",
+    "youtubeId": "g5wNg_dKsYY",
+    "title": "Equilibrium",
+    "coreQuestion": "If a reaction never stops, how can its concentrations stay constant?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Dynamic Equilibrium",
+      "Le Chatelier's Principle",
+      "Reversible Reactions",
+      "Reaction Quotient"
+    ],
+    "description": "An explanation of dynamic equilibrium as two opposing rates becoming equal, followed by how a system responds to changes in concentration, pressure and temperature.",
+    "takeaway": "Equilibrium is not a finished reaction but a balance of rates, which is why it can be shifted without changing the chemistry."
+  },
+  {
+    "id": "stem-563",
+    "youtubeId": "DP-vWN1yXrY",
+    "title": "Equilibrium Equations",
+    "coreQuestion": "How do you turn an equilibrium constant into a prediction?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "9 min",
+    "concepts": [
+      "Equilibrium Constant",
+      "ICE Tables",
+      "Reaction Quotient",
+      "Solubility Product"
+    ],
+    "description": "Working with the equilibrium constant expression: constructing K from a balanced equation, using ICE tables to find unknown concentrations, and interpreting what the magnitude of K implies.",
+    "takeaway": "The equilibrium constant fixes the ratio of products to reactants, and ICE tables are how you solve for the values that satisfy it."
+  },
+  {
+    "id": "stem-564",
+    "youtubeId": "LS67vS10O5Y",
+    "title": "pH and pOH",
+    "coreQuestion": "Why is pH a logarithmic scale, and what does each step actually mean?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "pH",
+      "pOH",
+      "Autoionisation of Water",
+      "Logarithmic Scale"
+    ],
+    "description": "How pH is defined from hydrogen ion concentration, why the scale compresses many orders of magnitude into a readable range, and how pH and pOH are linked through the ion product of water.",
+    "takeaway": "A pH unit is a factor of ten in hydrogen ion concentration, which is why small pH changes matter so much."
+  },
+  {
+    "id": "stem-565",
+    "youtubeId": "8Fdt5WnYn1k",
+    "title": "Buffers, the Acid Rain Slayer",
+    "coreQuestion": "How can a solution resist changes in pH when acid is poured into it?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "12 min",
+    "concepts": [
+      "Buffers",
+      "Henderson-Hasselbalch",
+      "Conjugate Pairs",
+      "pH Control"
+    ],
+    "description": "How a weak acid and its conjugate base absorb added acid or base, the Henderson-Hasselbalch relationship that predicts buffer pH, and why buffering capacity has limits.",
+    "takeaway": "A buffer works by having a reservoir that can neutralise either added acid or added base, up to the point where the reservoir runs out."
+  },
+  {
+    "id": "stem-566",
+    "youtubeId": "7qOFtL3VEBc",
+    "title": "Kinetics: Chemistry's Demolition Derby",
+    "coreQuestion": "What determines how fast a reaction goes, independent of how much product it makes?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "10 min",
+    "concepts": [
+      "Reaction Rate",
+      "Activation Energy",
+      "Rate Law",
+      "Catalysis"
+    ],
+    "description": "Reaction rates explained through collision theory and activation energy, with rate laws, the effect of temperature and concentration, and how catalysts provide a lower-energy path.",
+    "takeaway": "Thermodynamics says whether a reaction can happen; kinetics says how fast, and the two are set by different things."
+  },
+  {
+    "id": "stem-567",
+    "youtubeId": "IV4IUsholjg",
+    "title": "Electrochemistry",
+    "coreQuestion": "How do you turn a spontaneous redox reaction into usable current?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "9 min",
+    "concepts": [
+      "Galvanic Cells",
+      "Electrodes",
+      "Cell Potential",
+      "Electrolysis"
+    ],
+    "description": "The structure of electrochemical cells: separating oxidation and reduction so electrons flow through a wire, and how cell potentials are built from standard reduction potentials.",
+    "takeaway": "A battery is a redox reaction with the two halves kept apart so the electrons have to travel through your circuit."
+  },
+  {
+    "id": "stem-568",
+    "youtubeId": "thnDxFdkzZs",
+    "title": "The History of Atomic Chemistry",
+    "coreQuestion": "How did the atom go from an indivisible sphere to a structured object?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Atomic Theory",
+      "Rutherford Model",
+      "Bohr Model",
+      "Discovery of the Nucleus"
+    ],
+    "description": "The sequence of experiments and models that turned the atom into a nucleus surrounded by electrons, including the gold foil experiment and the problems that pushed the Bohr model to its limits.",
+    "takeaway": "Each atomic model was built by discarding the previous one's assumptions when an experiment refused to fit."
+  },
+  {
+    "id": "stem-569",
+    "youtubeId": "FU6y1XIADdg",
+    "title": "Nuclear Chemistry Part 2: Fusion and Fission",
+    "coreQuestion": "Why does splitting a heavy nucleus release energy while fusing light ones does too?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "11 min",
+    "concepts": [
+      "Nuclear Fission",
+      "Nuclear Fusion",
+      "Binding Energy",
+      "Mass Defect"
+    ],
+    "description": "The binding energy curve that explains why energy is released at both ends of the mass scale, with fission chain reactions and the fusion conditions inside stars used as the two examples.",
+    "takeaway": "Both fission and fusion release energy because they move nuclei toward the most tightly bound region of the curve."
+  },
+  {
+    "id": "stem-570",
+    "youtubeId": "aLuSi_6Ol8M",
+    "title": "The Global Carbon Cycle",
+    "coreQuestion": "Where does carbon go when it leaves a living thing, and how long does it stay there?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Carbon Cycle",
+      "Reservoirs",
+      "Combustion",
+      "Carbon Sequestration"
+    ],
+    "description": "A systems view of carbon moving between atmosphere, oceans, biomass and rock, with the residence times that explain why the cycle has fast loops and slow loops.",
+    "takeaway": "Carbon is never destroyed, only moved between reservoirs with very different holding times."
+  },
+  {
+    "id": "stem-571",
+    "youtubeId": "PmvLB5dIEp8",
+    "title": "What Is Organic Chemistry?",
+    "coreQuestion": "Why does carbon deserve its own branch of chemistry?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Carbon Bonding",
+      "Functional Groups",
+      "Organic Molecules",
+      "Structural Diversity"
+    ],
+    "description": "The opening of Crash Course Organic Chemistry explains why carbon forms more distinct compounds than any other element and introduces the functional groups that organise the discipline.",
+    "takeaway": "Carbon's ability to form stable chains, branches and rings is what makes the chemistry of life possible."
+  },
+  {
+    "id": "stem-572",
+    "youtubeId": "cpWHgKgKxGk",
+    "title": "3D Structure and Bonding",
+    "coreQuestion": "How does the shape of a molecule follow from its bonds?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "VSEPR",
+      "Bond Angles",
+      "Hybridisation",
+      "Conformations"
+    ],
+    "description": "An organic chemistry lesson on molecular geometry, using electron pair repulsion to predict bond angles and then showing how a molecule's shape constrains the reactions it can undergo.",
+    "takeaway": "Molecule shape is not decoration: it determines what can approach what, which is how reactions are controlled."
+  },
+  {
+    "id": "stem-573",
+    "youtubeId": "BLKqbC_QIZA",
+    "title": "Acidity",
+    "coreQuestion": "What makes one hydrogen in a molecule more acidic than another?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "pKa",
+      "Conjugate Base Stability",
+      "Resonance",
+      "Inductive Effects"
+    ],
+    "description": "An organic chemistry treatment of acidity that explains pKa values through the stability of the conjugate base, including resonance, electronegativity and inductive withdrawal.",
+    "takeaway": "Acidity is really a question about how comfortably the conjugate base can carry a negative charge."
+  },
+  {
+    "id": "stem-574",
+    "youtubeId": "-fBPX-4kFlw",
+    "title": "An Overview of Aldehydes and Ketones",
+    "coreQuestion": "Why is the carbonyl group such a reactive point in organic molecules?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "Carbonyl Group",
+      "Nucleophilic Addition",
+      "Aldehydes",
+      "Ketones"
+    ],
+    "description": "An introduction to the carbonyl functional group, how its polarisation sets up nucleophilic attack, and how aldehydes and ketones react differently because of what else is attached to the carbon.",
+    "takeaway": "The carbonyl carbon is electron-poor, and most carbonyl chemistry is a nucleophile finding its way there."
+  },
+  {
+    "id": "stem-575",
+    "youtubeId": "6rdmpx39PRk",
+    "title": "Hydrogen: The Element That Powers Stars",
+    "coreQuestion": "Why is the simplest element also the one that makes up most of the universe?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "7 min",
+    "concepts": [
+      "Hydrogen",
+      "Nuclear Fusion",
+      "Isotopes",
+      "Elemental Properties"
+    ],
+    "description": "A tour of hydrogen from the Nottingham chemistry team, covering its isotopes, why it is so hard to contain, and the fusion reaction that makes it the fuel of stars.",
+    "takeaway": "Hydrogen's single electron makes it chemically simple but physically difficult, and its fusion is the energy source of the universe."
+  },
+  {
+    "id": "stem-576",
+    "youtubeId": "WuG5WTId-IY",
+    "title": "Oxygen: The Element That Makes Fire Possible",
+    "coreQuestion": "Why is oxygen so reactive compared to the other elements in the air?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "Oxygen",
+      "Combustion",
+      "Oxidation States",
+      "Allotropes"
+    ],
+    "description": "An introduction to oxygen's reactivity, its role in combustion and respiration, and its two common elemental forms, O2 and ozone.",
+    "takeaway": "Oxygen's inner structure makes it eager to take electrons, which is why it drives both fire and metabolism."
+  },
+  {
+    "id": "stem-577",
+    "youtubeId": "7IT2I3LtlNE",
+    "title": "Sodium: The Soft Metal That Explodes on Water",
+    "coreQuestion": "Why does a metal you can cut with a knife react violently with cold water?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "5 min",
+    "concepts": [
+      "Alkali Metals",
+      "Reactivity",
+      "Electron Configuration",
+      "Exothermic Reactions"
+    ],
+    "description": "The chemistry behind sodium's reaction with water, why the reaction produces heat and hydrogen gas, and why the metal must be stored under oil.",
+    "takeaway": "Sodium's single valence electron is so loosely held that water can take it, and the energy released ignites the hydrogen produced."
+  },
+  {
+    "id": "stem-578",
+    "youtubeId": "mzEOL-N2cbw",
+    "title": "Sodium and Water in Slow Motion",
+    "coreQuestion": "What does high-speed footage reveal about the sodium-water reaction?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "Slow Motion Analysis",
+      "Sodium Hydroxide",
+      "Hydrogen Ignition",
+      "Reaction Dynamics"
+    ],
+    "description": "Slow motion cameras show the stages of the reaction in order, separating the metal melting and darting across the surface from the ignition of the hydrogen it releases.",
+    "takeaway": "Slowing a violent reaction down turns it into a sequence of understandable steps."
+  },
+  {
+    "id": "stem-579",
+    "youtubeId": "CTtf5s2HFkA",
+    "title": "Inside the Gold Bullion Vault",
+    "coreQuestion": "Why do banks hold gold as bars and how pure is it really?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "7 min",
+    "concepts": [
+      "Gold Purity",
+      "Alloys",
+      "Precious Metals",
+      "Assaying"
+    ],
+    "description": "A visit to a bank vault gives the Nottingham team a chance to discuss gold's purity standards, why it is alloyed for practical objects, and how its chemical inertness makes it valuable to hold.",
+    "takeaway": "Gold's rarity and chemical stability are exactly what make it useful as a store of value."
+  },
+  {
+    "id": "stem-580",
+    "youtubeId": "KaZcyeJ-GBE",
+    "title": "Gold from Outer Space",
+    "coreQuestion": "Where did the gold in jewellery actually come from?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "6 min",
+    "concepts": [
+      "Nucleosynthesis",
+      "Neutron Stars",
+      "Elemental Origins",
+      "Physics of Gold"
+    ],
+    "description": "A discussion of how heavy elements like gold are produced in violent astrophysical events, and what that means for the origin of every gold atom on Earth.",
+    "takeaway": "Heavy elements are forged in extreme cosmic events, so the gold in a ring has a genuinely interstellar history."
+  },
+  {
+    "id": "stem-581",
+    "youtubeId": "oL0M_6bfzkU",
+    "title": "Mercury: The Liquid Metal",
+    "coreQuestion": "Why is mercury liquid at room temperature when its neighbours in the table are solid?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "5 min",
+    "concepts": [
+      "Mercury",
+      "Metallic Bonding",
+      "Relativistic Effects",
+      "Toxicity"
+    ],
+    "description": "The properties of mercury and why its weak metallic bonding keeps it liquid, along with a reminder of why handling it requires care.",
+    "takeaway": "Mercury's melting point is unusually low because its electrons are held in a way that weakens the bonds between atoms."
+  },
+  {
+    "id": "stem-582",
+    "youtubeId": "NtnsHtYYKf0",
+    "title": "Mercury and Relativity",
+    "coreQuestion": "How does Einstein's relativity explain a property of an element in the periodic table?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "7 min",
+    "concepts": [
+      "Relativistic Effects",
+      "Electron Orbitals",
+      "Heavy Elements",
+      "Colour"
+    ],
+    "description": "An exploration of why relativistic effects matter for heavy elements, tightening inner orbitals and changing everything from mercury's liquidity to the colour of gold.",
+    "takeaway": "In heavy atoms, electrons move fast enough for relativity to change chemistry, which is why gold is gold and mercury is liquid."
+  },
+  {
+    "id": "stem-583",
+    "youtubeId": "QuW4_bRHbUk",
+    "title": "Carbon: The Backbone of Life",
+    "coreQuestion": "Why is carbon the element that builds molecules rather than crystals?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Carbon",
+      "Allotropes",
+      "Catenation",
+      "Organic Chemistry"
+    ],
+    "description": "Carbon's four bonds and its ability to form chains and rings, with its allotropes of diamond, graphite and the fullerenes used as examples of how bonding geometry changes properties.",
+    "takeaway": "Carbon's versatility comes from forming four strong bonds in three dimensions, allowing both hard crystals and complex molecules."
+  },
+  {
+    "id": "stem-584",
+    "youtubeId": "H8XNdqA18-M",
+    "title": "Nitrogen: The Inert Giant",
+    "coreQuestion": "Why is the air mostly nitrogen that almost nothing can use?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "13 min",
+    "concepts": [
+      "Nitrogen",
+      "Triple Bonds",
+      "Nitrogen Fixation",
+      "Inert Gases"
+    ],
+    "description": "An explanation of why the nitrogen triple bond is so strong that atmospheric nitrogen is nearly inert, and how living things and industry break it apart anyway.",
+    "takeaway": "The bond that makes nitrogen gas unreactive is also what makes fixing it so energetically expensive."
+  },
+  {
+    "id": "stem-585",
+    "youtubeId": "jZZcgnKl_Gg",
+    "title": "Iron: The Metal That Built Civilisation",
+    "coreQuestion": "Why did iron replace bronze, and why is steel so much better than either?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Iron",
+      "Alloying",
+      "Metallurgy",
+      "Oxidation"
+    ],
+    "description": "A long-form look at iron's chemistry, from its abundance and extraction to the carbon content that turns brittle cast iron into useful steel, plus the rusting reaction that never stops.",
+    "takeaway": "Iron's strength depends on tiny amounts of carbon and other elements, which is why metallurgy is a chemistry problem."
+  },
+  {
+    "id": "stem-586",
+    "youtubeId": "MpFTQYynrc4",
+    "title": "Titanium: Strong, Light and Stubborn",
+    "coreQuestion": "Why is titanium so useful in aircraft and implants but so hard to refine?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "9 min",
+    "concepts": [
+      "Titanium",
+      "Passivation",
+      "Alloys",
+      "Extraction"
+    ],
+    "description": "The chemistry of titanium's oxide layer, which protects it and makes it biologically compatible, and the reason it cannot simply be smelted like iron.",
+    "takeaway": "Titanium's performance in service comes from the inert oxide skin it grows instantly in air."
+  },
+  {
+    "id": "stem-587",
+    "youtubeId": "a2aWO5cL410",
+    "title": "Silicon: The Element Behind the Chip",
+    "coreQuestion": "Why did silicon become the material of modern electronics?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "4 min",
+    "concepts": [
+      "Silicon",
+      "Semiconductors",
+      "Doping",
+      "Crystal Growth"
+    ],
+    "description": "A short profile of silicon covering its abundance as sand, the purification needed to make electronic-grade crystals, and why its oxide is so useful in manufacturing.",
+    "takeaway": "Silicon won the electronics race partly because its natural oxide is an excellent insulator."
+  },
+  {
+    "id": "stem-588",
+    "youtubeId": "ILkvZKSVRI4",
+    "title": "Neon: The Noble Gas That Glows",
+    "coreQuestion": "Why does neon light up when electricity passes through it?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Noble Gases",
+      "Emission Spectra",
+      "Discharge Tubes",
+      "Inertness"
+    ],
+    "description": "The chemistry and physics of neon signs, including how electron collisions excite atoms and why the resulting colour is a fixed property of the element rather than a dye.",
+    "takeaway": "Neon's glow is an atomic emission signature, which is why no filter can turn a true neon tube a different colour."
+  },
+  {
+    "id": "stem-589",
+    "youtubeId": "hpYxllgfMSg",
+    "title": "Francium: The Most Unstable Element",
+    "coreQuestion": "How do chemists study an element that destroys itself in minutes?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "13 min",
+    "concepts": [
+      "Radioactivity",
+      "Half-Life",
+      "Alkali Metals",
+      "Trace Analysis"
+    ],
+    "description": "A look at francium, the rarest naturally occurring alkali metal, and the techniques used to study elements that exist only in vanishingly small quantities for fractions of a second.",
+    "takeaway": "For the most unstable elements, chemistry is inferred from a handful of atoms and a very short observation window."
+  },
+  {
+    "id": "stem-590",
+    "youtubeId": "B8vVZTvJNGk",
+    "title": "Uranium: The Element That Splits",
+    "coreQuestion": "What makes one isotope of uranium fissile and another not?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "6 min",
+    "concepts": [
+      "Uranium",
+      "Fission",
+      "Isotopes",
+      "Radioactivity"
+    ],
+    "description": "An introduction to uranium's isotopes, the difference between fissile U-235 and the far more common U-238, and why that difference dominates nuclear technology.",
+    "takeaway": "A single neutron in an isotope can be the difference between fuel and a material that will not sustain a chain reaction."
+  },
+  {
+    "id": "stem-591",
+    "youtubeId": "69UpMhUnEeY",
+    "title": "How to Enrich Uranium",
+    "coreQuestion": "How do you separate two isotopes of the same element that differ by three neutrons?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "9 min",
+    "concepts": [
+      "Isotope Separation",
+      "Centrifuges",
+      "Gaseous Diffusion",
+      "Nuclear Fuel Cycle"
+    ],
+    "description": "The physical chemistry of uranium enrichment, explaining why the mass difference is so small that separation requires either enormous diffusion plants or cascades of centrifuges.",
+    "takeaway": "Enrichment is hard because isotopes of an element are chemically identical, so only tiny mass differences can be exploited."
+  },
+  {
+    "id": "stem-592",
+    "youtubeId": "V1FsO5zaf6M",
+    "title": "Fluorine: The Most Reactive Element",
+    "coreQuestion": "Why does fluorine attack almost every material it touches?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "5 min",
+    "concepts": [
+      "Fluorine",
+      "Electronegativity",
+      "Oxidising Agents",
+      "Elemental Reactivity"
+    ],
+    "description": "A demonstration-driven look at fluorine's extreme reactivity, the special handling it demands, and why its compounds are nevertheless everywhere in modern materials.",
+    "takeaway": "Fluorine's reactivity is a one-way street: it takes electrons from almost anything, which is why it is both dangerous and indispensable."
+  },
+  {
+    "id": "stem-593",
+    "youtubeId": "w_CYwd6cHUA",
+    "title": "Making Glow Sticks From Scratch",
+    "coreQuestion": "What chemistry makes a glow stick glow without heat?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "13 min",
+    "concepts": [
+      "Chemiluminescence",
+      "Oxidation",
+      "Dyes",
+      "Synthesis"
+    ],
+    "description": "NileRed synthesises the components of a glow stick, from the oxalate ester to the fluorescent dye, and explains the reaction cascade that turns chemical energy into visible light.",
+    "takeaway": "Chemiluminescence is a reaction that produces an excited molecule, which releases its excess energy as light rather than heat."
+  },
+  {
+    "id": "stem-594",
+    "youtubeId": "b0Ejuew2riA",
+    "title": "Turning Aspirin into Tylenol",
+    "coreQuestion": "How different are two common painkillers at the molecular level?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "26 min",
+    "concepts": [
+      "Acetylation",
+      "Functional Groups",
+      "Organic Synthesis",
+      "Drug Chemistry"
+    ],
+    "description": "A multi-step conversion that changes the functional group on a benzene ring to turn one over-the-counter drug into another, showing how a small structural change alters biological activity.",
+    "takeaway": "Drug molecules are defined by their functional groups, and modest chemical edits produce very different medicines."
+  },
+  {
+    "id": "stem-595",
+    "youtubeId": "YniCGw-rqmU",
+    "title": "Making Copper Hydroxide",
+    "coreQuestion": "Why does adding base to a copper solution produce a blue solid?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "8 min",
+    "concepts": [
+      "Precipitation",
+      "Copper Compounds",
+      "Solubility",
+      "Colour of Complexes"
+    ],
+    "description": "A straightforward precipitation reaction that produces copper hydroxide, with a discussion of why transition metal compounds are coloured and how the product behaves on heating.",
+    "takeaway": "Copper hydroxide is an insoluble blue solid because the copper ion's d electrons absorb specific wavelengths of light."
+  },
+  {
+    "id": "stem-596",
+    "youtubeId": "37Kn-kIsVu8",
+    "title": "Turning Old Jewellery into Pure Gold Bars",
+    "coreQuestion": "How do you separate gold from the other metals it is alloyed with?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "31 min",
+    "concepts": [
+      "Gold Refining",
+      "Aqua Regia",
+      "Electrolysis",
+      "Purity"
+    ],
+    "description": "A refining project that dissolves scrap jewellery, precipitates the gold selectively, and melts the result into a bar, while explaining what purity actually means in practice.",
+    "takeaway": "Refining works by dissolving everything and then recovering the target metal selectively, not by picking it out intact."
+  },
+  {
+    "id": "stem-597",
+    "youtubeId": "RS7gyZJg5nc",
+    "title": "Making Superconductors",
+    "coreQuestion": "What does it take to make a material that conducts electricity with zero resistance?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "46 min",
+    "concepts": [
+      "Superconductivity",
+      "Ceramic Synthesis",
+      "Meissner Effect",
+      "Crystal Structure"
+    ],
+    "description": "A long ceramic synthesis project that produces a high-temperature superconductor, covering the precise stoichiometry, oxygen treatment and sintering that the material requires.",
+    "takeaway": "Superconducting ceramics are unforgiving about composition and heat treatment, and their behaviour is a property of the crystal as a whole."
+  },
+  {
+    "id": "stem-598",
+    "youtubeId": "RGw6fXprV9U",
+    "title": "Making Uranium Glass",
+    "coreQuestion": "Why does uranium glass glow under ultraviolet light?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "30 min",
+    "concepts": [
+      "Fluorescence",
+      "Glass Chemistry",
+      "Uranium Compounds",
+      "Radiation Safety"
+    ],
+    "description": "A glassmaking experiment that incorporates uranium into a melt, producing the characteristic green fluorescence, along with a discussion of how radioactive the result actually is.",
+    "takeaway": "Fluorescence is the absorption of high-energy light and re-emission at lower energy, and uranium glass is a textbook example."
+  },
+  {
+    "id": "stem-599",
+    "youtubeId": "FMtayizdFiw",
+    "title": "Extracting Citric Acid from Lemons",
+    "coreQuestion": "How do you isolate a pure chemical from a fruit?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "16 min",
+    "concepts": [
+      "Extraction",
+      "Acid-Base Chemistry",
+      "Crystallisation",
+      "Yield"
+    ],
+    "description": "A lab-scale extraction that precipitates citric acid from lemon juice as a calcium salt and then regenerates the acid, demonstrating the separation techniques behind every purification.",
+    "takeaway": "Extraction is about converting a substance into something insoluble, separating it, and then converting it back."
+  },
+  {
+    "id": "stem-600",
+    "youtubeId": "YGZddY3R1pU",
+    "title": "Extracting the Spicy Chemical in Black Pepper",
+    "coreQuestion": "Which molecule makes black pepper taste hot, and how do you isolate it?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Alkaloids",
+      "Solvent Extraction",
+      "Piperine",
+      "Chromatography"
+    ],
+    "description": "A solvent extraction of piperine from black pepper, with an explanation of why the molecule is soluble in some solvents and not others and how the crude product is cleaned up.",
+    "takeaway": "The active compounds in plants are ordinary organic molecules, and they can be isolated with straightforward solubility chemistry."
+  },
+  {
+    "id": "stem-601",
+    "youtubeId": "67kyi5hLnA4",
+    "title": "Extracting the Blue Dye from Jeans",
+    "coreQuestion": "What is indigo, and why does it stay on denim so stubbornly?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Indigo",
+      "Dyes",
+      "Redox Chemistry",
+      "Solubility"
+    ],
+    "description": "An extraction of indigo from denim that reveals why the dye is so insoluble in water, and how reduction to a soluble form is what makes dyeing fabric possible in the first place.",
+    "takeaway": "Indigo's colour comes from an extended conjugated system, and its insolubility is exactly why denim fades slowly."
+  },
+  {
+    "id": "stem-602",
+    "youtubeId": "uUU3jW7Y9Ak",
+    "title": "Making Transparent Wood",
+    "coreQuestion": "How can wood be turned into a transparent material?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "44 min",
+    "concepts": [
+      "Delignification",
+      "Polymer Infiltration",
+      "Cellulose",
+      "Refractive Index"
+    ],
+    "description": "A materials experiment that removes lignin from wood and fills the remaining cellulose scaffold with a polymer whose refractive index matches, eliminating the scattering that makes wood opaque.",
+    "takeaway": "Wood is opaque because of light scattering at cell walls; remove the scatterers and match the refractive index, and it becomes clear."
+  },
+  {
+    "id": "stem-603",
+    "youtubeId": "yMG0yfGFJ00",
+    "title": "Turning Paper into Plastic",
+    "coreQuestion": "How does cellulose become a mouldable plastic?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "21 min",
+    "concepts": [
+      "Cellulose",
+      "Chemical Modification",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "description": "A project that chemically modifies the cellulose in paper so it can be shaped and set like a thermoplastic, illustrating how a natural polymer becomes an industrial material.",
+    "takeaway": "Turning a natural polymer into plastic means interrupting the hydrogen bonding that makes it rigid."
+  },
+  {
+    "id": "stem-604",
+    "youtubeId": "yAGYGGmUmUw",
+    "title": "Dissolving Gold in Mercury",
+    "coreQuestion": "What happens when gold dissolves in mercury without a chemical reaction?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "6 min",
+    "concepts": [
+      "Amalgamation",
+      "Alloys",
+      "Metallic Bonding",
+      "Mercury Toxicity"
+    ],
+    "description": "A short demonstration of gold amalgam formation, explaining the difference between dissolving in a solvent and being absorbed into a liquid metal, and why the resulting mixture is hazardous.",
+    "takeaway": "Amalgamation is alloying, not dissolving: the gold atoms simply mix into the liquid metal lattice."
+  },
+  {
+    "id": "stem-605",
+    "youtubeId": "X10VZeQmFDo",
+    "title": "How to Make Benzene",
+    "coreQuestion": "Why is benzene's structure so important in organic chemistry?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "6 min",
+    "concepts": [
+      "Aromaticity",
+      "Benzene",
+      "Delocalisation",
+      "Distillation"
+    ],
+    "description": "A synthesis and isolation of benzene from a common starting material, used as a springboard to explain aromatic stability and why such a simple ring underpins so much of the chemical industry.",
+    "takeaway": "Benzene's delocalised ring of electrons makes it unusually stable, which is why aromatic chemistry behaves so differently from other alkenes."
+  },
+  {
+    "id": "stem-606",
+    "youtubeId": "6L8yUY-doNc",
+    "title": "Making Ferrofluid From Scratch",
+    "coreQuestion": "How do you make a liquid that responds to a magnet?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "38 min",
+    "concepts": [
+      "Ferrofluids",
+      "Nanoparticles",
+      "Surfactants",
+      "Colloids"
+    ],
+    "description": "A from-scratch synthesis of magnetic nanoparticles coated with a surfactant and suspended in a carrier liquid, explaining why the particles must be small enough not to settle.",
+    "takeaway": "A ferrofluid is a stable colloid, and keeping the nanoparticles suspended is the real chemical challenge."
+  },
+  {
+    "id": "stem-607",
+    "youtubeId": "rs1JLYXROVU",
+    "title": "Why the Maillard Reaction Makes Everything Delicious",
+    "coreQuestion": "What happens chemically when food turns brown in a hot pan?",
+    "channel": "Reactions",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "3 min",
+    "concepts": [
+      "Maillard Reaction",
+      "Amino Acids",
+      "Sugars",
+      "Flavour Compounds"
+    ],
+    "description": "A short explainer on the browning reaction between amino acids and reducing sugars that produces the flavours of toast, seared meat and roasted coffee.",
+    "takeaway": "The Maillard reaction is a cascade of sugar and protein chemistry that creates hundreds of flavour compounds at once."
+  },
+  {
+    "id": "stem-608",
+    "youtubeId": "B_em0quwuSw",
+    "title": "Why Does Metal Rust?",
+    "coreQuestion": "What chemical process turns a shiny iron surface into flakes of orange powder?",
+    "channel": "Reactions",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "2 min",
+    "concepts": [
+      "Oxidation",
+      "Iron Oxide",
+      "Electrochemistry",
+      "Corrosion"
+    ],
+    "description": "A quick chemical answer to a common question: iron oxidises in the presence of water and oxygen, and the resulting oxide is less dense than the metal, so it flakes away and exposes fresh iron.",
+    "takeaway": "Rust is an electrochemical process, and it destroys metal precisely because the oxide does not stay attached."
+  },
+  {
+    "id": "stem-609",
+    "youtubeId": "3ziMBDPMuP8",
+    "title": "How a Chemist Makes the Softest Bread You'll Ever Eat",
+    "coreQuestion": "What chemistry controls whether bread comes out soft or tough?",
+    "channel": "Reactions",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "Gluten",
+      "Starch Retrogradation",
+      "Fermentation",
+      "Enzymes"
+    ],
+    "description": "A baking experiment that explains gluten network formation, starch behaviour as bread cools, and the enzymatic tricks that keep a loaf soft for days.",
+    "takeaway": "Bread texture is a contest between protein networks forming and starch networks stiffening, and bakers can push either way."
+  },
+  {
+    "id": "stem-610",
+    "youtubeId": "hePb00CqvP0",
+    "title": "The Periodic Table: Atomic Radius, Ionization Energy and Electronegativity",
+    "coreQuestion": "Why do element properties change smoothly across a row but jump between columns?",
+    "channel": "Professor Dave Explains",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "8 min",
+    "concepts": [
+      "Periodic Trends",
+      "Atomic Radius",
+      "Ionisation Energy",
+      "Electronegativity"
+    ],
+    "description": "A clear walk through the three most important periodic trends, with the effective nuclear charge explanation that makes the patterns predictable rather than something to memorise.",
+    "takeaway": "Periodic trends are all consequences of how strongly the nucleus holds its outer electrons."
+  },
+  {
+    "id": "stem-611",
+    "youtubeId": "X7ckfeRjjvI",
+    "title": "Balancing Chemical Equations",
+    "coreQuestion": "Why does a chemical equation have to be balanced before it means anything?",
+    "channel": "Professor Dave Explains",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "4 min",
+    "concepts": [
+      "Conservation of Mass",
+      "Coefficients",
+      "Chemical Equations",
+      "Balancing"
+    ],
+    "description": "A step-by-step method for balancing equations by adjusting coefficients, grounded in the conservation of atoms, with the common mistakes that make a balance sheet look correct but fail.",
+    "takeaway": "Balancing is atom accounting: the same number of each element must appear on both sides because atoms are not created or destroyed."
+  },
+  {
+    "id": "stem-612",
+    "youtubeId": "xoA1zMiCEB4",
+    "title": "Nucleophiles, Electrophiles, Leaving Groups and the SN2 Reaction",
+    "coreQuestion": "What are the moving parts in a substitution reaction?",
+    "channel": "Professor Dave Explains",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "6 min",
+    "concepts": [
+      "Nucleophile",
+      "Electrophile",
+      "Leaving Group",
+      "SN2 Mechanism"
+    ],
+    "description": "An introduction to the vocabulary of organic reaction mechanisms, defining each role and showing how they combine in the concerted SN2 substitution with its backside attack.",
+    "takeaway": "Most organic mechanisms are a story about electron-rich species finding electron-poor ones, and leaving groups deciding what is possible."
+  },
+  {
+    "id": "stem-613",
+    "youtubeId": "S6UQX7ZdkTg",
+    "title": "Mole Ratio Practice Problems",
+    "coreQuestion": "How do you use a balanced equation to predict how much product a reaction makes?",
+    "channel": "Tyler DeWitt",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "21 min",
+    "concepts": [
+      "Mole Ratio",
+      "Stoichiometry",
+      "Dimensional Analysis",
+      "Practice Problems"
+    ],
+    "description": "A patient, worked-example lesson on mole ratios, walking through several problems step by step and naming the unit-cancelling pattern that makes stoichiometry reliable.",
+    "takeaway": "Every stoichiometry problem is the same problem: convert to moles, apply the ratio, convert back."
+  },
+  {
+    "id": "stem-614",
+    "youtubeId": "nZOVR8EMwRU",
+    "title": "Introduction to Limiting Reactant and Excess Reactant",
+    "coreQuestion": "How do you know which reactant runs out first?",
+    "channel": "Tyler DeWitt",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Limiting Reactant",
+      "Excess Reactant",
+      "Theoretical Yield",
+      "Stoichiometry"
+    ],
+    "description": "An explanation of why the reactant with the smaller mass is not necessarily the limiting one, and a repeatable method for testing each reactant to find which controls the yield.",
+    "takeaway": "The limiting reactant is whichever one produces the least product, and that determines how much you can actually make."
+  },
+  {
+    "id": "stem-615",
+    "youtubeId": "wI56mHUDJgQ",
+    "title": "Introduction to Moles",
+    "coreQuestion": "Why do chemists count particles in batches of 600 sextillion?",
+    "channel": "Tyler DeWitt",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "The Mole",
+      "Avogadro's Number",
+      "Molar Mass",
+      "Counting Particles"
+    ],
+    "description": "A gentle introduction to the mole as a counting unit, explaining why chemistry needs a bridge between the invisible particle scale and the gram scale a balance can measure.",
+    "takeaway": "The mole is just a number, and its usefulness is that one mole of any substance weighs its molar mass in grams."
+  },
+  {
+    "id": "stem-616",
+    "youtubeId": "xOjqR62QmnU",
+    "title": "Acrylonitrile: Explosive Polymerization",
+    "coreQuestion": "Why can a bottle of monomer suddenly turn into a solid mass?",
+    "channel": "ChemicalForce",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "15 min",
+    "concepts": [
+      "Polymerisation",
+      "Exothermic Reactions",
+      "Inhibitors",
+      "Runaway Reactions"
+    ],
+    "description": "A demonstration of acrylonitrile polymerising uncontrollably, with the chemistry of radical chain growth explaining why the reaction accelerates and why inhibitors are added to stored monomers.",
+    "takeaway": "Polymerisation releases heat, and if the heat cannot escape, the reaction speeds itself up until it runs away."
+  },
+  {
+    "id": "stem-617",
+    "youtubeId": "yaVM1X8wRr0",
+    "title": "Mysterious Glowing Spheres: Xenon Difluoride and Silicon",
+    "coreQuestion": "What makes a xenon compound react with silicon in a way that glows?",
+    "channel": "ChemicalForce",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "3 min",
+    "concepts": [
+      "Noble Gas Compounds",
+      "Fluorination",
+      "Exotic Oxidisers",
+      "Reaction Mechanisms"
+    ],
+    "description": "A short demonstration of xenon difluoride attacking silicon, notable because noble gas compounds were once thought impossible and because the reaction is a powerful fluorinating oxidiser at work.",
+    "takeaway": "Noble gases are not entirely inert, and their compounds are among the most aggressive reagents available."
+  },
+  {
+    "id": "stem-618",
+    "youtubeId": "R9Jxv6fOMCU",
+    "title": "Before N2O5: Making Liquid Nitrogen Dioxide",
+    "coreQuestion": "How do you handle a compound that exists only in a narrow temperature window?",
+    "channel": "ChemicalForce",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "10 min",
+    "concepts": [
+      "Nitrogen Oxides",
+      "Dimerisation",
+      "Cryogenics",
+      "Equilibrium"
+    ],
+    "description": "A preparation of dinitrogen tetroxide and its equilibrium with nitrogen dioxide, showing how temperature shifts the balance between a colourless dimer and a brown radical gas.",
+    "takeaway": "The colour change in nitrogen dioxide chemistry is an equilibrium you can watch shift as the temperature changes."
+  },
+  {
+    "id": "stem-619",
+    "youtubeId": "ud1c5w06Y5E",
+    "title": "White Phosphorus",
+    "coreQuestion": "Why is one form of an element so much more dangerous than another?",
+    "channel": "Explosions&Fire",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "13 min",
+    "concepts": [
+      "Allotropes",
+      "White Phosphorus",
+      "Ignition",
+      "Structure and Reactivity"
+    ],
+    "description": "An exploration of phosphorus allotropes that hinges on structure: white phosphorus is made of strained P4 tetrahedra that react eagerly with oxygen, while the red form is a stable network.",
+    "takeaway": "Allotropes of the same element can differ wildly in reactivity because reactivity depends on atomic arrangement, not composition."
+  },
+  {
+    "id": "stem-620",
+    "youtubeId": "LhEYaovWxl4",
+    "title": "Hydrogen Peroxide: Going All the Way",
+    "coreQuestion": "How concentrated can hydrogen peroxide get, and what changes along the way?",
+    "channel": "Explosions&Fire",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "21 min",
+    "concepts": [
+      "Concentration",
+      "Decomposition",
+      "Oxidising Agents",
+      "Distillation"
+    ],
+    "description": "A project that concentrates hydrogen peroxide far beyond the pharmacy bottle, examining how the same molecule behaves differently at high concentration and why decomposition becomes the central safety concern.",
+    "takeaway": "Concentration changes a chemical's behaviour dramatically, which is why the same compound can be a disinfectant or a serious hazard."
+  },
+  {
+    "id": "stem-621",
+    "youtubeId": "PDapGJ9jWZk",
+    "title": "Yellow Powder: Solving Unsolved Alchemy",
+    "coreQuestion": "What was the yellow powder that alchemists spent centuries chasing?",
+    "channel": "Explosions&Fire",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "20 min",
+    "concepts": [
+      "Historical Chemistry",
+      "Gold Compounds",
+      "Alchemy",
+      "Characterisation"
+    ],
+    "description": "An investigation into a historical substance described only in old texts, using modern analysis to work out what the alchemists were actually making and why it mattered to them.",
+    "takeaway": "Historical chemistry is a detective problem, and modern instruments can identify substances that were described only by appearance."
+  },
+  {
+    "id": "stem-622",
+    "youtubeId": "ep23ds4cZs4",
+    "title": "Nitric Acid From Thin Air",
+    "coreQuestion": "How do you make a strong acid using only air, water and electricity?",
+    "channel": "Cody'sLab",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "7 min",
+    "concepts": [
+      "Nitrogen Fixation",
+      "Electric Arc",
+      "Nitric Acid",
+      "Absorption"
+    ],
+    "description": "An experiment that uses an electrical arc to fix atmospheric nitrogen into oxides, then absorbs them in water to produce nitric acid, mirroring the chemistry of lightning and the Haber-Bosch era.",
+    "takeaway": "The nitrogen in air can be converted into usable compounds with enough energy, which is exactly what a lightning strike does."
+  },
+  {
+    "id": "stem-623",
+    "youtubeId": "SKhcan8pk2w",
+    "title": "Homochirality: Why Nature Never Makes Mirror Molecules",
+    "coreQuestion": "Why does life use only one handedness of the molecules it builds?",
+    "channel": "Steve Mould",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "19 min",
+    "concepts": [
+      "Chirality",
+      "Enantiomers",
+      "Homochirality",
+      "Origin of Life"
+    ],
+    "description": "An exploration of why amino acids are left-handed and sugars right-handed, including what chirality means physically and the competing explanations for how biology settled on one form.",
+    "takeaway": "Chirality matters because mirror-image molecules behave differently in a chiral environment, and life is a very chiral environment."
+  },
+  {
+    "id": "stem-624",
+    "youtubeId": "Z_TjGRPPR9Q",
+    "title": "An Actually Good Explanation of Moles",
+    "coreQuestion": "What is a mole, really, and why does the definition keep changing?",
+    "channel": "Steve Mould",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "14 min",
+    "concepts": [
+      "The Mole",
+      "Avogadro's Number",
+      "SI Units",
+      "Molar Mass"
+    ],
+    "description": "A physical demonstration of what a mole represents, connecting the count to the gram and explaining why the unit was recently redefined in terms of a fixed number of particles.",
+    "takeaway": "A mole is simply a number of particles, chosen so that molar mass in grams lines up with atomic mass units."
+  },
+  {
+    "id": "stem-625",
+    "youtubeId": "tGWzpt3X9kk",
+    "title": "Making an Azo Dye from Acetone",
+    "coreQuestion": "How does a colourless starting material become a vivid dye?",
+    "channel": "Chemiolis",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "25 min",
+    "concepts": [
+      "Azo Dyes",
+      "Diazonium Salts",
+      "Conjugation",
+      "Dye Synthesis"
+    ],
+    "description": "A multi-step synthesis that builds an azo dye from a simple ketone, showing how the azo linkage creates the extended conjugated system responsible for intense colour.",
+    "takeaway": "Dye colour comes from conjugated systems absorbing visible light, and azo coupling is one of the simplest ways to build them."
+  },
+  {
+    "id": "stem-626",
+    "youtubeId": "WcyTdXxQxBM",
+    "title": "Asymmetric Organocatalysis: The 2021 Nobel Prize",
+    "coreQuestion": "How can a small organic molecule make a reaction produce only one mirror image?",
+    "channel": "Chemiolis",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "12 min",
+    "concepts": [
+      "Organocatalysis",
+      "Asymmetric Synthesis",
+      "Enantioselectivity",
+      "Nobel Prize Chemistry"
+    ],
+    "description": "An explanation of the 2021 Nobel Prize in Chemistry, covering how small organic catalysts create a chiral environment that favours one enantiomer over another.",
+    "takeaway": "Asymmetric organocatalysis replaced metal catalysts with small organic molecules, and its value is in controlling handedness."
+  },
+  {
+    "id": "stem-627",
+    "youtubeId": "BsNoiFj3wlw",
+    "title": "Making Sodium Metal with Menthol",
+    "coreQuestion": "How can a candle-like solid be used to pull sodium out of a salt?",
+    "channel": "NurdRage",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "12 min",
+    "concepts": [
+      "Electrolysis",
+      "Sodium Metal",
+      "Molten Salts",
+      "Reduction"
+    ],
+    "description": "An unusual route to sodium metal that avoids molten salt electrolysis, using organic chemistry to reduce a sodium compound and isolate the metal.",
+    "takeaway": "Sodium is normally made by electrolysis of molten salt, and alternative reductions are a way of testing how well you understand its chemistry."
+  },
+  {
+    "id": "stem-628",
+    "youtubeId": "PC9Lpr5mU3U",
+    "title": "Getting the Neodymium from Hard Drive Magnets",
+    "coreQuestion": "How do you separate a rare earth metal from the magnet that contains it?",
+    "channel": "Extractions&Ire",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "34 min",
+    "concepts": [
+      "Rare Earth Elements",
+      "Neodymium",
+      "Separation Chemistry",
+      "Magnet Recycling"
+    ],
+    "description": "A workshop-scale attempt to recover neodymium from scrap hard drive magnets, illustrating why rare earth separation is one of the hardest problems in industrial chemistry.",
+    "takeaway": "Rare earth elements are chemically similar to each other, which is exactly why separating them is so laborious."
+  },
+  {
+    "id": "stem-629",
+    "youtubeId": "8m6RtOpqvtU",
+    "title": "What Triggers a Chemical Reaction?",
+    "coreQuestion": "Why do some mixtures react instantly while others sit quietly forever?",
+    "channel": "TED-Ed",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "4 min",
+    "concepts": [
+      "Activation Energy",
+      "Collision Theory",
+      "Reaction Conditions",
+      "Catalysis"
+    ],
+    "description": "An animated explanation of the barriers that stand between reactants and products, from the energy needed to break bonds to the role of catalysts in lowering that barrier.",
+    "takeaway": "A reaction happens when molecules collide with enough energy and the right orientation, which is why conditions matter more than thermodynamics alone."
+  },
+  {
+    "id": "stem-630",
+    "youtubeId": "dUMmoPdwBy4",
+    "title": "What Is Chemical Equilibrium?",
+    "coreQuestion": "How can a reaction be going both ways at the same time?",
+    "channel": "TED-Ed",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "3 min",
+    "concepts": [
+      "Dynamic Equilibrium",
+      "Forward and Reverse Reactions",
+      "Reaction Rates",
+      "Le Chatelier"
+    ],
+    "description": "A short visual explanation of equilibrium as equal forward and reverse rates, using familiar examples to show why a system at equilibrium is busy rather than stopped.",
+    "takeaway": "Equilibrium is a balance of rates, not a state of rest, and the composition you observe is the one where both directions match."
+  },
+  {
+    "id": "stem-631",
+    "youtubeId": "_h41aWI9pzw",
+    "title": "The Basic Chemistry of Firework Compositions",
+    "coreQuestion": "How do a few powders produce colour, sound and light in the sky?",
+    "channel": "NightHawkInLight",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "3 min",
+    "concepts": [
+      "Oxidisers",
+      "Metal Salts",
+      "Emission Spectra",
+      "Pyrotechnics"
+    ],
+    "description": "A concise primer on what each ingredient in a firework does: the oxidiser that supplies oxygen, the fuel that burns, and the metal salts whose emission spectra produce particular colours.",
+    "takeaway": "Firework colours are atomic emission signatures, which is why only certain elements can produce a given hue."
+  },
+  {
+    "id": "stem-632",
+    "youtubeId": "sR8M4zARBXY",
+    "title": "Synthesizing Chicken Noodle Soup From Pure Chemicals",
+    "coreQuestion": "Can you build the taste and smell of a familiar food from individual molecules?",
+    "channel": "The Thought Emporium",
+    "category": "Chemistry",
+    "difficulty": "Deep Dive",
+    "duration": "23 min",
+    "concepts": [
+      "Flavour Chemistry",
+      "Volatile Compounds",
+      "Esters",
+      "Food Science"
+    ],
+    "description": "An attempt to reconstruct chicken noodle soup from its constituent flavour molecules, showing how much of what we call taste is a small set of volatile compounds and how they interact.",
+    "takeaway": "Flavour is chemistry you can list: a handful of volatiles, salts and fats account for most of what you recognise as a food."
+  },
+  {
+    "id": "stem-633",
+    "youtubeId": "QQkmJI63ykI",
+    "title": "The Man Who Killed Millions and Saved Billions",
+    "coreQuestion": "How did one chemical process both enable mass death and feed half the world?",
+    "channel": "Veritasium",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "21 min",
+    "concepts": [
+      "Haber-Bosch Process",
+      "Nitrogen Fixation",
+      "Fertiliser",
+      "Chemical Weapons"
+    ],
+    "description": "The story of Fritz Haber and the ammonia synthesis that made synthetic fertiliser possible, told alongside its role in the development of chemical weapons and the moral questions that follow.",
+    "takeaway": "The Haber-Bosch process is the chemistry that feeds billions, and its inventor's legacy is inseparable from its wartime uses."
+  },
+  {
+    "id": "stem-634",
+    "youtubeId": "YMDJA4UvXLA",
+    "title": "The Explosive Element That Changed The World",
+    "coreQuestion": "How did a single element's chemistry reshape agriculture, warfare and industry?",
+    "channel": "Veritasium",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Nitrogen",
+      "Explosives",
+      "Fertilisers",
+      "Industrial Chemistry"
+    ],
+    "description": "An account of nitrogen's dual role: as the inert majority of the atmosphere, and as the element whose compounds became both the explosives of the twentieth century and the fertiliser that sustains food production.",
+    "takeaway": "Nitrogen's inertness makes it abundant and useless, and the energy needed to break that inertness is what made modern industry possible."
+  },
+  {
+    "id": "stem-635",
+    "youtubeId": "c6wuh0NRG1s",
+    "title": "Is Glass a Liquid?",
+    "coreQuestion": "Is the old story about slow-flowing cathedral windows actually true?",
+    "channel": "Veritasium",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "7 min",
+    "concepts": [
+      "Amorphous Solids",
+      "Glass Transition",
+      "Viscosity",
+      "Crystallinity"
+    ],
+    "description": "A check on the popular claim that glass is a very slow liquid, explaining what an amorphous solid is and why old windows are thicker at the bottom for reasons that have nothing to do with flow.",
+    "takeaway": "Glass is an amorphous solid, not a liquid, and the myth survives because it sounds like a good story about medieval builders."
+  },
+  {
+    "id": "stem-636",
+    "youtubeId": "Jees1mVucXc",
+    "title": "How Much of the Periodic Table Is in YOU?",
+    "coreQuestion": "Which elements actually make up a human body, and in what proportions?",
+    "channel": "SciShow",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Elemental Composition",
+      "Trace Elements",
+      "Biomolecules",
+      "Nutrition"
+    ],
+    "description": "An inventory of the elements in a human body, showing that almost all of your mass comes from a handful of elements while dozens of others appear only in trace amounts.",
+    "takeaway": "Life is built from very few elements in very large amounts, with trace elements doing narrow but essential jobs."
+  },
+  {
+    "id": "stem-637",
+    "youtubeId": "9uW6B9LPntY",
+    "title": "A Brief History of Programming",
+    "coreQuestion": "How did we get from punched cards to the languages we use today?",
+    "channel": "Fireship",
+    "category": "Computer Science",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "Programming Languages",
+      "Compilers",
+      "History of Computing",
+      "Abstraction"
+    ],
+    "description": "A fast, opinionated tour of how programming languages evolved, from machine code and assembly through structured programming to the high-level, garbage-collected languages most developers write today.",
+    "takeaway": "Every layer of programming history exists to let humans express intent without managing the machine directly."
+  },
+  {
+    "id": "stem-638",
+    "youtubeId": "rQlMtztiAoA",
+    "title": "Abstraction Can Make Your Code Worse",
+    "coreQuestion": "When does adding another layer of abstraction make software harder instead of easier?",
+    "channel": "CodeAesthetic",
+    "category": "Computer Science",
+    "difficulty": "Intermediate",
+    "duration": "5 min",
+    "concepts": [
+      "Abstraction",
+      "Coupling",
+      "Code Readability",
+      "Software Design"
+    ],
+    "description": "A short argument against reflexively wrapping code in helpers, showing how an abstraction that hides too much forces readers to jump between files to understand a single line.",
+    "takeaway": "Good abstraction hides detail that does not matter; bad abstraction hides detail that the reader needed."
+  },
+  {
+    "id": "stem-639",
+    "youtubeId": "q9jixKv4h2I",
+    "title": "You Won't Forget How Postgres Works After This",
+    "coreQuestion": "What actually happens inside a relational database when you run a query?",
+    "channel": "Hussein Nasser",
+    "category": "Computer Science",
+    "difficulty": "Deep Dive",
+    "duration": "27 min",
+    "concepts": [
+      "PostgreSQL",
+      "Query Planner",
+      "MVCC",
+      "Write-Ahead Log"
+    ],
+    "description": "A backend engineer traces a query through PostgreSQL's planner, buffer pool and storage layer, explaining multiversion concurrency control and why a database that looks simple from SQL is a carefully layered machine underneath.",
+    "takeaway": "Understanding the storage and concurrency model of your database explains most of the performance problems you will ever debug."
+  },
+  {
+    "id": "stem-640",
+    "youtubeId": "VjPgYcQqqN0",
+    "title": "Basics of OS (Computer System Operation)",
+    "coreQuestion": "How does an operating system coordinate hardware that knows nothing about programs?",
+    "channel": "Neso Academy",
+    "category": "Computer Science",
+    "difficulty": "Foundational",
+    "duration": "18 min",
+    "concepts": [
+      "Operating Systems",
+      "Interrupts",
+      "System Calls",
+      "I/O"
+    ],
+    "description": "A structured lecture on the mechanics under an operating system: bootstrap loading, interrupt-driven I/O, device controllers, and the boundary between user programs and privileged code.",
+    "takeaway": "An operating system is mostly an interrupt handler with a very large bookkeeping problem attached."
+  },
+  {
+    "id": "stem-641",
+    "youtubeId": "QpzQYDcczRQ",
+    "title": "Machine Learning Overview",
+    "coreQuestion": "What is machine learning actually doing when it learns from data?",
+    "channel": "Steve Brunton",
+    "category": "Computer Science",
+    "difficulty": "Foundational",
+    "duration": "8 min",
+    "concepts": [
+      "Supervised Learning",
+      "Regression",
+      "Model Fitting",
+      "Generalisation"
+    ],
+    "description": "An engineering professor frames machine learning as curve fitting with consequences, covering the data pipeline, training, validation and the difference between a model that fits and a model that generalises.",
+    "takeaway": "Most of machine learning is choosing a model class and then being honest about whether it will work on data it has never seen."
+  },
+  {
+    "id": "stem-642",
+    "youtubeId": "eqvBaj8UYz4",
+    "title": "Are There Problems That Computers Can't Solve?",
+    "coreQuestion": "Is there a limit to what any computer can ever compute?",
+    "channel": "Tom Scott",
+    "category": "Computer Science",
+    "difficulty": "Intermediate",
+    "duration": "8 min",
+    "concepts": [
+      "Halting Problem",
+      "Undecidability",
+      "Turing Machines",
+      "Computability"
+    ],
+    "description": "Tom Scott explains Turing's proof that no general procedure can decide in advance whether an arbitrary program will stop, and why the result is about the limits of logic rather than the speed of hardware.",
+    "takeaway": "Some questions are provably undecidable, which means no amount of faster hardware will ever answer them."
+  },
+  {
+    "id": "stem-643",
+    "youtubeId": "_MoRcYLN-7U",
+    "title": "Post Quantum Cryptography",
+    "coreQuestion": "Which encryption survives a computer that can break today's public-key systems?",
+    "channel": "Computerphile",
+    "category": "Computer Science",
+    "difficulty": "Deep Dive",
+    "duration": "13 min",
+    "concepts": [
+      "Post-Quantum Cryptography",
+      "Lattice Problems",
+      "Shor's Algorithm",
+      "Key Exchange"
+    ],
+    "description": "A computer scientist explains why Shor's algorithm threatens RSA and elliptic-curve cryptography, and walks through the lattice-based constructions being standardised as replacements.",
+    "takeaway": "Post-quantum cryptography replaces factoring hard numbers with problems that appear hard even for quantum computers."
+  },
+  {
+    "id": "stem-644",
+    "youtubeId": "XlbPnihCM0E",
+    "title": "Running MSBASIC on My Breadboard 6502 Computer",
+    "coreQuestion": "What does it take to run a real programming language on a computer you built by hand?",
+    "channel": "Ben Eater",
+    "category": "Computer Science",
+    "difficulty": "Deep Dive",
+    "duration": "37 min",
+    "concepts": [
+      "6502",
+      "Machine Code",
+      "Memory Mapping",
+      "Bootstrapping"
+    ],
+    "description": "After building a working 6502 machine on breadboards, Ben Eater gets Microsoft BASIC running on it, solving the memory map, serial I/O and loading problems that stand between hardware and usable software.",
+    "takeaway": "An interpreter is just another program; what makes it usable is the memory and input plumbing around it."
+  },
+  {
+    "id": "stem-645",
+    "youtubeId": "_JGMgpyCTsY",
+    "title": "I Tried Coding My Own Graphics Library",
+    "coreQuestion": "How does a graphics library turn triangles into pixels on a screen?",
+    "channel": "Sebastian Lague",
+    "category": "Computer Science",
+    "difficulty": "Intermediate",
+    "duration": "28 min",
+    "concepts": [
+      "Rasterisation",
+      "Vertex Shaders",
+      "Z-Buffering",
+      "3D Rendering"
+    ],
+    "description": "A from-scratch software renderer that implements the core stages of a graphics pipeline, showing why clipping, perspective division and depth testing exist and what goes wrong without them.",
+    "takeaway": "The graphics pipeline is a sequence of geometric transformations, and every stage solves a specific problem you only notice when it is missing."
+  },
+  {
+    "id": "stem-646",
+    "youtubeId": "7YyALikxAlU",
+    "title": "How CPUs Run Functions",
+    "coreQuestion": "What happens to a CPU and its memory when one function calls another?",
+    "channel": "Core Dumped",
+    "category": "Computer Science",
+    "difficulty": "Deep Dive",
+    "duration": "20 min",
+    "concepts": [
+      "Call Stack",
+      "Stack Frames",
+      "Registers",
+      "Calling Conventions"
+    ],
+    "description": "A low-level walk through the mechanics of a function call: saving the return address, allocating a stack frame, passing arguments in registers, and the calling conventions that let separately compiled code cooperate.",
+    "takeaway": "Function calls are a convention rather than a hardware feature; the CPU only knows about jumps, registers and memory."
+  },
+  {
+    "id": "stem-647",
+    "youtubeId": "r-SivgEpA1Q",
+    "title": "How Does an SSD Store 8TB of Data?",
+    "coreQuestion": "How do flash cells, controllers and wear levelling combine to make a modern solid-state drive?",
+    "channel": "Branch Education",
+    "category": "Computer Science",
+    "difficulty": "Intermediate",
+    "duration": "10 min",
+    "concepts": [
+      "NAND Flash",
+      "Floating Gate Transistors",
+      "Wear Levelling",
+      "SSD Controllers"
+    ],
+    "description": "An animated tour of solid-state storage from the floating-gate transistor up, explaining how charge represents bits, why cells wear out, and what the controller does to hide that from the operating system.",
+    "takeaway": "An SSD is a flash translation layer pretending to be a disk, and its performance comes from the controller's bookkeeping."
+  },
+  {
+    "id": "stem-648",
+    "youtubeId": "eMlx5fFNoYc",
+    "title": "Attention in Transformers, Step-by-Step",
+    "coreQuestion": "What is the attention mechanism that made modern language models possible?",
+    "channel": "3Blue1Brown",
+    "category": "Computer Science",
+    "difficulty": "Deep Dive",
+    "duration": "26 min",
+    "concepts": [
+      "Transformers",
+      "Attention",
+      "Query Key Value",
+      "Embeddings"
+    ],
+    "description": "A visual derivation of self-attention that builds the query, key and value matrices from the problem they solve, showing how each token gathers context from the tokens around it.",
+    "takeaway": "Attention is a learned, content-dependent weighting scheme that lets a model decide which earlier words matter for the current one."
+  },
+  {
+    "id": "stem-649",
+    "youtubeId": "AaZ_RSt0KP8",
+    "title": "The Universe Is Hostile to Computers",
+    "coreQuestion": "How often do cosmic rays flip a bit in a computer, and what happens when they do?",
+    "channel": "Veritasium",
+    "category": "Computer Science",
+    "difficulty": "Intermediate",
+    "duration": "23 min",
+    "concepts": [
+      "Cosmic Rays",
+      "Bit Flips",
+      "Error Correction",
+      "Reliability"
+    ],
+    "description": "A investigation of single-event upsets, from voting machines and aircraft to a famous Belgian election result, showing how high-energy particles can change memory without leaving a trace.",
+    "takeaway": "Digital data is stored as physical charge, and physical systems can be disturbed, which is why error-correcting memory exists."
+  },
+  {
+    "id": "stem-650",
+    "youtubeId": "RpslsMqPFWA",
+    "title": "I Made an Apple Peel Itself",
+    "coreQuestion": "How hard is it to build a machine that can peel an apple without crushing it?",
+    "channel": "Stuff Made Here",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "29 min",
+    "concepts": [
+      "Machine Vision",
+      "Robotics",
+      "Compliant Mechanisms",
+      "Iterative Design"
+    ],
+    "description": "An engineer attempts to automate apple peeling and discovers that the fruit is the hard part: irregular geometry, varying firmness and a blade that must follow a surface it cannot see perfectly.",
+    "takeaway": "Real machines fail on variation, and most of the engineering is absorbed by handling the cases the designer did not imagine."
+  },
+  {
+    "id": "stem-651",
+    "youtubeId": "sFBvPue70l8",
+    "title": "Why You Couldn't Afford to Fly Concorde",
+    "coreQuestion": "Why did the fastest passenger jet ever built lose money on every seat?",
+    "channel": "Mustard",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "14 min",
+    "concepts": [
+      "Supersonic Transport",
+      "Fuel Consumption",
+      "Aerodynamics",
+      "Operating Economics"
+    ],
+    "description": "A breakdown of Concorde's engineering trade-offs, from the afterburners needed for takeoff to the drag rise at supersonic speed, and how those choices set a ticket price almost nobody would pay.",
+    "takeaway": "Concorde was a technical success and an economic failure because the physics of supersonic flight is expensive per passenger."
+  },
+  {
+    "id": "stem-652",
+    "youtubeId": "iweRSQC70kQ",
+    "title": "Lockheed U-2: Why Is It Still Flying and Still Spying 65 Years On?",
+    "coreQuestion": "Why has a 1950s spy plane outlasted the satellites meant to replace it?",
+    "channel": "Curious Droid",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "High-Altitude Flight",
+      "Reconnaissance",
+      "Aerodynamic Design",
+      "Systems Longevity"
+    ],
+    "description": "The story of the U-2's extreme altitude design, the compromises it forced on pilots and engines, and why a machine with such obvious vulnerabilities has stayed in service for decades.",
+    "takeaway": "A platform survives when it does something satellites still cannot: linger, react and look sideways on short notice."
+  },
+  {
+    "id": "stem-653",
+    "youtubeId": "Owji-ukVt9M",
+    "title": "Rocket Engine Cycles: How Do You Power a Rocket Engine?",
+    "coreQuestion": "How does a rocket pump thousands of litres of propellant per second without melting its own turbopumps?",
+    "channel": "Everyday Astronaut",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "55 min",
+    "concepts": [
+      "Turbopumps",
+      "Gas Generator Cycle",
+      "Staged Combustion",
+      "Expander Cycle"
+    ],
+    "description": "A detailed comparison of the main rocket engine power cycles, with diagrams and hardware footage showing where the propellant goes, what gets dumped overboard, and why full-flow staged combustion is so difficult.",
+    "takeaway": "Engine cycle choice is a trade between efficiency, complexity and the temperature limits of your turbomachinery."
+  },
+  {
+    "id": "stem-654",
+    "youtubeId": "cYhGqtQELd0",
+    "title": "Hong Kong Is Building an $8BN Groundscraper",
+    "coreQuestion": "Why build a skyscraper lying on its side instead of simply going up?",
+    "channel": "The B1M",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Structural Engineering",
+      "Foundation Design",
+      "Urban Planning",
+      "Load Paths"
+    ],
+    "description": "A look at a horizontal megastructure and the constraints that shaped it: site geometry, rail infrastructure underground, and the structural gymnastics needed to span long distances at low height.",
+    "takeaway": "Building form follows constraints, and a groundscraper is often the answer to a site that cannot support a tower."
+  },
+  {
+    "id": "stem-655",
+    "youtubeId": "gLkbK8h_9fc",
+    "title": "How the Channel Tunnel Works",
+    "coreQuestion": "How do you bore and operate a tunnel under 50 kilometres of water?",
+    "channel": "Wendover Productions",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "23 min",
+    "concepts": [
+      "Tunnel Boring Machines",
+      "Ventilation",
+      "Rail Logistics",
+      "Geology"
+    ],
+    "description": "The engineering and operations behind the Channel Tunnel: tunnel boring machines working from both coasts, the service tunnel between the running tunnels, and the ventilation and safety systems that keep it usable.",
+    "takeaway": "Long tunnels are as much an operations problem as a construction one, and the safety systems determine what traffic can pass."
+  },
+  {
+    "id": "stem-656",
+    "youtubeId": "5_B1Mq02wcI",
+    "title": "The Hidden Engineering of Pressure Regulators",
+    "coreQuestion": "How does a simple valve hold a steady output pressure while the supply keeps changing?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Pressure Regulation",
+      "Feedback Control",
+      "Diaphragms",
+      "Fluid Systems"
+    ],
+    "description": "A civil engineer takes apart the regulators found on water and gas lines, explaining the spring-and-diaphragm feedback loop that lets a purely mechanical device behave like a control system.",
+    "takeaway": "A pressure regulator is a mechanical control loop, and understanding it explains a lot of plumbing behaviour that otherwise looks arbitrary."
+  },
+  {
+    "id": "stem-657",
+    "youtubeId": "iGZsPFJuxc0",
+    "title": "How We Could Reach Proxima Centauri B in 20 Years",
+    "coreQuestion": "What would it take to send a probe to the nearest star within a human lifetime?",
+    "channel": "Real Engineering",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "18 min",
+    "concepts": [
+      "Lightsails",
+      "Laser Propulsion",
+      "Interstellar Travel",
+      "Spacecraft Design"
+    ],
+    "description": "An engineering assessment of laser-driven lightsail proposals, covering the enormous power requirements, the thermal and structural limits of a thin sail, and the problem of slowing down at the destination.",
+    "takeaway": "Accelerating a tiny probe to a fraction of light speed is plausible; stopping it, powering it and communicating with it are the unsolved parts."
+  },
+  {
+    "id": "stem-658",
+    "youtubeId": "7vN614cPqTM",
+    "title": "The Engineering of Copper Extraction",
+    "coreQuestion": "How does rock with a fraction of a percent copper become wire-grade metal?",
+    "channel": "engineerguy",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Hydrometallurgy",
+      "Electrowinning",
+      "Leaching",
+      "Process Engineering"
+    ],
+    "description": "Bill Hammack follows copper from ore through leaching, solvent extraction and electrodeposition, explaining the chemistry and the industrial machinery that make a low-concentration ore economically viable.",
+    "takeaway": "Materials become useful through a chain of separation processes, and each step is designed around the cost of energy and chemicals."
+  },
+  {
+    "id": "stem-659",
+    "youtubeId": "nyjI97MuUBI",
+    "title": "Marina Bay Sands: The Most Dangerous Building Gamble in History",
+    "coreQuestion": "How do three towers hold up a 340-metre-long sky park that leans over the city?",
+    "channel": "Sabin Civil Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "13 min",
+    "concepts": [
+      "Structural Engineering",
+      "Cantilevers",
+      "Foundation Piles",
+      "Load Distribution"
+    ],
+    "description": "The structural story behind the Marina Bay Sands sky park: how the towers were built with a deliberate lean, how the platform is anchored, and how the whole assembly resists wind and differential settlement.",
+    "takeaway": "A dramatic cantilever is only possible when the foundations and the load path are designed together from the start."
+  },
+  {
+    "id": "stem-660",
+    "youtubeId": "VRBpqM6ESrg",
+    "title": "Understanding Steels and Heat Treatment",
+    "coreQuestion": "Why can the same lump of iron become soft, springy or brittle depending on how it cools?",
+    "channel": "The Efficient Engineer",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "25 min",
+    "concepts": [
+      "Crystal Structure",
+      "Martensite",
+      "Phase Diagrams",
+      "Heat Treatment"
+    ],
+    "description": "A materials-focused explanation of what heat treatment does at the atomic scale, using the iron-carbon phase diagram to show why quenching traps carbon in a strained lattice and how tempering trades hardness for toughness.",
+    "takeaway": "Steel properties are set by microstructure, and heat treatment is the deliberate control of how atoms arrange themselves."
+  },
+  {
+    "id": "stem-661",
+    "youtubeId": "NIrKOVZrqnU",
+    "title": "Power Factor Explained: The Reactive Power Money Drain",
+    "coreQuestion": "Why do motors and transformers draw current that does no useful work?",
+    "channel": "The Engineering Mindset",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "Power Factor",
+      "Reactive Power",
+      "AC Circuits",
+      "Power Factor Correction"
+    ],
+    "description": "An electrical engineering walkthrough of real, reactive and apparent power, why inductive loads shift current out of phase with voltage, and how capacitor banks reduce the penalty utilities charge for it.",
+    "takeaway": "Power factor measures how much of the current you pay for actually delivers energy, and correcting it is a straightforward economic win."
+  },
+  {
+    "id": "stem-662",
+    "youtubeId": "p-0SOWbzUYI",
+    "title": "Visualising Pythagoras: Ultimate Proofs and Crazy Contortions",
+    "coreQuestion": "How many genuinely different ways are there to see why a squared plus b squared equals c squared?",
+    "channel": "Mathologer",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "21 min",
+    "concepts": [
+      "Pythagorean Theorem",
+      "Geometric Proof",
+      "Dissection",
+      "Area"
+    ],
+    "description": "A collection of dissection and rearrangement proofs of the Pythagorean theorem, animated so the algebra becomes something you can watch happen to shapes on a screen.",
+    "takeaway": "A good geometric proof is not just valid but visible, and the theorem has more of them than almost any other result."
+  },
+  {
+    "id": "stem-663",
+    "youtubeId": "3s7h2MHQtxc",
+    "title": "Hilbert's Curve: Is Infinite Math Useful?",
+    "coreQuestion": "Can a one-dimensional line fill a two-dimensional square?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "18 min",
+    "concepts": [
+      "Space-Filling Curves",
+      "Limits",
+      "Cardinality",
+      "Locality"
+    ],
+    "description": "An animated construction of the Hilbert curve that resolves the apparent paradox of a line covering a square, then shows why the finite approximations are genuinely useful for indexing spatial data.",
+    "takeaway": "Infinite limiting objects can be mathematically rigorous and practically valuable at the same time."
+  },
+  {
+    "id": "stem-664",
+    "youtubeId": "EgnAN0ZUl08",
+    "title": "Squaring the Triangle",
+    "coreQuestion": "How do you cut a triangle into pieces that rearrange into a square of equal area?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "14 min",
+    "concepts": [
+      "Dissection",
+      "Area",
+      "Constructible Lengths",
+      "Geometric Transformation"
+    ],
+    "description": "A hands-on dissection puzzle that turns any triangle into a square with the same area, using only straight cuts, and connects the construction to the classical problem of quadrature.",
+    "takeaway": "Equal-area dissections make the concept of area tangible: the same amount of material, rearranged into a friendlier shape."
+  },
+  {
+    "id": "stem-665",
+    "youtubeId": "ixXOUeBOPJw",
+    "title": "The Sorting Algorithm That Shouldn't",
+    "coreQuestion": "Why does a deliberately absurd sorting method sometimes beat the sensible ones?",
+    "channel": "Stand-up Maths",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "20 min",
+    "concepts": [
+      "Algorithms",
+      "Complexity",
+      "Randomisation",
+      "Probability"
+    ],
+    "description": "A mathematical investigation of sorting strategies that seem too silly to work, measured against their actual expected run times rather than intuition.",
+    "takeaway": "Algorithm analysis rewards careful counting over aesthetic judgement, and some 'bad' methods are bad for subtler reasons than expected."
+  },
+  {
+    "id": "stem-666",
+    "youtubeId": "GdM_iA1Zek4",
+    "title": "Intro to Mathematical Induction",
+    "coreQuestion": "Why does proving one case and a pattern prove infinitely many cases at once?",
+    "channel": "Dr. Trefor Bazett",
+    "category": "Math",
+    "difficulty": "Foundational",
+    "duration": "12 min",
+    "concepts": [
+      "Induction",
+      "Base Case",
+      "Proof Technique",
+      "Natural Numbers"
+    ],
+    "description": "A careful introduction to induction that explains the domino metaphor properly, shows how the inductive hypothesis is used, and demonstrates where a sloppy step breaks the whole argument.",
+    "takeaway": "Induction works because the natural numbers are built recursively, so a base case plus a valid step covers all of them."
+  },
+  {
+    "id": "stem-667",
+    "youtubeId": "9dNJsa-BEZw",
+    "title": "Is Arcsin Secretly a Logarithm?",
+    "coreQuestion": "Why does the inverse sine have the same shape as a logarithm?",
+    "channel": "Michael Penn",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "5 min",
+    "concepts": [
+      "Complex Logarithm",
+      "Inverse Trigonometry",
+      "Euler's Formula",
+      "Analytic Continuation"
+    ],
+    "description": "A short derivation showing that the inverse sine can be written in terms of the complex logarithm, revealing a hidden structural link between trigonometry and exponential growth.",
+    "takeaway": "Trigonometric and logarithmic functions are two views of the same complex exponential, which is why their inverses look alike."
+  },
+  {
+    "id": "stem-668",
+    "youtubeId": "Y1gOYtQYRXo",
+    "title": "Euler's Formula Beyond Complex Numbers",
+    "coreQuestion": "What does Euler's formula mean when the exponent is not a number at all?",
+    "channel": "Morphocular",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "30 min",
+    "concepts": [
+      "Euler's Formula",
+      "Matrix Exponential",
+      "Lie Groups",
+      "Generalisations"
+    ],
+    "description": "A generalisation of the exponential map that shows how rotating, flowing and transforming objects all obey a version of the same formula, with matrices taking the place of imaginary numbers.",
+    "takeaway": "Euler's formula is a special case of a much broader principle about continuous transformation."
+  },
+  {
+    "id": "stem-669",
+    "youtubeId": "1XsXRUsNEC4",
+    "title": "The Unreasonable Effectiveness of Group Theory",
+    "coreQuestion": "Why does the abstract study of symmetry keep solving problems in physics and chemistry?",
+    "channel": "Another Roof",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "30 min",
+    "concepts": [
+      "Group Theory",
+      "Symmetry",
+      "Representation Theory",
+      "Invariants"
+    ],
+    "description": "An exploration of how group theory encodes symmetry in a handful of axioms, and why conservation laws, crystal structures and particle classifications all fall out of that framework.",
+    "takeaway": "Symmetry constrains what is possible, so a purely abstract classification ends up predicting real physical behaviour."
+  },
+  {
+    "id": "stem-670",
+    "youtubeId": "ga_pJ1FMarg",
+    "title": "If y to the Power y Equals x, Then What Is dy/dx?",
+    "coreQuestion": "How do you differentiate an expression where the variable sits in the exponent?",
+    "channel": "blackpenredpen",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "4 min",
+    "concepts": [
+      "Lambert W Function",
+      "Implicit Differentiation",
+      "Inverse Functions",
+      "Calculus"
+    ],
+    "description": "A compact worked problem that solves y^y = x using the Lambert W function, then differentiates the result implicitly to get a clean derivative.",
+    "takeaway": "When algebra cannot isolate the variable, a named special function can, and calculus then works exactly as usual."
+  },
+  {
+    "id": "stem-671",
+    "youtubeId": "Gz6qefUi3Ho",
+    "title": "The Infinity Problem That Broke Mathematics",
+    "coreQuestion": "Why can no one prove how many sizes of infinity exist?",
+    "channel": "Up and Atom",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "29 min",
+    "concepts": [
+      "Continuum Hypothesis",
+      "Set Theory",
+      "Cardinality",
+      "Independence"
+    ],
+    "description": "The story of Cantor's continuum hypothesis, Hilbert's first problem, and the startling resolution that the statement is independent of the standard axioms of set theory.",
+    "takeaway": "Some mathematical questions cannot be settled by proof or disproof within the rules we normally use to do mathematics."
+  },
+  {
+    "id": "stem-672",
+    "youtubeId": "J7DzL2_Na80",
+    "title": "The Geometry of Linear Equations",
+    "coreQuestion": "What does a system of linear equations look like when you stop thinking in symbols and start thinking in space?",
+    "channel": "MIT OpenCourseWare",
+    "category": "Math",
+    "difficulty": "Foundational",
+    "duration": "40 min",
+    "concepts": [
+      "Linear Algebra",
+      "Row Picture",
+      "Column Picture",
+      "Linear Combinations"
+    ],
+    "description": "Gilbert Strang's opening lecture to 18.06, introducing the row picture and column picture of a linear system and why the column view is the one that carries through the whole course.",
+    "takeaway": "Solving a linear system means finding the combination of column vectors that produces the right-hand side."
+  },
+  {
+    "id": "stem-673",
+    "youtubeId": "-qMu60ecjvE",
+    "title": "Math Caught a Serial Killer",
+    "coreQuestion": "How did a mathematical model of crime lead police to a serial offender?",
+    "channel": "Vsauce2",
+    "category": "Math",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Geographic Profiling",
+      "Probability",
+      "Modelling",
+      "Bayes' Theorem"
+    ],
+    "description": "The story of how a criminologist used the geometry of offender behaviour and a probability model to narrow a search area, along with an honest look at the assumptions such models must make.",
+    "takeaway": "A model built on a reasonable assumption can turn a huge search space into a tractable one, but the assumption is doing the real work."
+  },
+  {
+    "id": "stem-674",
+    "youtubeId": "TCZ3YwbcDaw",
+    "title": "The Pigeon Hole Principle: Seven Gorgeous Proofs",
+    "coreQuestion": "How can the observation that you have more pigeons than holes prove anything interesting?",
+    "channel": "Mathologer",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "34 min",
+    "concepts": [
+      "Pigeonhole Principle",
+      "Combinatorics",
+      "Proof by Contradiction",
+      "Dirichlet"
+    ],
+    "description": "Seven increasingly clever applications of the pigeonhole principle, from duplicated items in a set to number-theoretic results that seem to require far more machinery than they do.",
+    "takeaway": "Counting arguments are powerful precisely because they ignore detail and rely only on there being too many objects for the available categories."
+  },
+  {
+    "id": "stem-675",
+    "youtubeId": "1rLWVZVWfdY",
+    "title": "Why is Relativity Hard?",
+    "coreQuestion": "Why does special relativity feel like it contradicts everything our senses tell us?",
+    "channel": "minutephysics",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "5 min",
+    "concepts": [
+      "Special Relativity",
+      "Speed of Light",
+      "Frames of Reference",
+      "Simultaneity"
+    ],
+    "description": "The opening chapter of minutephysics' special relativity series explains that the subject is difficult not because the maths is hard, but because it asks you to discard the assumption that clocks everywhere tick together. Every strange consequence follows from one stubborn fact about light.",
+    "takeaway": "Relativity is not a correction bolted onto ordinary physics; it is what physics looks like once you accept that the speed of light is the same for every observer."
+  },
+  {
+    "id": "stem-676",
+    "youtubeId": "hIgZG7A1fqc",
+    "title": "Gravitational Waves Discovery",
+    "coreQuestion": "How did a four-kilometre interferometer detect a ripple in spacetime from a billion light years away?",
+    "channel": "Sixty Symbols",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "13 min",
+    "concepts": [
+      "LIGO",
+      "Interferometry",
+      "General Relativity",
+      "Black Hole Mergers"
+    ],
+    "description": "Physicists from the University of Nottingham walk through the first direct detection of gravitational waves, explaining what the interferometers actually measure and why a tiny change in arm length counts as an enormous discovery.",
+    "takeaway": "Gravitational wave astronomy turns the universe into a listening device, letting us hear collisions that emit almost no light."
+  },
+  {
+    "id": "stem-677",
+    "youtubeId": "0onncd0_0-o",
+    "title": "Tensegrity Explained",
+    "coreQuestion": "How can a structure hold itself up with rods that never touch each other?",
+    "channel": "Steve Mould",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Tensegrity",
+      "Tension and Compression",
+      "Equilibrium",
+      "Structural Stability"
+    ],
+    "description": "Steve Mould builds tensegrity models from sticks and elastic bands to show how isolated compression members can float inside a web of continuous tension, then connects the toy to the way cells and bridges carry loads.",
+    "takeaway": "Tensegrity separates the members that push from the members that pull, and the balance between them is what holds the shape."
+  },
+  {
+    "id": "stem-678",
+    "youtubeId": "TM9alPcOMcU",
+    "title": "Shining Light Through Solid Balls Using Quantum Mechanics: Poisson's Spot",
+    "coreQuestion": "Why is there a bright dot in the middle of a shadow cast by a perfectly round object?",
+    "channel": "The Action Lab",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "10 min",
+    "concepts": [
+      "Diffraction",
+      "Wave Optics",
+      "Arago Spot",
+      "Huygens' Principle"
+    ],
+    "description": "A ball bearing and a laser reproduce an experiment that once settled a national argument about whether light is a particle or a wave. The bright spot in the shadow only makes sense if light bends around the edge of the obstacle.",
+    "takeaway": "The Poisson spot is a direct, tabletop demonstration that light behaves as a wave, even in the shadow of an opaque object."
+  },
+  {
+    "id": "stem-679",
+    "youtubeId": "z7NdcpQMVvE",
+    "title": "What *is* quantum entanglement?",
+    "coreQuestion": "What does it actually mean for two particles to share a single quantum state?",
+    "channel": "Looking Glass Universe",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Entanglement",
+      "Superposition",
+      "Bell's Theorem",
+      "Measurement"
+    ],
+    "description": "A working quantum physicist builds up entanglement from the idea of superposition, then shows why the correlations it produces cannot be explained by any local hidden variables.",
+    "takeaway": "Entangled particles are not communicating; they are described by one joint state that has no separate description for each particle alone."
+  },
+  {
+    "id": "stem-680",
+    "youtubeId": "BFTxP03H13k",
+    "title": "Schrodinger Equation Explained",
+    "coreQuestion": "Where does the Schrodinger equation come from, and what is it actually telling us?",
+    "channel": "Parth G",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "9 min",
+    "concepts": [
+      "Wave Function",
+      "Operators",
+      "Energy Eigenstates",
+      "Quantum Mechanics"
+    ],
+    "description": "Parth G unpacks the equation at the centre of quantum mechanics term by term, treating it as an energy statement about a wave rather than a formula to memorise, and explains what solving it buys you.",
+    "takeaway": "The Schrodinger equation is a wave equation for probability amplitudes, and its allowed solutions are the only energies a system can have."
+  },
+  {
+    "id": "stem-681",
+    "youtubeId": "Ii7rgIQawko",
+    "title": "How Special Relativity Fixed Electromagnetism",
+    "coreQuestion": "Why do magnetism and electricity turn out to be two views of the same phenomenon?",
+    "channel": "The Science Asylum",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "9 min",
+    "concepts": [
+      "Electromagnetism",
+      "Lorentz Transformation",
+      "Charge Density",
+      "Special Relativity"
+    ],
+    "description": "A current-carrying wire looks electrically neutral in the lab frame but charged in the frame of a moving charge. Following that change of reference frame explains where the magnetic force comes from.",
+    "takeaway": "Magnetism is the electric force seen from a different frame of reference, which is why the two cannot be separated."
+  },
+  {
+    "id": "stem-682",
+    "youtubeId": "XL9wWeEmQvo",
+    "title": "Understanding Quantum Mechanics #3: Non-locality",
+    "coreQuestion": "Does quantum mechanics really imply that influences travel faster than light?",
+    "channel": "Sabine Hossenfelder",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "7 min",
+    "concepts": [
+      "Non-locality",
+      "Bell Inequality",
+      "Hidden Variables",
+      "Quantum Foundations"
+    ],
+    "description": "Sabine Hossenfelder untangles what physicists mean by non-locality, separating the experimental violation of Bell inequalities from the stronger and unsupported claim that signals travel instantaneously.",
+    "takeaway": "Quantum correlations are non-local in the sense that no local model reproduces them, but no message can be sent through them."
+  },
+  {
+    "id": "stem-683",
+    "youtubeId": "1ENkP0h8nAg",
+    "title": "Gravity's Effect on the Flow of Time in General Relativity",
+    "coreQuestion": "Why do clocks run slower the deeper you sit in a gravitational field?",
+    "channel": "Physics Videos by Eugene Khutoryansky",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Gravitational Time Dilation",
+      "General Relativity",
+      "Equivalence Principle",
+      "Geodesics"
+    ],
+    "description": "An animated derivation of gravitational time dilation that starts from the equivalence principle and ends with the everyday correction built into satellite navigation systems.",
+    "takeaway": "Time is not a universal metronome; its rate depends on where you are in a gravitational field."
+  },
+  {
+    "id": "stem-684",
+    "youtubeId": "ayQhNLqbTFk",
+    "title": "What Are Virtual Particles?",
+    "coreQuestion": "If virtual particles cannot be observed, in what sense do they exist?",
+    "channel": "Fermilab",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "10 min",
+    "concepts": [
+      "Quantum Field Theory",
+      "Perturbation Theory",
+      "Vacuum Fluctuations",
+      "Feynman Diagrams"
+    ],
+    "description": "A Fermilab physicist explains that virtual particles are terms in a calculation rather than tiny objects popping in and out of existence, and why the picture still earns its place in physics communication.",
+    "takeaway": "Virtual particles are a useful bookkeeping device for quantum field calculations, not a hidden population of real particles."
+  },
+  {
+    "id": "stem-685",
+    "youtubeId": "GRD-xvlhGMc",
+    "title": "Sunscreen in UV",
+    "coreQuestion": "What does sunscreen actually look like when you view it in ultraviolet light?",
+    "channel": "Physics Girl",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "12 min",
+    "concepts": [
+      "Ultraviolet Light",
+      "Absorption",
+      "Reflection",
+      "Electromagnetic Spectrum"
+    ],
+    "description": "A UV camera turns an ordinary beach ritual into an optics experiment, showing which sunscreens absorb ultraviolet and which rely on scattering it away, and why the difference matters at the skin.",
+    "takeaway": "Sunscreen works by intercepting light your eyes cannot see, so judging it by appearance alone is misleading."
+  },
+  {
+    "id": "stem-686",
+    "youtubeId": "JGO_zDWmkvk",
+    "title": "Newton's 3 Laws, with a Bicycle",
+    "coreQuestion": "How do Newton's laws show up in the ordinary act of riding a bike?",
+    "channel": "TED-Ed",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "4 min",
+    "concepts": [
+      "Newton's Laws",
+      "Inertia",
+      "Force Pairs",
+      "Momentum"
+    ],
+    "description": "A brisk animated tour of classical mechanics that grounds each of Newton's three laws in bicycle motion, from the push that starts you moving to the equal and opposite shove the ground gives back.",
+    "takeaway": "The three laws are not abstract rules; they are a complete description of how everyday objects start, stop and change direction."
+  },
+  {
+    "id": "stem-687",
+    "youtubeId": "Da-2h2B4faU",
+    "title": "String Theory Explained: What Is the True Nature of Reality?",
+    "coreQuestion": "Why do physicists keep returning to a theory with no experimental evidence?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "8 min",
+    "concepts": [
+      "String Theory",
+      "Extra Dimensions",
+      "Standard Model",
+      "Unification"
+    ],
+    "description": "An accessible introduction to the idea that particles are vibrations of tiny strings, why extra dimensions are required, and what the theory promises versus what it has actually delivered.",
+    "takeaway": "String theory is an elegant unification attempt whose central predictions remain out of reach of current experiments."
+  },
+  {
+    "id": "stem-688",
+    "youtubeId": "dggmMflAGG8",
+    "title": "What Happens to Time in a Black Hole?",
+    "coreQuestion": "Why do physicists disagree about what time does at the centre of a black hole?",
+    "channel": "Dr. Becky",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "20 min",
+    "concepts": [
+      "Gravitational Time Dilation",
+      "Event Horizon",
+      "Singularity",
+      "General Relativity"
+    ],
+    "description": "An astrophysicist separates what relativity firmly predicts about clocks near a black hole from what remains genuinely unresolved, including why the question of time at the singularity is still an open argument.",
+    "takeaway": "Time dilation near a black hole is well understood; what happens at the singularity is where our best theory stops working."
+  },
+  {
+    "id": "stem-689",
+    "youtubeId": "mrYjJ9Jl9dA",
+    "title": "Earth Is the Universe's Biggest Anomaly",
+    "coreQuestion": "How unusual is Earth compared with the thousands of worlds we have now catalogued?",
+    "channel": "Astrum",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Exoplanets",
+      "Habitability",
+      "Plate Tectonics",
+      "Planetary Formation"
+    ],
+    "description": "An inventory of the features that make Earth stand out among known planets, from its active geology and magnetic field to the way it has held onto liquid water for billions of years.",
+    "takeaway": "Earth's habitability is not a single lucky feature but a long chain of coincidences that astronomers are still trying to count."
+  },
+  {
+    "id": "stem-690",
+    "youtubeId": "ZevUW__aMZE",
+    "title": "Interstellar Highway System",
+    "coreQuestion": "Could spacecraft travel between stars using natural gravitational paths instead of fuel?",
+    "channel": "Cool Worlds",
+    "category": "Space",
+    "difficulty": "Deep Dive",
+    "duration": "31 min",
+    "concepts": [
+      "Trajectory Design",
+      "Gravity Assists",
+      "Interstellar Travel",
+      "Orbital Mechanics"
+    ],
+    "description": "A research astrophysicist explores whether stars, planets and other moving bodies could form a network of free gravitational routes, and quantifies how slow such a journey would really be.",
+    "takeaway": "Gravity can supply the energy for interstellar travel, but not yet the speed that would make it practical."
+  },
+  {
+    "id": "stem-691",
+    "youtubeId": "Y2k_LcdH960",
+    "title": "How Stars Work",
+    "coreQuestion": "What keeps a star from collapsing under its own weight for billions of years?",
+    "channel": "Launch Pad Astronomy",
+    "category": "Space",
+    "difficulty": "Foundational",
+    "duration": "19 min",
+    "concepts": [
+      "Nuclear Fusion",
+      "Hydrostatic Equilibrium",
+      "Main Sequence",
+      "Stellar Structure"
+    ],
+    "description": "A clear account of the balance that defines a star: gravity pulling inward, pressure from fusion pushing outward, and the sequence of reactions that turns hydrogen into the light we see.",
+    "takeaway": "A star is a long negotiation between gravity and fusion, and its mass decides how that negotiation ends."
+  },
+  {
+    "id": "stem-692",
+    "youtubeId": "kbkAsr53mEM",
+    "title": "The Story of Galaxy Clusters (and Abell 1)",
+    "coreQuestion": "How did astronomers first realise that galaxies gather into enormous clusters?",
+    "channel": "DeepSkyVideos",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Galaxy Clusters",
+      "Dark Matter",
+      "Redshift",
+      "Cosmic Distance Ladder"
+    ],
+    "description": "The history of cluster cataloguing from George Abell's photographic surveys to the modern picture of clusters as the largest gravitationally bound structures, with hot gas and dark matter outweighing the galaxies themselves.",
+    "takeaway": "Galaxy clusters are laboratories where the gravity of invisible matter is easier to measure than the light of the galaxies inside them."
+  },
+  {
+    "id": "stem-693",
+    "youtubeId": "OkpegH1-jyc",
+    "title": "Rogue Planets: Lost Worlds in the Dark",
+    "coreQuestion": "What happens to a planet that is ejected from its star and drifts through interstellar space?",
+    "channel": "SEA",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "32 min",
+    "concepts": [
+      "Rogue Planets",
+      "Planetary Ejection",
+      "Microlensing",
+      "Habitability"
+    ],
+    "description": "A survey of the free-floating planets that orbit no star, how gravitational microlensing reveals them, and whether a world with no sunlight could still keep an ocean liquid under ice.",
+    "takeaway": "Planets do not need stars to exist, and the galaxy may hold more of these wanderers than it holds stars."
+  },
+  {
+    "id": "stem-694",
+    "youtubeId": "iwnrFggbpQ0",
+    "title": "Why the Universe Doesn't Add Up",
+    "coreQuestion": "Why do different methods of measuring the expansion of the universe disagree?",
+    "channel": "NASA Goddard",
+    "category": "Space",
+    "difficulty": "Deep Dive",
+    "duration": "6 min",
+    "concepts": [
+      "Hubble Tension",
+      "Cosmic Microwave Background",
+      "Cepheids",
+      "Dark Energy"
+    ],
+    "description": "A concise explanation of the Hubble tension: local distance measurements produce a faster expansion rate than the cosmic microwave background predicts, and no accepted error explains the gap.",
+    "takeaway": "Two independent measurements of the same number disagree, which means either one method hides an error or the standard cosmological model is incomplete."
+  },
+  {
+    "id": "stem-695",
+    "youtubeId": "HD2zrF3I_II",
+    "title": "The Amazing Adventures of Rosetta and Philae",
+    "coreQuestion": "How did a spacecraft catch a comet moving at tens of thousands of kilometres per hour?",
+    "channel": "European Space Agency, ESA",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "25 min",
+    "concepts": [
+      "Comet 67P",
+      "Orbital Rendezvous",
+      "Lander Design",
+      "Solar System Formation"
+    ],
+    "description": "The story of Rosetta's decade-long journey, its loop around the Sun to match the comet's orbit, and Philae's difficult landing, told with the mission team's own footage and imagery.",
+    "takeaway": "Rendezvous with a comet requires a decade of patient orbital choreography, not a straight line."
+  },
+  {
+    "id": "stem-696",
+    "youtubeId": "v3y8AIEX_dU",
+    "title": "How to Move the Sun: Stellar Engines",
+    "coreQuestion": "Could an advanced civilisation move an entire star to escape its fate?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "9 min",
+    "concepts": [
+      "Stellar Engines",
+      "Shkadov Thruster",
+      "Energy Budgets",
+      "Megastructures"
+    ],
+    "description": "An engineering-thought experiment about propelling a star with its own radiation, including the mirror structures required and the painfully long timescales involved.",
+    "takeaway": "Moving a star is physically allowed but so slow that the plan only makes sense for a civilisation thinking in millions of years."
+  },
+  {
+    "id": "stem-697",
+    "youtubeId": "QTQVZuBV9oA",
+    "title": "Timelapse of the Universe: 13 Billion Years in 10 Minutes",
+    "coreQuestion": "What does the entire history of the universe look like compressed into ten minutes?",
+    "channel": "melodysheep",
+    "category": "Space",
+    "difficulty": "Foundational",
+    "duration": "12 min",
+    "concepts": [
+      "Cosmic History",
+      "Structure Formation",
+      "Recombination",
+      "Deep Time"
+    ],
+    "description": "A visual timeline that moves from the first fraction of a second through the formation of atoms, stars and galaxies, using simulation footage and scale comparisons to make cosmic time comprehensible.",
+    "takeaway": "Human history is a rounding error in cosmic time, and most of the universe's story happened before anything could watch it."
+  },
+  {
+    "id": "stem-698",
+    "youtubeId": "ua6wSrokOYQ",
+    "title": "Thor Rocket: How a 'Temporary Solution' Became America's Most Popular Launch Vehicle",
+    "coreQuestion": "Why did an interim missile design end up launching more missions than anyone intended?",
+    "channel": "Scott Manley",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Rocket History",
+      "Ballistic Missiles",
+      "Launch Vehicles",
+      "Cold War Technology"
+    ],
+    "description": "The engineering history of the Thor missile and how its derivatives became workhorse launchers, including the design compromises that made it cheap, reliable and endlessly adaptable.",
+    "takeaway": "A weapon built as a stopgap became a space programme's backbone because its basic architecture was easy to stretch."
+  },
+  {
+    "id": "stem-699",
+    "youtubeId": "2Ge1niH3eww",
+    "title": "Why We Might Never Reach Mars: The Microgravity Problem",
+    "coreQuestion": "What does months of weightlessness do to a human body on the way to Mars?",
+    "channel": "Anton Petrov",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Microgravity",
+      "Bone Density",
+      "Fluid Shifts",
+      "Radiation"
+    ],
+    "description": "A review of the physiological changes measured in long-duration astronauts and what they imply for a mission that would keep a crew in transit for roughly three years with no resupply.",
+    "takeaway": "The hardest part of a Mars mission may not be the rocket but keeping a human body functional for the journey."
+  },
+  {
+    "id": "stem-700",
+    "youtubeId": "A0FZgCiJGrg",
+    "title": "Where Did the Big Bang Happen?",
+    "coreQuestion": "If the universe began in an explosion, where was the centre of that explosion?",
+    "channel": "Fermilab",
+    "category": "Space",
+    "difficulty": "Foundational",
+    "duration": "7 min",
+    "concepts": [
+      "Big Bang",
+      "Cosmic Expansion",
+      "Observable Universe",
+      "Cosmological Principle"
+    ],
+    "description": "A physicist dismantles the mental image of a firework in empty space and replaces it with expansion of space itself, which has no centre and no edge.",
+    "takeaway": "The Big Bang happened everywhere at once; there is no point in the universe you can point to as its origin."
   }
 ]
