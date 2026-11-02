@@ -9430,5 +9430,76 @@
     ],
     "description": "Amoeba Sisters introduces genetic engineering, explaining how DNA is cut, inserted and expressed to alter organisms.",
     "takeaway": "Genetic engineering gives precise control over traits by rewriting the instructions in DNA."
+  },
+  {
+    "id": "stem-525",
+    "youtubeId": "FSyAehMdpyI",
+    "title": "The Nucleus: Crash Course Chemistry #1",
+    "coreQuestion": "What is an atomic nucleus made of, and what holds it together?",
+    "channel": "CrashCourse",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Atomic Nucleus",
+      "Protons",
+      "Neutrons",
+      "Strong Nuclear Force"
+    ],
+    "description": "Hank Green tours the atomic nucleus: protons, neutrons and the strong nuclear force that overcomes electrostatic repulsion to bind the nucleus together, plus a look at isotopes and radioactive decay.",
+    "takeaway": "The nucleus is a dense core of protons and neutrons held together by the strong nuclear force, far stronger than electromagnetism at short range."
+  },
+  {
+    "id": "stem-526",
+    "youtubeId": "d6Pcp944sRI",
+    "title": "Making purple gold",
+    "coreQuestion": "Can gold and aluminium be combined into a purple intermetallic alloy?",
+    "channel": "NileRed",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Gold",
+      "Aluminium",
+      "Intermetallic",
+      "Alloy"
+    ],
+    "description": "NileRed attempts to make purple gold, an intermetallic compound of gold and aluminium, walking through alloy formation, oxidation and careful temperature control.",
+    "takeaway": "Purple gold is a real intermetallic alloy, but it is brittle and tricky to make without the right stoichiometry and conditions."
+  },
+  {
+    "id": "stem-527",
+    "youtubeId": "HcgpUkcYXfc",
+    "title": "The Professor's Top 10 - Periodic Table of Videos",
+    "coreQuestion": "Which elements does a career chemist rate as the most remarkable?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "43 min",
+    "concepts": [
+      "Elements",
+      "Periodic Table",
+      "Chemical Properties"
+    ],
+    "description": "Martyn Poliakoff picks ten favourite elements from the periodic table and explains what makes each one chemically distinctive after a career in chemistry.",
+    "takeaway": "The periodic table is full of elements with unique personalities, from explosively reactive metals to dense, stubborn transition metals."
+  },
+  {
+    "id": "stem-528",
+    "youtubeId": "PT38gaGciP4",
+    "title": "How Air Conditioning Works",
+    "coreQuestion": "How does an air conditioner move heat from indoors to outdoors using refrigerant chemistry?",
+    "channel": "Reactions",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "6 min",
+    "concepts": [
+      "Refrigerant",
+      "Phase Change",
+      "Heat Pump",
+      "Thermodynamics"
+    ],
+    "description": "The American Chemical Society's Reactions series explains how air conditioners use evaporating and condensing refrigerant to move heat against the temperature gradient.",
+    "takeaway": "Air conditioners don't create cold; they move heat from inside a building to the outside using a refrigerant that cycles between liquid and gas."
   }
 ]

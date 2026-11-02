@@ -2,6 +2,7 @@ import {
   Atom,
   Cpu,
   Dna,
+  FlaskConical,
   LayoutGrid,
   Orbit,
   Sigma,
@@ -55,6 +56,12 @@ export const CATEGORY_META = {
     dot: 'bg-yellow-400',
     text: 'text-yellow-300',
     chip: 'border-yellow-400/25 bg-yellow-400/10 text-yellow-300',
+  },
+  Chemistry: {
+    icon: FlaskConical,
+    dot: 'bg-red-400',
+    text: 'text-red-300',
+    chip: 'border-red-400/25 bg-red-400/10 text-red-300',
   },
 };
 
