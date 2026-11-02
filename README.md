@@ -192,7 +192,11 @@ Configure the key in **Settings → Secrets and variables → Actions**:
 | Name | Type | Required | Purpose |
 | --- | --- | --- | --- |
 | `GEMINI_API_KEY` | secret | yes | API key from [Google AI Studio](https://aistudio.google.com/apikey). |
-| `GEMINI_MODEL` | variable | no | Model override. Defaults to `gemini-3.8-flash`, falling back to `gemini-3.6-flash`. |
+
+The model is hardcoded in the script, so no repository variable is needed:
+`gemini-3.8-flash`, falling back to `gemini-3.6-flash` if that id is
+unavailable for the key. To try a different model locally, set `GEMINI_MODEL`
+in your own shell; an empty value is ignored.
 
 Run it by hand from the **Actions** tab (**Add daily video → Run workflow**), or
 locally:

@@ -21,8 +21,8 @@ Usage
 Environment
 -----------
 ``GEMINI_API_KEY``  Required. Key from https://aistudio.google.com/apikey
-``GEMINI_MODEL``    Optional model override, e.g. ``gemini-3.8-flash``. The
-                    built-in fallbacks are tried when a model is unavailable.
+``GEMINI_MODEL``    Optional local override for the hardcoded default model.
+                    Unset, empty or whitespace-only values are ignored.
 
 Only the Python standard library is used.
 """
@@ -30,6 +30,7 @@ Only the Python standard library is used.
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import os
 import random
@@ -53,8 +54,10 @@ USER_AGENT = "STEMStream-Curation/1.0 (+https://github.com/)"
 GEMINI_ENDPOINT = (
     "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 )
-# First entry is the default; the rest are fallbacks if a model id disappears.
-DEFAULT_MODELS = ("gemini-3.8-flash", "gemini-3.6-flash")
+# Hardcoded so the workflow needs no repository variable. The second entry is
+# used automatically if the first model id stops existing for the given key.
+DEFAULT_MODEL = "gemini-3.8-flash"
+DEFAULT_MODELS = (DEFAULT_MODEL, "gemini-3.6-flash")
 MAX_ATTEMPTS_PER_SECTION = 3
 RETRYABLE_STATUS = (408, 429, 500, 502, 503, 504)
 ID_SUFFIX_RE = re.compile(r"^stem-(\d+)$")
@@ -226,6 +229,15 @@ def generate(
                 time.sleep(delay)
                 continue
             raise GeminiError(f"could not reach the Gemini API ({error.reason})") from error
+        except (TimeoutError, http.client.HTTPException) as error:
+            # A stalled or dropped response surfaces as a bare timeout rather
+            # than URLError; one slow call must not end the whole run.
+            if attempt < 3:
+                delay = _retry_delay(None, attempt)
+                print(f"  - Gemini stalled for {category} ({error}), retrying in {delay:.0f}s")
+                time.sleep(delay)
+                continue
+            raise GeminiError(f"Gemini request stalled ({error})") from error
 
     if response is None:
         raise GeminiError("Gemini did not answer after four attempts")
