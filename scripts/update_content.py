@@ -44,7 +44,7 @@ DATA_PATH = os.path.join(REPO_ROOT, "src", "data", "data.json")
 VALID_CATEGORIES = (
     "Physics",
     "Space",
-    "Computer Science",
+    "Emerging Technology",
     "Engineering",
     "Biology",
     "Math",

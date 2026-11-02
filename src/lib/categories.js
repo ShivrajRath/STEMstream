@@ -1,6 +1,6 @@
 import {
   Atom,
-  Cpu,
+  BrainCircuit,
   Dna,
   FlaskConical,
   LayoutGrid,
@@ -33,11 +33,11 @@ export const CATEGORY_META = {
     text: 'text-violet-300',
     chip: 'border-violet-400/25 bg-violet-400/10 text-violet-300',
   },
-  'Computer Science': {
-    icon: Cpu,
-    dot: 'bg-emerald-400',
-    text: 'text-emerald-300',
-    chip: 'border-emerald-400/25 bg-emerald-400/10 text-emerald-300',
+  'Emerging Technology': {
+    icon: BrainCircuit,
+    dot: 'bg-cyan-400',
+    text: 'text-cyan-300',
+    chip: 'border-cyan-400/25 bg-cyan-400/10 text-cyan-300',
   },
   Engineering: {
     icon: Wrench,
