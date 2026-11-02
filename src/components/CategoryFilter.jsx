@@ -2,10 +2,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CATEGORIES, getCategoryMeta } from '../lib/categories';
 
-export default function CategoryFilter({ activeCategory, counts, onChange }) {
+export default function CategoryFilter({ activeCategory, counts, onChange, tvMode = false }) {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
 
   const updateScrollState = useCallback(() => {
     const element = scrollRef.current;
@@ -32,6 +33,51 @@ export default function CategoryFilter({ activeCategory, counts, onChange }) {
     };
   }, [updateScrollState]);
 
+  // TV mode keyboard navigation for categories
+  useEffect(() => {
+    if (!tvMode) {
+      setFocusedIndex(-1);
+      return;
+    }
+
+    // Set initial focus to first category when TV mode is enabled
+    if (focusedIndex === -1) {
+      const activeIndex = CATEGORIES.indexOf(activeCategory);
+      setFocusedIndex(activeIndex >= 0 ? activeIndex : 0);
+    }
+
+    const handleKeyDown = (event) => {
+      switch (event.key) {
+        case 'ArrowRight':
+          event.preventDefault();
+          setFocusedIndex((prev) => {
+            if (prev < CATEGORIES.length - 1) return prev + 1;
+            return prev;
+          });
+          break;
+        case 'ArrowLeft':
+          event.preventDefault();
+          setFocusedIndex((prev) => {
+            if (prev > 0) return prev - 1;
+            return prev;
+          });
+          break;
+        case 'ArrowDown':
+          // Allow navigation to videos
+          break;
+        case 'Enter':
+          if (focusedIndex >= 0 && focusedIndex < CATEGORIES.length) {
+            event.preventDefault();
+            onChange(CATEGORIES[focusedIndex]);
+          }
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [tvMode, activeCategory, onChange]);
+
   const scrollBy = (direction) => {
     scrollRef.current?.scrollBy({
       left: direction * 260,
@@ -44,14 +90,15 @@ export default function CategoryFilter({ activeCategory, counts, onChange }) {
       <div className="relative mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8">
         <div
           ref={scrollRef}
-          className="no-scrollbar flex items-center gap-2 overflow-x-auto py-2.5"
+          className={`no-scrollbar flex items-center gap-2 overflow-x-auto ${tvMode ? 'py-4' : 'py-2.5'}`}
           role="group"
           aria-label="Filter videos by category"
         >
-          {CATEGORIES.map((category) => {
+          {CATEGORIES.map((category, index) => {
             const meta = getCategoryMeta(category);
             const Icon = meta.icon;
             const active = activeCategory === category;
+            const isFocused = tvMode && focusedIndex === index;
 
             return (
               <button
@@ -59,21 +106,29 @@ export default function CategoryFilter({ activeCategory, counts, onChange }) {
                 type="button"
                 aria-pressed={active}
                 onClick={() => onChange(category)}
-                className={`group inline-flex shrink-0 items-center gap-2 rounded-full border px-3.5 py-1.5 text-[13px] font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090a] ${
+                className={`group inline-flex shrink-0 items-center gap-2 rounded-full border font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08090a] ${
+                  tvMode
+                    ? 'px-5 py-2.5 text-base'
+                    : 'px-3.5 py-1.5 text-[13px]'
+                } ${
                   active
                     ? 'border-white bg-white text-[#0b0c0e] shadow-[0_2px_12px_rgba(255,255,255,0.12)]'
                     : 'border-white/[0.08] bg-white/[0.035] text-white/60 hover:border-white/20 hover:bg-white/[0.07] hover:text-white'
+                } ${
+                  isFocused && tvMode ? 'ring-2 ring-emerald-400 ring-offset-2 ring-offset-[#08090a]' : ''
                 }`}
               >
                 <Icon
                   aria-hidden="true"
-                  className={`h-3.5 w-3.5 ${
-                    active ? 'text-[#0b0c0e]' : meta.text
-                  }`}
+                  className={tvMode ? 'h-5 w-5' : 'h-3.5 w-3.5'}
                 />
                 <span>{category}</span>
                 <span
-                  className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums ${
+                  className={`rounded-full font-semibold tabular-nums ${
+                    tvMode
+                      ? 'px-2 py-0.5 text-xs'
+                      : 'px-1.5 py-0.5 text-[10px]'
+                  } ${
                     active
                       ? 'bg-black/10 text-black/60'
                       : 'bg-white/[0.06] text-white/30 group-hover:text-white/50'
