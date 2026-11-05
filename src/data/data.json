@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-747",
+    "youtubeId": "qgVFkRn8f10",
+    "title": "Enzymes (Updated)",
+    "coreQuestion": "How do enzymes act as biological catalysts to speed up metabolic reactions?",
+    "channel": "Amoeba Sisters",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "9 min",
+    "concepts": [
+      "catalyst",
+      "active site",
+      "substrate",
+      "denaturation"
+    ],
+    "description": "This animated explainer illustrates how enzymes function as protein catalysts in metabolic processes. It explains the model of enzyme-substrate binding and demonstrates how environmental factors like pH and temperature affect reaction rates.",
+    "takeaway": "Enzymes lower the activation energy required for biochemical reactions, enabling essential life processes to occur rapidly under physiological conditions."
+  },
+  {
     "id": "stem-746",
     "youtubeId": "L_LUpnjgPso",
     "title": "Fireplace Ambience – Cozy Fire for Relaxation & Background Viewing",
