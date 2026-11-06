@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-748",
+    "youtubeId": "HZGCoVF3YvM",
+    "title": "Bayes theorem, the geometry of changing beliefs",
+    "coreQuestion": "How does Bayes' theorem update probabilities geometrically when new evidence arrives?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Bayes' Theorem",
+      "Prior Probability",
+      "Posterior Probability",
+      "Conditional Probability"
+    ],
+    "description": "Grant Sanderson illustrates Bayes' theorem using geometric area diagrams to visualize prior beliefs and likelihood ratios. The video shows how observing new evidence systematically updates the probability of a hypothesis.",
+    "takeaway": "Bayes' theorem is a geometric re-weighting of possibility space that updates prior probabilities in light of new evidence."
+  },
+  {
     "id": "stem-747",
     "youtubeId": "qgVFkRn8f10",
     "title": "Enzymes (Updated)",
