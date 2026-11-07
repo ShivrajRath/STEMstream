@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-749",
+    "youtubeId": "nxebQZUVvTg",
+    "title": "VSEPR Theory: Introduction",
+    "coreQuestion": "How does VSEPR theory predict the three-dimensional shapes of molecules?",
+    "channel": "Tyler DeWitt",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "13 min",
+    "concepts": [
+      "VSEPR theory",
+      "electron domain",
+      "molecular geometry",
+      "valence electrons"
+    ],
+    "description": "This video introduces Valence Shell Electron Pair Repulsion (VSEPR) theory and demonstrates how negative electron pairs surrounding a central atom dictate molecular shape. Through physical models and step-by-step examples, it shows how to translate two-dimensional Lewis structures into 3D geometries such as linear, trigonal planar, and tetrahedral.",
+    "takeaway": "Electron pairs around a central atom repel one another and arrange themselves as far apart as possible to minimize repulsion, dictating the molecule's 3D shape."
+  },
+  {
     "id": "stem-748",
     "youtubeId": "HZGCoVF3YvM",
     "title": "Bayes theorem, the geometry of changing beliefs",
