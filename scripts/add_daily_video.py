@@ -83,6 +83,35 @@ YOUTUBE_URL_ID_RE = re.compile(
 )
 BARE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 
+# YouTube's oEmbed endpoint only proves a video exists and allows embedding;
+# it says nothing about the subject. Titles or channels that look like
+# ambient/relaxation uploads are never a fit for STEMStream, no matter how
+# calm they are.
+NON_STEM_TITLE_WORDS = (
+    "fireplace", "ambience", "relaxation", "relaxing", "cozy", "cosy",
+    "meditation",
+)
+NON_STEM_TITLE_PHRASES = (
+    "fire place", "cozy fire", "cosy fire", "sleep music", "white noise",
+    "nature sounds", "background music", "background noise",
+    "background viewing", "ambient music", "ambient noise",
+    "chillhop", "chill hop", "study beats",
+)
+
+
+def looks_non_stem(title: str, channel: str) -> str | None:
+    """Return a reason when the title or channel looks like ambient or
+    relaxation content rather than STEM education, else None."""
+    haystack = " ".join((title or "", channel or "")).lower()
+    for word in NON_STEM_TITLE_WORDS:
+        if re.search(rf"\b{re.escape(word)}\b", haystack):
+            return f"title/channel looks like non-STEM ambient content ({word!r})"
+    for phrase in NON_STEM_TITLE_PHRASES:
+        if phrase in haystack:
+            return f"title/channel looks like non-STEM ambient content ({phrase!r})"
+    return None
+
+
 RECOMMENDATION_SCHEMA = {
     "type": "object",
     "properties": {
@@ -200,6 +229,9 @@ Rules
 - Already curated ids: {taken_ids}
 - Prefer long-form explainers (roughly 8 to 45 minutes) from credible science,
   engineering or education creators. Substance over hype, idea over channel.
+- It must be genuine STEM education. Never recommend ambient, relaxation,
+  fireplace, sleep, lo-fi or background-noise uploads — those are not a fit
+  for STEMStream even if they are public and embeddable.
 - coreQuestion: the single question the video answers, phrased as a question.
 - description: two or three sentences on what the video actually shows.
 - takeaway: the one idea a viewer should leave with.
@@ -381,6 +413,17 @@ def _pick_entry(
         if metadata is None:
             rejected.append(f"{video_id} is not a public, embeddable video")
             print(f"  - {category}: {video_id} is unavailable or not embeddable")
+            continue
+
+        # YouTube proves the upload is public and embeddable; it does not
+        # prove it is STEM. Reject ambient/relaxation uploads before they
+        # reach the catalogue.
+        title = metadata.get("title") or candidate.get("title")
+        channel = metadata.get("author_name") or candidate.get("channel")
+        reason = looks_non_stem(title, channel)
+        if reason:
+            rejected.append(reason)
+            print(f"  - {category}: {reason} ({video_id})")
             continue
 
         try:

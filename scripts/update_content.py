@@ -55,6 +55,20 @@ VALID_DIFFICULTIES = ("Foundational", "Intermediate", "Deep Dive")
 YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 USER_AGENT = "STEMStream-Catalogue/1.0 (+https://github.com/)"
 
+# Titles or channels that look like ambient/relaxation uploads are never a
+# fit for STEMStream. Failing the catalogue check on them keeps such uploads
+# out of the repository even if a curation run ever lets one through.
+CONTENT_CHECK_TITLE_WORDS = (
+    "fireplace", "ambience", "relaxation", "relaxing", "cozy", "cosy",
+    "meditation",
+)
+CONTENT_CHECK_TITLE_PHRASES = (
+    "fire place", "cozy fire", "cosy fire", "sleep music", "white noise",
+    "nature sounds", "background music", "background noise",
+    "background viewing", "ambient music", "ambient noise",
+    "chillhop", "chill hop", "study beats",
+)
+
 REQUIRED_FIELDS = ("youtubeId", "title", "channel", "category", "description")
 
 
@@ -165,6 +179,30 @@ def load_catalogue(path: str = DATA_PATH) -> list[dict[str, Any]]:
     return cleaned
 
 
+def content_problems(
+    entries: list[dict[str, Any]],
+) -> list[tuple[int, str, str]]:
+    """Return (entry position, title, reason) for entries whose title or
+    channel looks like ambient or relaxation content rather than STEM."""
+    problems: list[tuple[int, str, str]] = []
+    for index, entry in enumerate(entries, start=1):
+        haystack = " ".join(
+            str(entry.get(key, "")) for key in ("title", "channel")
+        ).lower()
+        for word in CONTENT_CHECK_TITLE_WORDS:
+            if re.search(rf"\b{re.escape(word)}\b", haystack):
+                problems.append((index, str(entry.get("title", "untitled")), f"non-STEM keyword {word!r}"))
+                break
+        else:
+            for phrase in CONTENT_CHECK_TITLE_PHRASES:
+                if phrase in haystack:
+                    problems.append(
+                        (index, str(entry.get("title", "untitled")), f"non-STEM phrase {phrase!r}")
+                    )
+                    break
+    return problems
+
+
 def write_catalogue(entries: list[dict[str, Any]], path: str = DATA_PATH) -> None:
     directory = os.path.dirname(path)
     os.makedirs(directory, exist_ok=True)
@@ -251,6 +289,16 @@ def main() -> int:
         entries = load_catalogue()
     except (FileNotFoundError, ValueError, json.JSONDecodeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
+        return 1
+
+    problems = content_problems(entries)
+    if problems:
+        print(
+            "error: catalogue contains entries that look like non-STEM content:",
+            file=sys.stderr,
+        )
+        for position, title, reason in problems:
+            print(f"  entry {position} ({title!r}): {reason}", file=sys.stderr)
         return 1
 
     if not args.check:
