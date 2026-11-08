@@ -34,13 +34,13 @@ import androidx.tv.material3.Text
 import com.stemstream.tv.data.CatalogRepository
 import com.stemstream.tv.data.Library
 import com.stemstream.tv.data.Video
-import com.stemstream.tv.playback.YouTubePlayer
 import com.stemstream.tv.ui.components.NavBar
 import com.stemstream.tv.ui.components.StemMark
 import com.stemstream.tv.ui.screens.AboutScreen
 import com.stemstream.tv.ui.screens.BrowseScreen
 import com.stemstream.tv.ui.screens.HomeScreen
 import com.stemstream.tv.ui.screens.SearchScreen
+import com.stemstream.tv.ui.player.VideoPlayerScreen
 import com.stemstream.tv.ui.screens.VideoDetailDialog
 import com.stemstream.tv.ui.theme.Faint
 import com.stemstream.tv.ui.theme.Ink
@@ -68,6 +68,7 @@ fun StemStreamApp() {
     var currentTab by rememberSaveable { mutableStateOf(Tab.Home) }
     var browseCategory by rememberSaveable { mutableStateOf<String?>(null) }
     var selectedVideo by remember { mutableStateOf<Video?>(null) }
+    var playerVideo by remember { mutableStateOf<Video?>(null) }
     val stateHolder = rememberSaveableStateHolder()
 
     LaunchedEffect(reloadKey) {
@@ -137,9 +138,7 @@ fun StemStreamApp() {
                                 Tab.Home -> HomeScreen(
                                     library = library,
                                     onOpenVideo = { video -> selectedVideo = video },
-                                    onPlayVideo = { video ->
-                                        YouTubePlayer.open(context, video)
-                                    },
+                                    onPlayVideo = { video -> playerVideo = video },
                                     onBrowseCategory = { category ->
                                         browseCategory = category
                                         currentTab = Tab.Browse
@@ -187,8 +186,18 @@ fun StemStreamApp() {
                 video = video,
                 onDismiss = { selectedVideo = null },
                 onPlay = { playingVideo ->
-                    YouTubePlayer.open(context, playingVideo)
+                    selectedVideo = null
+                    playerVideo = playingVideo
                 },
+            )
+        }
+
+        // Full-screen playback stays inside the app; it is the last composable
+        // in the tree so its BackHandler claims the back key first.
+        playerVideo?.let { playing ->
+            VideoPlayerScreen(
+                video = playing,
+                onClose = { playerVideo = null },
             )
         }
     }

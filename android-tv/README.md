@@ -13,8 +13,9 @@ The Android project lives in this folder and reads the catalogue from
 - **Browse** — full grid with category filters.
 - **Search** — remote-friendly text field plus concept and category shortcuts.
 - **Video detail** — description, concepts, takeaway, and a play action.
-- **Playback** — hands the video to the official YouTube app, in the best quality
-  the device supports. Nothing is scraped, extracted or proxied.
+- **Playback** — plays inside the app. YouTube's official embedded player fills
+  the screen, with a remote-friendly bar for play/pause and ±10 s seeking. Back
+  returns to the library. Nothing is scraped, extracted or proxied.
 - D-pad navigation, focus-based scaling, back-button handling, offline browsing,
   and a 48 MB memory / 160 MB disk image cache sized for 1 GB Fire TV sticks.
 
@@ -165,7 +166,8 @@ requires uninstalling first, which is why the keystore above matters.
    - at least four 1920×1080 TV screenshots — **still to capture** on a real TV
      or Android TV emulator
 4. Complete the content rating and data-safety forms. Declare: no data collected,
-   no ads. Playback opens the YouTube app, so YouTube's own terms apply to viewing.
+   no ads. Playback uses YouTube's official embedded player, so YouTube's own
+   terms apply to viewing.
 5. Roll out to production after internal testing passes on a TV device.
 
 ### Amazon Appstore (Fire TV)
@@ -222,7 +224,8 @@ android-tv/
 │   │   ├── CatalogRepository.kt      # bundled + downloaded catalogue, ETag cache
 │   │   ├── Video.kt                  # model, JSON parser, search
 │   │   └── Categories.kt             # order and accent colours
-│   ├── playback/YouTubePlayer.kt     # hands off to the YouTube app
+│   ├── playback/YouTubePlayer.kt     # fallback handoff if embedding is blocked
+│   ├── ui/player/VideoPlayerScreen.kt # in-app WebView player + remote controls
 │   └── ui/                           # Compose TV screens and components
 ├── app/build.gradle.kts             # SDK levels, signing, catalog asset, R8
 ├── artwork/                          # store listing images
@@ -233,7 +236,7 @@ android-tv/
 
 | Symptom | Cause and fix |
 | --- | --- |
-| "No YouTube app or browser is available" | The device has no YouTube client. Install YouTube from the Fire TV / Play store; playback needs it. |
+| "This video would not start in the app" | The embed was blocked or the creator disabled embedding. Use **Open in YouTube** on that screen. |
 | New videos do not appear | The TV is offline, the Pages deployment has not finished, or the endpoint is wrong. Check About: it reports the last download time. Confirm `/catalog.json` loads in a browser. |
 | Build fails with "SDK location not found" | `local.properties` is missing or `sdk.dir` is wrong. |
 | `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | The install was signed with a different key. Uninstall the old app or use the original keystore. |
@@ -241,9 +244,11 @@ android-tv/
 
 ## Known gaps
 
-- Playback delegates to YouTube, so in-video ads are YouTube's and cannot be
-  removed by this app. The app itself has no ads, trackers or account. YouTube
-  Premium removes playback ads.
+- Playback runs YouTube's embedded player, so in-video ads are YouTube's and
+  cannot be removed by this app. The app itself has no ads, trackers or account.
+  YouTube Premium removes playback ads.
+- A creator who disables embedding cannot be played in-app; that entry shows an
+  "Open in YouTube" fallback instead.
 - Store screenshots for Play and Amazon still need to be captured on a real
   device.
 - The build has been verified by compiling debug and release APKs; it has not

@@ -1,0 +1,498 @@
+package com.stemstream.tv.ui.player
+
+import android.annotation.SuppressLint
+import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.tv.material3.Button
+import androidx.tv.material3.ButtonDefaults
+import androidx.tv.material3.Icon
+import androidx.tv.material3.MaterialTheme
+import androidx.tv.material3.Text
+import com.stemstream.tv.data.Video
+import com.stemstream.tv.playback.YouTubePlayer
+import com.stemstream.tv.ui.components.AppIcons
+import com.stemstream.tv.ui.theme.Faint
+import com.stemstream.tv.ui.theme.Ink
+import com.stemstream.tv.ui.theme.Muted
+import kotlinx.coroutines.delay
+
+/**
+ * Playback that never leaves STEMStream.
+ *
+ * The video is played by YouTube's own embedded player, so the uploader keeps
+ * the view, the analytics and the monetisation they would get in a browser.
+ * Nothing is extracted, proxied or ad-stripped: that would break YouTube's terms
+ * and, in practice, break playback within weeks.
+ *
+ * Two details make this work inside a WebView:
+ *
+ * 1. YouTube requires the embed to identify the site that is embedding it and
+ *    answers `error 153 / Video player configuration error` when the Referer is
+ *    missing, which is exactly what a WebView sends when it loads
+ *    `youtube.com/embed/...` directly. Loading the page with
+ *    [WebView.loadDataWithBaseURL] and a real origin gives the iframe a Referer.
+ * 2. A WebView's HTML controls are not remote-friendly, so the WebView is made
+ *    non-focusable and the D-pad drives the Compose bar instead, calling the
+ *    IFrame API for play/pause and seeking.
+ */
+@SuppressLint("SetJavaScriptEnabled")
+@Composable
+fun VideoPlayerScreen(
+    video: Video,
+    onClose: () -> Unit,
+) {
+    val context = LocalContext.current
+    val view = LocalView.current
+    var webView by remember { mutableStateOf<WebView?>(null) }
+    var loading by remember { mutableStateOf(true) }
+    var failed by remember { mutableStateOf(false) }
+    var playing by remember { mutableStateOf(true) }
+    var progressLabel by remember { mutableStateOf("Connecting…") }
+    val playFocusRequester = remember { FocusRequester() }
+
+    BackHandler { onClose() }
+
+    // A paused video must not let the TV's screen saver take over mid-watch.
+    DisposableEffect(view) {
+        view.keepScreenOn = true
+        onDispose { view.keepScreenOn = false }
+    }
+
+    LaunchedEffect(video.id) {
+        withFrameNanos { }
+        runCatching { playFocusRequester.requestFocus() }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            webView?.let { player ->
+                player.stopLoading()
+                player.loadUrl("about:blank")
+                (player.parent as? ViewGroup)?.removeView(player)
+                player.destroy()
+            }
+            webView = null
+        }
+    }
+
+    fun runScript(script: String, onResult: (String) -> Unit = {}) {
+        webView?.evaluateJavascript(script) { raw ->
+            onResult(raw.orEmpty().trim('"'))
+        }
+    }
+
+    // The embedded player hides its own controls on a TV, so the bar reports
+    // position and duration instead. Every second is cheap: one tiny JS call.
+    LaunchedEffect(webView) {
+        if (webView == null) return@LaunchedEffect
+        while (true) {
+            runScript(JS_PROGRESS) { raw ->
+                val parts = raw.split('|')
+                if (parts.size == 3) {
+                    val state = parts[0]
+                    val position = parts[1].toIntOrNull() ?: 0
+                    val duration = parts[2].toIntOrNull() ?: 0
+                    progressLabel = if (duration > 0) {
+                        "${clock(position)} / ${clock(duration)}"
+                    } else {
+                        clock(position)
+                    }
+                    playing = state == "playing"
+                }
+            }
+            delay(1000L)
+        }
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black),
+    ) {
+        AndroidView(
+            modifier = Modifier.fillMaxSize(),
+            factory = { ctx ->
+                WebView(ctx).apply {
+                    setBackgroundColor(android.graphics.Color.BLACK)
+
+                    // The D-pad must never disappear into the page's own focus
+                    // order; all remote input is handled by the bar below.
+                    isFocusable = false
+                    isFocusableInTouchMode = false
+                    descendantFocusability = ViewGroup.FOCUS_BLOCK_DESCENDANTS
+
+                    settings.apply {
+                        javaScriptEnabled = true
+                        domStorageEnabled = true
+                        // Lets the embed start on its own, which is what a TV
+                        // expects after pressing Play.
+                        mediaPlaybackRequiresUserGesture = false
+                        mixedContentMode = WebSettings.MIXED_CONTENT_NEVER_ALLOW
+                        allowFileAccess = false
+                        allowContentAccess = false
+                        javaScriptCanOpenWindowsAutomatically = false
+                        setSupportMultipleWindows(false)
+                        cacheMode = WebSettings.LOAD_DEFAULT
+                    }
+
+                    webChromeClient = WebChromeClient()
+
+                    webViewClient = object : WebViewClient() {
+                        /**
+                         * The player lives in a frame, so frames may navigate
+                         * freely; only the top document is pinned. That stops
+                         * "Watch on YouTube" from escaping into a browser-like
+                         * page with no remote support.
+                         */
+                        override fun shouldOverrideUrlLoading(
+                            target: WebView,
+                            request: WebResourceRequest,
+                        ): Boolean {
+                            if (!request.isForMainFrame) return false
+                            val host = request.url.host.orEmpty()
+                            return !(host.endsWith("youtube.com") ||
+                                host.endsWith("youtube-nocookie.com"))
+                        }
+
+                        override fun onPageFinished(target: WebView, url: String?) {
+                            loading = false
+                        }
+
+                        override fun onReceivedError(
+                            target: WebView,
+                            request: WebResourceRequest,
+                            error: WebResourceError,
+                        ) {
+                            if (request.isForMainFrame) {
+                                failed = true
+                                loading = false
+                            }
+                        }
+                    }
+
+                    // The base URL is what YouTube verifies as the embedding
+                    // origin, and what the Referer header is derived from.
+                    loadDataWithBaseURL(
+                        PLAYER_ORIGIN,
+                        playerHtml(video.youtubeId),
+                        "text/html",
+                        "utf-8",
+                        null,
+                    )
+                    webView = this
+                }
+            },
+            update = { player -> webView = player },
+        )
+
+        // Title strip: tells you what is playing without covering the video.
+        Row(
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .fillMaxWidth()
+                .background(
+                    Brush.verticalGradient(
+                        colorStops = arrayOf(
+                            0f to Color.Black.copy(alpha = 0.72f),
+                            1f to Color.Transparent,
+                        ),
+                    ),
+                )
+                .padding(horizontal = 40.dp, vertical = 24.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = video.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.White,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = video.channel,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Faint,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+
+        if (loading && !failed) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.55f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = "Starting the player…",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Muted,
+                )
+            }
+        }
+
+        if (failed) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Ink.copy(alpha = 0.92f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                    modifier = Modifier.padding(48.dp),
+                ) {
+                    Text(
+                        text = "This video would not start in the app.",
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = Color.White,
+                    )
+                    Text(
+                        text = "The network may be blocking it. The YouTube app can still play it.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Faint,
+                    )
+                    Button(
+                        onClick = { YouTubePlayer.open(context, video) },
+                        colors = ButtonDefaults.colors(
+                            containerColor = Color.White,
+                            contentColor = Ink,
+                            focusedContainerColor = Color.White,
+                            focusedContentColor = Ink,
+                        ),
+                    ) {
+                        Text("Open in YouTube", style = MaterialTheme.typography.labelLarge)
+                    }
+                }
+            }
+        }
+
+        // Remote control bar. This is the only focusable surface on screen.
+        Row(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .background(
+                    Brush.verticalGradient(
+                        colorStops = arrayOf(
+                            0f to Color.Transparent,
+                            1f to Color.Black.copy(alpha = 0.82f),
+                        ),
+                    ),
+                )
+                .fillMaxWidth()
+                .padding(horizontal = 40.dp, vertical = 26.dp),
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Button(
+                onClick = {
+                    runScript("toggle()") { state ->
+                        if (state == "playing" || state == "paused") playing = state == "playing"
+                    }
+                },
+                modifier = Modifier.focusRequester(playFocusRequester),
+                colors = ButtonDefaults.colors(
+                    containerColor = Color.White,
+                    contentColor = Ink,
+                    focusedContainerColor = Color.White,
+                    focusedContentColor = Ink,
+                ),
+                scale = ButtonDefaults.scale(focusedScale = 1.06f),
+                contentPadding = PaddingValues(horizontal = 22.dp, vertical = 12.dp),
+            ) {
+                Icon(
+                    imageVector = if (playing) AppIcons.Pause else AppIcons.Play,
+                    contentDescription = null,
+                    modifier = Modifier.size(22.dp),
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = if (playing) "Pause" else "Play",
+                    style = MaterialTheme.typography.labelLarge,
+                )
+            }
+
+            ControlButton("−10s") { runScript("seekBy(-10)") }
+            ControlButton("+10s") { runScript("seekBy(10)") }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Text(
+                text = progressLabel,
+                style = MaterialTheme.typography.labelLarge,
+                color = Muted,
+            )
+
+            ControlButton("YouTube app") {
+                YouTubePlayer.open(context, video)
+                onClose()
+            }
+
+            ControlButton("Close", onClick = onClose, icon = AppIcons.Close)
+        }
+    }
+}
+
+@Composable
+private fun ControlButton(
+    label: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector? = null,
+    onClick: () -> Unit,
+) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.colors(
+            containerColor = Color.White.copy(alpha = 0.12f),
+            contentColor = Color.White,
+            focusedContainerColor = Color.White,
+            focusedContentColor = Ink,
+        ),
+        scale = ButtonDefaults.scale(focusedScale = 1.06f),
+        contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp),
+    ) {
+        if (icon != null) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(18.dp),
+            )
+            Spacer(modifier = Modifier.width(7.dp))
+        }
+        Text(text = label, style = MaterialTheme.typography.labelLarge)
+    }
+}
+
+/** The site identity YouTube sees in the Referer when the embed loads. */
+private const val PLAYER_ORIGIN = "https://novicelab.org/"
+
+/** Returns `state|position|duration` in whole seconds. */
+private const val JS_PROGRESS =
+    "(function(){if(!player||!ready){return 'loading';}" +
+        "var s=player.getPlayerState();" +
+        "var l=s===1?'playing':s===2?'paused':s===3?'buffering':'state'+s;" +
+        "return l+'|'+Math.floor(player.getCurrentTime()||0)+'|'+Math.floor(player.getDuration()||0);})()"
+
+private fun clock(seconds: Int): String = "%d:%02d".format(seconds / 60, seconds % 60)
+
+private fun playerHtml(youtubeId: String): String = PLAYER_HTML.replace("__VIDEO_ID__", youtubeId)
+
+/**
+ * The IFrame Player API rather than a bare embed URL: the API creates the frame
+ * with `origin` and `widget_referrer`, and gives us stable commands instead of
+ * reaching into another document's DOM, which the browser sandbox forbids.
+ */
+private val PLAYER_HTML = """
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #000; overflow: hidden; }
+    #player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <div id="player"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    var player = null;
+    var ready = false;
+    var ORIGIN = 'https://novicelab.org';
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: '__VIDEO_ID__',
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+          rel: 0,
+          fs: 0,
+          playsinline: 1,
+          iv_load_policy: 3,
+          modestbranding: 1,
+          origin: ORIGIN,
+          widget_referrer: ORIGIN
+        },
+        events: {
+          'onReady': function (event) {
+            ready = true;
+            event.target.playVideo();
+          }
+        }
+      });
+    }
+
+    function toggle() {
+      if (!player || !ready) { return 'loading'; }
+      if (player.getPlayerState() === 1) {
+        player.pauseVideo();
+        return 'paused';
+      }
+      player.playVideo();
+      return 'playing';
+    }
+
+    function seekBy(seconds) {
+      if (!player || !ready) { return 'loading'; }
+      var position = player.getCurrentTime() || 0;
+      player.seekTo(Math.max(0, position + seconds), true);
+      return 'ok';
+    }
+
+    function progress() {
+      if (!player || !ready) { return 'loading'; }
+      var state = player.getPlayerState();
+      var label = state === 1 ? 'playing'
+        : state === 2 ? 'paused'
+        : state === 3 ? 'buffering'
+        : 'state' + state;
+      return label + '|' + Math.floor(player.getCurrentTime() || 0) +
+        '|' + Math.floor(player.getDuration() || 0);
+    }
+  </script>
+</body>
+</html>
+""".trimIndent()

@@ -205,7 +205,7 @@ fun VideoDetailDialog(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Play on YouTube",
+                                text = "Play",
                                 style = MaterialTheme.typography.labelLarge,
                             )
                         }
@@ -243,7 +243,7 @@ fun VideoDetailDialog(
 
                     Spacer(modifier = Modifier.height(9.dp))
                     Text(
-                        text = "Playback opens the official YouTube app. Back returns to STEMStream.",
+                        text = "Plays inside STEMStream with YouTube's official player. Back returns to the library.",
                         style = MaterialTheme.typography.labelSmall,
                         color = Faint,
                     )

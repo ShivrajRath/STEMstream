@@ -38,6 +38,8 @@ object AppIcons {
 
     val Play: ImageVector = icon("Play", "M8,5v14l11,-7z")
 
+    val Pause: ImageVector = icon("Pause", "M6,19h4V5H6v14zM14,5v14h4V5h-4z")
+
     val Surprise: ImageVector = icon(
         "Surprise",
         "M17.65,6.35C16.2,4.9 14.21,4 12,4c-4.42,0 -7.99,3.58 -7.99,8s3.57,8 7.99,8c3.73,0 6.84,-2.55 " +

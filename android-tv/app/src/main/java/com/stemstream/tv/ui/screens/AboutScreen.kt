@@ -116,7 +116,7 @@ fun AboutScreen(
         ) {
             InfoCard(
                 title = "Playback",
-                body = "Play opens the official YouTube app in the best quality the device supports. STEMStream does not host, extract or alter any video stream. If YouTube shows an ad, YouTube Premium is the ad-free route.",
+                body = "Play stays inside the app: YouTube's official embedded player takes over the screen, so the creator still gets the view. STEMStream does not host, extract or alter any stream. If YouTube shows an ad, YouTube Premium is the ad-free route.",
                 modifier = Modifier.weight(1f),
             )
             InfoCard(
