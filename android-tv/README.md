@@ -16,9 +16,13 @@ The Android project lives in this folder and reads the catalogue from
 - **Search** — remote-friendly text field plus concept and category shortcuts.
 - **Video detail** — description, concepts, takeaway, and a play action.
 - **Playback** — plays inside the app. YouTube's official embedded player fills
-  the screen, with a remote-friendly bar for play/pause and ±10 s seeking. Back
-  returns to the library. Nothing is scraped, extracted or proxied, so the
-  uploader keeps the view and the monetisation a browser would give them.
+  the screen. The bar and title strip leave the screen four seconds into
+  playback, leaving the picture unobstructed; any remote press brings them back,
+  a paused video keeps them up, and Back returns to the library. On the remote,
+  centre is play/pause and left/right seek ±10 seconds whether the bar is up or
+  not, so seeking never needs a trip through the buttons. Nothing is scraped,
+  extracted or proxied, so the uploader keeps the view and the monetisation a
+  browser would give them.
 - D-pad navigation, focus-based scaling, back-button handling, offline browsing,
   and a 48 MB memory / 160 MB disk image cache sized for 1 GB Fire TV sticks.
 

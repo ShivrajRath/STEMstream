@@ -22,8 +22,8 @@ android {
         applicationId = "com.stemstream.tv"
         minSdk = 23
         targetSdk = 36
-        versionCode = 7
-        versionName = "1.1.5"
+        versionCode = 13
+        versionName = "1.2.1"
 
         // The published catalogue, refreshed on launch and every few minutes.
         // Override for a fork or a local test server with

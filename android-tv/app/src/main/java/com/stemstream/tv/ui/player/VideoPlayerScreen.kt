@@ -32,10 +32,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.style.TextOverflow
@@ -84,8 +90,21 @@ fun VideoPlayerScreen(
     var webView by remember { mutableStateOf<WebView?>(null) }
     var loading by remember { mutableStateOf(true) }
     var failed by remember { mutableStateOf(false) }
-    var playing by remember { mutableStateOf(true) }
+    // Playing *or* buffering. A stick topping up its buffer reports long
+    // stretches of buffering, and counting those as "stopped" kept the bar on
+    // screen forever.
+    var active by remember { mutableStateOf(true) }
+    // True once the player reports a real duration, so the bar is never hidden
+    // before a video has actually begun.
+    var started by remember(video.id) { mutableStateOf(false) }
     var progressLabel by remember { mutableStateOf("Connecting…") }
+    // The bar is for operating the video, not for watching it: it leaves the
+    // screen a few seconds into playback and comes back on any remote press.
+    var controlsVisible by remember(video.id) { mutableStateOf(true) }
+    var interaction by remember(video.id) { mutableStateOf(0) }
+    // Set when a press has only brought the bar back: the matching key-up must
+    // be swallowed too, or it lands on the button it left focused and clicks it.
+    var swallowKeyUp by remember { mutableStateOf(false) }
     val playFocusRequester = remember { FocusRequester() }
 
     BackHandler { onClose() }
@@ -96,9 +115,27 @@ fun VideoPlayerScreen(
         onDispose { view.keepScreenOn = false }
     }
 
-    LaunchedEffect(video.id) {
-        withFrameNanos { }
-        runCatching { playFocusRequester.requestFocus() }
+    // The bar keeps focus while it is invisible, which is what lets a remote
+    // press reach the key handler below instead of falling into an empty focus
+    // owner and being dropped.
+    LaunchedEffect(controlsVisible, video.id) {
+        if (!controlsVisible) return@LaunchedEffect
+        repeat(6) {
+            withFrameNanos { }
+            if (runCatching { playFocusRequester.requestFocus() }.isSuccess) {
+                return@LaunchedEffect
+            }
+            delay(120L)
+        }
+    }
+
+    // Keep the bar on screen while a video is paused or starting; it is the only
+    // way to resume, so it must not disappear on its own.
+    LaunchedEffect(controlsVisible, active, started, interaction) {
+        if (controlsVisible && active && started) {
+            delay(CONTROLS_LINGER_MS)
+            controlsVisible = false
+        }
     }
 
     DisposableEffect(Unit) {
@@ -119,6 +156,15 @@ fun VideoPlayerScreen(
         }
     }
 
+    fun togglePlayback() {
+        runScript("toggle()") { state ->
+            if (state == "playing" || state == "buffering" || state == "paused") {
+                active = state == "playing" || state == "buffering"
+                if (!active) controlsVisible = true
+            }
+        }
+    }
+
     // The embedded player hides its own controls on a TV, so the bar reports
     // position and duration instead. Every second is cheap: one tiny JS call.
     LaunchedEffect(webView) {
@@ -135,7 +181,13 @@ fun VideoPlayerScreen(
                     } else {
                         clock(position)
                     }
-                    playing = state == "playing"
+                    if (duration > 0) started = true
+                    active = state == "playing" || state == "buffering"
+                    // Only a stopped video brings the bar back; a buffering one
+                    // is still being watched.
+                    if (state == "paused" || state == "state0" || state == "state5") {
+                        controlsVisible = true
+                    }
                 }
             }
             delay(1000L)
@@ -145,7 +197,51 @@ fun VideoPlayerScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black),
+            .background(Color.Black)
+            // Keys are caught before they reach a button: while the bar is
+            // tucked away the first press only brings it back, so a control
+            // nobody can see can never be operated by accident.
+            .onPreviewKeyEvent { event ->
+                // The remote is driven from here rather than through Compose
+                // focus: a focused-button path stopped delivering these presses
+                // once the bar had been hidden, and this way centre is always
+                // play/pause and left/right always seek while a video is up.
+                when {
+                    // The release belonging to a press we already handled must
+                    // not also reach a button and fire a second time.
+                    swallowKeyUp -> {
+                        if (event.type == KeyEventType.KeyUp) swallowKeyUp = false
+                        true
+                    }
+                    event.key == Key.Back -> false
+                    event.type == KeyEventType.KeyUp -> false
+                    !controlsVisible -> {
+                        swallowKeyUp = true
+                        interaction++
+                        controlsVisible = true
+                        true
+                    }
+                    event.key == Key.DirectionCenter || event.key == Key.Enter -> {
+                        swallowKeyUp = true
+                        interaction++
+                        togglePlayback()
+                        true
+                    }
+                    event.key == Key.DirectionLeft -> {
+                        swallowKeyUp = true
+                        interaction++
+                        runScript("seekBy(-10)")
+                        true
+                    }
+                    event.key == Key.DirectionRight -> {
+                        swallowKeyUp = true
+                        interaction++
+                        runScript("seekBy(10)")
+                        true
+                    }
+                    else -> false
+                }
+            },
     ) {
         AndroidView(
             modifier = Modifier.fillMaxSize(),
@@ -239,9 +335,11 @@ fun VideoPlayerScreen(
             update = { player -> webView = player },
         )
 
-        // Title strip: tells you what is playing without covering the video.
+        // Title strip: tells you what is playing without covering the video. It
+        // fades out with the bar rather than being removed from the composition.
         Row(
             modifier = Modifier
+                .alpha(if (controlsVisible) 1f else 0f)
                 .align(Alignment.TopStart)
                 .fillMaxWidth()
                 .background(
@@ -325,9 +423,13 @@ fun VideoPlayerScreen(
             }
         }
 
-        // Remote control bar. This is the only focusable surface on screen.
+        // Remote control bar. This is the only focusable surface on screen, and
+        // it fades away once playback is under way. It stays composed while
+        // invisible so it keeps focus: a released focus owner would swallow the
+        // remote press that is meant to bring the bar back.
         Row(
             modifier = Modifier
+                .alpha(if (controlsVisible) 1f else 0f)
                 .align(Alignment.BottomCenter)
                 .background(
                     Brush.verticalGradient(
@@ -344,9 +446,8 @@ fun VideoPlayerScreen(
         ) {
             Button(
                 onClick = {
-                    runScript("toggle()") { state ->
-                        if (state == "playing" || state == "paused") playing = state == "playing"
-                    }
+                    interaction++
+                    togglePlayback()
                 },
                 modifier = Modifier.focusRequester(playFocusRequester),
                 colors = ButtonDefaults.colors(
@@ -359,19 +460,25 @@ fun VideoPlayerScreen(
                 contentPadding = PaddingValues(horizontal = 22.dp, vertical = 12.dp),
             ) {
                 Icon(
-                    imageVector = if (playing) AppIcons.Pause else AppIcons.Play,
+                    imageVector = if (active) AppIcons.Pause else AppIcons.Play,
                     contentDescription = null,
                     modifier = Modifier.size(22.dp),
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = if (playing) "Pause" else "Play",
+                    text = if (active) "Pause" else "Play",
                     style = MaterialTheme.typography.labelLarge,
                 )
             }
 
-            ControlButton("−10s") { runScript("seekBy(-10)") }
-            ControlButton("+10s") { runScript("seekBy(10)") }
+            ControlButton("−10s") {
+                interaction++
+                runScript("seekBy(-10)")
+            }
+            ControlButton("+10s") {
+                interaction++
+                runScript("seekBy(10)")
+            }
 
             Spacer(modifier = Modifier.weight(1f))
 
@@ -424,6 +531,9 @@ private fun ControlButton(
 private const val PLAYER_ORIGIN = "https://novicelab.org/"
 
 private const val PLAYER_LOG = "StemPlayer"
+
+/** How long the bar stays up while a video plays before it gets out of the way. */
+private const val CONTROLS_LINGER_MS = 4_000L
 
 /** Frame size, chosen quality and buffered fraction, for diagnosing a black picture. */
 private const val JS_DIAG =
@@ -546,7 +656,10 @@ private val PLAYER_HTML = """
 
     function toggle() {
       if (!player || !ready) { return 'loading'; }
-      if (player.getPlayerState() === 1) {
+      // 1 = playing, 3 = buffering. Both are running, and a buffering player
+      // must pause instead of being told to play again.
+      var state = player.getPlayerState();
+      if (state === 1 || state === 3) {
         player.pauseVideo();
         return 'paused';
       }
