@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-750",
+    "youtubeId": "1VPfZ_XzisU",
+    "title": "The Bizarre Behavior of Rotating Bodies",
+    "coreQuestion": "Why do asymmetric rotating objects spontaneously flip directions when spun around their middle axis?",
+    "channel": "Veritasium",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Intermediate Axis Theorem",
+      "Moment of Inertia",
+      "Angular Momentum",
+      "Dzhanibekov Effect"
+    ],
+    "description": "Derek Muller demonstrates the Dzhanibekov effect using spinning objects in space and on Earth. He breaks down Euler's equations of rigid body dynamics to visually explain why rotation around the axis with the intermediate moment of inertia is mathematically unstable.",
+    "takeaway": "An asymmetric object rotating about its intermediate principal axis experiences dynamic instability, causing periodic 180-degree flips in orientation."
+  },
+  {
     "id": "stem-749",
     "youtubeId": "nxebQZUVvTg",
     "title": "VSEPR Theory: Introduction",
