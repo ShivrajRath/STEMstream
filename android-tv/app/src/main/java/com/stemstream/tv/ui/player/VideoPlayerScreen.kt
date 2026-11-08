@@ -1,6 +1,7 @@
 package com.stemstream.tv.ui.player
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
@@ -172,7 +173,14 @@ fun VideoPlayerScreen(
                         cacheMode = WebSettings.LOAD_DEFAULT
                     }
 
-                    webChromeClient = WebChromeClient()
+                    webChromeClient = object : WebChromeClient() {
+                        override fun onConsoleMessage(
+                            message: android.webkit.ConsoleMessage,
+                        ): Boolean {
+                            Log.i(PLAYER_LOG, "${message.message()} (${message.lineNumber()})")
+                            return true
+                        }
+                    }
 
                     webViewClient = object : WebViewClient() {
                         /**
@@ -193,6 +201,15 @@ fun VideoPlayerScreen(
 
                         override fun onPageFinished(target: WebView, url: String?) {
                             loading = false
+                            // One line of evidence, so a black picture can be told
+                            // apart from a player that never received any frames.
+                            val probe = Runnable {
+                                target.evaluateJavascript(JS_DIAG) { raw ->
+                                    Log.i(PLAYER_LOG, "probe=$raw")
+                                }
+                            }
+                            target.postDelayed(probe, 4_000L)
+                            target.postDelayed(probe, 12_000L)
                         }
 
                         override fun onReceivedError(
@@ -406,6 +423,18 @@ private fun ControlButton(
 /** The site identity YouTube sees in the Referer when the embed loads. */
 private const val PLAYER_ORIGIN = "https://novicelab.org/"
 
+private const val PLAYER_LOG = "StemPlayer"
+
+/** Frame size, chosen quality and buffered fraction, for diagnosing a black picture. */
+private const val JS_DIAG =
+    "(function(){if(!player||!ready){return 'loading';}" +
+        "var r=player.getIframe().getBoundingClientRect();" +
+        "return 'frame='+Math.round(r.width)+'x'+Math.round(r.height)+" +
+        "' vp='+window.innerWidth+'x'+window.innerHeight+" +
+        "' quality='+player.getPlaybackQuality()+" +
+        "' frac='+(player.getVideoLoadedFraction()||0).toFixed(2)+" +
+        "' state='+player.getPlayerState();})()"
+
 /** Returns `state|position|duration` in whole seconds. */
 private const val JS_PROGRESS =
     "(function(){if(!player||!ready){return 'loading';}" +
@@ -430,7 +459,7 @@ private val PLAYER_HTML = """
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; background: #000; overflow: hidden; }
+    html, body { margin: 0; padding: 0; height: 100%; background: #05070d; overflow: hidden; }
     #player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
   </style>
 </head>
@@ -442,8 +471,18 @@ private val PLAYER_HTML = """
     var ready = false;
     var ORIGIN = 'https://novicelab.org';
 
+    // The iframe is created at the size its container has at that moment, and a
+    // WebView can still be unmeasured while the page loads. That produced a
+    // 960x0 frame: audio playing behind a black rectangle. Wait for a real
+    // viewport, then pin the frame to it whatever the container reports.
     function onYouTubeIframeAPIReady() {
+      if (window.innerHeight < 1 || window.innerWidth < 1) {
+        window.setTimeout(onYouTubeIframeAPIReady, 100);
+        return;
+      }
       player = new YT.Player('player', {
+        width: window.innerWidth,
+        height: window.innerHeight,
         videoId: '__VIDEO_ID__',
         playerVars: {
           autoplay: 1,
@@ -459,11 +498,51 @@ private val PLAYER_HTML = """
         events: {
           'onReady': function (event) {
             ready = true;
+            fit();
             event.target.playVideo();
           }
         }
       });
     }
+
+    function fit() {
+      var W = window.innerWidth;
+      var H = window.innerHeight;
+      if (W < 1 || H < 1) { return; }
+      var container = document.getElementById('player');
+      if (container) {
+        container.style.width = W + 'px';
+        container.style.height = H + 'px';
+      }
+      if (!player || !player.getIframe) { return; }
+      var frame = player.getIframe();
+      if (!frame) { return; }
+      // Explicit pixels, not percentages: a percentage height resolves to 0 in
+      // a WebView that has not been measured, which is what produced a 960x0
+      // player that played audio behind a black rectangle.
+      frame.setAttribute('width', W);
+      frame.setAttribute('height', H);
+      frame.style.position = 'absolute';
+      frame.style.top = '0';
+      frame.style.left = '0';
+      frame.style.width = W + 'px';
+      frame.style.height = H + 'px';
+      frame.style.border = '0';
+    }
+
+    // The player re-applies its own size once it finishes loading, so correct a
+    // frame that has drifted away from the viewport.
+    window.setInterval(function () {
+      if (!player || !player.getIframe) { return; }
+      var frame = player.getIframe();
+      if (!frame) { return; }
+      if (frame.offsetWidth !== window.innerWidth ||
+          frame.offsetHeight !== window.innerHeight) {
+        fit();
+      }
+    }, 2000);
+
+    window.addEventListener('resize', fit);
 
     function toggle() {
       if (!player || !ready) { return 'loading'; }

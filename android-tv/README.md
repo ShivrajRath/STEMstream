@@ -1,7 +1,9 @@
 # STEMStream for Android TV and Fire TV
 
 A native, remote-first Kotlin/Compose app for the same curated STEM catalogue the
-website uses. No web view, no analytics, no advertising SDK, no account.
+website uses. No analytics, no advertising SDK, no account to create. Playback is
+the one place a WebView appears: it hosts YouTube's official embedded player so
+watching stays inside the app.
 
 The Android project lives in this folder and reads the catalogue from
 `../src/data/data.json` — the repository copy stays the single source of truth.
@@ -15,7 +17,8 @@ The Android project lives in this folder and reads the catalogue from
 - **Video detail** — description, concepts, takeaway, and a play action.
 - **Playback** — plays inside the app. YouTube's official embedded player fills
   the screen, with a remote-friendly bar for play/pause and ±10 s seeking. Back
-  returns to the library. Nothing is scraped, extracted or proxied.
+  returns to the library. Nothing is scraped, extracted or proxied, so the
+  uploader keeps the view and the monetisation a browser would give them.
 - D-pad navigation, focus-based scaling, back-button handling, offline browsing,
   and a 48 MB memory / 160 MB disk image cache sized for 1 GB Fire TV sticks.
 
@@ -237,6 +240,7 @@ android-tv/
 | Symptom | Cause and fix |
 | --- | --- |
 | "This video would not start in the app" | The embed was blocked or the creator disabled embedding. Use **Open in YouTube** on that screen. |
+| Picture is black but the audio plays | History: the player iframe collapsed to zero height because Fire OS leaves the WebView unmeasured while the page loads. The page now gives the iframe explicit pixel dimensions and re-checks it every two seconds. `adb logcat -s StemPlayer` prints `frame=…x… vp=…` and the chosen `quality` if it ever recurs. |
 | New videos do not appear | The TV is offline, the Pages deployment has not finished, or the endpoint is wrong. Check About: it reports the last download time. Confirm `/catalog.json` loads in a browser. |
 | Build fails with "SDK location not found" | `local.properties` is missing or `sdk.dir` is wrong. |
 | `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | The install was signed with a different key. Uninstall the old app or use the original keystore. |
@@ -251,5 +255,9 @@ android-tv/
   "Open in YouTube" fallback instead.
 - Store screenshots for Play and Amazon still need to be captured on a real
   device.
-- The build has been verified by compiling debug and release APKs; it has not
-  been exercised on a physical TV in this environment.
+- Verified on a Fire TV Stick 4K (Fire OS 6 / Android 7.1): catalogue sync,
+  navigation and playback all run. The player reports `frame=960x540 vp=960x540`,
+  `quality=hd1080`, with about 87% of the picture area changing between frames
+  four seconds apart. Not yet exercised on Google TV hardware.
+- The player iframe is sized in pixels and re-fitted by a two-second watchdog,
+  because this WebView never resolves percentage heights reliably.
