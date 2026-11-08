@@ -245,6 +245,17 @@ The workflow requests:
 
 No personal access token or repository secret is required.
 
+## Android TV and Fire TV app
+
+A native Kotlin/Compose app for televisions lives in [`android-tv/`](android-tv/).
+It reads the same `src/data/data.json` catalogue, ships a snapshot inside the APK
+for offline browsing, and refreshes from `catalog.json` — which this Vite build
+publishes next to the site — so a daily curation commit reaches televisions
+without a new APK.
+
+See [`android-tv/README.md`](android-tv/README.md) for building a signed APK and
+installing it on Fire TV and Android TV.
+
 ## Privacy
 
 Playback uses the privacy-enhanced `www.youtube-nocookie.com` embed domain.

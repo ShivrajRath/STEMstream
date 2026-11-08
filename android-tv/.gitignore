@@ -1,0 +1,16 @@
+# A .gitignore inside android-tv/ is matched relative to this directory, so
+# these patterns must not repeat the android-tv/ prefix.
+
+# Local SDK path and signing material — never commit either.
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Build output and tool caches
+.gradle/
+build/
+app/build/
+.kotlin/
+.idea/
+captures/
