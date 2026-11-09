@@ -19,10 +19,13 @@ The Android project lives in this folder and reads the catalogue from
   the screen. The bar and title strip leave the screen four seconds into
   playback, leaving the picture unobstructed; any remote press brings them back,
   a paused video keeps them up, and Back returns to the library. A hairline of
-  progress stays along the very bottom edge while the bar is away, so position
-  is still visible without a control over the picture. On the remote,
-  centre is play/pause and left/right seek ±10 seconds whether the bar is up or
-  not, so seeking never needs a trip through the buttons. Nothing is scraped,
+  progress stays along the very bottom edge while the bar is away, so position  is still visible without a control over the picture. Closed captions are
+  switched off: `cc_load_policy=0` cannot do that (the parameter only ever
+  forces captions *on*), and YouTube loads its captions module after the player
+  is ready, so the module is unloaded whenever it appears and on every play
+  start. On the remote, centre is play/pause and left/right seek ±10 seconds
+  whether the bar is up or not, so seeking never needs a trip through the
+  buttons. Nothing is scraped,
   extracted or proxied, so the uploader keeps the view and the monetisation a
   browser would give them.
 - D-pad navigation, focus-based scaling, back-button handling, offline browsing,

@@ -571,6 +571,10 @@ private const val JS_DIAG =
         "' vp='+window.innerWidth+'x'+window.innerHeight+" +
         "' quality='+player.getPlaybackQuality()+" +
         "' frac='+(player.getVideoLoadedFraction()||0).toFixed(2)+" +
+        "' cc='+(function(){try{var o=player.getOptions()||[];" +
+        "if(o.indexOf('captions')<0){return 'off';}" +
+        "var t=player.getOption('captions','track');" +
+        "return t&&t.languageCode?t.languageCode:'off';}catch(e){return 'off';}})()+" +
         "' state='+player.getPlayerState();})()"
 
 /** Returns `state|position|duration` in whole seconds. */
@@ -625,6 +629,7 @@ private val PLAYER_HTML = """
         playerVars: {
           autoplay: 1,
           controls: 1,
+          cc_load_policy: 0,
           rel: 0,
           fs: 0,
           playsinline: 1,
@@ -637,8 +642,18 @@ private val PLAYER_HTML = """
           'onReady': function (event) {
             ready = true;
             fit();
+            hideCaptions();
+            window.setInterval(hideCaptions, 3000);
             event.target.playVideo();
-          }
+          },
+          'onStateChange': function (event) {
+            // An advert can switch captions back on, so re-clear them whenever
+            // playback starts.
+            if (event.data === 1) { hideCaptions(); }
+          },
+          // The captions module is loaded *after* the player is ready, which is
+          // why clearing them once in onReady never sticks.
+          'onApiChange': function () { hideCaptions(); }
         }
       });
     }
@@ -681,6 +696,15 @@ private val PLAYER_HTML = """
     }, 2000);
 
     window.addEventListener('resize', fit);
+
+    // Subtitles belong off on a TV: the player can start with the viewer's
+    // YouTube preference enabled, and an advert can switch them back on.
+    function hideCaptions() {
+      if (!player || !ready) { return; }
+      try { player.unloadModule('captions'); } catch (e) {}
+      try { player.unloadModule('cc'); } catch (e) {}
+      try { player.setOption('captions', 'track', {}); } catch (e) {}
+    }
 
     function toggle() {
       if (!player || !ready) { return 'loading'; }

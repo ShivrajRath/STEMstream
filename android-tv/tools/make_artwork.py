@@ -63,9 +63,9 @@ def atom_mark(
     """
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     center = size / 2
-    oval_w = size * 0.80
-    oval_h = size * 0.30
-    stroke = max(3, round(size * 0.030))
+    oval_w = size * 0.82
+    oval_h = size * 0.32
+    stroke = max(3, round(size * 0.038))
     box = (
         center - oval_w / 2,
         center - oval_h / 2,
@@ -82,10 +82,10 @@ def atom_mark(
 
     draw = ImageDraw.Draw(canvas)
     # A dark disc behind the nucleus keeps it readable where the orbits cross.
-    halo = size * 0.115
+    halo = size * 0.125
     draw.ellipse((center - halo, center - halo, center + halo, center + halo), fill=INK)
 
-    dot = size * 0.085
+    dot = size * 0.095
     draw.ellipse((center - dot, center - dot, center + dot, center + dot), fill=accent)
     highlight = dot * 0.34
     draw.ellipse(
@@ -101,31 +101,31 @@ def atom_mark(
 
 
 def icon(size: int, round_icon: bool = False) -> Image.Image:
-    """A dark launcher icon with a warm accent glow and the atom mark."""
+    """A dark rounded tile with a warm glow and a bold atom mark.
+
+    The legacy launcher icon is masked to a rounded square so it reads as a
+    deliberate tile on Fire TV rather than a raw square of bitmap.
+    """
     scale = 4
     big = size * scale
     image = Image.new("RGBA", (big, big), INK)
 
-    glow = soft_glow(int(big * 1.25), ACCENT, 0.42)
-    image.alpha_composite(glow, (int(-big * 0.34), int(big * 0.08)))
+    glow = soft_glow(int(big * 1.35), ACCENT, 0.46)
+    image.alpha_composite(glow, (int(-big * 0.38), int(big * 0.02)))
 
-    ring = Image.new("RGBA", (big, big), (0, 0, 0, 0))
-    inset = int(big * 0.19)
-    ImageDraw.Draw(ring).ellipse(
-        (inset, inset, big - inset, big - inset),
-        outline=(255, 255, 255, 22),
-        width=max(2, int(big * 0.004)),
-    )
-    image = Image.alpha_composite(image, ring)
-
-    mark = atom_mark(int(big * 0.62))
+    mark = atom_mark(int(big * 0.66))
     image.alpha_composite(mark, ((big - mark.width) // 2, (big - mark.height) // 2))
 
+    mask = Image.new("L", (big, big), 0)
     if round_icon:
-        mask = Image.new("L", (big, big), 0)
         ImageDraw.Draw(mask).ellipse((0, 0, big - 1, big - 1), fill=255)
-        image.putalpha(mask)
-
+    else:
+        ImageDraw.Draw(mask).rounded_rectangle(
+            (0, 0, big - 1, big - 1),
+            radius=int(big * 0.22),
+            fill=255,
+        )
+    image.putalpha(mask)
     return image.resize((size, size), Image.Resampling.LANCZOS)
 
 
