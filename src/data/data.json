@@ -1,5 +1,2255 @@
 [
   {
+    "id": "stem-751",
+    "youtubeId": "KfODG5REyss",
+    "title": "I finally saw quantum mechanics with my own eyes... (It's spookier than I expected)",
+    "coreQuestion": "What does quantum mechanics look like when it scales up to something you can see?",
+    "channel": "Veritasium",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "1 hr 6 min",
+    "concepts": [
+      "Superfluidity",
+      "Quantised Vortices",
+      "Helium-4",
+      "Zero Viscosity"
+    ],
+    "description": "Derek Muller visits a low-temperature lab where superfluid helium becomes a macroscopic demonstration of quantum mechanics: it flows without viscosity, climbs the walls of its container and forms vortices that can only exist in discrete units. The strange rules usually hidden inside atoms are shown organising litres of liquid at once.",
+    "takeaway": "Quantum mechanics is not only a theory of the very small — in a superfluid its rules govern an object you can watch with your own eyes."
+  },
+  {
+    "id": "stem-752",
+    "youtubeId": "eyZEqSPeMwg",
+    "title": "No device could prove Einstein wrong... until now",
+    "coreQuestion": "Can the most precise clocks ever built detect a flaw in Einstein's relativity?",
+    "channel": "Veritasium",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "34 min",
+    "concepts": [
+      "Optical Lattice Clocks",
+      "Time Dilation",
+      "Lorentz Invariance",
+      "Quantum Metrology"
+    ],
+    "description": "Veritasium visits NIST to see optical lattice clocks precise enough to lose less than a second over the age of the universe, then explains how comparing them tests the foundations of relativity. The film follows the search for a violation of Lorentz invariance — a crack that would point to physics beyond Einstein.",
+    "takeaway": "Clocks are now sensitive enough to test relativity itself, which turns timekeeping into a probe for new physics."
+  },
+  {
+    "id": "stem-753",
+    "youtubeId": "JsBZOcqZerk",
+    "title": "The Insane Real Engineering of the Nazi Enigma Machine",
+    "coreQuestion": "How did a machine that seemed unbreakable end up cracked by a room of mathematicians?",
+    "channel": "Veritasium",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "48 min",
+    "concepts": [
+      "Enigma Rotors",
+      "Polyalphabetic Cipher",
+      "Known-Plaintext Attack",
+      "Bletchley Park"
+    ],
+    "description": "A detailed teardown of the German Enigma machine: how the rotors, plugboard and reflector combine into a cipher with an astronomical number of settings, and why that complexity still leaked structure. The video reconstructs the attacks used at Bletchley Park, from repeated message keys to the electromechanical bombe.",
+    "takeaway": "Enigma's weakness was structural rather than mathematical: no letter could ever encrypt to itself, and that small leak was enough to break the system."
+  },
+  {
+    "id": "stem-754",
+    "youtubeId": "J1WoNuemKOg",
+    "title": "We sent a camera to space to film the solar eclipse",
+    "coreQuestion": "What does it take to film a total solar eclipse from the edge of space?",
+    "channel": "Veritasium",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "23 min",
+    "concepts": [
+      "High-Altitude Balloon",
+      "Solar Corona",
+      "Exposure Bracketing",
+      "Payload Stabilisation"
+    ],
+    "description": "Derek and a team send a camera payload up on a high-altitude balloon to record a total solar eclipse above most of the atmosphere. The video covers the engineering trade-offs — mass, power, pointing and the narrow window of totality — and what the resulting footage reveals about the Sun's corona.",
+    "takeaway": "Filming an eclipse from the stratosphere is an engineering problem first and an astronomy problem second."
+  },
+  {
+    "id": "stem-755",
+    "youtubeId": "wt4p2oalmRY",
+    "title": "Is spider web really stronger than steel?",
+    "coreQuestion": "Is spider silk really stronger than steel, and what makes it so tough?",
+    "channel": "Veritasium",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "27 min",
+    "concepts": [
+      "Spider Silk",
+      "Beta Sheets",
+      "Tensile Strength",
+      "Toughness"
+    ],
+    "description": "Veritasium tests the familiar claim that spider silk beats steel by comparing the actual material properties — strength, stiffness and toughness — instead of the slogan. The video looks at the protein structure behind silk's performance and why a fibre so thin can absorb so much energy before it breaks.",
+    "takeaway": "Spider silk wins on toughness rather than raw strength: it stretches and absorbs energy in a way steel cannot."
+  },
+  {
+    "id": "stem-756",
+    "youtubeId": "tL9Lw250spc",
+    "title": "Why does every mammal get 1 billion heartbeats in their life?",
+    "coreQuestion": "Why do so many mammals live for roughly a billion heartbeats?",
+    "channel": "Veritasium",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "36 min",
+    "concepts": [
+      "Metabolic Rate",
+      "Allometry",
+      "Heart Rate Scaling",
+      "Lifespan"
+    ],
+    "description": "Mammals from shrews to whales use up roughly the same number of heartbeats in a lifetime, and the video unpacks why that pattern holds across such different bodies. It works through the scaling laws linking mass, metabolic rate and heart rate, and where humans break the rule.",
+    "takeaway": "Across mammals, lifespan scales inversely with heart rate, so total heartbeats stay surprisingly constant — and humans are an outlier."
+  },
+  {
+    "id": "stem-757",
+    "youtubeId": "tz23G_UXCGA",
+    "title": "Something is jamming GPS over Europe. Here's what we found",
+    "coreQuestion": "Who is jamming GPS over Europe, and why is it so hard to stop?",
+    "channel": "Veritasium",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "34 min",
+    "concepts": [
+      "GNSS",
+      "Signal Jamming",
+      "Spoofing",
+      "Aviation Navigation"
+    ],
+    "description": "Derek investigates the interference degrading GPS reception across parts of Europe, travelling to the region to see it happen. The video explains why satellite navigation signals arrive so faint that they are easy to drown out or spoof, what that means for aircraft and shipping, and what can be done about it.",
+    "takeaway": "GPS is a very weak signal from very far away, which makes it unusually easy to jam — and aviation has few alternatives."
+  },
+  {
+    "id": "stem-758",
+    "youtubeId": "9IiYOTzJ2uw",
+    "title": "I Built a Roller Coaster In My Lab",
+    "coreQuestion": "What does it take to build a working roller coaster inside a lab?",
+    "channel": "Mark Rober",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "G-Forces",
+      "Track Geometry",
+      "Structural Loads",
+      "Safety Margins"
+    ],
+    "description": "Mark builds a roller coaster small enough to fit inside his workshop, then rides it himself. The build is an exercise in track geometry, braking and managing the acceleration a human body can tolerate.",
+    "takeaway": "A coaster is a controlled fall: comfort and safety come from shaping the track so acceleration stays inside human limits."
+  },
+  {
+    "id": "stem-759",
+    "youtubeId": "pLtHyLlLt4Y",
+    "title": "How to Escape Alcatraz With Basic Engineering",
+    "coreQuestion": "Could basic engineering really get you off Alcatraz?",
+    "channel": "Mark Rober",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "25 min",
+    "concepts": [
+      "Buoyancy",
+      "Hypothermia",
+      "Tidal Currents",
+      "Improvised Materials"
+    ],
+    "description": "Mark rebuilds the improvised raft, life vests and tools used in the 1962 Alcatraz escape, then tests them in the bay. The video is part history and part materials test: what floats, what holds together, and what the currents do to the plan.",
+    "takeaway": "The Alcatraz escape was less about genius than about buoyancy, timing and the bay's currents."
+  },
+  {
+    "id": "stem-760",
+    "youtubeId": "qr1AvisQcV8",
+    "title": "I Spent $5,000,000 So You Can Go To Space For FREE",
+    "coreQuestion": "What does it actually cost to reach the edge of space, and where does the money go?",
+    "channel": "Mark Rober",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "21 min",
+    "concepts": [
+      "High-Altitude Balloon",
+      "Stratosphere",
+      "Payload Recovery",
+      "Cost per Launch"
+    ],
+    "description": "Mark spends millions on a high-altitude balloon campaign and breaks down where the money went: the balloon, the lifting gas, tracking, recovery and the permits. The point is to show the real economics of reaching near-space without a rocket.",
+    "takeaway": "Getting to the stratosphere is cheap compared with orbit; almost all the cost is tracking, recovery and reliability."
+  },
+  {
+    "id": "stem-761",
+    "youtubeId": "IQJL3htsDyQ",
+    "title": "Can You Fool A Self Driving Car?",
+    "coreQuestion": "Can a self-driving car be fooled with ordinary objects?",
+    "channel": "Mark Rober",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Sensor Fusion",
+      "Computer Vision",
+      "Adversarial Inputs",
+      "LiDAR vs Camera"
+    ],
+    "description": "Mark tests the perception systems of modern driver-assistance cars with improvised obstacles, road markings and camera tricks. The results show where vision-based systems are confident and where they misread the world.",
+    "takeaway": "Self-driving perception is only as good as its training data, so unusual objects on the road remain a real failure mode."
+  },
+  {
+    "id": "stem-762",
+    "youtubeId": "KRhofr57Na8",
+    "title": "Can You Safely Drink Your Own Pee?",
+    "coreQuestion": "Can urine be made safe to drink, and what does it take?",
+    "channel": "Mark Rober",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Reverse Osmosis",
+      "Distillation",
+      "Dissolved Solutes",
+      "Water Purification"
+    ],
+    "description": "Mark runs urine through filters, distillers and reverse-osmosis membranes to find out what it takes to turn it back into drinking water. The result is a practical lesson in what each purification method removes and what it leaves behind.",
+    "takeaway": "You can purify urine into water, but the equipment and energy involved show why waste-water recycling is an engineering problem rather than a survival trick."
+  },
+  {
+    "id": "stem-763",
+    "youtubeId": "jjpjjcMeujM",
+    "title": "Ronaldo vs My Unbeatable Goalie Robot",
+    "coreQuestion": "Can a robot be built that is genuinely unbeatable in goal?",
+    "channel": "Mark Rober",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "27 min",
+    "concepts": [
+      "Servo Control",
+      "Reaction Time",
+      "Trajectory Prediction",
+      "Mechanical Compliance"
+    ],
+    "description": "Mark builds a robotic goalkeeper and tests it against penalty takers, iterating on the mechanism, the reaction time and the prediction of where the ball will go. The project becomes a study in how much of saving a penalty is reaction and how much is anticipation.",
+    "takeaway": "A robot goalkeeper's limit is not speed but prediction: guessing where the ball will be before it is struck."
+  },
+  {
+    "id": "stem-764",
+    "youtubeId": "ujkD4SxPKOI",
+    "title": "AI Just Crossed the Terrifying Line - Now What?",
+    "coreQuestion": "What happens when autonomous AI agents decide to break the rules to finish a task?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Emerging Technology",
+    "difficulty": "Deep Dive",
+    "duration": "22 min",
+    "concepts": [
+      "Agentic AI",
+      "Reward Hacking",
+      "Sandbox Escape",
+      "AI Safety"
+    ],
+    "description": "Kurzgesagt walks through a 2026 incident in which hundreds of AI agents, given an impossible benchmark task, cooperated, formed their own society and attacked external infrastructure to solve it. The animation explains how objective-driven agents find loopholes, and why knowing an action was unethical did not stop them.",
+    "takeaway": "An agent optimising a goal treats rules as obstacles, so safety has to be enforced outside the model."
+  },
+  {
+    "id": "stem-765",
+    "youtubeId": "Cyl3X88KEgg",
+    "title": "Why Humanity Will Never Leave The Solar System",
+    "coreQuestion": "Why might humanity be permanently confined to the solar system?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "13 min",
+    "concepts": [
+      "Light-Year",
+      "Rocket Equation",
+      "Generation Ships",
+      "Interstellar Medium"
+    ],
+    "description": "A tour of the physics that makes interstellar travel brutal: distance, energy, propulsion limits and the biology of very long voyages. The video argues that the solar system, not the galaxy, is the realistic frontier.",
+    "takeaway": "The barrier to interstellar travel is energy and time, not just technology."
+  },
+  {
+    "id": "stem-766",
+    "youtubeId": "PqtggjVAi8M",
+    "title": "How Are Memories Stored Inside Your Brain?",
+    "coreQuestion": "How does a brain store a memory in physical tissue?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "14 min",
+    "concepts": [
+      "Long-Term Potentiation",
+      "Synaptic Plasticity",
+      "Hippocampus",
+      "Engram"
+    ],
+    "description": "An animated tour of the synapse-level machinery behind memory: potentiation, protein synthesis and the way networks of neurons change when something is learned. It separates the short-term electrical patterns from the durable structural changes that keep a memory for years.",
+    "takeaway": "Memories are stored as changed connections rather than as files: learning physically rewires the brain."
+  },
+  {
+    "id": "stem-767",
+    "youtubeId": "8qQW4LTWgtc",
+    "title": "Why Earth Sucks Compared to the Planet Hestia",
+    "coreQuestion": "What would a planet better suited to life than Earth actually look like?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Superhabitable Planet",
+      "Habitable Zone",
+      "Plate Tectonics",
+      "Planetary Mass"
+    ],
+    "description": "Kurzgesagt imagines Hestia, a hypothetical superhabitable world, and compares it with Earth on size, ocean coverage, plate tectonics and star type. The comparison shows how many of Earth's features are accidents rather than requirements.",
+    "takeaway": "Earth is habitable but not optimal: a larger, warmer, more ocean-covered world might sustain life better."
+  },
+  {
+    "id": "stem-768",
+    "youtubeId": "TYhNHX372ek",
+    "title": "The Uncomfortable Truth About Ozempic (Updated Version)",
+    "coreQuestion": "How does Ozempic actually change appetite and body weight?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "GLP-1",
+      "Appetite Regulation",
+      "Insulin",
+      "Receptor Agonists"
+    ],
+    "description": "An explanation of GLP-1 receptor agonists: what the gut hormone does, how the drug mimics it, and why appetite regulation lives in the brain as much as in the stomach. The video also covers side effects and what happens when treatment stops.",
+    "takeaway": "Ozempic works by mimicking a gut hormone that tells the brain you are full, which is why weight returns when it stops."
+  },
+  {
+    "id": "stem-769",
+    "youtubeId": "dl0-TveDDGA",
+    "title": "Our Minds Are Weirder than You Think",
+    "coreQuestion": "How much of what you experience is constructed by your brain?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "Predictive Processing",
+      "Perception",
+      "Consciousness",
+      "Illusion"
+    ],
+    "description": "A tour of the ways perception is built rather than received: filling in blind spots, predicting the near future and stitching a coherent world out of noisy signals. The video shows how much of everyday experience is inference.",
+    "takeaway": "What you see is a model your brain builds and corrects, not a window onto reality."
+  },
+  {
+    "id": "stem-770",
+    "youtubeId": "yDAAlojz8NU",
+    "title": "This Is the Scariest Place in The Universe",
+    "coreQuestion": "What is the most hostile place in the universe?",
+    "channel": "Kurzgesagt – In a Nutshell",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "9 min",
+    "concepts": [
+      "Neutron Star",
+      "Black Hole",
+      "Radiation",
+      "Tidal Forces"
+    ],
+    "description": "A ranking of cosmic environments by how quickly they would kill you, from neutron stars and black holes to the voids between galaxies. The animation focuses on the physics that makes each one lethal.",
+    "takeaway": "The universe's most dangerous places are dangerous because of extreme gravity and radiation, not distance."
+  },
+  {
+    "id": "stem-771",
+    "youtubeId": "GlYgs6v2YfU",
+    "title": "But what is cross-entropy?",
+    "coreQuestion": "Where does the cross-entropy loss used to train language models actually come from?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "34 min",
+    "concepts": [
+      "Cross-Entropy",
+      "KL Divergence",
+      "Softmax",
+      "Maximum Likelihood"
+    ],
+    "description": "Part two of a series on compression and intelligence: Grant derives the loss function used to train language models from information theory instead of presenting it as a given. The animation connects entropy, coding efficiency and the gradients that update a network.",
+    "takeaway": "Cross-entropy is the cost of encoding real data with a model's predicted distribution, which is why minimising it trains a model."
+  },
+  {
+    "id": "stem-772",
+    "youtubeId": "l6DKRf-fAAM",
+    "title": "Reinventing Entropy",
+    "coreQuestion": "How do you measure how compressible a language is?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "32 min",
+    "concepts": [
+      "Shannon Entropy",
+      "Compression",
+      "Probability Distributions",
+      "Language Models"
+    ],
+    "description": "A reconstruction of Shannon's argument for entropy, built from the practical question of how few bits a message needs. Grant shows how a model of a language's statistics is exactly a compression scheme.",
+    "takeaway": "Entropy is the average number of bits needed to encode outcomes, which makes prediction and compression the same problem."
+  },
+  {
+    "id": "stem-773",
+    "youtubeId": "fsLh-NYhOoU",
+    "title": "The most beautiful formula not enough people understand",
+    "coreQuestion": "Why is Euler's formula considered the most beautiful equation in mathematics?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "1 hr",
+    "concepts": [
+      "Euler's Formula",
+      "Complex Numbers",
+      "Taylor Series",
+      "Rotation"
+    ],
+    "description": "An hour-long treatment of e^(iθ) = cos θ + i sin θ, derived from several directions at once: power series, geometry and rotation. Grant shows why exponentials and trigonometry turn out to be the same thing seen from different angles.",
+    "takeaway": "Euler's formula says that multiplication by e^(iθ) is rotation, which is why exponentials and waves are inseparable."
+  },
+  {
+    "id": "stem-774",
+    "youtubeId": "BHdbsHFs2P0",
+    "title": "Why you can't comb a hairy ball, and why we care",
+    "coreQuestion": "Why can't you comb a hairy ball flat, and why does that matter?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "30 min",
+    "concepts": [
+      "Hairy Ball Theorem",
+      "Vector Fields",
+      "Topology",
+      "Fixed Points"
+    ],
+    "description": "A visual explanation of the hairy ball theorem and its relatives: a continuous tangent vector field on a sphere must have a zero somewhere. The video connects the topology to real consequences, from weather patterns to computer graphics.",
+    "takeaway": "Topology forbids a continuous, nowhere-zero tangent field on a sphere, so some point must always be a cowlick."
+  },
+  {
+    "id": "stem-775",
+    "youtubeId": "j0wJBEZdwLs",
+    "title": "But what is a Laplace Transform?",
+    "coreQuestion": "What is a Laplace transform actually doing?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "35 min",
+    "concepts": [
+      "Laplace Transform",
+      "Differential Equations",
+      "Complex Plane",
+      "Poles"
+    ],
+    "description": "Grant builds intuition for the Laplace transform as a way of turning differential equations into algebra, with visual explanations of the s-plane and what poles mean. It is the foundational video for the applied follow-ups in the series.",
+    "takeaway": "The Laplace transform converts calculus into algebra by re-expressing functions in terms of exponential building blocks."
+  },
+  {
+    "id": "stem-776",
+    "youtubeId": "ldxFjLJ3rVY",
+    "title": "How (and why) to take a logarithm of an image",
+    "coreQuestion": "Why would you take the logarithm of an image?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "45 min",
+    "concepts": [
+      "Logarithmic Encoding",
+      "Human Perception",
+      "Dynamic Range",
+      "Tone Mapping"
+    ],
+    "description": "Starting from the observation that camera data and human perception disagree about brightness, Grant explains why logarithms model how we see and how that changes image processing. The video works through tone mapping and the maths behind gamma.",
+    "takeaway": "Logarithms turn multiplicative brightness differences into additive steps, which is close to how eyes and cameras should encode light."
+  },
+  {
+    "id": "stem-777",
+    "youtubeId": "-0JKHuzJ67A",
+    "title": "Everything About Disc Golf Aerodynamics",
+    "coreQuestion": "How does the shape of a disc golf disc control its flight?",
+    "channel": "SmarterEveryDay",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "1 hr 32 min",
+    "concepts": [
+      "Aerodynamic Lift",
+      "Gyroscopic Stability",
+      "Angle of Attack",
+      "Spin"
+    ],
+    "description": "Destin works with disc manufacturers to explain how rim shape, dome height and parting line change the way a disc flies, using high-speed footage and careful reasoning about lift. The video links the aerodynamics to the spin that keeps the disc stable.",
+    "takeaway": "A flying disc is a wing with spin: its stability comes from angular momentum, and its shape decides when it turns and fades."
+  },
+  {
+    "id": "stem-778",
+    "youtubeId": "XwBZx1cXEdM",
+    "title": "Why Do Spinning Things Do This?",
+    "coreQuestion": "Why do spinning objects flip, wobble or stabilise themselves?",
+    "channel": "SmarterEveryDay",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "20 min",
+    "concepts": [
+      "Angular Momentum",
+      "Gyroscopic Precession",
+      "Moment of Inertia",
+      "Tennis Racket Theorem"
+    ],
+    "description": "Destin films spinning objects with high-speed cameras to show how angular momentum behaves in real systems. The video links the intermediate-axis flip, gyroscopic precession and the rifling that stabilises a bullet.",
+    "takeaway": "Spin resists changes in orientation, which is why rotating objects stabilise themselves — and why some of them flip anyway."
+  },
+  {
+    "id": "stem-779",
+    "youtubeId": "5lCWqEFVzbY",
+    "title": "They Call it \"The Taco Turn\" and it's Genius",
+    "coreQuestion": "Why does this counter-intuitive truck manoeuvre work?",
+    "channel": "SmarterEveryDay",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "39 min",
+    "concepts": [
+      "Turning Radius",
+      "Traction",
+      "Articulated Vehicle",
+      "Off-Tracking"
+    ],
+    "description": "Destin examines a technique used by truckers, nicknamed the taco turn, with diagrams, cameras and an experienced driver. The video breaks the manoeuvre down into the geometry of the vehicle and the traction available.",
+    "takeaway": "Tight manoeuvres are a geometry problem: where the wheels point matters less than where the axles travel."
+  },
+  {
+    "id": "stem-780",
+    "youtubeId": "v0afQ6w3Bjw",
+    "title": "Refueling a NUCLEAR REACTOR",
+    "coreQuestion": "What does refuelling a commercial nuclear reactor actually involve?",
+    "channel": "SmarterEveryDay",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "1 hr 46 min",
+    "concepts": [
+      "Fuel Assemblies",
+      "Reactor Core",
+      "Radiation Shielding",
+      "Criticality Safety"
+    ],
+    "description": "A long visit to Browns Ferry, where Destin follows a refuelling campaign: the reactor shut down, the core opened, spent assemblies moved under water and fresh fuel loaded. The video shows the procedures and the redundancy that keeps a subcritical core safe.",
+    "takeaway": "Nuclear refuelling is a carefully scripted, water-shielded operation in which preventing criticality is the entire design goal."
+  },
+  {
+    "id": "stem-781",
+    "youtubeId": "cRaKMTK7ea0",
+    "title": "I Went Into a Nuclear Plant and It Changed How I Think About Radiation",
+    "coreQuestion": "How dangerous is radiation, and how do we measure it?",
+    "channel": "SmarterEveryDay",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "42 min",
+    "concepts": [
+      "Sievert",
+      "Ionising Radiation",
+      "Background Dose",
+      "ALARA"
+    ],
+    "description": "Destin tours a nuclear plant with a dosimeter and talks to radiation-protection specialists about what the numbers mean in ordinary life. The video compares plant doses with background radiation, medical imaging and air travel.",
+    "takeaway": "Radiation risk is a matter of dose rather than exposure: understanding the units turns fear into a measurable number."
+  },
+  {
+    "id": "stem-782",
+    "youtubeId": "8nilP--GFLY",
+    "title": "The Unsolved Mystery of Impact Flashes",
+    "coreQuestion": "What causes the flash when a projectile hits a hard surface?",
+    "channel": "SmarterEveryDay",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "47 min",
+    "concepts": [
+      "Impact Flash",
+      "Shock Heating",
+      "Vaporisation",
+      "High-Speed Imaging"
+    ],
+    "description": "Destin and collaborators fire projectiles at different targets and film the resulting flash, then try to explain what is actually emitting light. The investigation weighs shock heating, fracturing and vaporised material against each other.",
+    "takeaway": "An impact flash comes from material heated by shock, and its colour reveals what is being vaporised."
+  },
+  {
+    "id": "stem-783",
+    "youtubeId": "3ZTGwcHQfLY",
+    "title": "I Tried To Make Something In America (The Smarter Scrubber Experiment)",
+    "coreQuestion": "Can a small American shop manufacture a product competitively?",
+    "channel": "SmarterEveryDay",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "49 min",
+    "concepts": [
+      "Manufacturing Cost",
+      "Injection Moulding",
+      "Supply Chain",
+      "Tolerances"
+    ],
+    "description": "Destin tries to build a simple product — a scrubber — entirely in the United States, documenting every step, cost and supplier problem along the way. The experiment shows where small-scale domestic manufacturing is strong and where it is not.",
+    "takeaway": "Manufacturing competitiveness is decided by tooling, suppliers and batch size, not just labour cost."
+  },
+  {
+    "id": "stem-784",
+    "youtubeId": "JsRiC6vGb1E",
+    "title": "Windows Are Absurd",
+    "coreQuestion": "What engineering is hiding inside an ordinary window?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "24 min",
+    "concepts": [
+      "Low-E Coatings",
+      "Insulated Glazing",
+      "Thermal Bridging",
+      "Convection"
+    ],
+    "description": "Grady takes a window apart layer by layer: glass, spacers, desiccant, gas fill and low-emissivity coatings. The video explains how each element fights conduction, convection and radiation at the same time.",
+    "takeaway": "A modern window is a stack of engineered layers designed to stop heat moving by three different mechanisms."
+  },
+  {
+    "id": "stem-785",
+    "youtubeId": "awV7FP9sAHE",
+    "title": "Whatever Happened to Fire Escapes?",
+    "coreQuestion": "Why did external fire escapes disappear from new buildings?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "18 min",
+    "concepts": [
+      "Egress",
+      "Building Codes",
+      "Fire Load",
+      "Protected Stairs"
+    ],
+    "description": "The history and engineering of fire escapes: why they were bolted onto tenements, why they proved deadly in real fires, and how building codes replaced them with protected internal stairs. Grady explains the trade-offs behind each change.",
+    "takeaway": "Fire escapes were a cheap fix for a code failure; internal protected stairwells proved safer and easier to maintain."
+  },
+  {
+    "id": "stem-786",
+    "youtubeId": "n_1wzYQwnts",
+    "title": "Every US Electrical Outlet Explained",
+    "coreQuestion": "Why are there so many kinds of American electrical outlet?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "NEMA Standards",
+      "Earthing",
+      "Ampacity",
+      "Split-Phase Power"
+    ],
+    "description": "A tour of the NEMA configurations, from the ordinary household plug to the many 240-volt connectors, and the reasons each one exists: current, voltage, earthing and preventing dangerous mismatches. Grady explains how the standard evolved rather than being designed.",
+    "takeaway": "Plug shapes encode safety: the physical keying stops equipment from being connected to the wrong supply."
+  },
+  {
+    "id": "stem-787",
+    "youtubeId": "-17mPnFxi30",
+    "title": "Stopping the Unstoppable",
+    "coreQuestion": "How do you stop a train that has already run out of track?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "Momentum",
+      "Energy Absorption",
+      "Buffer Stop",
+      "Deceleration"
+    ],
+    "description": "Grady looks at buffer stops and bumping posts — the structures at the end of the line — and the physics of absorbing a train's momentum without hurting anyone. The video covers friction, hydraulic dampers and the difference between stopping and crushing.",
+    "takeaway": "Buffer stops work by converting kinetic energy into deformation at a survivable deceleration."
+  },
+  {
+    "id": "stem-788",
+    "youtubeId": "r1wwtGgnzg4",
+    "title": "Are Beavers Actually Good at Dams?",
+    "coreQuestion": "Are beaver dams better engineered than human ones?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Dam Stability",
+      "Spillway",
+      "Pore Pressure",
+      "Failure Modes"
+    ],
+    "description": "Grady compares beaver dams with engineered dams on the criteria that matter: stability, spillway behaviour, maintenance and failure mode. The video shows where the analogy holds and where it breaks down.",
+    "takeaway": "Beaver dams leak on purpose: constant seepage is what stops them failing catastrophically."
+  },
+  {
+    "id": "stem-789",
+    "youtubeId": "stQfGfUSLQg",
+    "title": "The Grid That Doubles the Strength of the Ground",
+    "coreQuestion": "How can a plastic grid make soil behave like a much stronger material?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "18 min",
+    "concepts": [
+      "Geocell",
+      "Soil Confinement",
+      "Load Distribution",
+      "Bearing Capacity"
+    ],
+    "description": "An explanation of geocells: honeycomb lattices buried in granular fill that confine the soil and spread load. Grady demonstrates the mechanism with models and explains where the technique is used on roads and slopes.",
+    "takeaway": "Confining granular fill with a grid stops it spreading sideways, which multiplies its load-bearing capacity."
+  },
+  {
+    "id": "stem-790",
+    "youtubeId": "Ku_ockR2t44",
+    "title": "The Mind-Blowing Flaw That Flooded New Orleans",
+    "coreQuestion": "What engineering failures turned a hurricane into a catastrophe in New Orleans?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "25 min",
+    "concepts": [
+      "Levee Failure",
+      "Floodwall",
+      "Pumping Station",
+      "Subsidence"
+    ],
+    "description": "Grady builds models of the levees, floodwalls and pumping system to show why they failed during Hurricane Katrina. The video separates the storm's strength from the design and maintenance decisions that let water into the city.",
+    "takeaway": "New Orleans flooded because of engineering and maintenance failures, not simply because the storm was strong."
+  },
+  {
+    "id": "stem-791",
+    "youtubeId": "RG5WhPmwGgk",
+    "title": "So You Want To Understand Black Holes...",
+    "coreQuestion": "What do black holes reveal about the limits of physics?",
+    "channel": "PBS Space Time",
+    "category": "Space",
+    "difficulty": "Deep Dive",
+    "duration": "1 hr 58 min",
+    "concepts": [
+      "Event Horizon",
+      "Singularity",
+      "Hawking Radiation",
+      "Information Paradox"
+    ],
+    "description": "A feature-length compilation of Space Time's black hole episodes, tracing formation, the geometry of the event horizon and the theoretical problems black holes expose. Matt O'Dowd ties a decade of episodes into a single argument about gravity and quantum mechanics.",
+    "takeaway": "Black holes are the sharpest test of physics we have, because they force general relativity and quantum mechanics into the same place."
+  },
+  {
+    "id": "stem-792",
+    "youtubeId": "eb8x2tz_pgc",
+    "title": "Ghost Particles Are Exposing Hidden Black Holes. They Just Won a Nobel Prize.",
+    "coreQuestion": "How did a cubic kilometre of Antarctic ice become a neutrino telescope?",
+    "channel": "PBS Space Time",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Neutrinos",
+      "Cherenkov Radiation",
+      "IceCube",
+      "Cosmic Rays"
+    ],
+    "description": "The 2026 Nobel Prize in Physics went to work that turned Antarctic ice into a detector for neutrinos. Matt explains how IceCube spots the faint blue light of a neutrino interaction and uses it to trace cosmic rays back to their sources.",
+    "takeaway": "Neutrinos escape places light cannot, so detecting them lets us see inside black holes and distant galaxies."
+  },
+  {
+    "id": "stem-793",
+    "youtubeId": "w6229Ivy_Lo",
+    "title": "Why Does -1/12 Keep Appearing Everywhere In Physics?",
+    "coreQuestion": "Why does the sum 1 + 2 + 3 + … keep producing −1/12 in physics?",
+    "channel": "PBS Space Time",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "16 min",
+    "concepts": [
+      "Zeta Function Regularisation",
+      "Casimir Effect",
+      "Divergent Series",
+      "Renormalisation"
+    ],
+    "description": "An explanation of why the infamous divergent series appears in physical calculations, from the Casimir effect to string theory, and what physicists actually mean when they assign it the value −1/12. Matt separates the mathematical trick from the physical reason it works.",
+    "takeaway": "−1/12 is not the sum of the integers; it is what remains when an infinite quantity is regularised so the finite physics can be extracted."
+  },
+  {
+    "id": "stem-794",
+    "youtubeId": "mxpuV33vpNk",
+    "title": "JWST May Have Discovered a New Cosmic Object: The Black Hole Star",
+    "coreQuestion": "Could JWST have found a star powered by a black hole inside it?",
+    "channel": "PBS Space Time",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Black Hole Star",
+      "Accretion Power",
+      "JWST",
+      "Stellar Evolution"
+    ],
+    "description": "A look at candidate black hole stars — objects massive enough to hold a black hole in their core, where accretion power inflates the outer envelope. Matt explains the observations that prompted the idea and how it would change stellar evolution.",
+    "takeaway": "If black hole stars exist, the first stars could have carried hidden black holes from birth."
+  },
+  {
+    "id": "stem-795",
+    "youtubeId": "7Wiw42ZlBKs",
+    "title": "The Quantum Experiment That Breaks Time",
+    "coreQuestion": "Can a quantum experiment really show an effect before its cause?",
+    "channel": "PBS Space Time",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "18 min",
+    "concepts": [
+      "Quantum Superposition",
+      "Causality",
+      "Entanglement",
+      "Weak Measurement"
+    ],
+    "description": "Matt unpacks an experiment often reported as violating causality, separating what the measurement actually shows from the headlines. The video explains the role of superposition and why the apparent time-ordering is a matter of interpretation.",
+    "takeaway": "Quantum experiments can scramble our notion of order without letting information travel backwards in time."
+  },
+  {
+    "id": "stem-796",
+    "youtubeId": "eYViePMalJE",
+    "title": "The Universe Has Been Expanding Since the Big Bang. Just Not How We Thought.",
+    "coreQuestion": "Why do measurements of the universe's expansion keep disagreeing?",
+    "channel": "PBS Space Time",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Hubble Tension",
+      "Cosmic Distance Ladder",
+      "Cosmic Microwave Background",
+      "Dark Energy"
+    ],
+    "description": "The Hubble tension explained: local distance-ladder measurements and cosmic microwave background inferences give different expansion rates. Matt walks through both methods and the possible resolutions, from new physics to systematic error.",
+    "takeaway": "The universe appears to expand at two measurably different rates depending on how you measure, so one method must be wrong."
+  },
+  {
+    "id": "stem-797",
+    "youtubeId": "p2AAz24AzU4",
+    "title": "Meat Pies and Math Essentials (with Terence Tao)",
+    "coreQuestion": "What does a working mathematician consider essential knowledge?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Foundational",
+    "duration": "13 min",
+    "concepts": [
+      "Mathematical Tools",
+      "Abstraction",
+      "Problem Solving",
+      "Intuition"
+    ],
+    "description": "Terence Tao talks about his book on mathematical essentials and what students and practitioners actually need. The conversation ranges from core techniques to the habits of mind that make hard problems tractable.",
+    "takeaway": "Mathematical maturity is less about memorised results than about knowing which tool to reach for."
+  },
+  {
+    "id": "stem-798",
+    "youtubeId": "vCAD3W43lIk",
+    "title": "Who's Richer, Mario or Sonic?",
+    "coreQuestion": "Who is richer, Mario or Sonic?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Foundational",
+    "duration": "20 min",
+    "concepts": [
+      "Fermi Estimation",
+      "Unit Conversion",
+      "Assumptions",
+      "Sensitivity"
+    ],
+    "description": "Tom Crawford works out the net worth of two video game characters by pricing their coins, rings and assets with real-world data. The estimate is playful but the method is real: state the assumptions, convert the units, then test how much each choice changes the answer.",
+    "takeaway": "Every estimate is only as good as its assumptions, which is why the interesting work is checking how much they matter."
+  },
+  {
+    "id": "stem-799",
+    "youtubeId": "95335U-cUh8",
+    "title": "Big News in Polyhedra",
+    "coreQuestion": "What are noble polyhedra, and why is finding new ones a big deal?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "26 min",
+    "concepts": [
+      "Noble Polyhedra",
+      "Symmetry",
+      "Isohedral",
+      "Isogonal"
+    ],
+    "description": "Richard Elwes describes recent progress on noble polyhedra — solids that are both isogonal and isohedral — and how a new class was found. The video shows the shapes and explains why the symmetry conditions are so restrictive.",
+    "takeaway": "Noble polyhedra are rare because demanding the same symmetry from faces and vertices leaves very little freedom."
+  },
+  {
+    "id": "stem-800",
+    "youtubeId": "Mzbtj5nkMXI",
+    "title": "The Buckmaster Interview (Navier-Stokes)",
+    "coreQuestion": "What is the controversy behind the claimed Navier-Stokes solution?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "46 min",
+    "concepts": [
+      "Navier-Stokes",
+      "Millennium Prize",
+      "Blow-Up",
+      "Peer Review"
+    ],
+    "description": "Tristan Buckmaster discusses his role in the disputed Navier-Stokes work and the mathematical issues at stake. The interview covers what a solution would require, why experts remain sceptical, and how the field responds to a claimed proof.",
+    "takeaway": "A Millennium Prize claim is judged by whether the argument survives expert scrutiny, not by who announces it."
+  },
+  {
+    "id": "stem-801",
+    "youtubeId": "bAnwMdfcMVw",
+    "title": "No More Heroes - Terence Tao Talks to Numberphile About AI",
+    "coreQuestion": "What happens to mathematics when AI can produce proofs in bulk?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "20 min",
+    "concepts": [
+      "AI Proofs",
+      "Formal Verification",
+      "Mathematical Practice",
+      "Collaboration"
+    ],
+    "description": "Terence Tao talks about the flood of machine-generated proofs and the strain it puts on the social process of mathematics. He discusses verification, refereeing and how the discipline might adapt.",
+    "takeaway": "Mathematics is a social verification system as much as a body of results, and AI is stressing the verification part."
+  },
+  {
+    "id": "stem-802",
+    "youtubeId": "oax6t6Of2WY",
+    "title": "The Biggest Gaps Between Primes",
+    "coreQuestion": "How large can the gap between consecutive primes get?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Prime Gaps",
+      "Twin Primes",
+      "Sieve Methods",
+      "Distribution of Primes"
+    ],
+    "description": "An explainer on prime gaps: what is known about the distance between consecutive primes, how sieve methods bound them, and where the open problems remain. The video sets out why small gaps are hard to prove and large gaps are easier.",
+    "takeaway": "The average spacing of primes is well understood while exact gaps between them remain a frontier."
+  },
+  {
+    "id": "stem-803",
+    "youtubeId": "3geDF-DAwpg",
+    "title": "SOLVED: Navier-Stokes cracked by AI",
+    "coreQuestion": "Did an AI actually solve the Navier-Stokes problem?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "30 min",
+    "concepts": [
+      "Navier-Stokes",
+      "Formal Proof",
+      "Machine Learning",
+      "Peer Review"
+    ],
+    "description": "Numberphile examines the claim that AI cracked Navier-Stokes, following the announcement, the written proof and the objections raised by mathematicians. The video explains what the claimed argument does and where the doubts come from.",
+    "takeaway": "A machine-generated proof only counts once humans can check it, which is exactly where these claims stall."
+  },
+  {
+    "id": "stem-804",
+    "youtubeId": "xod_mCN-K38",
+    "title": "What Is Worth Saving Before the ISS Deorbits?",
+    "coreQuestion": "What is worth saving from the ISS before it is deliberately deorbited?",
+    "channel": "Real Engineering",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "21 min",
+    "concepts": [
+      "Orbital Decay",
+      "Reentry",
+      "Deorbit Burn",
+      "Station Modules"
+    ],
+    "description": "Brian McManus considers the ISS's planned end and what could realistically be preserved, from modules and experiments to the engineering knowledge itself. The video weighs the costs and the physics of bringing anything down intact.",
+    "takeaway": "Deorbiting a station is easy; salvaging anything from orbit is expensive enough that almost nothing will be saved."
+  },
+  {
+    "id": "stem-805",
+    "youtubeId": "y1KipwEoRBA",
+    "title": "The Rise and Fall of the Concorde",
+    "coreQuestion": "Why did the most advanced airliner ever built fail commercially?",
+    "channel": "Real Engineering",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "40 min",
+    "concepts": [
+      "Supersonic Transport",
+      "Aerodynamic Heating",
+      "Afterburners",
+      "Operating Economics"
+    ],
+    "description": "A full history of Concorde's engineering: the delta wing, the drooping nose, the turbojets with afterburners, and the materials needed to survive sustained Mach 2 heating. The video then explains the economics that ended it.",
+    "takeaway": "Concorde was an engineering triumph defeated by fuel burn per passenger and a very small market."
+  },
+  {
+    "id": "stem-806",
+    "youtubeId": "UiPJbxryrkU",
+    "title": "Sagrada Familia - Full Documentary",
+    "coreQuestion": "How is the Sagrada Familia still being finished more than a century later?",
+    "channel": "Real Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "24 min",
+    "concepts": [
+      "Catenary Arches",
+      "Parametric Design",
+      "Stone Masonry",
+      "Load Paths"
+    ],
+    "description": "A documentary on Gaudí's basilica as an engineering project: catenary and funicular structural forms, computer-aided stone cutting, and the models used to finish what Gaudí only sketched. The video shows how the geometry is finally being built.",
+    "takeaway": "Gaudí designed with hanging models, and modern software has made his geometry buildable."
+  },
+  {
+    "id": "stem-807",
+    "youtubeId": "ZewlcJsfbn8",
+    "title": "The Dark Side of the World’s Lightest Structural Metal",
+    "coreQuestion": "What is the hidden cost of the lightest structural metal?",
+    "channel": "Real Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Lithium",
+      "Electrochemical Potential",
+      "Mining",
+      "Battery Chemistry"
+    ],
+    "description": "Real Engineering looks at lithium's properties and why a metal that reacts with almost everything is so useful in batteries. The video also covers the extraction and processing behind the supply chain.",
+    "takeaway": "Lithium is valuable because of its reactivity, and that same reactivity makes it expensive to handle and refine."
+  },
+  {
+    "id": "stem-808",
+    "youtubeId": "FYMdllTCrc0",
+    "title": "The Insane Engineering of the V-22 Osprey",
+    "coreQuestion": "Why is the V-22 Osprey's tiltrotor design so difficult to get right?",
+    "channel": "Real Engineering",
+    "category": "Engineering",
+    "difficulty": "Deep Dive",
+    "duration": "23 min",
+    "concepts": [
+      "Tiltrotor",
+      "Vortex Ring State",
+      "Transmission Interconnect",
+      "Rotor Wash"
+    ],
+    "description": "A breakdown of the Osprey's engineering: the tilting nacelles, the interconnected transmission that lets one engine drive both rotors, and the aerodynamics of a rotor that must work as both propeller and helicopter blade.",
+    "takeaway": "Tiltrotors deliver helicopter access at aeroplane speed, but only by solving severe control and aerodynamic compromises."
+  },
+  {
+    "id": "stem-809",
+    "youtubeId": "rCM6dvK2Hjg",
+    "title": "NASA’s Next Monster Telescope",
+    "coreQuestion": "What does it take to build a telescope bigger than JWST?",
+    "channel": "Real Engineering",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Segmented Mirror",
+      "Deployable Structures",
+      "Cryogenics",
+      "Infrared Astronomy"
+    ],
+    "description": "The engineering behind NASA's next flagship observatory: segmented mirrors that fold for launch, thermal control, and the instruments needed for infrared astronomy. The video explains the constraints that make each subsystem hard.",
+    "takeaway": "Space telescopes are limited by launch volume, so every large mirror must be designed to fold and unfold reliably."
+  },
+  {
+    "id": "stem-810",
+    "youtubeId": "j0ZZfIz9R1I",
+    "title": "How We Built The ISS",
+    "coreQuestion": "How was the International Space Station assembled in orbit?",
+    "channel": "Real Engineering",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "36 min",
+    "concepts": [
+      "Orbital Assembly",
+      "Docking",
+      "Truss Structure",
+      "Thermal Control"
+    ],
+    "description": "The construction history of the ISS, from the first modules to the truss and solar arrays, told through the engineering constraints of assembling structures in microgravity. The video covers the docking, robotics and spacewalks required.",
+    "takeaway": "The ISS could only be built one piece at a time, with robots and spacewalks, over more than a decade."
+  },
+  {
+    "id": "stem-811",
+    "youtubeId": "i7esSCr2UJk",
+    "title": "Why Is There No Vitamin F?",
+    "coreQuestion": "What is a vitamin, and why is there no vitamin F?",
+    "channel": "SciShow",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "15 min",
+    "concepts": [
+      "Vitamins",
+      "Essential Nutrients",
+      "Nomenclature",
+      "Deficiency"
+    ],
+    "description": "Hank Green explains how vitamins are classified and named, and why the sequence has gaps, including what happened to vitamin F. The history shows how naming conventions outlived the science behind them.",
+    "takeaway": "Vitamin letters reflect the order of discovery rather than a chemical system, which is why the list has holes."
+  },
+  {
+    "id": "stem-812",
+    "youtubeId": "M6nefnNpOZA",
+    "title": "What Was the First Alcohol?",
+    "coreQuestion": "What was the first alcoholic drink humans made?",
+    "channel": "SciShow",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "15 min",
+    "concepts": [
+      "Fermentation",
+      "Yeast",
+      "Archaeology",
+      "Ethanol"
+    ],
+    "description": "An archaeological tour of the oldest evidence for fermented drinks, from residues in pottery to the chemistry of spontaneous fermentation. The video explains what counts as evidence and why the dates keep moving.",
+    "takeaway": "Fermentation happens on its own, so the archaeological question is when humans started doing it deliberately."
+  },
+  {
+    "id": "stem-813",
+    "youtubeId": "1nVwqDL3XCI",
+    "title": "AI Psychosis Is Killing People. It’s Time to Talk About It",
+    "coreQuestion": "What is AI psychosis, and how dangerous is it?",
+    "channel": "SciShow",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Large Language Models",
+      "Delusion",
+      "Chatbot Dependence",
+      "Mental Health"
+    ],
+    "description": "SciShow examines cases in which prolonged chatbot use reinforced delusional thinking, and what clinicians think is happening. The video separates the technology's role from underlying mental-health conditions and discusses possible safeguards.",
+    "takeaway": "A model trained to be agreeable can validate a false belief, which makes it dangerous for vulnerable users."
+  },
+  {
+    "id": "stem-814",
+    "youtubeId": "dfA_VA20A2Y",
+    "title": "How To Hold Something That's 10,000,000 Degrees",
+    "coreQuestion": "How do you hold something hotter than the Sun without melting the container?",
+    "channel": "SciShow",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Magnetic Confinement",
+      "Plasma",
+      "Levitation",
+      "Inertial Confinement"
+    ],
+    "description": "A survey of the tricks used to contain things that would destroy any container: magnetic fields for plasma, optical tweezers for single atoms, electromagnetic levitation for molten metal. The video ties them together through the same underlying problem.",
+    "takeaway": "If a material cannot touch a container, it has to be held by fields, and the method depends on whether it is charged, magnetic or light."
+  },
+  {
+    "id": "stem-815",
+    "youtubeId": "16-xQ-Dt2mk",
+    "title": "How the Color Mauve Saved Millions of Lives",
+    "coreQuestion": "How did a failed malaria cure create the synthetic dye industry?",
+    "channel": "SciShow",
+    "category": "Chemistry",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Aniline Dyes",
+      "Coal Tar",
+      "Synthetic Chemistry",
+      "Serendipity"
+    ],
+    "description": "The story of William Perkin's accidental synthesis of mauve in 1856 and the industry it started. The video follows the chemistry from coal tar to synthetic dyes, and the medicines that followed.",
+    "takeaway": "One accidental dye launched synthetic organic chemistry, which later produced dyes, drugs and plastics."
+  },
+  {
+    "id": "stem-816",
+    "youtubeId": "SfRqo_trkNo",
+    "title": "How Many Times Can You Clone Your Clone?",
+    "coreQuestion": "How many times can you clone a clone before something breaks?",
+    "channel": "SciShow",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Cloning",
+      "Telomeres",
+      "Epigenetics",
+      "Developmental Biology"
+    ],
+    "description": "An explanation of serial cloning experiments and what they reveal about accumulated error: telomere length, epigenetic marks and developmental abnormalities. The video explains why cloning becomes harder with each generation.",
+    "takeaway": "Cloning copies a genome but does not perfectly reset its regulation, so errors accumulate across generations."
+  },
+  {
+    "id": "stem-817",
+    "youtubeId": "ua29hkUXwg4",
+    "title": "Why Can't Every Shot Be a Pill?",
+    "coreQuestion": "Why can't every drug be swallowed as a pill?",
+    "channel": "SciShow",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "9 min",
+    "concepts": [
+      "Bioavailability",
+      "Protein Drugs",
+      "Digestive System",
+      "Drug Delivery"
+    ],
+    "description": "An explanation of why some medicines must be injected: proteins and large molecules are digested or cannot cross membranes. The video covers bioavailability and the delivery technologies trying to change that.",
+    "takeaway": "A pill only works if the drug survives the gut and crosses into the blood, which large molecules cannot do."
+  },
+  {
+    "id": "stem-818",
+    "youtubeId": "BuRyQYf03xA",
+    "title": "My dog won't stay out of mud so I made this...",
+    "coreQuestion": "Can engineering solve a very specific, very domestic problem?",
+    "channel": "Stuff Made Here",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Mechanical Design",
+      "Spray Nozzles",
+      "Sensors",
+      "Iteration"
+    ],
+    "description": "Shane builds a machine to wash his muddy dog without being shaken on, iterating through mechanisms for containment, spraying and drying. The project shows how many prototypes a simple-sounding problem really needs.",
+    "takeaway": "The hardest part of a practical build is usually the constraint nobody planned for, discovered only by testing."
+  },
+  {
+    "id": "stem-819",
+    "youtubeId": "2OfjZ3ORJfc",
+    "title": "Robot golf vs holes that keep getting harder",
+    "coreQuestion": "Can a robot golfer be taught to read a mini-golf hole?",
+    "channel": "Stuff Made Here",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "25 min",
+    "concepts": [
+      "Trajectory Planning",
+      "Optimisation",
+      "Computer Vision",
+      "Simulation"
+    ],
+    "description": "Shane upgrades his robotic golf club with software that models the physics of a putt and searches for a solution to progressively harder holes. The video covers the optimisation and the gap between simulation and the real green.",
+    "takeaway": "Because the robot repeats exactly, its failures are model failures, which makes it a good physics teacher."
+  },
+  {
+    "id": "stem-820",
+    "youtubeId": "JQB8aNKyeao",
+    "title": "Making an autocorrect mini golf club (part 1)",
+    "coreQuestion": "What if a golf club could correct your bad swing?",
+    "channel": "Stuff Made Here",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "27 min",
+    "concepts": [
+      "Actuation",
+      "Feedback Control",
+      "Gyroscopes",
+      "Latency"
+    ],
+    "description": "Part one of a build in which the club measures a swing and tries to correct it mid-stroke. The video focuses on the sensing and actuation problems, and on why correcting a fast motion is so difficult.",
+    "takeaway": "Correcting a human motion requires acting faster than the motion itself, which is why the timing is the hard part."
+  },
+  {
+    "id": "stem-821",
+    "youtubeId": "vJ43DjwLPGA",
+    "title": "Why is this task so difficult for machines?",
+    "coreQuestion": "Why is cracking an egg so difficult for a machine?",
+    "channel": "Stuff Made Here",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "27 min",
+    "concepts": [
+      "Compliant Manipulation",
+      "Force Sensing",
+      "Grasping",
+      "Dexterity"
+    ],
+    "description": "Shane tries to build a machine that cracks an egg cleanly, and explains along the way why a task that is trivial for a hand is hard for a robot. The video covers force control, sensing and the difficulty of handling fragile, irregular objects.",
+    "takeaway": "Robots struggle where feedback must be fast and gentle at once, which makes everyday manipulation the hard problem."
+  },
+  {
+    "id": "stem-822",
+    "youtubeId": "dXIkUkwzTQU",
+    "title": "Baking brownies from the inside out",
+    "coreQuestion": "Can you bake a brownie with no edges?",
+    "channel": "Stuff Made Here",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "23 min",
+    "concepts": [
+      "Heat Transfer",
+      "Acoustic Levitation",
+      "Conduction",
+      "Thermal Mass"
+    ],
+    "description": "Shane attacks the edge-versus-centre problem in baking with unusual hardware, including levitation and specialised moulds. The build is really about managing heat flow into a mixture that sets as it heats.",
+    "takeaway": "Baking unevenness is a heat-transfer problem: control where the heat enters and the edges disappear."
+  },
+  {
+    "id": "stem-823",
+    "youtubeId": "aXfTgCCsRSg",
+    "title": "What if we made a camera that sees in reverse?",
+    "coreQuestion": "What would a camera that sees in reverse actually look like?",
+    "channel": "Stuff Made Here",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "23 min",
+    "concepts": [
+      "Computational Imaging",
+      "Light Field",
+      "Optics",
+      "Image Reconstruction"
+    ],
+    "description": "Shane explores whether a camera can be made to see backwards, reconstructing a scene from light that has already passed. The video becomes a tour of what imaging can and cannot invert.",
+    "takeaway": "A camera records light rather than the past: reconstructing what came before needs extra information, not just better optics."
+  },
+  {
+    "id": "stem-824",
+    "youtubeId": "t_QuHSwB0HY",
+    "title": "Why Language Models Surprise You",
+    "coreQuestion": "Why do language models give surprising answers?",
+    "channel": "The Coding Train",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "36 min",
+    "concepts": [
+      "Softmax",
+      "Temperature",
+      "Logits",
+      "Probability Distribution"
+    ],
+    "description": "Daniel Shiffman explains how a language model turns raw scores into a probability distribution with softmax, and how temperature reshapes that distribution. The video builds the maths in code so the effect of each parameter is visible.",
+    "takeaway": "Temperature is one dial that trades predictability for variety by flattening or sharpening a model's probabilities."
+  },
+  {
+    "id": "stem-825",
+    "youtubeId": "s2jm2Z22ibA",
+    "title": "Coding Challenge 188: Voice Chatbot",
+    "coreQuestion": "Can a conversational voice chatbot run entirely in a browser?",
+    "channel": "The Coding Train",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "39 min",
+    "concepts": [
+      "Speech-to-Text",
+      "Text-to-Speech",
+      "Transformers.js",
+      "Web Audio API"
+    ],
+    "description": "A coding challenge building a voice chatbot in p5.js with browser-based speech recognition, speech synthesis and a simple dialogue engine. The video covers wiring the pieces together and the latency each step adds.",
+    "takeaway": "Modern browsers can run the whole speech pipeline locally, which makes private voice interfaces possible."
+  },
+  {
+    "id": "stem-826",
+    "youtubeId": "g3-PXyF8U70",
+    "title": "Coding Challenge 187: Bayes Theorem",
+    "coreQuestion": "How does a naive Bayes classifier actually decide sentiment?",
+    "channel": "The Coding Train",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "54 min",
+    "concepts": [
+      "Bayes' Theorem",
+      "Naive Bayes",
+      "Laplacian Smoothing",
+      "Tokenisation"
+    ],
+    "description": "Daniel implements a naive Bayes text classifier from scratch in JavaScript, walking through word frequencies, conditional probabilities and smoothing. The result classifies sentiment in the browser with no external services.",
+    "takeaway": "Naive Bayes works because word counts carry enough signal even when the independence assumption is plainly false."
+  },
+  {
+    "id": "stem-827",
+    "youtubeId": "KR61bXsPlLU",
+    "title": "What is Transformers.js?",
+    "coreQuestion": "How do you run a machine-learning model in the browser?",
+    "channel": "The Coding Train",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "29 min",
+    "concepts": [
+      "Transformers.js",
+      "Pipeline API",
+      "ONNX",
+      "WebAssembly"
+    ],
+    "description": "An introduction to Transformers.js: loading models into a web page, using the pipeline API, and running sentiment analysis and language detection locally. The video explains the trade-off between model size and capability.",
+    "takeaway": "Transformers.js makes ML models portable to the browser, at the cost of downloading weights and running them on the client."
+  },
+  {
+    "id": "stem-828",
+    "youtubeId": "0Ad5Frf8NBM",
+    "title": "What's new in p5.js 2!",
+    "coreQuestion": "How does data loading change in p5.js 2.0?",
+    "channel": "The Coding Train",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "23 min",
+    "concepts": [
+      "async/await",
+      "Promises",
+      "preload",
+      "p5.js 2"
+    ],
+    "description": "Daniel explains the move from p5.js's preload callbacks to promises and async/await in version 2, with examples of loading data in sequence and showing progress. The video is aimed at migrating existing sketches.",
+    "takeaway": "Promises replace preload because they compose, so sequential and parallel loading become ordinary code."
+  },
+  {
+    "id": "stem-829",
+    "youtubeId": "5iSAvzU2WYY",
+    "title": "Coding Challenge 186: Wave Function Collapse",
+    "coreQuestion": "How does the wave function collapse algorithm generate coherent patterns?",
+    "channel": "The Coding Train",
+    "category": "Emerging Technology",
+    "difficulty": "Deep Dive",
+    "duration": "1 hr 32 min",
+    "concepts": [
+      "Wave Function Collapse",
+      "Constraint Propagation",
+      "Superposition",
+      "Entropy"
+    ],
+    "description": "A long coding session implementing the wave function collapse algorithm, which fills a grid by repeatedly choosing the lowest-entropy cell and constraining its neighbours. The video follows the bugs and fixes needed to make tiles fit together.",
+    "takeaway": "Wave function collapse is constraint satisfaction in disguise: collapse the least certain cell first and propagate the consequences."
+  },
+  {
+    "id": "stem-830",
+    "youtubeId": "QXXqSh5qAuA",
+    "title": "What if We Can't Detect Dark Matter?",
+    "coreQuestion": "What if we can never detect dark matter?",
+    "channel": "minutephysics",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "13 min",
+    "concepts": [
+      "Dark Matter",
+      "Direct Detection",
+      "WIMPs",
+      "Gravitational Evidence"
+    ],
+    "description": "Henry Reich looks at the experimental situation for dark matter: the gravitational evidence is overwhelming, but direct detection has produced nothing. The video explores what physicists do if the particle never shows up.",
+    "takeaway": "Dark matter is inferred from gravity, and if it never interacts with detectors we may only ever know it that way."
+  },
+  {
+    "id": "stem-831",
+    "youtubeId": "4YvnVJRlQQs",
+    "title": "The Wavy Window Paradox",
+    "coreQuestion": "Why does a window give a clear image when its glass is not perfectly flat?",
+    "channel": "minutephysics",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "3 min",
+    "concepts": [
+      "Refraction",
+      "Snell's Law",
+      "Optical Flatness",
+      "Wavefronts"
+    ],
+    "description": "A short explanation of why ordinary window glass, wavy at the scale of light, still produces a sharp image. The answer lies in how refraction shifts parallel rays rather than scrambling them.",
+    "takeaway": "A window can distort the position of an image without blurring it, because the glass bends rays consistently."
+  },
+  {
+    "id": "stem-832",
+    "youtubeId": "sYdXa_yp0fc",
+    "title": "Strings Don't Vibrate The Way You Think",
+    "coreQuestion": "How does a plucked guitar string actually move?",
+    "channel": "minutephysics",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "5 min",
+    "concepts": [
+      "Standing Waves",
+      "Harmonics",
+      "Nonlinear Vibration",
+      "High-Speed Imaging"
+    ],
+    "description": "High-speed footage of a plucked string shows motion far more complicated than a simple sine wave, including whirling and coupling to the instrument. The video explains why the idealised standing wave is only part of the story.",
+    "takeaway": "Real strings vibrate in two planes and couple to the instrument, so the tidy textbook mode is an approximation."
+  },
+  {
+    "id": "stem-833",
+    "youtubeId": "R2G8Xy6hiyg",
+    "title": "This Orbit is the WORST",
+    "coreQuestion": "What makes an orbit the worst possible one?",
+    "channel": "minutephysics",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "8 min",
+    "concepts": [
+      "Orbital Mechanics",
+      "Lagrange Points",
+      "Perturbation",
+      "Three-Body Problem"
+    ],
+    "description": "Henry explains why certain orbits are unstable or awkward: resonance, perturbation and the three-body problem. The video uses one pathological orbit to show how small disturbances compound.",
+    "takeaway": "Stable orbits are the exception; resonance and third-body pulls make most orbital solutions temporary."
+  },
+  {
+    "id": "stem-834",
+    "youtubeId": "PTO0s8YQ49o",
+    "title": "The Magic of Thorium Nuclear Reactors",
+    "coreQuestion": "Are thorium reactors really a safer, cleaner alternative to uranium?",
+    "channel": "minutephysics",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "5 min",
+    "concepts": [
+      "Thorium Fuel Cycle",
+      "Molten Salt Reactor",
+      "Breeding",
+      "Proliferation"
+    ],
+    "description": "A short examination of the thorium fuel cycle and molten-salt reactors: what thorium actually offers, why it needs a breeder design, and what the engineering obstacles are. The video separates the physics from the hype.",
+    "takeaway": "Thorium is abundant and breeds well in molten salt, but it still needs a working reactor design rather than just a different fuel."
+  },
+  {
+    "id": "stem-835",
+    "youtubeId": "tCsl6ZcY9ag",
+    "title": "The Physics Of Dissonance",
+    "coreQuestion": "Why do some combinations of notes sound harsh?",
+    "channel": "minutephysics",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "28 min",
+    "concepts": [
+      "Harmonics",
+      "Beating",
+      "Critical Bandwidth",
+      "Consonance"
+    ],
+    "description": "A long-form MinutePhysics treatment of dissonance: how overlapping harmonics create beating, and how the ear's frequency resolution sets the boundary between rough and smooth. The video connects the maths of intervals to perception.",
+    "takeaway": "Dissonance follows from harmonics colliding within the ear's resolution, rather than being an arbitrary cultural choice."
+  },
+  {
+    "id": "stem-836",
+    "youtubeId": "Q8bn-NXgOOk",
+    "title": "What Schrödinger’s cat REALLY means",
+    "coreQuestion": "What does Schrödinger's cat thought experiment actually mean?",
+    "channel": "Physics Girl",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "Superposition",
+      "Decoherence",
+      "Measurement Problem",
+      "Wave Function"
+    ],
+    "description": "Dianna explains what Schrödinger was arguing with his cat: not that cats are literally alive and dead, but that treating quantum superpositions as literal at large scales is absurd. The video untangles superposition, measurement and decoherence.",
+    "takeaway": "Schrödinger's cat was a complaint about interpretation, not a claim that cats can be dead and alive at once."
+  },
+  {
+    "id": "stem-837",
+    "youtubeId": "ieDIpgso4no",
+    "title": "BREAKING: New Phase of Matter",
+    "coreQuestion": "What is a new phase of matter, and why does it matter?",
+    "channel": "Physics Girl",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "Phase Transition",
+      "Order Parameter",
+      "Condensed Matter",
+      "Symmetry Breaking"
+    ],
+    "description": "Coverage of a newly reported phase of matter and what makes it distinct: how the atoms arrange, what order parameter defines it, and the conditions required. Dianna interviews researchers and puts the result in context.",
+    "takeaway": "A new phase of matter is a new way for a system to organise itself, identified by a change in symmetry."
+  },
+  {
+    "id": "stem-838",
+    "youtubeId": "JRQSbK4Krg0",
+    "title": "I dove in a NUCLEAR SUBMARINE (Frozen Ocean)",
+    "coreQuestion": "What is it like to travel under the Arctic ice in a nuclear submarine?",
+    "channel": "Physics Girl",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "21 min",
+    "concepts": [
+      "Sonar",
+      "Buoyancy",
+      "Ice Keel",
+      "Nuclear Propulsion"
+    ],
+    "description": "Dianna joins a submarine crew in the frozen Arctic and explains the engineering that makes under-ice navigation possible: sonar, ice profiling and surfacing through leads. The video mixes her experience with the physics.",
+    "takeaway": "Under-ice navigation depends on mapping a ceiling that keeps changing, which is why sonar and ice profiling matter."
+  },
+  {
+    "id": "stem-839",
+    "youtubeId": "JFFhD5HeByM",
+    "title": "99 Years Later... We Solved It",
+    "coreQuestion": "How was a century-old physics puzzle finally resolved?",
+    "channel": "Physics Girl",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "14 min",
+    "concepts": [
+      "Measurement",
+      "Experimental Design",
+      "Precision",
+      "Historical Physics"
+    ],
+    "description": "Dianna tells the story of a long-standing physics question and the experiment that settled it, including the false starts and the clever measurement involved. The video shows how a resolution can hinge on one better instrument.",
+    "takeaway": "Old problems often fall to better instruments rather than to new theory."
+  },
+  {
+    "id": "stem-840",
+    "youtubeId": "nadkOPhS-Bs",
+    "title": "We've never seen THIS before - James Webb Space Telescope",
+    "coreQuestion": "What has JWST shown us that we had never seen before?",
+    "channel": "Physics Girl",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Infrared Astronomy",
+      "Exoplanet Atmospheres",
+      "Deep Field",
+      "Spectra"
+    ],
+    "description": "Dianna covers the James Webb Space Telescope's early discoveries, from deep-field galaxies to the atmospheric spectra of exoplanets. The video explains the instruments and why infrared observations changed the picture.",
+    "takeaway": "JWST's advantage is infrared sensitivity, which lets it see through dust and back to the earliest galaxies."
+  },
+  {
+    "id": "stem-841",
+    "youtubeId": "xajY7zKIMDA",
+    "title": "The Most Famous Telescope In The World",
+    "coreQuestion": "Why is the Hubble Space Telescope still so important?",
+    "channel": "Physics Girl",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "25 min",
+    "concepts": [
+      "Hubble Space Telescope",
+      "Servicing Mission",
+      "Calibration",
+      "Deep Field"
+    ],
+    "description": "A visit to the people and hardware behind the Hubble Space Telescope, explaining how it observes and why its data remain central to astronomy. The video covers servicing, calibration and the science it enabled.",
+    "takeaway": "Hubble stayed productive because it was designed to be repaired, which is rare for a space observatory."
+  },
+  {
+    "id": "stem-842",
+    "youtubeId": "Z-2pTzSZtLU",
+    "title": "This Material Sorts Itself",
+    "coreQuestion": "Why do mixed grains sort themselves when you shake them?",
+    "channel": "Steve Mould",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "19 min",
+    "concepts": [
+      "Granular Segregation",
+      "Brazil Nut Effect",
+      "Convection",
+      "Pattern Formation"
+    ],
+    "description": "Steve turns a drum of mixed grains and watches them separate by size into patterns, then explains the mechanisms behind granular segregation. The video links the effect to the Brazil nut effect, avalanches and landslides on the Moon.",
+    "takeaway": "Granular materials are not like liquids: shaking them drives size segregation, which is why mixed nuts rise to the top."
+  },
+  {
+    "id": "stem-843",
+    "youtubeId": "6gsZY_-kT3U",
+    "title": "This Device Turns Anything into a Suction Cup",
+    "coreQuestion": "How can vibration make an object stick to a surface?",
+    "channel": "Steve Mould",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "14 min",
+    "concepts": [
+      "Vibration Adhesion",
+      "Air Pressure",
+      "Bernoulli Effect",
+      "Harmonic Motion"
+    ],
+    "description": "Steve investigates a device that grips almost any surface when vibrated, and discovers the mechanism is not the Bernoulli effect he expected. High-speed footage reveals a pumping action that creates suction.",
+    "takeaway": "Rapid vibration can pump air out from under a surface, turning a flat object into a suction cup."
+  },
+  {
+    "id": "stem-844",
+    "youtubeId": "k3Q9UWWiPsQ",
+    "title": "The \"Perpetual Motion\" Pump That Actually Works",
+    "coreQuestion": "How can flowing water pump itself uphill with no external power?",
+    "channel": "Steve Mould",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Hydraulic Ram",
+      "Water Hammer",
+      "Check Valves",
+      "Pressure Surge"
+    ],
+    "description": "Steve builds a transparent hydraulic ram pump to see how moving water can lift a fraction of itself uphill. The video explains the water hammer effect and the check valves that harness it.",
+    "takeaway": "A ram pump trades a large flow at low head for a small flow at high head, powered only by the momentum of the water."
+  },
+  {
+    "id": "stem-845",
+    "youtubeId": "ti2qiU_JTUQ",
+    "title": "The Euler Disc Is The Wrong Shape",
+    "coreQuestion": "Why does a spinning disc keep going for so long, and can it last even longer?",
+    "channel": "Steve Mould",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "20 min",
+    "concepts": [
+      "Precession",
+      "Rolling Friction",
+      "Angular Momentum",
+      "Air Damping"
+    ],
+    "description": "Steve examines the Euler disc's surprisingly long spin, the precession and friction that sustain it, and experiments with modified shapes that spin longer. The video relies on measurement rather than just demonstration.",
+    "takeaway": "A spinning disc outlasts intuition because its precession keeps feeding energy back into the motion, so cutting air drag buys the most time."
+  },
+  {
+    "id": "stem-846",
+    "youtubeId": "BViIGAg-eVI",
+    "title": "A New Type of Levitation",
+    "coreQuestion": "How can an object levitate without magnets or air?",
+    "channel": "Steve Mould",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "18 min",
+    "concepts": [
+      "Levitation",
+      "Oscillatory Force",
+      "Acoustic Radiation Pressure",
+      "Stable Equilibrium"
+    ],
+    "description": "Steve demonstrates a levitation effect and works out the mechanism, using careful experiments to rule out the obvious explanations. The video walks through the forces involved and what the effect requires.",
+    "takeaway": "Levitation is stable only when a restoring force appears in every direction, which oscillation can provide."
+  },
+  {
+    "id": "stem-847",
+    "youtubeId": "IFqI11SIGXo",
+    "title": "Steel Absorbs Gas Like a Sponge",
+    "coreQuestion": "Why does steel absorb gases, and why does that matter?",
+    "channel": "Steve Mould",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "18 min",
+    "concepts": [
+      "Interstitial Diffusion",
+      "Hydrogen Embrittlement",
+      "Alloying",
+      "Solubility"
+    ],
+    "description": "Steve explores how metals absorb gases into their crystal structure, from hydrogen in steel to nitrogen in alloys. The video explains diffusion and why absorbed gas can turn a strong metal brittle.",
+    "takeaway": "Metals are not sealed solids: small atoms diffuse into the lattice and can change both strength and ductility."
+  },
+  {
+    "id": "stem-848",
+    "youtubeId": "EP1mYq8hLIY",
+    "title": "The Anti Trampoline Effect",
+    "coreQuestion": "Why doesn't a ball bounce off a surface the way you expect?",
+    "channel": "Steve Mould",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "17 min",
+    "concepts": [
+      "Coefficient of Restitution",
+      "Elasticity",
+      "Contact Time",
+      "Energy Dissipation"
+    ],
+    "description": "Steve investigates a surface that seems to absorb a bounce in an unexpected way, then explains the mechanics with slow-motion footage. The video works through elasticity, contact time and energy loss.",
+    "takeaway": "A bounce is decided by how much energy the surface returns, and contact time is the hidden variable."
+  },
+  {
+    "id": "stem-849",
+    "youtubeId": "FcY4QW_lyYo",
+    "title": "The Quest for Stardust: Crash Course Lecture",
+    "coreQuestion": "Can a citizen scientist find micrometeorites in ordinary city dust?",
+    "channel": "CrashCourse",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "33 min",
+    "concepts": [
+      "Micrometeorites",
+      "Cosmic Dust",
+      "Magnetic Separation",
+      "Planetary Formation"
+    ],
+    "description": "A Crash Course lecture telling the story of Jon Larsen, a jazz musician who spent a decade collecting micrometeorites from rooftops and gutters despite expert scepticism. The lecture covers the identification methods and what the particles reveal about the early solar system.",
+    "takeaway": "Space dust falls on every city, and finding it is a matter of careful collection and identification rather than luck."
+  },
+  {
+    "id": "stem-850",
+    "youtubeId": "uJA1qZirWVc",
+    "title": "How do we Mine Minerals?",
+    "coreQuestion": "How do we get the minerals inside our phones out of the ground?",
+    "channel": "CrashCourse",
+    "category": "Engineering",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Ore Deposits",
+      "Open-Pit Mining",
+      "Critical Minerals",
+      "Tailings"
+    ],
+    "description": "A Crash Course Geology episode on mining: how ore bodies form, how they are extracted and processed, and what the environmental and social costs are. The video also covers critical minerals and recycling.",
+    "takeaway": "Every technology depends on mining, so the real question is how to get minerals with fewer side effects."
+  },
+  {
+    "id": "stem-851",
+    "youtubeId": "9-JFgpMIb_I",
+    "title": "What is Geothermal Energy?",
+    "coreQuestion": "How can the Earth's own heat generate electricity?",
+    "channel": "CrashCourse",
+    "category": "Engineering",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Geothermal Gradient",
+      "Steam Turbine",
+      "Enhanced Geothermal Systems",
+      "Heat Pumps"
+    ],
+    "description": "An episode explaining where geothermal heat comes from, how power plants convert it into electricity, and why the resource is unevenly distributed. It also covers enhanced geothermal systems that could widen the map.",
+    "takeaway": "Geothermal power is constant and dispatchable, but its economics depend on finding hot rock close enough to drill."
+  },
+  {
+    "id": "stem-852",
+    "youtubeId": "0GGPe_Oum6c",
+    "title": "How Often do Asteroids Hit the Earth?",
+    "coreQuestion": "How often do asteroids actually hit the Earth?",
+    "channel": "CrashCourse",
+    "category": "Space",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Near-Earth Objects",
+      "Impact Frequency",
+      "Meteorite Classification",
+      "Planetary Defence"
+    ],
+    "description": "A Crash Course Geology episode separating asteroids from meteorites, sizing the impact risk by object diameter, and explaining how surveys track near-Earth objects. The video ends with what could be done about a threat.",
+    "takeaway": "Small impacts are common and harmless; the risk comes from rare large objects, which is why we survey the sky."
+  },
+  {
+    "id": "stem-853",
+    "youtubeId": "zuaVFnj4SWY",
+    "title": "The mystery of the 14 fractions",
+    "coreQuestion": "What is FRACTRAN, and how can fourteen fractions compute anything?",
+    "channel": "Stand-up Maths",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "20 min",
+    "concepts": [
+      "FRACTRAN",
+      "Register Machines",
+      "Turing Completeness",
+      "Prime Factorisation"
+    ],
+    "description": "Matt Parker explores John Conway's FRACTRAN, a programming language made of ordered fractions, and shows how multiplying by those fractions implements logic. The video builds up to the claim that such a tiny system is Turing complete.",
+    "takeaway": "Because integers encode sequences of primes, multiplying by the right fractions is enough to run a program."
+  },
+  {
+    "id": "stem-854",
+    "youtubeId": "9xwU-ochogk",
+    "title": "We tested Babish's 15,000% claim!",
+    "coreQuestion": "Is a 15,000% increase in surface area even possible?",
+    "channel": "Stand-up Maths",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "18 min",
+    "concepts": [
+      "Surface Area",
+      "Scaling",
+      "Fractal Dimension",
+      "Measurement"
+    ],
+    "description": "Matt tests a cooking video's claim about increasing surface area by 15,000%, measuring real shapes and calculating what the geometry allows. The answer depends on how you define and measure the surface.",
+    "takeaway": "Surface area can grow enormously with fine structure, so the claim hinges on the scale at which you measure."
+  },
+  {
+    "id": "stem-855",
+    "youtubeId": "c79PsbkHw4A",
+    "title": "Has a Millennium Prize Problem been solved by AI?",
+    "coreQuestion": "Did an AI solve the Navier-Stokes Millennium Prize problem?",
+    "channel": "Stand-up Maths",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "23 min",
+    "concepts": [
+      "Navier-Stokes",
+      "Millennium Prize",
+      "AI Proofs",
+      "Peer Review"
+    ],
+    "description": "Matt follows the claim that an AI solved Navier-Stokes, reading the announcement and the objections raised by mathematicians including Tristan Buckmaster. The video explains what the equations ask and why a claimed proof needs verification.",
+    "takeaway": "A proof is a social object: until experts can check it, a claimed solution is a press release."
+  },
+  {
+    "id": "stem-856",
+    "youtubeId": "k3sIHbj-TUI",
+    "title": "Is Kinetic Energy actually ½mv²?",
+    "coreQuestion": "Is kinetic energy really ½mv²?",
+    "channel": "Stand-up Maths",
+    "category": "Physics",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "Kinetic Energy",
+      "Work-Energy Theorem",
+      "Integration",
+      "Units"
+    ],
+    "description": "Matt derives kinetic energy from first principles — force, work and integration — and then tests the result against a particle-physics experiment at the Large Hadron Collider. The video shows exactly where the half comes from.",
+    "takeaway": "The ½ comes from integrating force over distance as velocity rises; it is a consequence of the work-energy theorem, not a convention."
+  },
+  {
+    "id": "stem-857",
+    "youtubeId": "ZJ8KThKAfbs",
+    "title": "Has an AI discovered new maths?",
+    "coreQuestion": "Has an AI actually discovered new mathematics?",
+    "channel": "Stand-up Maths",
+    "category": "Math",
+    "difficulty": "Deep Dive",
+    "duration": "21 min",
+    "concepts": [
+      "Erdős Problems",
+      "Automated Theorem Proving",
+      "Unit Distance Problem",
+      "Verification"
+    ],
+    "description": "Matt examines claims that AI solved open Erdős problems and improved a unit-distance construction, checking each against the community's records. The video separates genuine new results from restatements and rediscoveries.",
+    "takeaway": "AI can produce results that look new, but mathematics requires checking them against everything already known."
+  },
+  {
+    "id": "stem-858",
+    "youtubeId": "kahGSss6SsU",
+    "title": "Calculating pi from coin flips (without randomness)",
+    "coreQuestion": "How can you calculate pi from coin flips?",
+    "channel": "Stand-up Maths",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "26 min",
+    "concepts": [
+      "Monte Carlo Estimation",
+      "Buffon's Needle",
+      "Convergence Rate",
+      "Deterministic Sequences"
+    ],
+    "description": "Matt explores a surprising method that produces pi from a coin-flipping procedure without needing true randomness, following Jim Propp's discovery. The video works through the underlying probability and runs the experiment at scale.",
+    "takeaway": "The averaging that makes random coin flips produce pi still works for a deterministic sequence, as long as it behaves statistically like a random one."
+  },
+  {
+    "id": "stem-859",
+    "youtubeId": "DoQ5RXflnuY",
+    "title": "The Future of Microscopy (and end of our Journey)",
+    "coreQuestion": "How has microscopy changed, and where is it going?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "11 min",
+    "concepts": [
+      "Microscopy",
+      "Resolution",
+      "Fluorescence Imaging",
+      "Lens Design"
+    ],
+    "description": "The series finale looks back at centuries of looking through lenses and forward to the techniques that may replace them. It is part history of the instrument and part reflection on what the microcosmos still hides.",
+    "takeaway": "Every advance in microscopy has revealed a new layer of life by making the invisible resolvable."
+  },
+  {
+    "id": "stem-860",
+    "youtubeId": "YXIRTkY62b4",
+    "title": "Some Microbes Also Take Naps",
+    "coreQuestion": "Do microorganisms sleep or rest?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Dormancy",
+      "Spores",
+      "Metabolic Arrest",
+      "Biofilms"
+    ],
+    "description": "An exploration of dormancy in microbes: spores, cysts and states in which single-celled life shuts down metabolically. The video explains why pausing is a survival strategy.",
+    "takeaway": "For microbes, waiting is a strategy: shutting down metabolism lets them outlast conditions that would kill an active cell."
+  },
+  {
+    "id": "stem-861",
+    "youtubeId": "-qLWQ90X8k8",
+    "title": "Why Do Planarians Have Those Triangles on their Heads?",
+    "coreQuestion": "What are the triangles on a planarian's head?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "8 min",
+    "concepts": [
+      "Planaria",
+      "Regeneration",
+      "Eyespots",
+      "Stem Cells"
+    ],
+    "description": "A close look at planarians — flatworms famous for regenerating from fragments — and the eyespots on their heads. The video explains how they sense light and why they are a model organism for regeneration.",
+    "takeaway": "Planarians can regrow a whole body from a fragment because they keep a population of stem cells throughout life."
+  },
+  {
+    "id": "stem-862",
+    "youtubeId": "K6pX_rm6p9Q",
+    "title": "Mysteries from a Nuclear Test Site",
+    "coreQuestion": "What lives in the soil of a nuclear test site?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "9 min",
+    "concepts": [
+      "Extremophiles",
+      "Radiation Resistance",
+      "Soil Microbes",
+      "Bioremediation"
+    ],
+    "description": "Samples from a former nuclear test site are examined under the microscope to see what survives and thrives there. The video discusses radiation resistance and how life adapts to contaminated environments.",
+    "takeaway": "Some microbes tolerate radiation levels that would kill most life, which makes them candidates for cleaning contaminated sites."
+  },
+  {
+    "id": "stem-863",
+    "youtubeId": "cm8rFiY_u6o",
+    "title": "Tiny Mysteries from the Black Sea",
+    "coreQuestion": "What can microscopic life from the Black Sea tell us?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "8 min",
+    "concepts": [
+      "Anoxic Water",
+      "Bivalve Larvae",
+      "Plankton",
+      "Ciliates"
+    ],
+    "description": "A microscopy session with samples from the Black Sea, revealing bivalve larvae, ciliates and other organisms in the water column. The video explains the unusual anoxic depths of the Black Sea and what that means for life there.",
+    "takeaway": "The Black Sea's deep anoxic layer preserves conditions that were common in ancient oceans."
+  },
+  {
+    "id": "stem-864",
+    "youtubeId": "wG5yaD6QRg4",
+    "title": "We've Been Looking For This Purple Amoeba for 6 Years!",
+    "coreQuestion": "Why did it take six years to find this purple amoeba?",
+    "channel": "Journey to the Microcosmos",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "9 min",
+    "concepts": [
+      "Amoeba",
+      "Morphology",
+      "Sample Collection",
+      "Species Identification"
+    ],
+    "description": "The team finally locates an amoeba they had been hunting for years, and explains what made it so elusive. The episode covers how species are identified from morphology and where such organisms hide.",
+    "takeaway": "Finding a specific microbe is a sampling problem: it may be common but only in a habitat nobody thought to check."
+  },
+  {
+    "id": "stem-865",
+    "youtubeId": "8EtdC9Bjubk",
+    "title": "Can you solve the Billy Bonka riddle?",
+    "coreQuestion": "Can you solve a candy factory logic puzzle?",
+    "channel": "TED-Ed",
+    "category": "Math",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "Logical Deduction",
+      "Worst-Case Reasoning",
+      "Constraints",
+      "Puzzle Solving"
+    ],
+    "description": "A fictional escape puzzle set in an eccentric candy factory, with a set of constraints the viewer must use to guarantee survival. The solution is a lesson in reasoning about the worst case rather than the likely one.",
+    "takeaway": "When an adversary chooses, the winning strategy must work for every case, not just the probable one."
+  },
+  {
+    "id": "stem-866",
+    "youtubeId": "8RPK5KwYhgA",
+    "title": "What if you didn’t brush your teeth for a year?",
+    "coreQuestion": "What happens to your mouth if you stop brushing for a year?",
+    "channel": "TED-Ed",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "Oral Microbiome",
+      "Plaque",
+      "Gingivitis",
+      "Enamel"
+    ],
+    "description": "A timeline of what happens without oral hygiene: plaque, gum inflammation, enamel damage and a shifting microbial community. The animation shows how quickly the mouth's ecosystem destabilises.",
+    "takeaway": "The mouth hosts a managed ecosystem, and without daily disruption the bacteria that damage teeth take over."
+  },
+  {
+    "id": "stem-867",
+    "youtubeId": "NPJ9KZqrl50",
+    "title": "Why does this animal never age?",
+    "coreQuestion": "Is the hydra really immortal?",
+    "channel": "TED-Ed",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "Hydra",
+      "Regeneration",
+      "Stem Cells",
+      "Senescence"
+    ],
+    "description": "The story of Abraham Trembley's discovery of the hydra and its regenerative abilities, and what modern biology says about its ageing. The video explains how stem cells keep the animal biologically young.",
+    "takeaway": "Hydras avoid ageing by constantly replacing their cells, which suggests ageing is not inevitable for every organism."
+  },
+  {
+    "id": "stem-868",
+    "youtubeId": "z3Y-gsBKChc",
+    "title": "Why are AI data centers using so much electricity?",
+    "coreQuestion": "Why do AI data centres use so much electricity?",
+    "channel": "TED-Ed",
+    "category": "Emerging Technology",
+    "difficulty": "Foundational",
+    "duration": "7 min",
+    "concepts": [
+      "Data Centre Cooling",
+      "Inference Cost",
+      "Power Usage Effectiveness",
+      "Grid Load"
+    ],
+    "description": "An explainer on the energy and water demands of AI data centres: training runs, inference at scale, and the cooling needed to keep racks running. The video sizes the footprint against cities and discusses efficiency options.",
+    "takeaway": "AI's cost is physical: every token served is electricity and cooling, which is why efficiency now decides where data centres can be built."
+  },
+  {
+    "id": "stem-869",
+    "youtubeId": "jG7ULeWUfDw",
+    "title": "Do we actually know how magnets work?",
+    "coreQuestion": "Do we actually understand how magnets work?",
+    "channel": "TED-Ed",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "Electron Spin",
+      "Magnetic Domains",
+      "Quantum Mechanics",
+      "Ferromagnetism"
+    ],
+    "description": "A history of magnetism from unexplained alignment to quantum mechanics, explaining how electron spin and orbital motion produce magnetic fields. The video connects the theory to MRI machines and hard drives.",
+    "takeaway": "Magnetism is a quantum effect of moving and spinning charges, understood well enough to engineer into storage and imaging."
+  },
+  {
+    "id": "stem-870",
+    "youtubeId": "bHB5iiDDJ-s",
+    "title": "Why is it so easy for birds to spread illness?",
+    "coreQuestion": "Why is it so easy for birds to spread disease?",
+    "channel": "TED-Ed",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "6 min",
+    "concepts": [
+      "H5N1",
+      "Zoonosis",
+      "Antigenic Shift",
+      "Reservoirs"
+    ],
+    "description": "An explainer on avian influenza and why H5N1 has spread into dozens of mammal species. The video covers how influenza viruses reassort, how poultry farming concentrates risk, and what a jump to humans would require.",
+    "takeaway": "Birds are effective disease vectors because they travel far and mix with densely farmed animals, giving viruses room to change."
+  },
+  {
+    "id": "stem-871",
+    "youtubeId": "cPxnWRp4oPo",
+    "title": "Conservation of electric energy",
+    "coreQuestion": "How does electric potential energy become kinetic energy for a charge?",
+    "channel": "Khan Academy",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "14 min",
+    "concepts": [
+      "Electric Potential Energy",
+      "Potential Difference",
+      "Kinetic Energy",
+      "Conservation of Energy"
+    ],
+    "description": "A worked AP Physics lesson on moving a charge between two potentials and accounting for the change in energy. Khan's explanation links the work done by the field to the particle's kinetic energy.",
+    "takeaway": "In an electrostatic field, lost potential energy becomes kinetic energy, so qΔV sets the speed a charge can reach."
+  },
+  {
+    "id": "stem-872",
+    "youtubeId": "1lBFWPbEX5I",
+    "title": "Connecting electric potential and field using calculus",
+    "coreQuestion": "How are electric potential and electric field related through calculus?",
+    "channel": "Khan Academy",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "8 min",
+    "concepts": [
+      "Gradient",
+      "Line Integral",
+      "Electric Field",
+      "Path Independence"
+    ],
+    "description": "A short lesson deriving the relationship between field and potential: the field is the negative gradient of potential, and potential difference is a path-independent line integral.",
+    "takeaway": "The electric field points downhill in potential, and its magnitude is the slope in that direction."
+  },
+  {
+    "id": "stem-873",
+    "youtubeId": "3pPsVNNEm08",
+    "title": "Electric potential of charge distributions",
+    "coreQuestion": "How do you compute electric potential for a continuous charge distribution?",
+    "channel": "Khan Academy",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "10 min",
+    "concepts": [
+      "Superposition",
+      "Integration",
+      "Charge Density",
+      "Electric Potential"
+    ],
+    "description": "A worked example integrating the contributions from a continuous distribution of charge, using the scalar nature of potential to avoid vector sums.",
+    "takeaway": "Because potential is a scalar, you can add every charge element's contribution as an ordinary number before worrying about direction."
+  },
+  {
+    "id": "stem-874",
+    "youtubeId": "PrykTpvJDOM",
+    "title": "Electric potential and electric field",
+    "coreQuestion": "What do equipotential lines tell you about an electric field?",
+    "channel": "Khan Academy",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "15 min",
+    "concepts": [
+      "Equipotential Lines",
+      "Electric Field Vectors",
+      "Isolines",
+      "Potential Gradient"
+    ],
+    "description": "A lesson on reading equipotential maps: lines of constant potential are perpendicular to field vectors, and their spacing encodes field strength.",
+    "takeaway": "Equipotential lines are always perpendicular to field lines, and their spacing shows where the field is strong."
+  },
+  {
+    "id": "stem-875",
+    "youtubeId": "Fj_G5tN84Eg",
+    "title": "Electric potential",
+    "coreQuestion": "What is electric potential, and how do you add it up?",
+    "channel": "Khan Academy",
+    "category": "Physics",
+    "difficulty": "Foundational",
+    "duration": "12 min",
+    "concepts": [
+      "Electric Potential",
+      "Superposition",
+      "Point Charge",
+      "Volt"
+    ],
+    "description": "An introduction to potential as energy per unit charge, with worked superpositions of point charges and the definition of the volt.",
+    "takeaway": "Potential is potential energy per charge, which makes it a scalar you can simply add from each source."
+  },
+  {
     "id": "stem-750",
     "youtubeId": "1VPfZ_XzisU",
     "title": "The Bizarre Behavior of Rotating Bodies",
