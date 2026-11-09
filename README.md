@@ -10,13 +10,17 @@ be hosted on GitHub Pages.
 
 ## What it does
 
-- **744 hand-picked videos** across seven disciplines — 100 per category, plus
-  the strongest reassigned videos from the retired Computer Science category.
+- **874 hand-picked videos** across seven disciplines, drawn heavily from
+  twenty of YouTube's strongest science, engineering and mathematics channels.
 - **Emerging Technology**: AI and machine learning, quantum computing, nanotech
   and advanced materials, biotechnology, robotics, clean energy, space
   technology, and the chipmaking that makes it all possible.
 - **Content-first cards**: the idea, the question it answers, and the takeaway
   come before the channel name.
+- **Watched and My List**: a played video moves out of the main collection into
+  its own Watched section, and the bookmark on any card (or in the player) saves
+  a video to My List. Both are kept in the browser, and the filter row shows how
+  many videos are in each.
 - **Search** across titles, concepts, descriptions, channels, and takeaways.
 - **Sticky, scrollable category filters** with live counts.
 - **Cinematic inline playback** via `youtube-nocookie.com`. Clicking the backdrop
@@ -90,6 +94,7 @@ python3 scripts/update_content.py --check --check-links
 │   │   └── VideoGrid.jsx
 │   ├── data/data.json             # the catalogue (source of truth)
 │   ├── lib/categories.js          # labels, icons, accent colours
+│   ├── lib/personal.js            # watched history + My List, in localStorage
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx

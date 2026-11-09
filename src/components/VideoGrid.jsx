@@ -30,6 +30,11 @@ export default function VideoGrid({
   keyboardEnabled = true,
   focused = false,
   onNavigateToCategories,
+  saved,
+  watched,
+  onToggleSaved,
+  onToggleWatched,
+  emptyState,
 }) {
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const didNavigateRef = useRef(false);
@@ -132,11 +137,11 @@ export default function VideoGrid({
           <Telescope className="h-6 w-6 text-white/40" aria-hidden="true" />
         </span>
         <h3 className="mt-5 font-display text-lg font-semibold text-white">
-          Nothing in this corner of the universe
+          {emptyState?.title ?? 'Nothing in this corner of the universe'}
         </h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/40">
-          Try a different phrase, or clear the filters and browse the full
-          collection.
+          {emptyState?.message ??
+            'Try a different phrase, or clear the filters and browse the full collection.'}
         </p>
         <button
           type="button"
@@ -168,6 +173,10 @@ export default function VideoGrid({
           priority={index < 4}
           tvMode={tvMode}
           isFocused={tvMode && focused && focusedIndex === index}
+          saved={saved?.has(video.id) ?? false}
+          watched={watched?.has(video.id) ?? false}
+          onToggleSaved={onToggleSaved}
+          onToggleWatched={onToggleWatched}
         />
       ))}
     </div>

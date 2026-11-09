@@ -28,10 +28,17 @@ data class Library(
     val videos: List<Video>,
     val categories: List<String>,
     val byCategory: Map<String, List<Video>>,
+    val byId: Map<String, Video>,
     val latest: List<Video>,
 ) {
     val count: Int get() = videos.size
 }
+
+/**
+ * Videos for [ids] in the order given, skipping ids a later curation commit has
+ * removed. Used by Watched and My List, which store ids newest first.
+ */
+fun Library.select(ids: List<String>): List<Video> = ids.mapNotNull { byId[it] }
 
 /**
  * Turns catalogue JSON into a [Library]. Shared by the copy bundled in the APK
@@ -123,6 +130,7 @@ fun parseLibrary(json: String): Library {
         videos = videos,
         categories = categories,
         byCategory = videos.groupBy { it.category },
+        byId = videos.associateBy { it.id },
         latest = videos.take(24),
     )
 }

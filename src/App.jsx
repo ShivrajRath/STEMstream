@@ -2,14 +2,11 @@ import { useCallback, useDeferredValue, useMemo, useState } from 'react';
 import {
   ArrowUp,
   Atom,
-  Dice4,
   Film,
   Layers3,
-  Monitor,
   RotateCcw,
   ShieldCheck,
   Sparkles,
-  Tv,
 } from 'lucide-react';
 import Header from './components/Header';
 import CategoryFilter from './components/CategoryFilter';
@@ -17,17 +14,15 @@ import VideoGrid from './components/VideoGrid';
 import ModalPlayer from './components/ModalPlayer';
 import Logo from './components/Logo';
 import { CATEGORIES } from './lib/categories';
+import { useMyList, useWatched } from './lib/personal';
 import videos from './data/data.json';
 import { getInitialTvMode, saveTvModePreference } from './lib/tv';
 
-const categoryCounts = { All: videos.length };
+const VIDEOS_BY_ID = new Map(videos.map((video) => [video.id, video]));
 
-for (const category of CATEGORIES) {
-  if (category !== 'All') categoryCounts[category] = 0;
-}
-
-for (const video of videos) {
-  categoryCounts[video.category] = (categoryCounts[video.category] ?? 0) + 1;
+/** Catalogue records for a stored id list, newest first, skipping removed ids. */
+function videosForIds(ids) {
+  return ids.map((id) => VIDEOS_BY_ID.get(id)).filter(Boolean);
 }
 
 function OrbitGraphic() {
@@ -87,7 +82,7 @@ function getSearchableText(video) {
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('All');
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   // Typing stays instant; the (much heavier) result list catches up at a lower
@@ -97,6 +92,18 @@ export default function App() {
   // unless the viewer has made an explicit choice.
   const [tvMode, setTvMode] = useState(() => getInitialTvMode());
   const [tvFocusZone, setTvFocusZone] = useState('grid');
+
+  const {
+    watchedIds,
+    watched,
+    markWatched,
+    toggleWatched,
+    clearWatched,
+  } = useWatched();
+  const { savedIds, saved, toggleSaved } = useMyList();
+
+  const isListView = activeFilter === 'My List';
+  const isWatchedView = activeFilter === 'Watched';
 
   const toggleTvMode = useCallback(() => {
     setTvMode((current) => {
@@ -121,9 +128,12 @@ export default function App() {
           // Fullscreen is a nice-to-have; never block playback on it.
         });
       }
+      // Opening the player is the "watched" signal. From then on the video is
+      // filed under Watched instead of the main collection.
+      markWatched(video.id);
       setSelectedVideo(video);
     },
-    [tvMode],
+    [tvMode, markWatched],
   );
 
   const closeVideo = useCallback(() => {
@@ -136,18 +146,28 @@ export default function App() {
     setTvFocusZone('grid');
   }, []);
 
+  const toggleSavedVideo = useCallback(
+    (video) => toggleSaved(video.id),
+    [toggleSaved],
+  );
+
+  const toggleWatchedVideo = useCallback(
+    (video) => toggleWatched(video.id),
+    [toggleWatched],
+  );
+
   const changeSearch = useCallback((value) => {
     setSearchQuery(value);
     setVisibleCount(PAGE_SIZE);
   }, []);
 
-  const changeCategory = useCallback((category) => {
-    setActiveCategory(category);
+  const changeFilter = useCallback((filter) => {
+    setActiveFilter(filter);
     setVisibleCount(PAGE_SIZE);
-    // The new category is a different list, so the old scroll offset would
-    // leave the viewport parked on a row that no longer exists. Bring the
-    // collection top back into view so the first video is what you see. The
-    // section already carries the sticky-header scroll margin.
+    // A new filter is a different list, so the old scroll offset would leave
+    // the viewport parked on a row that no longer exists. Bring the collection
+    // top back into view so the first video is what you see. The section
+    // already carries the sticky-header scroll margin.
     document.getElementById('collection')?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
@@ -156,24 +176,64 @@ export default function App() {
 
   const resetFilters = useCallback(() => {
     setSearchQuery('');
-    setActiveCategory('All');
+    setActiveFilter('All');
     setVisibleCount(PAGE_SIZE);
   }, []);
 
+  // Category counts describe what the collection will actually show, so a
+  // watched video stops counting towards its discipline.
+  const filterCounts = useMemo(() => {
+    const counts = {
+      All: 0,
+      'My List': savedIds.length,
+      Watched: watchedIds.length,
+    };
+
+    for (const category of CATEGORIES) {
+      if (category !== 'All') counts[category] = 0;
+    }
+
+    for (const video of videos) {
+      if (watched.has(video.id)) continue;
+      counts.All += 1;
+      if (counts[video.category] !== undefined) counts[video.category] += 1;
+    }
+
+    return counts;
+  }, [savedIds.length, watched, watchedIds.length]);
+
   const filteredVideos = useMemo(() => {
+    let source;
+
+    if (isWatchedView) {
+      source = videosForIds(watchedIds);
+    } else if (isListView) {
+      source = videosForIds(savedIds);
+    } else {
+      source = videos.filter(
+        (video) =>
+          !watched.has(video.id) &&
+          (activeFilter === 'All' || video.category === activeFilter),
+      );
+    }
+
     const query = deferredSearchQuery.trim().toLowerCase();
-    const tokens = query ? query.split(/\s+/) : [];
+    if (!query) return source;
 
-    return videos.filter((video) => {
-      if (activeCategory !== 'All' && video.category !== activeCategory) {
-        return false;
-      }
-      if (tokens.length === 0) return true;
-
+    const tokens = query.split(/\s+/);
+    return source.filter((video) => {
       const haystack = getSearchableText(video);
       return tokens.every((token) => haystack.includes(token));
     });
-  }, [activeCategory, deferredSearchQuery]);
+  }, [
+    activeFilter,
+    deferredSearchQuery,
+    isListView,
+    isWatchedView,
+    savedIds,
+    watched,
+    watchedIds,
+  ]);
 
   const playRandomVideo = useCallback(() => {
     if (filteredVideos.length === 0) return;
@@ -192,9 +252,51 @@ export default function App() {
     setVisibleCount((count) => Math.min(count + PAGE_SIZE, filteredVideos.length));
   }, [filteredVideos.length]);
 
-  const hasActiveFilters = searchQuery.trim() !== '' || activeCategory !== 'All';
-  const collectionTitle =
-    activeCategory === 'All' ? 'Start anywhere. Get curious.' : activeCategory;
+  const hasActiveFilters = searchQuery.trim() !== '' || activeFilter !== 'All';
+  const collectionTitle = isListView
+    ? 'My list'
+    : isWatchedView
+      ? 'Watched'
+      : activeFilter === 'All'
+        ? 'Start anywhere. Get curious.'
+        : activeFilter;
+
+  const disciplineCount = CATEGORIES.length - 1;
+  const collectionSummary = searchQuery.trim()
+    ? `${isListView ? 'My list' : isWatchedView ? 'Watched' : activeFilter === 'All' ? 'All videos' : activeFilter} · ${filteredVideos.length} ${filteredVideos.length === 1 ? 'result' : 'results'} for “${searchQuery.trim()}”`
+    : isListView
+      ? `${savedIds.length} ${savedIds.length === 1 ? 'video' : 'videos'} saved for later. Only you can see this list.`
+      : isWatchedView
+        ? `${watchedIds.length} watched ${watchedIds.length === 1 ? 'video' : 'videos'}, most recent first.`
+        : activeFilter === 'All'
+          ? watchedIds.length > 0
+            ? `${filteredVideos.length} unwatched videos across ${disciplineCount} disciplines. ${watchedIds.length} watched ${watchedIds.length === 1 ? 'video is' : 'videos are'} filed under Watched.`
+            : `${filteredVideos.length} videos across ${disciplineCount} disciplines, ordered by editorial pick.`
+          : `${filteredVideos.length} unwatched ${activeFilter.toLowerCase()} videos.`;
+
+  const emptyState = isListView
+    ? {
+        title: 'Your list is empty',
+        message:
+          'Press the bookmark on any card, or Add to my list in the player, to keep a video here for later.',
+      }
+    : isWatchedView
+      ? {
+          title: 'Nothing watched yet',
+          message:
+            'A video moves here as soon as you play it, so the main collection stays focused on what is next.',
+        }
+      : watchedIds.length > 0
+        ? {
+            title: 'You are all caught up',
+            message:
+              'Everything here has been watched and moved to the Watched section. Open it to rewatch a video or put one back.',
+          }
+        : {
+            title: 'Nothing in this corner of the universe',
+            message:
+              'Try a different phrase, or clear the filters and browse the full collection.',
+          };
 
   return (
     <div
@@ -221,9 +323,9 @@ export default function App() {
           onToggleTvMode={toggleTvMode}
         />
         <CategoryFilter
-          activeCategory={activeCategory}
-          counts={categoryCounts}
-          onChange={changeCategory}
+          activeFilter={activeFilter}
+          counts={filterCounts}
+          onChange={changeFilter}
           tvMode={tvMode}
           keyboardEnabled={!selectedVideo}
           focused={tvFocusZone === 'categories'}
@@ -281,7 +383,7 @@ export default function App() {
                   </li>
                   <li className="inline-flex items-center gap-2">
                     <Layers3 className="h-4 w-4 text-white/25" aria-hidden="true" />
-                    {CATEGORIES.length - 1} disciplines
+                    {disciplineCount} disciplines
                   </li>
                   <li className="inline-flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-white/25" aria-hidden="true" />
@@ -303,7 +405,7 @@ export default function App() {
           <div className="flex flex-col gap-5 border-b border-white/[0.06] pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/30">
-                The collection
+                {isListView ? 'Saved by you' : isWatchedView ? 'Your history' : 'The collection'}
               </p>
               <h2
                 id="collection-heading"
@@ -312,24 +414,41 @@ export default function App() {
                 {collectionTitle}
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/45">
-                {searchQuery.trim()
-                  ? `Search results for “${searchQuery.trim()}” · ${filteredVideos.length} of ${videos.length} videos`
-                  : activeCategory === 'All'
-                    ? `${filteredVideos.length} videos across ${CATEGORIES.length - 1} disciplines, ordered by editorial pick.`
-                    : `${filteredVideos.length} hand-picked ${activeCategory.toLowerCase()} videos.`}
+                {collectionSummary}
               </p>
             </div>
 
-            {hasActiveFilters && (
-              <button
-                type="button"
-                onClick={resetFilters}
-                className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-white/55 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:self-auto"
-              >
-                <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-                Reset filters
-              </button>
-            )}
+            <div className="flex shrink-0 flex-wrap items-center gap-2 self-start sm:self-auto">
+              {isWatchedView && watchedIds.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        'Clear the watched history? The videos return to the main collection.',
+                      )
+                    ) {
+                      clearWatched();
+                    }
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-white/55 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+                  Clear history
+                </button>
+              )}
+
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  onClick={resetFilters}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-white/55 transition hover:border-white/20 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+                  Reset filters
+                </button>
+              )}
+            </div>
           </div>
 
           <p className="sr-only" aria-live="polite">
@@ -345,6 +464,11 @@ export default function App() {
               keyboardEnabled={!selectedVideo}
               focused={tvFocusZone === 'grid'}
               onNavigateToCategories={focusCategories}
+              saved={saved}
+              watched={watched}
+              onToggleSaved={toggleSavedVideo}
+              onToggleWatched={toggleWatchedVideo}
+              emptyState={emptyState}
             />
           </div>
 
@@ -393,7 +517,15 @@ export default function App() {
       </footer>
 
       {selectedVideo && (
-        <ModalPlayer video={selectedVideo} onClose={closeVideo} tvMode={tvMode} />
+        <ModalPlayer
+          video={selectedVideo}
+          onClose={closeVideo}
+          tvMode={tvMode}
+          saved={saved.has(selectedVideo.id)}
+          watched={watched.has(selectedVideo.id)}
+          onToggleSaved={toggleSavedVideo}
+          onToggleWatched={toggleWatchedVideo}
+        />
       )}
     </div>
   );

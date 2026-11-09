@@ -12,7 +12,13 @@ The Android project lives in this folder and reads the catalogue from
 
 - **Home** — hero pick, "fresh from the curation desk", deep dives, short watches,
   and one rail per discipline.
-- **Browse** — full grid with category filters.
+- **Browse** — full grid with category filters, plus **My List** and **Watched**
+  as their own destinations in the filter row.
+- **My List and Watched** — the detail screen has **My list** and **Watched**
+  toggles. A video is filed under Watched as soon as it plays, so the home rails
+  and the Browse grid stop recommending it; the Watched section is where it
+  lives afterwards, and unmarking it puts it back. Both lists are stored on the
+  device only, and survive `adb install -r` updates.
 - **Search** — remote-friendly text field plus concept and category shortcuts.
 - **Video detail** — description, concepts, takeaway, and a play action.
 - **Playback** — plays inside the app. YouTube's official embedded player fills

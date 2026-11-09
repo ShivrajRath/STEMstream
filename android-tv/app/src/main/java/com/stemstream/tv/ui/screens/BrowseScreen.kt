@@ -30,9 +30,13 @@ import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import com.stemstream.tv.data.Library
+import com.stemstream.tv.data.PersonalLibrary
+import com.stemstream.tv.data.SAVED_VIEW_KEY
 import com.stemstream.tv.data.Video
+import com.stemstream.tv.data.WATCHED_VIEW_KEY
 import com.stemstream.tv.data.categoryColor
 import com.stemstream.tv.data.categoryShortName
+import com.stemstream.tv.data.select
 import com.stemstream.tv.ui.components.CategoryChip
 import com.stemstream.tv.ui.components.VideoCard
 import com.stemstream.tv.ui.contentPaddingFor
@@ -43,6 +47,7 @@ import com.stemstream.tv.ui.theme.Muted
 @Composable
 fun BrowseScreen(
     library: Library,
+    personal: PersonalLibrary,
     selectedCategory: String?,
     onSelectCategory: (String?) -> Unit,
     onOpenVideo: (Video) -> Unit,
@@ -53,10 +58,24 @@ fun BrowseScreen(
     val gridState = rememberLazyGridState()
     val firstCardRequester = remember { FocusRequester() }
 
-    val filtered = if (selectedCategory == null) {
-        library.videos
-    } else {
-        library.byCategory[selectedCategory].orEmpty()
+    val savedView = selectedCategory == SAVED_VIEW_KEY
+    val watchedView = selectedCategory == WATCHED_VIEW_KEY
+
+    // "All" and every discipline leave watched videos out; My List and Watched
+    // are the destinations for them.
+    val filtered = remember(
+        selectedCategory,
+        library,
+        personal.watchedIds,
+        personal.savedIds,
+    ) {
+        when {
+            savedView -> library.select(personal.savedIds)
+            watchedView -> library.select(personal.watchedIds)
+            selectedCategory == null -> library.videos.filterNot { personal.isWatched(it.id) }
+            else -> library.byCategory[selectedCategory].orEmpty()
+                .filterNot { personal.isWatched(it.id) }
+        }
     }
 
     LaunchedEffect(selectedCategory) {
@@ -83,10 +102,11 @@ fun BrowseScreen(
                     )
                     Spacer(modifier = Modifier.height(3.dp))
                     Text(
-                        text = if (selectedCategory == null) {
-                            "Every video, filed by discipline."
-                        } else {
-                            "${categoryShortName(selectedCategory)} · ${filtered.size} videos"
+                        text = when {
+                            savedView -> "My list · ${filtered.size} saved"
+                            watchedView -> "Watched · ${filtered.size} already played"
+                            selectedCategory == null -> "Every video, filed by discipline."
+                            else -> "${categoryShortName(selectedCategory)} · ${filtered.size} videos"
                         },
                         style = MaterialTheme.typography.bodySmall,
                         color = Faint,
@@ -116,6 +136,22 @@ fun BrowseScreen(
                         onClick = { onSelectCategory(null) },
                     )
                 }
+                item(key = "saved") {
+                    CategoryChip(
+                        label = SAVED_VIEW_KEY,
+                        color = Color(0xFFFBBF24),
+                        selected = savedView,
+                        onClick = { onSelectCategory(SAVED_VIEW_KEY) },
+                    )
+                }
+                item(key = "watched") {
+                    CategoryChip(
+                        label = WATCHED_VIEW_KEY,
+                        color = Color(0xFF94A3B8),
+                        selected = watchedView,
+                        onClick = { onSelectCategory(WATCHED_VIEW_KEY) },
+                    )
+                }
                 items(library.categories, key = { it }) { category ->
                     CategoryChip(
                         label = category,
@@ -129,36 +165,66 @@ fun BrowseScreen(
 
         Spacer(modifier = Modifier.height(6.dp))
 
-        LazyVerticalGrid(
-            state = gridState,
-            columns = GridCells.Fixed(columns),
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .focusGroup(),
-            contentPadding = PaddingValues(
-                start = contentPadding,
-                end = contentPadding,
-                top = 8.dp,
-                bottom = 48.dp,
-            ),
-            horizontalArrangement = Arrangement.spacedBy(18.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
-        ) {
-            itemsIndexed(
-                items = filtered,
-                key = { _, video -> video.id },
-            ) { index, video ->
-                VideoCard(
-                    video = video,
-                    onClick = { onOpenVideo(video) },
-                    modifier = if (index == 0) {
-                        Modifier.focusRequester(firstCardRequester)
-                    } else {
-                        Modifier
+        if (filtered.isEmpty()) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .padding(horizontal = contentPadding, vertical = 40.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(
+                    text = when {
+                        savedView -> "Your list is empty"
+                        watchedView -> "Nothing watched yet"
+                        else -> "Everything here has been watched"
                     },
-                    showCategory = selectedCategory == null,
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = Color.White.copy(alpha = 0.9f),
                 )
+                Text(
+                    text = when {
+                        savedView -> "Open a video and choose My list to keep it here for later."
+                        watchedView -> "A video moves here as soon as you play it."
+                        else -> "Those videos are filed under Watched, not gone."
+                    },
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Muted,
+                )
+            }
+        } else {
+            LazyVerticalGrid(
+                state = gridState,
+                columns = GridCells.Fixed(columns),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .focusGroup(),
+                contentPadding = PaddingValues(
+                    start = contentPadding,
+                    end = contentPadding,
+                    top = 8.dp,
+                    bottom = 48.dp,
+                ),
+                horizontalArrangement = Arrangement.spacedBy(18.dp),
+                verticalArrangement = Arrangement.spacedBy(24.dp),
+            ) {
+                itemsIndexed(
+                    items = filtered,
+                    key = { _, video -> video.id },
+                ) { index, video ->
+                    VideoCard(
+                        video = video,
+                        onClick = { onOpenVideo(video) },
+                        modifier = if (index == 0) {
+                            Modifier.focusRequester(firstCardRequester)
+                        } else {
+                            Modifier
+                        },
+                        showCategory = selectedCategory == null || !savedView && !watchedView,
+                        saved = personal.isSaved(video.id),
+                    )
+                }
             }
         }
     }

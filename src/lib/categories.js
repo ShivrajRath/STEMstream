@@ -1,6 +1,8 @@
 import {
   Atom,
+  Bookmark,
   BrainCircuit,
+  CircleCheck,
   Dna,
   FlaskConical,
   LayoutGrid,
@@ -13,6 +15,9 @@ import {
  * Single source of truth for category labels, icons and accent colours.
  * Keep the category names aligned with `VALID_CATEGORIES` in
  * `scripts/update_content.py` and the entries in `src/data/data.json`.
+ *
+ * Emerging Technology is emerald: its old cyan read as the same blue family as
+ * Physics at a glance, which made the two chips look interchangeable on a TV.
  */
 export const CATEGORY_META = {
   All: {
@@ -35,9 +40,9 @@ export const CATEGORY_META = {
   },
   'Emerging Technology': {
     icon: BrainCircuit,
-    dot: 'bg-cyan-400',
-    text: 'text-cyan-300',
-    chip: 'border-cyan-400/25 bg-cyan-400/10 text-cyan-300',
+    dot: 'bg-emerald-400',
+    text: 'text-emerald-300',
+    chip: 'border-emerald-400/25 bg-emerald-400/10 text-emerald-300',
   },
   Engineering: {
     icon: Wrench,
@@ -65,7 +70,34 @@ export const CATEGORY_META = {
   },
 };
 
+/**
+ * Personal collections. They sit beside the disciplines in the filter row but
+ * are never derived from a video's category.
+ */
+export const VIEW_META = {
+  'My List': {
+    icon: Bookmark,
+    dot: 'bg-amber-300',
+    text: 'text-amber-200',
+    chip: 'border-amber-300/25 bg-amber-300/10 text-amber-200',
+  },
+  Watched: {
+    icon: CircleCheck,
+    dot: 'bg-zinc-300',
+    text: 'text-zinc-300',
+    chip: 'border-zinc-300/25 bg-zinc-300/10 text-zinc-300',
+  },
+};
+
 export const CATEGORIES = Object.keys(CATEGORY_META);
+
+/**
+ * Every entry in the filter row, in display order. `All` already leads
+ * CATEGORIES, so it must not be repeated here.
+ */
+export const FILTERS = [...CATEGORIES, ...Object.keys(VIEW_META)];
+
+export const VIEWS = Object.keys(VIEW_META);
 
 const FALLBACK_META = {
   icon: LayoutGrid,
@@ -75,5 +107,5 @@ const FALLBACK_META = {
 };
 
 export function getCategoryMeta(category) {
-  return CATEGORY_META[category] ?? FALLBACK_META;
+  return CATEGORY_META[category] ?? VIEW_META[category] ?? FALLBACK_META;
 }

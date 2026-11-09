@@ -48,6 +48,7 @@ fun VideoCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     showCategory: Boolean = true,
+    saved: Boolean = false,
 ) {
     val accent = categoryColor(video.category)
     val interactionSource = remember { MutableInteractionSource() }
@@ -101,6 +102,24 @@ fun VideoCard(
                 style = MaterialTheme.typography.labelMedium.copy(fontSize = 12.sp),
                 color = Color.White.copy(alpha = 0.92f),
             )
+
+            if (saved) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(8.dp)
+                        .background(Color(0xF2FBBF24), RoundedCornerShape(6.dp))
+                        .padding(horizontal = 6.dp, vertical = 4.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = AppIcons.Bookmark,
+                        contentDescription = "In my list",
+                        modifier = Modifier.size(13.dp),
+                        tint = Ink,
+                    )
+                }
+            }
 
             if (focused) {
                 Box(

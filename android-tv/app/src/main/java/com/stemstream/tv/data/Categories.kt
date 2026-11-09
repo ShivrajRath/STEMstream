@@ -13,10 +13,13 @@ val CATEGORY_ORDER = listOf(
     "Math",
 )
 
+// Emerging Technology is emerald, not the cyan it used to be: cyan sat in the
+// same blue family as Physics, so the two chips read as the same colour from a
+// sofa. Every discipline now has a hue of its own.
 private val CATEGORY_COLORS = mapOf(
     "Physics" to Color(0xFF38BDF8),
     "Space" to Color(0xFFA78BFA),
-    "Emerging Technology" to Color(0xFF22D3EE),
+    "Emerging Technology" to Color(0xFF34D399),
     "Engineering" to Color(0xFFFB923C),
     "Biology" to Color(0xFFF472B6),
     "Chemistry" to Color(0xFFF87171),

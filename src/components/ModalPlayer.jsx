@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
+  Bookmark,
+  Check,
   Clock3,
   ExternalLink,
   Gauge,
@@ -109,7 +111,15 @@ function VideoEmbed({ videoId, title, className }) {
   );
 }
 
-export default function ModalPlayer({ video, onClose, tvMode = false }) {
+export default function ModalPlayer({
+  video,
+  onClose,
+  tvMode = false,
+  saved = false,
+  watched = false,
+  onToggleSaved,
+  onToggleWatched,
+}) {
   const dialogRef = useRef(null);
   const detailsRef = useRef(null);
   const closeButtonRef = useRef(null);
@@ -259,6 +269,49 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
           {video.duration}
         </span>
       </div>
+
+      {(onToggleSaved || onToggleWatched) && (
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          {onToggleSaved && (
+            <button
+              type="button"
+              onClick={() => onToggleSaved(video)}
+              aria-pressed={saved}
+              className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 ${tvMode ? 'text-sm' : 'text-xs'} ${
+                saved
+                  ? 'border-amber-300/40 bg-amber-300/15 text-amber-200'
+                  : 'border-white/10 bg-white/[0.04] text-white/60 hover:border-white/25 hover:bg-white/[0.08] hover:text-white'
+              }`}
+            >
+              <Bookmark
+                className={tvMode ? 'h-4 w-4' : 'h-3.5 w-3.5'}
+                fill={saved ? 'currentColor' : 'none'}
+                aria-hidden="true"
+              />
+              {saved ? 'In my list' : 'Add to my list'}
+            </button>
+          )}
+
+          {onToggleWatched && (
+            <button
+              type="button"
+              onClick={() => onToggleWatched(video)}
+              aria-pressed={watched}
+              className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 ${tvMode ? 'text-sm' : 'text-xs'} ${
+                watched
+                  ? 'border-emerald-400/40 bg-emerald-400/15 text-emerald-200'
+                  : 'border-white/10 bg-white/[0.04] text-white/60 hover:border-white/25 hover:bg-white/[0.08] hover:text-white'
+              }`}
+            >
+              <Check
+                className={tvMode ? 'h-4 w-4' : 'h-3.5 w-3.5'}
+                aria-hidden="true"
+              />
+              {watched ? 'Watched · mark unwatched' : 'Mark as watched'}
+            </button>
+          )}
+        </div>
+      )}
 
       <h2
         className={`mt-4 text-balance font-display font-bold leading-tight tracking-[-0.02em] text-white ${tvMode ? 'text-3xl sm:text-4xl lg:text-5xl' : 'text-xl sm:text-2xl lg:text-3xl'}`}
@@ -411,6 +464,29 @@ export default function ModalPlayer({ video, onClose, tvMode = false }) {
               className="pointer-events-auto flex shrink-0 items-center gap-2"
               onMouseDown={(event) => event.stopPropagation()}
             >
+              {onToggleSaved && (
+                <button
+                  type="button"
+                  onClick={() => onToggleSaved(video)}
+                  aria-pressed={saved}
+                  aria-label={saved ? 'Remove from my list' : 'Save to my list'}
+                  title={saved ? 'Remove from my list' : 'Save to my list'}
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 ${
+                    saved
+                      ? 'border-amber-300/60 bg-amber-300 text-[#0b0c0e]'
+                      : 'border-white/15 bg-black/70 text-white/80 hover:bg-white hover:text-[#0b0c0e]'
+                  }`}
+                >
+                  <Bookmark
+                    className="h-5 w-5"
+                    fill={saved ? 'currentColor' : 'none'}
+                    aria-hidden="true"
+                  />
+                  <span className="hidden sm:inline">
+                    {saved ? 'Saved' : 'Save'}
+                  </span>
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => setShowDetails((current) => !current)}

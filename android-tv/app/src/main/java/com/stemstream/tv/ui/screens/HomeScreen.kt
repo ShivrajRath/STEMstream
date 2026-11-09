@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,8 +24,12 @@ import androidx.compose.runtime.withFrameNanos
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import com.stemstream.tv.data.Library
+import com.stemstream.tv.data.PersonalLibrary
+import com.stemstream.tv.data.SAVED_VIEW_KEY
 import com.stemstream.tv.data.Video
+import com.stemstream.tv.data.WATCHED_VIEW_KEY
 import com.stemstream.tv.data.categoryColor
+import com.stemstream.tv.data.select
 import com.stemstream.tv.ui.components.Hero
 import com.stemstream.tv.ui.components.StemMark
 import com.stemstream.tv.ui.components.VideoRailSection
@@ -40,9 +45,11 @@ import com.stemstream.tv.ui.theme.Muted
 @Composable
 fun HomeScreen(
     library: Library,
+    personal: PersonalLibrary,
     onOpenVideo: (Video) -> Unit,
     onPlayVideo: (Video) -> Unit,
     onBrowseCategory: (String) -> Unit,
+    onBrowseView: (String) -> Unit,
     onSurprise: () -> Unit,
 ) {
     val featured = library.videos.firstOrNull() ?: return
@@ -61,11 +68,27 @@ fun HomeScreen(
         runCatching { heroFocusRequester.requestFocus() }
     }
 
-    val fresh = library.videos.drop(1).take(18).ifEmpty { library.videos.take(18) }
-    val deepDives = library.videos
+    // Watched videos leave the browsing rails entirely and are shown in one
+    // dedicated rail at the bottom, so the home screen keeps recommending what
+    // has not been seen yet.
+    val unwatched = remember(library, personal.watchedIds) {
+        library.videos.filterNot { personal.isWatched(it.id) }
+    }
+    val savedVideos = remember(library, personal.savedIds) {
+        library.select(personal.savedIds).take(18)
+    }
+    val watchedVideos = remember(library, personal.watchedIds) {
+        library.select(personal.watchedIds).take(18)
+    }
+
+    val fresh = unwatched
+        .filter { it.id != featured.id }
+        .take(18)
+        .ifEmpty { unwatched.take(18) }
+    val deepDives = unwatched
         .filter { it.difficulty.equals("Deep Dive", ignoreCase = true) }
         .take(18)
-    val quickWatches = library.videos
+    val quickWatches = unwatched
         .filter { video ->
             val minutes = video.duration.substringBefore(" min").trim().toIntOrNull()
             minutes != null && minutes <= 12
@@ -88,6 +111,21 @@ fun HomeScreen(
                 onDetails = { onOpenVideo(featured) },
                 onSurprise = onSurprise,
             )
+        }
+
+        if (savedVideos.isNotEmpty()) {
+            item(key = "my-list") {
+                VideoRailSection(
+                    title = "My list",
+                    subtitle = "Saved for later · ${personal.savedIds.size} in your list.",
+                    videos = savedVideos,
+                    onOpenVideo = onOpenVideo,
+                    accent = Color(0xFFFBBF24),
+                    cardWidth = cardWidth,
+                    contentPadding = contentPadding,
+                    onSeeAll = { onBrowseView(SAVED_VIEW_KEY) },
+                )
+            }
         }
 
         item(key = "fresh") {
@@ -123,7 +161,7 @@ fun HomeScreen(
                     subtitle = "Twelve minutes or less.",
                     videos = quickWatches,
                     onOpenVideo = onOpenVideo,
-                    accent = androidx.compose.ui.graphics.Color(0xFF34D399),
+                    accent = Color(0xFFA3E635),
                     cardWidth = cardWidth,
                     contentPadding = contentPadding,
                 )
@@ -131,19 +169,36 @@ fun HomeScreen(
         }
 
         for (category in com.stemstream.tv.data.CATEGORY_ORDER) {
-            val videos = library.byCategory[category].orEmpty().take(18)
+            val categoryVideos = unwatched.filter { it.category == category }
+            val videos = categoryVideos.take(18)
             if (videos.isEmpty()) continue
 
             item(key = "category-$category") {
                 VideoRailSection(
                     title = category,
-                    subtitle = "${library.byCategory[category].orEmpty().size} curated videos.",
+                    subtitle = "${categoryVideos.size} unwatched " +
+                        if (categoryVideos.size == 1) "video." else "videos.",
                     videos = videos,
                     onOpenVideo = onOpenVideo,
                     accent = categoryColor(category),
                     cardWidth = cardWidth,
                     contentPadding = contentPadding,
                     onSeeAll = { onBrowseCategory(category) },
+                )
+            }
+        }
+
+        if (watchedVideos.isNotEmpty()) {
+            item(key = "watched") {
+                VideoRailSection(
+                    title = "Watched",
+                    subtitle = "Already played, so they moved out of the library above.",
+                    videos = watchedVideos,
+                    onOpenVideo = onOpenVideo,
+                    accent = Color(0xFF94A3B8),
+                    cardWidth = cardWidth,
+                    contentPadding = contentPadding,
+                    onSeeAll = { onBrowseView(WATCHED_VIEW_KEY) },
                 )
             }
         }

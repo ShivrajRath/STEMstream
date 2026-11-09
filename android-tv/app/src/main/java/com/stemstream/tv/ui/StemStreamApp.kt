@@ -33,6 +33,7 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import com.stemstream.tv.data.CatalogRepository
 import com.stemstream.tv.data.Library
+import com.stemstream.tv.data.PersonalLibrary
 import com.stemstream.tv.data.Video
 import com.stemstream.tv.ui.components.NavBar
 import com.stemstream.tv.ui.components.StemMark
@@ -60,6 +61,7 @@ private const val FRESHNESS_POLL_MS = 5 * 60 * 1000L
 fun StemStreamApp() {
     val context = LocalContext.current
     val repository = remember(context) { CatalogRepository(context) }
+    val personal = remember(context) { PersonalLibrary(context) }
     var libraryState by remember { mutableStateOf<LibraryState>(LibraryState.Loading) }
     var reloadKey by remember { mutableIntStateOf(0) }
     var refreshTick by remember { mutableIntStateOf(0) }
@@ -106,6 +108,12 @@ fun StemStreamApp() {
         }
     }
 
+    // Playback is the watched signal, exactly like the website: from here the
+    // video is filed under Watched instead of the main rails.
+    LaunchedEffect(playerVideo?.id) {
+        playerVideo?.let { personal.markWatched(it.id) }
+    }
+
     BackHandler(enabled = currentTab != Tab.Home) {
         currentTab = Tab.Home
     }
@@ -137,10 +145,15 @@ fun StemStreamApp() {
                             when (currentTab) {
                                 Tab.Home -> HomeScreen(
                                     library = library,
+                                    personal = personal,
                                     onOpenVideo = { video -> selectedVideo = video },
                                     onPlayVideo = { video -> playerVideo = video },
                                     onBrowseCategory = { category ->
                                         browseCategory = category
+                                        currentTab = Tab.Browse
+                                    },
+                                    onBrowseView = { view ->
+                                        browseCategory = view
                                         currentTab = Tab.Browse
                                     },
                                     onSurprise = {
@@ -152,6 +165,7 @@ fun StemStreamApp() {
 
                                 Tab.Browse -> BrowseScreen(
                                     library = library,
+                                    personal = personal,
                                     selectedCategory = browseCategory,
                                     onSelectCategory = { category ->
                                         browseCategory = category
@@ -184,6 +198,10 @@ fun StemStreamApp() {
         selectedVideo?.let { video ->
             VideoDetailDialog(
                 video = video,
+                saved = personal.isSaved(video.id),
+                watched = personal.isWatched(video.id),
+                onToggleSaved = { personal.toggleSaved(video.id) },
+                onToggleWatched = { personal.toggleWatched(video.id) },
                 onDismiss = { selectedVideo = null },
                 onPlay = { playingVideo ->
                     selectedVideo = null

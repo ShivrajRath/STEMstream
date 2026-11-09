@@ -29,6 +29,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -56,6 +57,10 @@ import com.stemstream.tv.ui.theme.SurfaceRaised
 @Composable
 fun VideoDetailDialog(
     video: Video,
+    saved: Boolean,
+    watched: Boolean,
+    onToggleSaved: () -> Unit,
+    onToggleWatched: () -> Unit,
     onDismiss: () -> Unit,
     onPlay: (Video) -> Unit,
 ) {
@@ -210,6 +215,24 @@ fun VideoDetailDialog(
                             )
                         }
 
+                        DetailAction(
+                            active = saved,
+                            onClick = onToggleSaved,
+                            labelActive = "In my list",
+                            labelIdle = "My list",
+                            activeIcon = AppIcons.Bookmark,
+                            idleIcon = AppIcons.BookmarkBorder,
+                        )
+
+                        DetailAction(
+                            active = watched,
+                            onClick = onToggleWatched,
+                            labelActive = "Watched",
+                            labelIdle = "Mark watched",
+                            activeIcon = AppIcons.CheckCircle,
+                            idleIcon = AppIcons.CheckCircle,
+                        )
+
                         Button(
                             onClick = onDismiss,
                             colors = ButtonDefaults.colors(
@@ -319,6 +342,52 @@ fun VideoDetailDialog(
                 }
             }
         }
+    }
+}
+
+/** A compact remote-friendly toggle: My list and Watched use the same shape. */
+@Composable
+private fun DetailAction(
+    active: Boolean,
+    onClick: () -> Unit,
+    labelActive: String,
+    labelIdle: String,
+    activeIcon: ImageVector,
+    idleIcon: ImageVector,
+) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.colors(
+            containerColor = if (active) Accent.copy(alpha = 0.2f) else Color.White.copy(alpha = 0.1f),
+            contentColor = if (active) Accent else Color.White.copy(alpha = 0.8f),
+            focusedContainerColor = Color.White,
+            focusedContentColor = Ink,
+            pressedContainerColor = Color.White.copy(alpha = 0.9f),
+            pressedContentColor = Ink,
+        ),
+        scale = ButtonDefaults.scale(focusedScale = 1.05f),
+        border = ButtonDefaults.border(
+            border = androidx.tv.material3.Border(
+                border = BorderStroke(
+                    1.dp,
+                    (if (active) Accent else Color.White).copy(alpha = 0.2f),
+                ),
+                shape = CircleShape,
+            ),
+            focusedBorder = androidx.tv.material3.Border.None,
+        ),
+        contentPadding = PaddingValues(horizontal = 18.dp, vertical = 12.dp),
+    ) {
+        Icon(
+            imageVector = if (active) activeIcon else idleIcon,
+            contentDescription = null,
+            modifier = Modifier.size(18.dp),
+        )
+        Spacer(modifier = Modifier.width(7.dp))
+        Text(
+            text = if (active) labelActive else labelIdle,
+            style = MaterialTheme.typography.labelLarge,
+        )
     }
 }
 

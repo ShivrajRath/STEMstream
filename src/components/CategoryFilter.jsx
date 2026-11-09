@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CATEGORIES, getCategoryMeta } from '../lib/categories';
+import { FILTERS, getCategoryMeta } from '../lib/categories';
 
 export default function CategoryFilter({
-  activeCategory,
+  activeFilter,
   counts,
   onChange,
   tvMode = false,
@@ -14,6 +14,8 @@ export default function CategoryFilter({
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  // `All`, the disciplines and the personal collections (My List, Watched)
+  // share one row, so a remote can reach each of them with left/right.
   const [focusedIndex, setFocusedIndex] = useState(-1);
 
   const updateScrollState = useCallback(() => {
@@ -50,11 +52,11 @@ export default function CategoryFilter({
     }
 
     setFocusedIndex((current) => {
-      if (current >= 0 && current < CATEGORIES.length) return current;
-      const activeIndex = CATEGORIES.indexOf(activeCategory);
+      if (current >= 0 && current < FILTERS.length) return current;
+      const activeIndex = FILTERS.indexOf(activeFilter);
       return activeIndex >= 0 ? activeIndex : 0;
     });
-  }, [tvMode, activeCategory]);
+  }, [tvMode, activeFilter]);
 
   // TV mode keyboard navigation only runs while the category row owns focus,
   // so arrow keys cannot move the categories and the video grid at once.
@@ -67,7 +69,7 @@ export default function CategoryFilter({
       switch (event.key) {
         case 'ArrowRight':
           event.preventDefault();
-          setFocusedIndex((prev) => Math.min(prev + 1, CATEGORIES.length - 1));
+          setFocusedIndex((prev) => Math.min(prev + 1, FILTERS.length - 1));
           break;
         case 'ArrowLeft':
           event.preventDefault();
@@ -79,9 +81,9 @@ export default function CategoryFilter({
           break;
         case 'Enter':
         case ' ':
-          if (focusedIndex >= 0 && focusedIndex < CATEGORIES.length) {
+          if (focusedIndex >= 0 && focusedIndex < FILTERS.length) {
             event.preventDefault();
-            onChange(CATEGORIES[focusedIndex]);
+            onChange(FILTERS[focusedIndex]);
           }
           break;
         default:
@@ -118,12 +120,12 @@ export default function CategoryFilter({
           ref={scrollRef}
           className={`no-scrollbar flex items-center gap-2 overflow-x-auto ${tvMode ? 'py-4' : 'py-2.5'}`}
           role="group"
-          aria-label="Filter videos by category"
+          aria-label="Filter videos by discipline, my list or watched"
         >
-          {CATEGORIES.map((category, index) => {
+          {FILTERS.map((category, index) => {
             const meta = getCategoryMeta(category);
             const Icon = meta.icon;
-            const active = activeCategory === category;
+            const active = activeFilter === category;
             const isFocused = tvMode && focused && focusedIndex === index;
 
             return (
