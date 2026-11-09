@@ -11,10 +11,9 @@ Requires Pillow (`python3 -m pip install --user pillow`).
 
 from __future__ import annotations
 
-import math
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / "app" / "src" / "main" / "res"
@@ -22,37 +21,57 @@ ARTWORK = ROOT / "artwork"
 
 INK = (8, 9, 10, 255)
 WHITE = (255, 255, 255, 255)
-MUTED = (161, 161, 170, 255)
 ACCENT = (255, 45, 85, 255)
-ACCENT_WARM = (255, 122, 102, 255)
-ACCENT_AMBER = (255, 154, 60, 255)
+VIOLET = (167, 139, 250, 255)
 
 FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 FONT_REGULAR = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 
 def font(path: str, size: int) -> ImageFont.FreeTypeFont:
-    return ImageFont.truetype(path, size)
+    return ImageFont.truetype(path, max(1, size))
 
 
-def radial_glow(size: int, color: tuple[int, int, int, int], strength: float = 0.55) -> Image.Image:
-    """A soft radial glow on a transparent canvas."""
-    gradient = Image.radial_gradient("L").resize((size, size), Image.Resampling.BICUBIC)
-    alpha = ImageOps.invert(gradient)
-    alpha = alpha.point(lambda value: int(value * strength))
+def soft_glow(
+    size: int,
+    color: tuple[int, int, int, int],
+    strength: float = 0.55,
+) -> Image.Image:
+    """A round, blurred glow on a transparent canvas.
+
+    `Image.radial_gradient` is square and only reaches zero alpha at its
+    corners, so compositing one leaves four straight seams where the square
+    ends. Blurring a filled circle instead is round all the way out.
+    """
+    mask = Image.new("L", (size, size), 0)
+    ImageDraw.Draw(mask).ellipse((0, 0, size - 1, size - 1), fill=255)
+    mask = mask.filter(ImageFilter.GaussianBlur(size * 0.22))
     layer = Image.new("RGBA", (size, size), color)
-    layer.putalpha(alpha)
+    layer.putalpha(mask.point(lambda value: int(value * strength)))
     return layer
 
 
-def atom_mark(size: int, tint: tuple[int, int, int, int] = WHITE, accent: tuple[int, int, int, int] = ACCENT) -> Image.Image:
-    """Draw the three-orbit atom mark on a transparent square canvas."""
+def atom_mark(
+    size: int,
+    tint: tuple[int, int, int, int] = WHITE,
+    accent: tuple[int, int, int, int] = ACCENT,
+) -> Image.Image:
+    """The three-orbit atom mark on a transparent square canvas.
+
+    The orbits are deliberately heavy: at a 48 px launcher size a hairline ring
+    turns into grey mush, which is what made the old icon read as a blob.
+    """
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     center = size / 2
-    oval_w = size * 0.78
-    oval_h = size * 0.28
-    stroke = max(2, int(size * 0.022))
-    box = (center - oval_w / 2, center - oval_h / 2, center + oval_w / 2, center + oval_h / 2)
+    oval_w = size * 0.80
+    oval_h = size * 0.30
+    stroke = max(3, round(size * 0.030))
+    box = (
+        center - oval_w / 2,
+        center - oval_h / 2,
+        center + oval_w / 2,
+        center + oval_h / 2,
+    )
 
     for angle in (0, 60, 120):
         layer = Image.new("RGBA", (size, size), (0, 0, 0, 0))
@@ -62,17 +81,21 @@ def atom_mark(size: int, tint: tuple[int, int, int, int] = WHITE, accent: tuple[
         canvas = Image.alpha_composite(canvas, rotated)
 
     draw = ImageDraw.Draw(canvas)
-    dot = size * 0.072
+    # A dark disc behind the nucleus keeps it readable where the orbits cross.
+    halo = size * 0.115
+    draw.ellipse((center - halo, center - halo, center + halo, center + halo), fill=INK)
+
+    dot = size * 0.085
+    draw.ellipse((center - dot, center - dot, center + dot, center + dot), fill=accent)
+    highlight = dot * 0.34
     draw.ellipse(
-        (center - dot, center - dot, center + dot, center + dot),
-        fill=accent,
-    )
-    # A small highlight on the nucleus gives the flat mark a little depth.
-    highlight = dot * 0.35
-    draw.ellipse(
-        (center - dot * 0.3 - highlight, center - dot * 0.3 - highlight,
-         center - dot * 0.3 + highlight, center - dot * 0.3 + highlight),
-        fill=(255, 255, 255, 180),
+        (
+            center - dot * 0.32 - highlight,
+            center - dot * 0.32 - highlight,
+            center - dot * 0.32 + highlight,
+            center - dot * 0.32 + highlight,
+        ),
+        fill=(255, 255, 255, 190),
     )
     return canvas
 
@@ -83,21 +106,19 @@ def icon(size: int, round_icon: bool = False) -> Image.Image:
     big = size * scale
     image = Image.new("RGBA", (big, big), INK)
 
-    glow_size = int(big * 0.95)
-    glow = radial_glow(glow_size, ACCENT, 0.34)
-    image.alpha_composite(glow, (int(-big * 0.22), int(big * 0.24)))
+    glow = soft_glow(int(big * 1.25), ACCENT, 0.42)
+    image.alpha_composite(glow, (int(-big * 0.34), int(big * 0.08)))
 
     ring = Image.new("RGBA", (big, big), (0, 0, 0, 0))
-    ring_draw = ImageDraw.Draw(ring)
-    inset = int(big * 0.17)
-    ring_draw.ellipse(
+    inset = int(big * 0.19)
+    ImageDraw.Draw(ring).ellipse(
         (inset, inset, big - inset, big - inset),
-        outline=(255, 255, 255, 24),
+        outline=(255, 255, 255, 22),
         width=max(2, int(big * 0.004)),
     )
     image = Image.alpha_composite(image, ring)
 
-    mark = atom_mark(int(big * 0.66))
+    mark = atom_mark(int(big * 0.62))
     image.alpha_composite(mark, ((big - mark.width) // 2, (big - mark.height) // 2))
 
     if round_icon:
@@ -108,38 +129,69 @@ def icon(size: int, round_icon: bool = False) -> Image.Image:
     return image.resize((size, size), Image.Resampling.LANCZOS)
 
 
+def fitted_text(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    path: str,
+    size: int,
+    limit: float,
+    minimum: int = 10,
+) -> tuple[ImageFont.FreeTypeFont, int]:
+    """Shrink a font until `text` fits inside `limit` pixels."""
+    while size > minimum:
+        candidate = font(path, size)
+        if draw.textlength(text, font=candidate) <= limit:
+            return candidate, size
+        size -= 1
+    return font(path, minimum), minimum
+
+
 def banner(width: int = 320, height: int = 180) -> Image.Image:
     """The 320x180 Android TV / Fire TV launcher banner."""
     scale = 4
     w, h = width * scale, height * scale
     image = Image.new("RGBA", (w, h), INK)
 
-    glow = radial_glow(int(h * 1.8), ACCENT, 0.38)
-    image.alpha_composite(glow, (int(-h * 0.55), int(-h * 0.38)))
+    glow = soft_glow(int(h * 2.7), ACCENT, 0.36)
+    image.alpha_composite(glow, (int(-h * 0.80), int(-h * 0.85)))
+    # A second, wider glow behind the title: one glow alone fell off in a
+    # near-vertical line on the right, which read as a seam.
+    image.alpha_composite(soft_glow(int(h * 2.4), ACCENT, 0.15), (int(w * 0.30), int(-h * 0.70)))
 
-    # Fine vertical hairline that echoes the website's editorial rules.
     draw = ImageDraw.Draw(image)
-    draw.line((int(w * 0.028), int(h * 0.18), int(w * 0.028), int(h * 0.82)), fill=(255, 255, 255, 40), width=2)
+    # Fine vertical hairline that echoes the website's editorial rules.
+    draw.line(
+        (int(w * 0.030), int(h * 0.20), int(w * 0.030), int(h * 0.80)),
+        fill=(255, 255, 255, 38),
+        width=max(2, int(h * 0.003)),
+    )
 
-    mark_size = int(h * 0.56)
+    mark_size = int(h * 0.52)
     mark = atom_mark(mark_size)
-    image.alpha_composite(mark, (int(w * 0.08), (h - mark.height) // 2))
+    image.alpha_composite(mark, (int(w * 0.075), (h - mark.height) // 2))
 
-    title_font = font(FONT_BOLD, int(h * 0.245))
-    tagline_font = font(FONT_REGULAR, int(h * 0.092))
+    title_x = int(w * 0.285)
+    right_limit = w * 0.955 - title_x
+    title_font, title_px = fitted_text(draw, "STEMStream", FONT_BOLD, int(h * 0.255), right_limit * 0.86)
+    accent_font, _ = fitted_text(draw, "TV", FONT_BOLD, title_px, right_limit * 0.14)
 
     title = "STEMStream"
-    accent = "TV"
-    title_x = int(w * 0.30)
-    title_y = int(h * 0.30)
-    draw.text((title_x, title_y), title, font=title_font, fill=WHITE)
     title_w = draw.textlength(title, font=title_font)
-    draw.text((title_x + title_w + int(w * 0.012), title_y), accent, font=title_font, fill=ACCENT)
+    accent_w = draw.textlength("TV", font=accent_font)
+    block_w = title_w + int(w * 0.012) + accent_w
+    title_x = int((w * 0.285 + w * 0.955 - block_w) / 2)
+
+    # Sit the title block on its optical centre rather than the canvas centre.
+    title_y = int(h * 0.335)
+    draw.text((title_x, title_y), title, font=title_font, fill=WHITE)
+    draw.text((title_x + title_w + int(w * 0.012), title_y), "TV", font=accent_font, fill=ACCENT)
+
+    tagline_font, _ = fitted_text(draw, "Feed your curiosity.", FONT_REGULAR, int(h * 0.098), right_limit)
     draw.text(
         (title_x, int(h * 0.585)),
         "Feed your curiosity.",
         font=tagline_font,
-        fill=(255, 255, 255, 168),
+        fill=(255, 255, 255, 170),
     )
 
     return image.resize((width, height), Image.Resampling.LANCZOS).convert("RGB")
@@ -151,40 +203,42 @@ def feature_graphic(width: int = 1024, height: int = 500) -> Image.Image:
     w, h = width * scale, height * scale
     image = Image.new("RGBA", (w, h), INK)
 
-    glow = radial_glow(int(h * 1.7), ACCENT, 0.4)
-    image.alpha_composite(glow, (int(-h * 0.5), int(-h * 0.25)))
-    glow2 = radial_glow(int(h * 1.3), (167, 139, 250, 255), 0.22)
-    image.alpha_composite(glow2, (int(w * 0.55), int(-h * 0.45)))
+    image.alpha_composite(soft_glow(int(h * 1.8), ACCENT, 0.44), (int(-h * 0.55), int(-h * 0.35)))
+    image.alpha_composite(soft_glow(int(h * 1.4), VIOLET, 0.24), (int(w * 0.52), int(-h * 0.52)))
 
     draw = ImageDraw.Draw(image)
-    draw.line((int(w * 0.06), int(h * 0.2), int(w * 0.06), int(h * 0.8)), fill=(255, 255, 255, 40), width=3)
+    draw.line(
+        (int(w * 0.06), int(h * 0.2), int(w * 0.06), int(h * 0.8)),
+        fill=(255, 255, 255, 38),
+        width=3,
+    )
 
-    mark_size = int(h * 0.54)
+    mark_size = int(h * 0.52)
     mark = atom_mark(mark_size)
-    image.alpha_composite(mark, (int(w * 0.11), (h - mark.height) // 2))
+    image.alpha_composite(mark, (int(w * 0.10), (h - mark.height) // 2))
 
-    title_font = font(FONT_BOLD, int(h * 0.18))
-    tagline_font = font(FONT_REGULAR, int(h * 0.062))
-    meta_font = font(FONT_REGULAR, int(h * 0.042))
+    title_x = int(w * 0.31)
+    right_limit = w * 0.94 - title_x
+    title_font, title_px = fitted_text(draw, "STEMStream", FONT_BOLD, int(h * 0.175), right_limit * 0.85)
+    accent_font, _ = fitted_text(draw, "TV", FONT_BOLD, title_px, right_limit * 0.15)
 
-    title_x = int(w * 0.32)
-    title_y = int(h * 0.29)
     title = "STEMStream"
-    draw.text((title_x, title_y), title, font=title_font, fill=WHITE)
     title_w = draw.textlength(title, font=title_font)
-    draw.text((title_x + title_w + int(w * 0.008), title_y), "TV", font=title_font, fill=ACCENT)
+    title_y = int(h * 0.28)
+    draw.text((title_x, title_y), title, font=title_font, fill=WHITE)
+    draw.text((title_x + title_w + int(w * 0.008), title_y), "TV", font=accent_font, fill=ACCENT)
+
+    tagline_font, _ = fitted_text(draw, "Feed your curiosity.", FONT_REGULAR, int(h * 0.060), right_limit)
     draw.text(
-        (title_x, int(h * 0.53)),
+        (title_x, int(h * 0.515)),
         "Feed your curiosity.",
         font=tagline_font,
-        fill=(255, 255, 255, 175),
+        fill=(255, 255, 255, 172),
     )
-    draw.text(
-        (title_x, int(h * 0.64)),
-        "749 hand-picked videos  ·  7 disciplines  ·  no ads",
-        font=meta_font,
-        fill=(255, 255, 255, 118),
-    )
+
+    meta = "749 hand-picked videos  ·  7 disciplines  ·  no ads"
+    meta_font, _ = fitted_text(draw, meta, FONT_REGULAR, int(h * 0.040), right_limit)
+    draw.text((title_x, int(h * 0.625)), meta, font=meta_font, fill=(255, 255, 255, 120))
 
     return image.resize((width, height), Image.Resampling.LANCZOS).convert("RGB")
 

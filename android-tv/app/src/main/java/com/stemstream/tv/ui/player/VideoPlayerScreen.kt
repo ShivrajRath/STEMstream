@@ -17,8 +17,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -98,6 +100,8 @@ fun VideoPlayerScreen(
     // before a video has actually begun.
     var started by remember(video.id) { mutableStateOf(false) }
     var progressLabel by remember { mutableStateOf("Connecting…") }
+    var positionSeconds by remember { mutableStateOf(0) }
+    var durationSeconds by remember { mutableStateOf(0) }
     // The bar is for operating the video, not for watching it: it leaves the
     // screen a few seconds into playback and comes back on any remote press.
     var controlsVisible by remember(video.id) { mutableStateOf(true) }
@@ -182,6 +186,8 @@ fun VideoPlayerScreen(
                         clock(position)
                     }
                     if (duration > 0) started = true
+                    positionSeconds = position
+                    durationSeconds = duration
                     active = state == "playing" || state == "buffering"
                     // Only a stopped video brings the bar back; a buffering one
                     // is still being watched.
@@ -494,6 +500,28 @@ fun VideoPlayerScreen(
             }
 
             ControlButton("Close", onClick = onClose, icon = AppIcons.Close)
+        }
+
+        // A hairline of position while the bar is away: enough to see how far
+        // through a video this is without putting a control over the picture.
+        if (!controlsVisible && durationSeconds > 0) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .height(3.dp)
+                    .background(Color.White.copy(alpha = 0.10f)),
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth(
+                            (positionSeconds.toFloat() / durationSeconds.toFloat())
+                                .coerceIn(0f, 1f),
+                        )
+                        .background(Color.White.copy(alpha = 0.75f)),
+                )
+            }
         }
     }
 }
