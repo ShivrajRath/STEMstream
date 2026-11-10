@@ -126,112 +126,112 @@
     "takeaway": "GPS is a very weak signal from very far away, which makes it unusually easy to jam — and aviation has few alternatives."
   },
   {
-    "id": "stem-758",
-    "youtubeId": "9IiYOTzJ2uw",
-    "title": "I Built a Roller Coaster In My Lab",
-    "coreQuestion": "What does it take to build a working roller coaster inside a lab?",
-    "channel": "Mark Rober",
+    "id": "stem-876",
+    "youtubeId": "kr3iXUcNt2g",
+    "title": "The Craziest Experiment Humans Have Ever Built",
+    "coreQuestion": "What does it take to detect a ripple in space-time itself?",
+    "channel": "Cleo Abram",
     "category": "Engineering",
     "difficulty": "Intermediate",
-    "duration": "19 min",
+    "duration": "18 min",
     "concepts": [
-      "G-Forces",
-      "Track Geometry",
-      "Structural Loads",
-      "Safety Margins"
+      "Gravitational Waves",
+      "Laser Interferometry",
+      "LIGO",
+      "Seismic Isolation"
     ],
-    "description": "Mark builds a roller coaster small enough to fit inside his workshop, then rides it himself. The build is an exercise in track geometry, braking and managing the acceleration a human body can tolerate.",
-    "takeaway": "A coaster is a controlled fall: comfort and safety come from shaping the track so acceleration stays inside human limits."
+    "description": "Two four-kilometre concrete tubes in the middle of a desert make up LIGO, a machine built to measure a change in length smaller than a proton. Cleo Abram walks through how one laser is split down both arms, bounced between the smoothest mirrors ever made and recombined so that a passing gravitational wave shows up as a shift in the interference pattern. Finding it took hundreds of scientists, over a billion dollars and decades of people saying it could not be done.",
+    "takeaway": "Gravitational waves were \"impossible to measure\" right up until interferometry got precise enough, which makes the detector a lesson in how far engineering can push a measurement."
   },
   {
-    "id": "stem-759",
-    "youtubeId": "pLtHyLlLt4Y",
-    "title": "How to Escape Alcatraz With Basic Engineering",
-    "coreQuestion": "Could basic engineering really get you off Alcatraz?",
-    "channel": "Mark Rober",
+    "id": "stem-877",
+    "youtubeId": "GjDlPhwsdCs",
+    "title": "The Massive Machine Hidden in the Deep Ocean",
+    "coreQuestion": "How do you catch a particle that passes through almost everything without leaving a trace?",
+    "channel": "Cleo Abram",
     "category": "Engineering",
     "difficulty": "Intermediate",
-    "duration": "25 min",
+    "duration": "16 min",
     "concepts": [
-      "Buoyancy",
-      "Hypothermia",
-      "Tidal Currents",
-      "Improvised Materials"
+      "Neutrino Detection",
+      "Cherenkov Radiation",
+      "KM3NeT",
+      "IceCube"
     ],
-    "description": "Mark rebuilds the improvised raft, life vests and tools used in the 1962 Alcatraz escape, then tests them in the bay. The video is part history and part materials test: what floats, what holds together, and what the currents do to the plan.",
-    "takeaway": "The Alcatraz escape was less about genius than about buoyancy, timing and the bay's currents."
+    "description": "Off the coast of Sicily a forest of glass spheres hangs in the dark, wired back to a control room hidden inside an abandoned winery. KM3NeT watches for the faint blue flash a neutrino leaves when it interacts in seawater, and in 2023 it recorded a signal far more energetic than anything of its kind seen before, pointing to something violent far out in space. The episode links it to IceCube, buried deep in Antarctic ice, and explains why the most elusive particle in physics needs detectors measured in cubic kilometres.",
+    "takeaway": "Because neutrinos barely interact with matter, catching them means building a detector the size of an ocean rather than a machine on a bench."
   },
   {
-    "id": "stem-760",
-    "youtubeId": "qr1AvisQcV8",
-    "title": "I Spent $5,000,000 So You Can Go To Space For FREE",
-    "coreQuestion": "What does it actually cost to reach the edge of space, and where does the money go?",
-    "channel": "Mark Rober",
+    "id": "stem-878",
+    "youtubeId": "qmQ_lQOBdq4",
+    "title": "Why NASA Is Sending This Truck To The Moon",
+    "coreQuestion": "What does a vehicle need to survive, and work, on the lunar surface?",
+    "channel": "Cleo Abram",
     "category": "Space",
     "difficulty": "Intermediate",
-    "duration": "21 min",
+    "duration": "23 min",
     "concepts": [
-      "High-Altitude Balloon",
-      "Stratosphere",
-      "Payload Recovery",
-      "Cost per Launch"
+      "Lunar Rover",
+      "Regolith",
+      "Thermal Control",
+      "Launch Mass"
     ],
-    "description": "Mark spends millions on a high-altitude balloon campaign and breaks down where the money went: the balloon, the lifting gas, tracking, recovery and the permits. The point is to show the real economics of reaching near-space without a rocket.",
-    "takeaway": "Getting to the stratosphere is cheap compared with orbit; almost all the cost is tracking, recovery and reliability."
+    "description": "The new unpressurised lunar rover is the first real \"space truck\": a machine meant to carry astronauts and cargo across the Moon as humans return to the surface for the first time in fifty years. Cleo Abram and Michelle Khare put a prototype through five challenges that expose the actual design constraints, from abrasive dust and brutal temperature swings to the fact that every kilogram has to be paid for in launch mass.",
+    "takeaway": "A lunar vehicle is less a car than a survival system, and dust, thermal extremes and launch mass set the design long before performance matters."
   },
   {
-    "id": "stem-761",
-    "youtubeId": "IQJL3htsDyQ",
-    "title": "Can You Fool A Self Driving Car?",
-    "coreQuestion": "Can a self-driving car be fooled with ordinary objects?",
-    "channel": "Mark Rober",
+    "id": "stem-879",
+    "youtubeId": "Hr6GPYCHTfA",
+    "title": "The Two Opposite Futures of Self-Driving Cars",
+    "coreQuestion": "Is self-driving finally here, and which version of it are we actually getting?",
+    "channel": "Cleo Abram",
     "category": "Emerging Technology",
     "difficulty": "Intermediate",
-    "duration": "19 min",
+    "duration": "12 min",
     "concepts": [
-      "Sensor Fusion",
-      "Computer Vision",
-      "Adversarial Inputs",
-      "LiDAR vs Camera"
+      "Robotaxi",
+      "Lidar vs Camera",
+      "Geofencing",
+      "Driver Assistance"
     ],
-    "description": "Mark tests the perception systems of modern driver-assistance cars with improvised obstacles, road markings and camera tricks. The results show where vision-based systems are confident and where they misread the world.",
-    "takeaway": "Self-driving perception is only as good as its training data, so unusual objects on the road remain a real failure mode."
+    "description": "Cleo Abram had given up on self-driving cars until she got into one in San Francisco with nobody in the driver's seat, then interviewed Cruise's Kyle Vogt about how the fleet actually works. The episode sets the two competing visions side by side: robotaxis that rely on tightly mapped, geofenced cities, and driver-assistance systems that gradually take over more of the driving everywhere. Autonomy did arrive, the film argues, but in a shape nobody was promised.",
+    "takeaway": "Self-driving did not fail so much as split in two, arriving as geofenced robotaxis and creeping driver assistance rather than one car that drives itself anywhere."
   },
   {
-    "id": "stem-762",
-    "youtubeId": "KRhofr57Na8",
-    "title": "Can You Safely Drink Your Own Pee?",
-    "coreQuestion": "Can urine be made safe to drink, and what does it take?",
-    "channel": "Mark Rober",
+    "id": "stem-880",
+    "youtubeId": "yWgHx0HE8m8",
+    "title": "Something's Happening to the Ozone Hole",
+    "coreQuestion": "How did the world accidentally punch a hole in the ozone layer, and how is it healing?",
+    "channel": "Cleo Abram",
     "category": "Chemistry",
     "difficulty": "Intermediate",
-    "duration": "11 min",
+    "duration": "16 min",
     "concepts": [
-      "Reverse Osmosis",
-      "Distillation",
-      "Dissolved Solutes",
-      "Water Purification"
+      "Chlorofluorocarbons",
+      "Stratospheric Ozone",
+      "Montreal Protocol",
+      "Atmospheric Chemistry"
     ],
-    "description": "Mark runs urine through filters, distillers and reverse-osmosis membranes to find out what it takes to turn it back into drinking water. The result is a practical lesson in what each purification method removes and what it leaves behind.",
-    "takeaway": "You can purify urine into water, but the equipment and energy involved show why waste-water recycling is an engineering problem rather than a survival trick."
+    "description": "In 1985 scientists found a hole in the ozone layer above Antarctica, and the culprit turned out to be chlorofluorocarbons, the chemicals used in fridges, aerosols and foam. Cleo Abram follows the two decisions that changed the outcome: banning CFCs under the Montreal Protocol and the decades of measurement that followed. The hole is now shrinking, which makes it the clearest evidence that a global atmospheric problem can actually be reversed.",
+    "takeaway": "The ozone layer is recovering because the chemistry was understood early and the chemicals were banned worldwide, which is the template every climate problem since has been measured against."
   },
   {
-    "id": "stem-763",
-    "youtubeId": "jjpjjcMeujM",
-    "title": "Ronaldo vs My Unbeatable Goalie Robot",
-    "coreQuestion": "Can a robot be built that is genuinely unbeatable in goal?",
-    "channel": "Mark Rober",
+    "id": "stem-881",
+    "youtubeId": "nAgTgwak7ME",
+    "title": "I Challenged Boston Dynamics' Famous Atlas Robot",
+    "coreQuestion": "What can a humanoid robot actually do today, and what is still missing?",
+    "channel": "Cleo Abram",
     "category": "Engineering",
     "difficulty": "Intermediate",
-    "duration": "27 min",
+    "duration": "16 min",
     "concepts": [
-      "Servo Control",
-      "Reaction Time",
-      "Trajectory Prediction",
-      "Mechanical Compliance"
+      "Humanoid Robots",
+      "Actuation",
+      "Whole-Body Control",
+      "Teleoperation"
     ],
-    "description": "Mark builds a robotic goalkeeper and tests it against penalty takers, iterating on the mechanism, the reaction time and the prediction of where the ball will go. The project becomes a study in how much of saving a penalty is reaction and how much is anticipation.",
-    "takeaway": "A robot goalkeeper's limit is not speed but prediction: guessing where the ball will be before it is struck."
+    "description": "Cleo Abram visits Boston Dynamics to compete against Atlas, the humanoid famous for parkour and throwing heavy objects, and to find out what it can really do outside a highlight reel. The episode surveys the rest of the field too, from Tesla's Optimus to NASA's Valkyrie and startups like Figure, and separates capability from choreography: what these machines do reliably now, what still needs a person, and how far away general-purpose humanoids really are.",
+    "takeaway": "Humanoid robots are further along than the sceptics claim and further from being generally useful than the demos suggest, because the gap is reliability rather than agility."
   },
   {
     "id": "stem-764",
@@ -4104,22 +4104,22 @@
     "takeaway": "A network is a large function shaped by its weights; learning is the search for weights that make the right answer more likely."
   },
   {
-    "id": "stem-099",
-    "youtubeId": "DPZzrlFCD_I",
-    "title": "World's Largest Jello Pool - Can You Swim in Jello?",
-    "coreQuestion": "What does it take to make — and swim through — a pool-sized batch of gelatin?",
-    "channel": "Mark Rober",
+    "id": "stem-882",
+    "youtubeId": "N0-ZZ9pLyWw",
+    "title": "What If You Just Keep Digging?",
+    "coreQuestion": "What would you actually hit if you kept digging straight down?",
+    "channel": "Cleo Abram",
     "category": "Engineering",
     "difficulty": "Foundational",
     "duration": "10 min",
     "concepts": [
-      "Viscosity",
-      "Heat Transfer",
-      "Scale",
-      "Fluid Dynamics"
+      "Earth's Interior",
+      "Crust and Mantle",
+      "Geothermal Gradient",
+      "Drilling Limits"
     ],
-    "description": "Mark Rober scales up a childhood experiment to a pool-sized gelatin challenge, wrestling with cooling, mixing and the surprisingly difficult physics of moving through a dense gel.",
-    "takeaway": "Scaling a recipe up by thousands of times changes everything, from cooling time to how your body moves through the fluid."
+    "description": "A thought experiment about digging a hole straight down: through the crust, into rock hot enough to destroy the drill, and toward pressures no machine has ever survived. Cleo Abram uses the descent to explain what we actually know about the planet's interior, and why the deepest borehole ever drilled barely scratched the surface of it.",
+    "takeaway": "What stops you digging deeper is heat and pressure rather than distance, which is why the Earth's mantle is less explored than the surface of the Moon."
   },
   {
     "id": "stem-100",
