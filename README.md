@@ -194,9 +194,12 @@ Nothing is written until a suggestion passes every check:
 
 The title and channel come from YouTube itself rather than from the model, so a
 card always names the real upload. When a suggestion fails a check the script
-asks Gemini again, up to three times. A day with nothing verifiable writes
-nothing and fails the job, so a broken key or an exhausted quota is visible
-instead of silently skipping.
+asks Gemini again, up to three times; if every suggestion from that model fails,
+the next model in the chain gets the same three attempts, carrying the rejection
+reasons with it. Only when the whole chain comes up empty does the day write
+nothing and fail the job, so a broken key or an exhausted quota is visible
+instead of silently skipping. A YouTube error that says nothing about the upload
+(`429`, `5xx`, a dropped connection) is retried before the id is discarded.
 
 Configure the key in **Settings → Secrets and variables → Actions**:
 
@@ -207,9 +210,10 @@ Configure the key in **Settings → Secrets and variables → Actions**:
 The model is hardcoded in the script, so no repository variable is needed. The
 chain is `gemini-3.8-flash` → `gemini-3.6-flash` → `gemini-3.5-flash-lite` →
 `gemini-3.1-flash-lite`. A model that no longer exists, is overloaded (`503`) or
-is out of free-tier quota (`429`) hands the pick to the next model, so a busy
-model does not cost the day's video. To try a different model locally, set
-`GEMINI_MODEL` in your own shell; an empty value is ignored.
+is out of free-tier quota (`429`), or whose suggestions all fail verification,
+hands the pick to the next model, so a busy model does not cost the day's video.
+To try a different model locally, set `GEMINI_MODEL` in your own shell; an empty
+value is ignored.
 
 Run it by hand from the **Actions** tab (**Add daily video → Run workflow**), or
 locally:

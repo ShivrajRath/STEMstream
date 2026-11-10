@@ -76,7 +76,10 @@ DEFAULT_MODELS = (DEFAULT_MODEL, *FALLBACK_MODELS)
 MAX_RETRY_WAIT = 65.0
 RETRY_HINT_RE = re.compile(r"retry in (\d+(?:\.\d+)?)\s*s", re.IGNORECASE)
 MAX_ATTEMPTS_PER_SECTION = 3
+# Shared by the Gemini call and the YouTube lookup: "try again later", as
+# opposed to "this upload is gone".
 RETRYABLE_STATUS = (408, 429, 500, 502, 503, 504)
+LOOKUP_ATTEMPTS = 3
 ID_SUFFIX_RE = re.compile(r"^stem-(\d+)$")
 YOUTUBE_URL_ID_RE = re.compile(
     r"(?:v=|youtu\.be/|/embed/|/shorts/|/live/)([A-Za-z0-9_-]{11})"
@@ -251,9 +254,12 @@ def generate(
 ) -> dict[str, Any]:
     prompt = build_prompt(category, library)
     if rejected:
+        # The chain retries a rejected section with the next model, so the list
+        # can grow; keep the prompt short and free of repeats.
+        recent = list(dict.fromkeys(rejected))[-6:]
         prompt += (
             "\n\nYour previous suggestions failed verification for these reasons, "
-            "so pick something else: " + "; ".join(rejected)
+            "so pick something else: " + "; ".join(recent)
         )
 
     payload = {
@@ -355,15 +361,43 @@ def lookup_video(youtube_id: str) -> dict[str, Any] | None:
     try:
         with urllib.request.urlopen(request, timeout=20) as response:
             payload = json.loads(response.read().decode("utf-8"))
-    except urllib.error.HTTPError:
+    except urllib.error.HTTPError as error:
         # 401/403: embedding disabled. 404: gone, private or never existed.
+        # 429 and 5xx are YouTube having a bad moment, not a verdict on the
+        # upload, so they must not reject an id that is perfectly fine.
+        if error.code in RETRYABLE_STATUS:
+            raise LookupFailed(
+                f"YouTube oEmbed responded {error.code} for {youtube_id}"
+            ) from error
         return None
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
+    except (
+        urllib.error.URLError,
+        TimeoutError,
+        http.client.HTTPException,
+        json.JSONDecodeError,
+    ) as error:
         raise LookupFailed(f"could not verify {youtube_id}: {error}") from error
 
     if not isinstance(payload, dict) or not payload.get("title"):
         return None
     return payload
+
+
+def verify_video(youtube_id: str, attempts: int = LOOKUP_ATTEMPTS) -> dict[str, Any] | None:
+    """Return YouTube's metadata, retrying a transient lookup first.
+
+    A dropped connection or a 5xx from YouTube says nothing about the video,
+    so the same id is checked again before the suggestion is thrown away.
+    """
+    for attempt in range(1, attempts + 1):
+        try:
+            return lookup_video(youtube_id)
+        except LookupFailed as error:
+            print(f"  - {error}")
+            if attempt >= attempts:
+                raise
+            time.sleep(_retry_delay(None, attempt))
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -386,9 +420,14 @@ def _pick_entry(
     library: list[dict[str, Any]],
     taken: set[str],
     number: int,
+    rejected: list[str] | None = None,
 ) -> dict[str, Any] | None:
-    """Ask Gemini until one recommendation survives verification."""
-    rejected: list[str] = []
+    """Ask Gemini until one recommendation survives verification.
+
+    ``rejected`` is caller-owned so a model that comes up empty hands its
+    reasons to the next one instead of letting it repeat the same mistake.
+    """
+    rejected = rejected if rejected is not None else []
 
     for attempt in range(1, MAX_ATTEMPTS_PER_SECTION + 1):
         candidate = generate(model, api_key, category, library, rejected)
@@ -404,10 +443,10 @@ def _pick_entry(
             continue
 
         try:
-            metadata = lookup_video(video_id)
+            metadata = verify_video(video_id)
         except LookupFailed as error:
+            rejected.append(f"{video_id} could not be verified ({error})")
             print(f"  - {error}")
-            time.sleep(_retry_delay(None, attempt))
             continue
 
         if metadata is None:
@@ -483,11 +522,14 @@ def add_daily_videos(
     for category in sections:
         library = [entry for entry in entries if entry.get("category") == category]
         entry = None
+        rejected: list[str] = []
 
         while remaining_models and entry is None:
             model = remaining_models[0]
             try:
-                entry = _pick_entry(model, api_key, category, library, taken, number)
+                entry = _pick_entry(
+                    model, api_key, category, library, taken, number, rejected
+                )
             except (ModelUnavailable, ModelBusy) as error:
                 print(f"  - {error}; trying the next model", file=sys.stderr)
                 remaining_models.pop(0)
@@ -499,7 +541,15 @@ def add_daily_videos(
                 break
 
             if entry is None:
-                break
+                # Every suggestion this model produced failed verification. A
+                # different model may know an upload this one did not, so the
+                # day is not lost until the whole chain has been tried.
+                print(
+                    f"  - {model} found nothing usable for {category}; "
+                    "trying the next model",
+                    file=sys.stderr,
+                )
+                remaining_models.pop(0)
 
         if entry is None:
             skipped.append(category)
