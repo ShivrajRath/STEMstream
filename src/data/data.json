@@ -1,23 +1,5 @@
 [
   {
-    "id": "stem-883",
-    "youtubeId": "hTWKbfoikeg",
-    "title": "Nirvana - Smells Like Teen Spirit (Official Music Video)",
-    "coreQuestion": "How do hard disk drives store and retrieve data magnetically using mechanical platters and read/write heads?",
-    "channel": "NirvanaVEVO",
-    "category": "Engineering",
-    "difficulty": "Foundational",
-    "duration": "7 min",
-    "concepts": [
-      "Magnetic storage",
-      "Platters",
-      "Read/write head",
-      "Actuator arm"
-    ],
-    "description": "This video breaks down the mechanical and electrical engineering inside a traditional hard disk drive. It explains how rapidly spinning magnetic platters and microscopic read/write heads work together to store and access digital files.",
-    "takeaway": "Hard drives rely on precise mechanical alignment and magnetic fields to permanently store binary data on physical platters."
-  },
-  {
     "id": "stem-751",
     "youtubeId": "KfODG5REyss",
     "title": "I finally saw quantum mechanics with my own eyes... (It's spookier than I expected)",
