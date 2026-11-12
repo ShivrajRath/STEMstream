@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-883",
+    "youtubeId": "yGf78wc6jIU",
+    "title": "The Rise and Fall of an Ancient Reef",
+    "coreQuestion": "How did prehistoric marine organisms build massive ancient reef ecosystems, and what caused their collapse?",
+    "channel": "PBS Eons",
+    "category": "Biology",
+    "difficulty": "Intermediate",
+    "duration": "12 min",
+    "concepts": [
+      "paleoecology",
+      "calcification",
+      "sponge reefs",
+      "mass extinction"
+    ],
+    "description": "This episode explores the ancient reef systems that dominated Earth's oceans hundreds of millions of years ago, highlighting organisms like sponges and bryozoans that predated modern scleractinian corals. It tracks the environmental changes and mass extinction events that wiped out these ancient structures and reshaped marine biodiversity.",
+    "takeaway": "Reef ecosystems have repeatedly been built and destroyed across geological history by vastly different groups of organisms depending on changing ocean chemistry."
+  },
+  {
     "id": "stem-751",
     "youtubeId": "KfODG5REyss",
     "title": "I finally saw quantum mechanics with my own eyes... (It's spookier than I expected)",
