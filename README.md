@@ -183,11 +183,12 @@ The video id is never invented by the model. Candidates come from YouTube's
 per-channel RSS feeds (`/feeds/videos.xml?channel_id=…`), which need no API key,
 and every one of them is checked with the oEmbed endpoint before Gemini sees it.
 Gemini's job is to pick the best candidate for the section and write the core
-question, concepts, difficulty, description and takeaway.
+question, concepts, difficulty, description and takeaway; a second request then
+reviews that card against the upload before it is accepted.
 
 One section is curated per day: the section is picked by rotating through the
 seven of them on the date, so each section gains a video every week while a run
-costs one or two API requests instead of seven. Start the workflow by hand with
+costs a pick and its review instead of fourteen requests. Start the workflow by hand with
 a section name to curate that section out of turn.
 
 The tracked channels live in `scripts/stem_channels.json`: a channel id, its
@@ -207,10 +208,19 @@ Nothing is written until a candidate passes every check:
   the real title and channel;
 - the upload allows embedding, because the site plays videos in an iframe;
 - it is not already in the catalogue, and is neither ambient/relaxation content
-  nor a music release (`official music video`, `vevo`, `- topic`, `lyrics`, …).
+  nor a music release (`official music video`, `vevo`, `- topic`, `lyrics`, …);
+- the finished card passes an independent review: a second request is shown the
+  upload's real title and channel beside the core question, description,
+  concepts and takeaway, and rejects the card when the prose describes another
+  subject, invents specifics the title does not support, or the upload is not
+  STEM education.
 
 The title and channel come from YouTube itself rather than from the model, so a
-card always names the real upload. When the model returns a pick that is not one
+card always names the real upload. The review is what catches the other half of
+the problem: a card that names the right video but describes a different one. It
+is asked to reject anything doubtful, because a skipped day is cheaper than a
+mismatch; a rejection goes back into the retry loop with its reason attached, so
+the next attempt or the next model knows what to avoid. When the model returns a pick that is not one
 of the offered candidates the script asks again, up to three times; if every
 attempt fails, the next model in the chain gets the same three attempts, carrying
 the reasons with it. A day with no fresh, uncurated, embeddable upload from the

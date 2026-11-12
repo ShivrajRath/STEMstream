@@ -14,6 +14,12 @@ key, and every one of them is checked against YouTube's public oEmbed endpoint
 before Gemini sees it. The title and channel are taken from YouTube itself, so a
 card always names the real upload.
 
+The finished card is then reviewed by a second request: it is shown the upload's
+real title and channel next to the core question, description, concepts and
+takeaway, and rejects the card when the prose describes some other subject or
+the upload is not STEM education. A rejected card costs an attempt, never a day
+of publishing.
+
 One section is curated per day, rotating through ``VALID_CATEGORIES`` on the
 date, so every section gets a new pick each week while a run spends a couple of
 requests instead of seven.
@@ -166,6 +172,23 @@ RECOMMENDATION_SCHEMA = {
         "description",
         "takeaway",
     ],
+}
+
+# The finished card is checked once more, against the upload's real title and
+# channel, before it can reach the catalogue.
+REVIEW_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "approved": {
+            "type": "boolean",
+            "description": "True only when the card describes this exact upload.",
+        },
+        "reason": {
+            "type": "string",
+            "description": "One sentence: what passes, or what is wrong.",
+        },
+    },
+    "required": ["approved", "reason"],
 }
 
 
@@ -443,29 +466,21 @@ Rules
 Reply with JSON only."""
 
 
-def generate(
+def _ask_json(
     model: str,
     api_key: str,
-    category: str,
-    candidates: list[dict[str, Any]],
-    rejected: list[str] | tuple[str, ...] = (),
+    prompt: str,
+    schema: dict[str, Any],
+    temperature: float,
+    label: str,
 ) -> dict[str, Any]:
-    prompt = build_prompt(category, candidates)
-    if rejected:
-        # The chain retries a rejected section with the next model, so the list
-        # can grow; keep the prompt short and free of repeats.
-        recent = list(dict.fromkeys(rejected))[-6:]
-        prompt += (
-            "\n\nYour previous picks were not usable for these reasons, so choose "
-            "a different candidate: " + "; ".join(recent)
-        )
-
+    """One structured-JSON request to Gemini, with the shared retry policy."""
     payload = {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
         "generationConfig": {
-            "temperature": 0.9,
+            "temperature": temperature,
             "responseMimeType": "application/json",
-            "responseSchema": RECOMMENDATION_SCHEMA,
+            "responseSchema": schema,
         },
     }
     headers = {"Content-Type": "application/json", "x-goog-api-key": api_key}
@@ -484,7 +499,7 @@ def generate(
                 delay = _retry_delay(error, attempt, detail)
                 if delay <= MAX_RETRY_WAIT:
                     print(
-                        f"  - Gemini {error.code} for {category}, "
+                        f"  - Gemini {error.code} for {label}, "
                         f"retrying in {delay:.0f}s"
                     )
                     time.sleep(delay)
@@ -497,7 +512,7 @@ def generate(
         except urllib.error.URLError as error:
             if attempt < 3:
                 delay = _retry_delay(None, attempt)
-                print(f"  - Gemini unreachable for {category}, retrying in {delay:.0f}s")
+                print(f"  - Gemini unreachable for {label}, retrying in {delay:.0f}s")
                 time.sleep(delay)
                 continue
             raise GeminiError(f"could not reach the Gemini API ({error.reason})") from error
@@ -506,7 +521,7 @@ def generate(
             # than URLError; one slow call must not end the whole run.
             if attempt < 3:
                 delay = _retry_delay(None, attempt)
-                print(f"  - Gemini stalled for {category} ({error}), retrying in {delay:.0f}s")
+                print(f"  - Gemini stalled for {label} ({error}), retrying in {delay:.0f}s")
                 time.sleep(delay)
                 continue
             raise GeminiError(f"Gemini request stalled ({error})") from error
@@ -532,6 +547,85 @@ def generate(
     if not isinstance(recommendation, dict):
         raise GeminiError("Gemini returned something other than a JSON object")
     return recommendation
+
+
+def generate(
+    model: str,
+    api_key: str,
+    category: str,
+    candidates: list[dict[str, Any]],
+    rejected: list[str] | tuple[str, ...] = (),
+) -> dict[str, Any]:
+    prompt = build_prompt(category, candidates)
+    if rejected:
+        # The chain retries a rejected section with the next model, so the list
+        # can grow; keep the prompt short and free of repeats.
+        recent = list(dict.fromkeys(rejected))[-6:]
+        prompt += (
+            "\n\nYour previous picks were not usable for these reasons, so choose "
+            "a different candidate: " + "; ".join(recent)
+        )
+    return _ask_json(model, api_key, prompt, RECOMMENDATION_SCHEMA, 0.9, category)
+
+
+def build_review_prompt(category: str, entry: dict[str, Any]) -> str:
+    concepts = ", ".join(entry.get("concepts") or []) or "—"
+    return f"""You are the last check before a video is published on STEMStream, a
+hand-picked library of science, space, engineering and mathematics explainers.
+Another request already chose this upload and wrote its card. Your only job is
+to reject the card when it does not describe this upload, or when the upload is
+not STEM education.
+
+Video, as YouTube itself reports it
+- Title: {entry['title']}
+- Channel: {entry['channel']}
+- Section: {category}
+
+Card under review
+- Core question: {entry.get('coreQuestion', '')}
+- Description: {entry.get('description', '')}
+- Takeaway: {entry.get('takeaway', '')}
+- Concepts: {concepts}
+- Difficulty: {entry.get('difficulty', '')}
+- Duration: {entry.get('duration', '')}
+
+Reject ("approved": false) when any of these is true
+- The card describes a different subject, video or genre from the title and
+  channel above, so a viewer who opened the video would find it is about
+  something else.
+- The card invents specifics — experiments, numbers, demonstrations, results —
+  that this title and channel do not support.
+- The upload is not STEM education: music, gaming, vlogs, entertainment,
+  advertisements, ambient or relaxation content.
+- The section fits the subject badly enough to mislead.
+
+Approve ("approved": true) only when every part of the card would still read
+correctly to someone watching the upload named above. A doubtful card is a
+rejection: skipping one day is cheaper than publishing a mismatch.
+
+"reason": one sentence naming what passes, or exactly what is wrong.
+Reply with JSON only."""
+
+
+def review_entry(
+    model: str, api_key: str, category: str, entry: dict[str, Any]
+) -> tuple[bool, str]:
+    """Second opinion on a finished card: does it describe this upload?
+
+    A separate call, with the video's real title and channel and nothing else,
+    so a card written about some other subject is caught rather than published.
+    """
+    answer = _ask_json(
+        model,
+        api_key,
+        build_review_prompt(category, entry),
+        REVIEW_SCHEMA,
+        0.0,
+        f"review of {entry.get('id', entry.get('youtubeId', '?'))}",
+    )
+    reason = " ".join(str(answer.get("reason") or "").split())
+    # Anything other than an explicit true is not a pass.
+    return answer.get("approved") is True, reason or "no reason given"
 
 
 # ---------------------------------------------------------------------------
@@ -679,6 +773,21 @@ def _pick_entry(
         except ValueError as error:
             rejected.append(f"rejected by the catalogue schema ({error})")
             print(f"  - {category}: {error}")
+            continue
+
+        # A second, independent pass over the finished card. The request that
+        # wrote it is the least likely to notice it describes another video,
+        # which is how an off-topic upload can still carry a plausible card.
+        try:
+            approved, review_reason = review_entry(model, api_key, category, entry)
+        except GeminiError as error:
+            rejected.append(f"the review step could not run ({error})")
+            print(f"  - {category}: review unavailable ({error})")
+            continue
+
+        if not approved:
+            rejected.append(f"review rejected the card: {review_reason}")
+            print(f"  - {category}: review rejected {video_id} ({review_reason})")
             continue
 
         print(
