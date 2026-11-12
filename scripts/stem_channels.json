@@ -1,0 +1,170 @@
+{
+  "channels": [
+    {
+      "channelId": "UCb2GCoLSBXjmI_Qj1vk-44g",
+      "name": "Amoeba Sisters",
+      "categories": [
+        "Biology"
+      ]
+    },
+    {
+      "channelId": "UCX6b17PVsYBQ0ip5gyeme-Q",
+      "name": "CrashCourse",
+      "categories": [
+        "Biology",
+        "Chemistry",
+        "Space"
+      ]
+    },
+    {
+      "channelId": "UCBbnbBWJtwsf0jLGUwX5Q3g",
+      "name": "Journey to the Microcosmos",
+      "categories": [
+        "Biology"
+      ]
+    },
+    {
+      "channelId": "UCzR-rom72PHN9Zg7RML9EbA",
+      "name": "PBS Eons",
+      "categories": [
+        "Biology"
+      ]
+    },
+    {
+      "channelId": "UCFhXFikryT4aFcLkLw2LBLA",
+      "name": "NileRed",
+      "categories": [
+        "Chemistry"
+      ]
+    },
+    {
+      "channelId": "UCtESv1e7ntJaLJYKIO1FoYw",
+      "name": "Periodic Videos",
+      "categories": [
+        "Chemistry"
+      ]
+    },
+    {
+      "channelId": "UCZYTClx2T1of7BRZ86-8fow",
+      "name": "SciShow",
+      "categories": [
+        "Chemistry"
+      ]
+    },
+    {
+      "channelId": "UCR1IuLEqb6UEA_zQ81kwXfg",
+      "name": "Real Engineering",
+      "categories": [
+        "Emerging Technology",
+        "Engineering"
+      ]
+    },
+    {
+      "channelId": "UCAuUUnT6oDeKwE6v1NGQxug",
+      "name": "TED",
+      "categories": [
+        "Emerging Technology"
+      ]
+    },
+    {
+      "channelId": "UCjtUS7-SZTi6pXjUbzGHQCg",
+      "name": "Undecided with Matt Ferrell",
+      "categories": [
+        "Emerging Technology"
+      ]
+    },
+    {
+      "channelId": "UCHnyfMqiRRG1u-2MsSQLbXA",
+      "name": "Veritasium",
+      "categories": [
+        "Emerging Technology",
+        "Physics"
+      ]
+    },
+    {
+      "channelId": "UCdp4_l1vPmpN-gDbUwhaRUQ",
+      "name": "Branch Education",
+      "categories": [
+        "Engineering"
+      ]
+    },
+    {
+      "channelId": "UCMOqf8ab-42UUQIdVoKwjlQ",
+      "name": "Practical Engineering",
+      "categories": [
+        "Engineering"
+      ]
+    },
+    {
+      "channelId": "UCqZQJ4600a9wIfMPbYc60OQ",
+      "name": "Sabin Civil Engineering",
+      "categories": [
+        "Engineering"
+      ]
+    },
+    {
+      "channelId": "UCYO_jab_esuFRV4b17AJtAw",
+      "name": "3Blue1Brown",
+      "categories": [
+        "Math"
+      ]
+    },
+    {
+      "channelId": "UC1_uAIS3r8Vu6JjXWvastJg",
+      "name": "Mathologer",
+      "categories": [
+        "Math"
+      ]
+    },
+    {
+      "channelId": "UCu7Zwf4X_OQ-TEnou0zdyRA",
+      "name": "Morphocular",
+      "categories": [
+        "Math"
+      ]
+    },
+    {
+      "channelId": "UCoxcjq-8xIDTYp3uz647V5A",
+      "name": "Numberphile",
+      "categories": [
+        "Math"
+      ]
+    },
+    {
+      "channelId": "UCpMcsdZf2KkAnfmxiq2MfMQ",
+      "name": "Arvin Ash",
+      "categories": [
+        "Physics"
+      ]
+    },
+    {
+      "channelId": "UC7_gcs09iThXybpVgjHZ_7g",
+      "name": "PBS Space Time",
+      "categories": [
+        "Physics",
+        "Space"
+      ]
+    },
+    {
+      "channelId": "UC7DdEm33SyaTDtWYGO2CwdA",
+      "name": "Physics Girl",
+      "categories": [
+        "Physics"
+      ]
+    },
+    {
+      "channelId": "UC-9b7aDP6ZN0coj9-xFnrtw",
+      "name": "Astrum",
+      "categories": [
+        "Space"
+      ]
+    },
+    {
+      "channelId": "UCGHZpIpAWJQ-Jy_CeCdXhMA",
+      "name": "Cool Worlds",
+      "categories": [
+        "Space"
+      ]
+    }
+  ]
+}

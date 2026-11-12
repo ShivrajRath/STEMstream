@@ -55,18 +55,22 @@ VALID_DIFFICULTIES = ("Foundational", "Intermediate", "Deep Dive")
 YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 USER_AGENT = "STEMStream-Catalogue/1.0 (+https://github.com/)"
 
-# Titles or channels that look like ambient/relaxation uploads are never a
-# fit for STEMStream. Failing the catalogue check on them keeps such uploads
-# out of the repository even if a curation run ever lets one through.
+# Titles or channels that look like ambient/relaxation uploads or music
+# releases are never a fit for STEMStream. Failing the catalogue check on them
+# keeps such uploads out of the repository even if a curation run ever lets one
+# through. Keep this list in step with NON_STEM_TITLE_WORDS /
+# NON_STEM_TITLE_PHRASES in add_daily_video.py.
 CONTENT_CHECK_TITLE_WORDS = (
     "fireplace", "ambience", "relaxation", "relaxing", "cozy", "cosy",
-    "meditation",
+    "meditation", "remix", "lyrics",
 )
 CONTENT_CHECK_TITLE_PHRASES = (
     "fire place", "cozy fire", "cosy fire", "sleep music", "white noise",
     "nature sounds", "background music", "background noise",
     "background viewing", "ambient music", "ambient noise",
     "chillhop", "chill hop", "study beats",
+    "official music video", "official video", "official audio", "lyric video",
+    "vevo", " - topic",
 )
 
 REQUIRED_FIELDS = ("youtubeId", "title", "channel", "category", "description")

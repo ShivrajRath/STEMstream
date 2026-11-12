@@ -173,33 +173,52 @@ video or a transient YouTube response cannot block a deployment. Add
 
 ## Daily automated picks
 
-`.github/workflows/daily-video.yml` runs every day at 05:17 UTC. It asks Gemini
-for one new video, verifies the recommendation against YouTube, prepends the
-accepted entry to `src/data/data.json`, commits the change to `main`, and then
-builds and deploys the site in the same run.
+`.github/workflows/daily-video.yml` runs every day at 05:17 UTC. It discovers
+what the tracked channels have just published, asks Gemini to choose one of
+those uploads and write its card, verifies the choice against YouTube, prepends
+the accepted entry to `src/data/data.json`, commits the change to `main`, and
+then builds and deploys the site in the same run.
+
+The video id is never invented by the model. Candidates come from YouTube's
+per-channel RSS feeds (`/feeds/videos.xml?channel_id=…`), which need no API key,
+and every one of them is checked with the oEmbed endpoint before Gemini sees it.
+Gemini's job is to pick the best candidate for the section and write the core
+question, concepts, difficulty, description and takeaway.
 
 One section is curated per day: the section is picked by rotating through the
 seven of them on the date, so each section gains a video every week while a run
 costs one or two API requests instead of seven. Start the workflow by hand with
 a section name to curate that section out of turn.
 
+The tracked channels live in `scripts/stem_channels.json`: a channel id, its
+display name and the sections it belongs to. Candidates from that day's section
+are considered first; when those channels have nothing new, the freshest
+verified upload from any tracked channel is used and filed under that channel's
+own section, so a quiet week never mislabels a video. Add or remove channels
+there — nothing else in the pipeline assumes a fixed list.
+
 A prepended entry is the first record in the file, so it becomes the first card
 both in the full collection and in its own category.
 
-Nothing is written until a suggestion passes every check:
+Nothing is written until a candidate passes every check:
 
-- the id must resolve through YouTube's public oEmbed endpoint;
-- the upload must allow embedding, because the site plays videos in an iframe;
-- the id must not already be in the catalogue.
+- a tracked channel published it, according to that channel's own feed;
+- the id resolves through YouTube's public oEmbed endpoint, which also reports
+  the real title and channel;
+- the upload allows embedding, because the site plays videos in an iframe;
+- it is not already in the catalogue, and is neither ambient/relaxation content
+  nor a music release (`official music video`, `vevo`, `- topic`, `lyrics`, …).
 
 The title and channel come from YouTube itself rather than from the model, so a
-card always names the real upload. When a suggestion fails a check the script
-asks Gemini again, up to three times; if every suggestion from that model fails,
-the next model in the chain gets the same three attempts, carrying the rejection
-reasons with it. Only when the whole chain comes up empty does the day write
-nothing and fail the job, so a broken key or an exhausted quota is visible
-instead of silently skipping. A YouTube error that says nothing about the upload
-(`429`, `5xx`, a dropped connection) is retried before the id is discarded.
+card always names the real upload. When the model returns a pick that is not one
+of the offered candidates the script asks again, up to three times; if every
+attempt fails, the next model in the chain gets the same three attempts, carrying
+the reasons with it. A day with no fresh, uncurated, embeddable upload from the
+tracked channels writes nothing and fails the job, as does a chain that never
+returns a valid pick, so a broken key, an exhausted quota or a stale channel
+list is visible instead of silently skipping. A YouTube error that says nothing
+about the upload (`429`, `5xx`, a dropped connection) is retried before a
+candidate is discarded.
 
 Configure the key in **Settings → Secrets and variables → Actions**:
 
@@ -210,10 +229,10 @@ Configure the key in **Settings → Secrets and variables → Actions**:
 The model is hardcoded in the script, so no repository variable is needed. The
 chain is `gemini-3.8-flash` → `gemini-3.6-flash` → `gemini-3.5-flash-lite` →
 `gemini-3.1-flash-lite`. A model that no longer exists, is overloaded (`503`) or
-is out of free-tier quota (`429`), or whose suggestions all fail verification,
-hands the pick to the next model, so a busy model does not cost the day's video.
-To try a different model locally, set `GEMINI_MODEL` in your own shell; an empty
-value is ignored.
+is out of free-tier quota (`429`), or that never returns a valid pick, hands the
+choice to the next model, so a busy model does not cost the day's video. To try
+a different model locally, set `GEMINI_MODEL` in your own shell; an empty value
+is ignored.
 
 Run it by hand from the **Actions** tab (**Add daily video → Run workflow**), or
 locally:

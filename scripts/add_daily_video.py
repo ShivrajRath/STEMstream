@@ -3,19 +3,20 @@
 STEMStream daily picks
 ======================
 
-Asks Gemini for one fresh video recommendation and prepends the accepted entry
-to ``src/data/data.json``, so the new video is the first card in its section
-(and in the combined collection).
+Finds what the tracked STEM channels have just published, asks Gemini to choose
+one of those uploads and write its card, and prepends the accepted entry to
+``src/data/data.json`` so the new video is the first card in its section (and in
+the combined collection).
+
+The id is never the model's invention. Candidates come from YouTube's
+per-channel RSS feeds (``/feeds/videos.xml?channel_id=...``), which need no API
+key, and every one of them is checked against YouTube's public oEmbed endpoint
+before Gemini sees it. The title and channel are taken from YouTube itself, so a
+card always names the real upload.
 
 One section is curated per day, rotating through ``VALID_CATEGORIES`` on the
-date, so every section gets a new pick each week while a run spends only one or
-two requests instead of seven.
-
-Every recommendation is verified against YouTube's public oEmbed endpoint
-before it is written: the id must resolve, the upload must allow embedding
-(STEMStream plays videos in an iframe), and it must not already be in the
-catalogue. The title and channel are taken from YouTube rather than from the
-model, so the card always names the real upload.
+date, so every section gets a new pick each week while a run spends a couple of
+requests instead of seven.
 
 Usage
 -----
@@ -29,7 +30,8 @@ Environment
 ``GEMINI_MODEL``    Optional local override for the hardcoded default model.
                     Unset, empty or whitespace-only values are ignored.
 
-Only the Python standard library is used.
+The tracked channels live in ``scripts/stem_channels.json``. Only the Python
+standard library is used.
 """
 
 from __future__ import annotations
@@ -45,6 +47,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import date
 from typing import Any
 
@@ -56,10 +59,16 @@ if SCRIPT_DIR not in sys.path:
 import update_content as catalogue  # noqa: E402 - sys.path is prepared above
 
 DATA_PATH = catalogue.DATA_PATH
+STEM_CHANNELS_PATH = os.path.join(SCRIPT_DIR, "stem_channels.json")
 USER_AGENT = "STEMStream-Curation/1.0 (+https://github.com/)"
 GEMINI_ENDPOINT = (
     "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 )
+FEED_ENDPOINT = "https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+ATOM_NS = {
+    "atom": "http://www.w3.org/2005/Atom",
+    "yt": "http://www.youtube.com/xml/schemas/2015",
+}
 # Hardcoded so the workflow needs no repository variable. Models are tried in
 # order: an id that no longer exists, a model under load (503) or a model out of
 # free-tier quota (429) hands the pick to the next one, so a busy tier cannot
@@ -80,25 +89,35 @@ MAX_ATTEMPTS_PER_SECTION = 3
 # opposed to "this upload is gone".
 RETRYABLE_STATUS = (408, 429, 500, 502, 503, 504)
 LOOKUP_ATTEMPTS = 3
+# A channel feed carries its last 15 uploads, so a long window lets a quiet
+# channel stay useful without ever offering ancient videos.
+FEED_MAX_AGE_DAYS = 120
+# How many verified candidates to offer the model at once. Each one costs an
+# oEmbed request, so this is also the run's verification budget.
+MAX_CANDIDATES = 8
+CHANNEL_ID_RE = re.compile(r"^UC[A-Za-z0-9_-]{22}$")
 ID_SUFFIX_RE = re.compile(r"^stem-(\d+)$")
-YOUTUBE_URL_ID_RE = re.compile(
-    r"(?:v=|youtu\.be/|/embed/|/shorts/|/live/)([A-Za-z0-9_-]{11})"
-)
 BARE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 
 # YouTube's oEmbed endpoint only proves a video exists and allows embedding;
 # it says nothing about the subject. Titles or channels that look like
-# ambient/relaxation uploads are never a fit for STEMStream, no matter how
-# calm they are.
+# ambient/relaxation uploads or music releases are never a fit for STEMStream,
+# no matter how calm they are. A music video once slipped through this way: its
+# id resolved and allowed embedding, so only the wording can tell.
 NON_STEM_TITLE_WORDS = (
     "fireplace", "ambience", "relaxation", "relaxing", "cozy", "cosy",
-    "meditation",
+    "meditation", "remix", "lyrics",
 )
 NON_STEM_TITLE_PHRASES = (
     "fire place", "cozy fire", "cosy fire", "sleep music", "white noise",
     "nature sounds", "background music", "background noise",
     "background viewing", "ambient music", "ambient noise",
     "chillhop", "chill hop", "study beats",
+    # Music releases: official music videos, lyric videos, audio uploads and the
+    # auto-generated "Artist - Topic" channels. "vevo" and "- topic" are matched
+    # as substrings so "NirvanaVEVO" and "Nirvana - Topic" are both caught.
+    "official music video", "official video", "official audio", "lyric video",
+    "vevo", " - topic",
 )
 
 
@@ -108,22 +127,26 @@ def looks_non_stem(title: str, channel: str) -> str | None:
     haystack = " ".join((title or "", channel or "")).lower()
     for word in NON_STEM_TITLE_WORDS:
         if re.search(rf"\b{re.escape(word)}\b", haystack):
-            return f"title/channel looks like non-STEM ambient content ({word!r})"
+            return (
+                "title/channel looks like non-STEM ambient or music content "
+                f"({word!r})"
+            )
     for phrase in NON_STEM_TITLE_PHRASES:
         if phrase in haystack:
-            return f"title/channel looks like non-STEM ambient content ({phrase!r})"
+            return (
+                "title/channel looks like non-STEM ambient or music content "
+                f"({phrase!r})"
+            )
     return None
 
 
 RECOMMENDATION_SCHEMA = {
     "type": "object",
     "properties": {
-        "youtubeId": {
-            "type": "string",
-            "description": "The exact 11-character id from the video's watch URL.",
+        "pick": {
+            "type": "integer",
+            "description": "The 1-based number of the chosen candidate.",
         },
-        "title": {"type": "string"},
-        "channel": {"type": "string"},
         "coreQuestion": {"type": "string"},
         "difficulty": {
             "type": "string",
@@ -135,9 +158,7 @@ RECOMMENDATION_SCHEMA = {
         "takeaway": {"type": "string"},
     },
     "required": [
-        "youtubeId",
-        "title",
-        "channel",
+        "pick",
         "coreQuestion",
         "difficulty",
         "duration",
@@ -212,29 +233,206 @@ def _request_json(
 
 
 # ---------------------------------------------------------------------------
+# Discovery: what the tracked channels have published lately
+# ---------------------------------------------------------------------------
+
+def _bare_channel_id(value: str) -> str:
+    """Channel ids appear both as ``UC...`` and as the feed's bare suffix."""
+    value = (value or "").strip()
+    return value[2:] if value.startswith("UC") else value
+
+
+def _published_date(text: str) -> date | None:
+    try:
+        return date.fromisoformat((text or "").strip()[:10])
+    except ValueError:
+        return None
+
+
+def load_channels(path: str = STEM_CHANNELS_PATH) -> list[dict[str, Any]]:
+    """The tracked STEM channels, validated. See scripts/stem_channels.json."""
+    with open(path, "r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+
+    rows = payload.get("channels") if isinstance(payload, dict) else payload
+    if not isinstance(rows, list) or not rows:
+        raise GeminiError(f"no channels defined in {path}")
+
+    channels: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        channel_id = str(row.get("channelId", "")).strip()
+        if not CHANNEL_ID_RE.match(channel_id):
+            print(f"  - skipping channel with a bad id: {row!r}", file=sys.stderr)
+            continue
+        categories = [
+            str(name)
+            for name in row.get("categories") or []
+            if str(name) in catalogue.VALID_CATEGORIES
+        ]
+        if not categories:
+            print(f"  - skipping {channel_id}: no valid section", file=sys.stderr)
+            continue
+        channels.append(
+            {
+                "channelId": channel_id,
+                "name": str(row.get("name") or channel_id).strip(),
+                "categories": categories,
+            }
+        )
+
+    if not channels:
+        raise GeminiError(f"no usable channels in {path}")
+    return channels
+
+
+def fetch_feed(channel_id: str, timeout: int = 20) -> list[dict[str, Any]]:
+    """Recent uploads for one channel, newest first. Empty when unavailable."""
+    url = FEED_ENDPOINT.format(channel_id=urllib.parse.quote(channel_id, safe=""))
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            payload = response.read()
+    except (urllib.error.URLError, TimeoutError, http.client.HTTPException) as error:
+        print(f"  - feed for {channel_id} unavailable ({error})", file=sys.stderr)
+        return []
+
+    try:
+        root = ET.fromstring(payload)
+    except ET.ParseError as error:
+        print(f"  - feed for {channel_id} is not valid XML ({error})", file=sys.stderr)
+        return []
+
+    served_id = root.findtext("yt:channelId", namespaces=ATOM_NS) or ""
+    if served_id and _bare_channel_id(served_id) != _bare_channel_id(channel_id):
+        # A wrong id in stem_channels.json would quietly curate someone else.
+        print(
+            f"  - feed {channel_id} describes {served_id}; skipped",
+            file=sys.stderr,
+        )
+        return []
+
+    channel_name = " ".join(
+        (root.findtext("atom:title", namespaces=ATOM_NS) or "").split()
+    )
+    uploads: list[dict[str, Any]] = []
+    for node in root.findall("atom:entry", ATOM_NS):
+        video_id = (node.findtext("yt:videoId", namespaces=ATOM_NS) or "").strip()
+        title = " ".join(
+            (node.findtext("atom:title", namespaces=ATOM_NS) or "").split()
+        )
+        published = (node.findtext("atom:published", namespaces=ATOM_NS) or "").strip()
+        if not BARE_ID_RE.match(video_id) or not title:
+            continue
+        uploads.append(
+            {
+                "youtubeId": video_id,
+                "title": title,
+                "channel": channel_name,
+                "published": published,
+            }
+        )
+    return uploads
+
+
+def discover_candidates(
+    *,
+    categories: list[str],
+    taken: set[str],
+    channels: list[dict[str, Any]],
+    today: date | None = None,
+    limit: int = MAX_CANDIDATES,
+) -> list[dict[str, Any]]:
+    """Fresh, uncurated, embeddable uploads, the day's section first.
+
+    Nothing here trusts a model: ids come from the feeds and every returned
+    candidate has been confirmed by YouTube's oEmbed endpoint.
+    """
+    today = today or date.today()
+    wanted = set(categories)
+    pool: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    for channel in channels:
+        uploads = fetch_feed(channel["channelId"])
+        if not uploads:
+            continue
+        channel_categories = channel.get("categories") or []
+        category = next(
+            (name for name in channel_categories if name in wanted),
+            channel_categories[0] if channel_categories else "",
+        )
+        if not category:
+            continue
+
+        for upload in uploads:
+            video_id = upload["youtubeId"]
+            if video_id in taken or video_id in seen:
+                continue
+            published = _published_date(upload.get("published", ""))
+            if published is None or (today - published).days > FEED_MAX_AGE_DAYS:
+                continue
+            if looks_non_stem(upload["title"], upload["channel"]):
+                continue
+            seen.add(video_id)
+            pool.append(
+                {
+                    **upload,
+                    "category": category,
+                    "preferred": category in wanted,
+                    "publishedDate": published,
+                }
+            )
+
+    # The day's section first, then the freshest upload from any channel.
+    pool.sort(key=lambda item: (item["preferred"], item["publishedDate"]), reverse=True)
+
+    verified: list[dict[str, Any]] = []
+    for item in pool:
+        if len(verified) >= limit:
+            break
+        try:
+            metadata = verify_video(item["youtubeId"])
+        except LookupFailed as error:
+            print(f"  - {error}", file=sys.stderr)
+            continue
+        if metadata is None:
+            print(
+                f"  - {item['youtubeId']} is unavailable or not embeddable; skipped",
+                file=sys.stderr,
+            )
+            continue
+        verified.append(item)
+    return verified
+
+
+# ---------------------------------------------------------------------------
 # Gemini
 # ---------------------------------------------------------------------------
 
-def build_prompt(category: str, library: list[dict[str, Any]]) -> str:
-    titles = "\n".join(f"- {entry.get('title', '')}" for entry in library)
-    taken_ids = ", ".join(entry.get("youtubeId", "") for entry in library)
+def build_prompt(category: str, candidates: list[dict[str, Any]]) -> str:
+    listing = "\n".join(
+        f'{index}. "{item["title"]}" — {item["channel"]} '
+        f'({item["category"]}, published {item["publishedDate"].isoformat()})'
+        for index, item in enumerate(candidates, start=1)
+    )
 
     return f"""You curate STEMStream, a hand-picked library of the best science,
 space, engineering and mathematics videos on YouTube. Choose exactly ONE video
-for the "{category}" section.
+for the "{category}" section from the candidates below.
+
+Candidates
+{listing}
 
 Rules
-- The video must be a real, currently public YouTube upload that allows
-  embedding. Return the exact 11-character id from its watch URL. Never invent
-  or guess an id: a wrong id is worse than no answer.
-- It must not already be in the library. Already curated titles:
-{titles}
-- Already curated ids: {taken_ids}
-- Prefer long-form explainers (roughly 8 to 45 minutes) from credible science,
-  engineering or education creators. Substance over hype, idea over channel.
-- It must be genuine STEM education. Never recommend ambient, relaxation,
-  fireplace, sleep, lo-fi or background-noise uploads — those are not a fit
-  for STEMStream even if they are public and embeddable.
+- Return the chosen candidate's number in "pick". Every candidate is a real,
+  public, embeddable upload; never name a video that is not in this list, and
+  never return an id or a title instead of the number.
+- Prefer a long-form explainer (roughly 8 to 45 minutes) that rewards a curious
+  adult, and prefer the freshest upload that genuinely fits "{category}".
+  Substance over hype, idea over channel. Skip anything that is not STEM
+  education, whatever its number.
 - coreQuestion: the single question the video answers, phrased as a question.
 - description: two or three sentences on what the video actually shows.
 - takeaway: the one idea a viewer should leave with.
@@ -249,17 +447,17 @@ def generate(
     model: str,
     api_key: str,
     category: str,
-    library: list[dict[str, Any]],
+    candidates: list[dict[str, Any]],
     rejected: list[str] | tuple[str, ...] = (),
 ) -> dict[str, Any]:
-    prompt = build_prompt(category, library)
+    prompt = build_prompt(category, candidates)
     if rejected:
         # The chain retries a rejected section with the next model, so the list
         # can grow; keep the prompt short and free of repeats.
         recent = list(dict.fromkeys(rejected))[-6:]
         prompt += (
-            "\n\nYour previous suggestions failed verification for these reasons, "
-            "so pick something else: " + "; ".join(recent)
+            "\n\nYour previous picks were not usable for these reasons, so choose "
+            "a different candidate: " + "; ".join(recent)
         )
 
     payload = {
@@ -340,16 +538,6 @@ def generate(
 # YouTube verification
 # ---------------------------------------------------------------------------
 
-def clean_youtube_id(value: Any) -> str:
-    raw = str(value or "").strip()
-    match = YOUTUBE_URL_ID_RE.search(raw)
-    if match:
-        return match.group(1)
-    if BARE_ID_RE.match(raw):
-        return raw
-    return ""
-
-
 def lookup_video(youtube_id: str) -> dict[str, Any] | None:
     """Return YouTube's own metadata, or None when the upload is not playable."""
     watch_url = f"https://www.youtube.com/watch?v={youtube_id}"
@@ -417,12 +605,12 @@ def _pick_entry(
     model: str,
     api_key: str,
     category: str,
-    library: list[dict[str, Any]],
+    candidates: list[dict[str, Any]],
     taken: set[str],
     number: int,
     rejected: list[str] | None = None,
 ) -> dict[str, Any] | None:
-    """Ask Gemini until one recommendation survives verification.
+    """Ask Gemini to choose a candidate and write its card.
 
     ``rejected`` is caller-owned so a model that comes up empty hands its
     reasons to the next one instead of letting it repeat the same mistake.
@@ -430,18 +618,29 @@ def _pick_entry(
     rejected = rejected if rejected is not None else []
 
     for attempt in range(1, MAX_ATTEMPTS_PER_SECTION + 1):
-        candidate = generate(model, api_key, category, library, rejected)
-        video_id = clean_youtube_id(candidate.get("youtubeId"))
-        if not video_id:
-            rejected.append("no valid 11-character YouTube id")
-            print(f"  - {category}: no usable id (attempt {attempt})")
+        recommendation = generate(model, api_key, category, candidates, rejected)
+
+        pick = recommendation.get("pick")
+        try:
+            index = int(pick)
+        except (TypeError, ValueError):
+            index = 0
+        if not 1 <= index <= len(candidates):
+            rejected.append(
+                f"pick {pick!r} is not one of the {len(candidates)} candidates"
+            )
+            print(f"  - {category}: pick {pick!r} is out of range (attempt {attempt})")
             continue
 
+        chosen = candidates[index - 1]
+        video_id = chosen["youtubeId"]
         if video_id in taken:
             rejected.append(f"{video_id} is already in the library")
             print(f"  - {category}: {video_id} is already curated")
             continue
 
+        # The candidate was checked during discovery; this re-check catches an
+        # upload that went private in between.
         try:
             metadata = verify_video(video_id)
         except LookupFailed as error:
@@ -450,15 +649,15 @@ def _pick_entry(
             continue
 
         if metadata is None:
-            rejected.append(f"{video_id} is not a public, embeddable video")
+            rejected.append(f"{video_id} is no longer public and embeddable")
             print(f"  - {category}: {video_id} is unavailable or not embeddable")
             continue
 
         # YouTube proves the upload is public and embeddable; it does not
         # prove it is STEM. Reject ambient/relaxation uploads before they
         # reach the catalogue.
-        title = metadata.get("title") or candidate.get("title")
-        channel = metadata.get("author_name") or candidate.get("channel")
+        title = metadata.get("title") or chosen["title"]
+        channel = metadata.get("author_name") or chosen["channel"]
         reason = looks_non_stem(title, channel)
         if reason:
             rejected.append(reason)
@@ -468,12 +667,12 @@ def _pick_entry(
         try:
             entry = catalogue.normalise_entry(
                 {
-                    **candidate,
+                    **recommendation,
                     "youtubeId": video_id,
                     # YouTube is authoritative about what the upload is.
-                    "title": metadata.get("title") or candidate.get("title"),
-                    "channel": metadata.get("author_name") or candidate.get("channel"),
-                    "category": category,
+                    "title": title,
+                    "channel": channel,
+                    "category": chosen["category"],
                 },
                 number,
             )
@@ -483,7 +682,7 @@ def _pick_entry(
             continue
 
         print(
-            f"  + {category}: {entry['title']} — {entry['channel']} ({video_id})"
+            f"  + {entry['category']}: {entry['title']} — {entry['channel']} ({video_id})"
         )
         return entry
 
@@ -504,6 +703,7 @@ def add_daily_videos(
     dry_run: bool = False,
     categories: list[str] | None = None,
     day: date | None = None,
+    channels: list[dict[str, Any]] | None = None,
 ) -> int:
     """Add one verified video for the section due that day. Returns the count."""
     with open(path, "r", encoding="utf-8") as handle:
@@ -511,16 +711,31 @@ def add_daily_videos(
     if not isinstance(entries, list) or not entries:
         raise GeminiError(f"catalogue must be a non-empty JSON array: {path}")
 
-    remaining_models = list(models or DEFAULT_MODELS)
+    today = day or date.today()
+    sections = list(categories or _sections_for(today))
+    tracked = channels if channels is not None else load_channels()
     taken = {str(entry.get("youtubeId", "")) for entry in entries}
+
+    candidates = discover_candidates(
+        categories=sections, taken=taken, channels=tracked, today=today
+    )
+    if not candidates:
+        raise GeminiError(
+            "no fresh, uncurated, embeddable upload from the tracked channels; "
+            f"catalogue unchanged (check {os.path.basename(STEM_CHANNELS_PATH)})"
+        )
+    print(
+        f"discovered {len(candidates)} verified candidate(s) for "
+        f"{', '.join(sections)}"
+    )
+
+    remaining_models = list(models or DEFAULT_MODELS)
     number = _next_id_number(entries)
-    sections = list(categories or _sections_for(day or date.today()))
 
     added: list[dict[str, Any]] = []
     skipped: list[str] = []
 
     for category in sections:
-        library = [entry for entry in entries if entry.get("category") == category]
         entry = None
         rejected: list[str] = []
 
@@ -528,7 +743,7 @@ def add_daily_videos(
             model = remaining_models[0]
             try:
                 entry = _pick_entry(
-                    model, api_key, category, library, taken, number, rejected
+                    model, api_key, category, candidates, taken, number, rejected
                 )
             except (ModelUnavailable, ModelBusy) as error:
                 print(f"  - {error}; trying the next model", file=sys.stderr)
@@ -541,11 +756,11 @@ def add_daily_videos(
                 break
 
             if entry is None:
-                # Every suggestion this model produced failed verification. A
-                # different model may know an upload this one did not, so the
-                # day is not lost until the whole chain has been tried.
+                # Every pick this model returned was unusable. A different
+                # model may choose a better candidate, so the day is not lost
+                # until the whole chain has been tried.
                 print(
-                    f"  - {model} found nothing usable for {category}; "
+                    f"  - {model} returned no usable pick for {category}; "
                     "trying the next model",
                     file=sys.stderr,
                 )
@@ -577,12 +792,14 @@ def add_daily_videos(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Add one Gemini-recommended video to today's STEMStream section."
+        description=(
+            "Add one video from the tracked channels to today's STEMStream section."
+        )
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="ask Gemini and verify, but do not write data.json",
+        help="discover, verify and ask Gemini, but do not write data.json",
     )
     parser.add_argument(
         "--category",
