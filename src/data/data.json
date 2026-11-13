@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-884",
+    "youtubeId": "LxVW3b8jVdE",
+    "title": "A Two-Button Calculator That Does Everything - Numberphile",
+    "coreQuestion": "How can a calculator with only two buttons perform any arbitrary mathematical computation?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "15 min",
+    "concepts": [
+      "Turing Completeness",
+      "Binary Logic",
+      "Automata Theory",
+      "Minimal Computation"
+    ],
+    "description": "This video showcases a minimal calculator system driven by just two buttons to execute complex calculations. It explores the core principles of computability, showing how simple binary inputs can encode sophisticated operations. Through step-by-step demonstrations, it reveals the surprising power of minimalist computational models.",
+    "takeaway": "Complex mathematical computation does not require complex hardware; a minimal two-input state machine is sufficient for universal computation."
+  },
+  {
     "id": "stem-883",
     "youtubeId": "yGf78wc6jIU",
     "title": "The Rise and Fall of an Ancient Reef",
