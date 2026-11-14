@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-885",
+    "youtubeId": "FKiSYHf1HyI",
+    "title": "Using Radioactive Waste to Treat Cancer",
+    "coreQuestion": "How can hazardous radioactive waste be repurposed into targeted cancer therapies?",
+    "channel": "SciShow",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "11 min",
+    "concepts": [
+      "radioactive isotopes",
+      "targeted alpha therapy",
+      "nuclear decay",
+      "radiopharmaceuticals"
+    ],
+    "description": "This episode explores how radioisotopes extracted from nuclear reactor waste can be bound to molecular vehicles for targeted medical treatments. It examines the nuclear chemistry behind targeted alpha therapy and how precise cell-destroying radiation is delivered directly to tumors.",
+    "takeaway": "Specific radioactive isotopes harvested from nuclear waste can be attached to target molecules to destroy cancer cells with pinpoint precision."
+  },
+  {
     "id": "stem-884",
     "youtubeId": "LxVW3b8jVdE",
     "title": "A Two-Button Calculator That Does Everything - Numberphile",
