@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-886",
+    "youtubeId": "LDloLvb3yno",
+    "title": "This isn't a thread, it's a stream of molten tin...",
+    "coreQuestion": "How does advanced extreme ultraviolet (EUV) lithography use a stream of molten tin to manufacture cutting-edge microchips?",
+    "channel": "Veritasium",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Extreme Ultraviolet Lithography",
+      "Molten Tin Droplets",
+      "High-Power Lasers",
+      "Semiconductor Manufacturing"
+    ],
+    "description": "This video explores the astonishing engineering behind modern microchip fabrication, specifically focusing on how machines fire lasers at a continuous stream of molten tin droplets to generate EUV light. It breaks down the extreme physics and precision mechanics required to etch nanometer-scale features onto silicon wafers.",
+    "takeaway": "The manufacturing of modern semiconductors relies on an incredibly complex process of vaporizing molten tin with lasers millions of times per second to create extreme ultraviolet light."
+  },
+  {
     "id": "stem-885",
     "youtubeId": "FKiSYHf1HyI",
     "title": "Using Radioactive Waste to Treat Cancer",
