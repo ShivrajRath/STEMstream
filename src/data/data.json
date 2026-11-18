@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-887",
+    "youtubeId": "rj-G_gmFWtE",
+    "title": "Why Are There So Many Different Transmission Towers?",
+    "coreQuestion": "Why do transmission towers come in so many different structural configurations?",
+    "channel": "Practical Engineering",
+    "category": "Engineering",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "structural loading",
+      "lattice towers",
+      "tension and compression",
+      "electrical grid"
+    ],
+    "description": "This video examines the diverse engineering principles behind electrical transmission towers, explaining how terrain, wire weight, and voltage dictate their design. It breaks down the mechanical forces acting on the structures and why standardizing every tower is impossible.",
+    "takeaway": "Transmission tower design is a careful balance of mechanical load management, environmental constraints, and electrical requirements."
+  },
+  {
     "id": "stem-886",
     "youtubeId": "LDloLvb3yno",
     "title": "This isn't a thread, it's a stream of molten tin...",
