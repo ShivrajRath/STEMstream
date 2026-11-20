@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-888",
+    "youtubeId": "qbsb9DpdZ6s",
+    "title": "This algorithm changed how I think about compression | Information theory, part 3",
+    "coreQuestion": "How do mathematical probability distributions enable optimal data compression algorithms?",
+    "channel": "3Blue1Brown",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "25 min",
+    "concepts": [
+      "Information Theory",
+      "Shannon Entropy",
+      "Arithmetic Coding",
+      "Data Compression"
+    ],
+    "description": "This video explores how assigning variable-length codes based on symbol probabilities allows data compression algorithms to reach theoretical limits. Grant Sanderson demonstrates the geometric intuition behind techniques like arithmetic coding and Huffman coding. The explanation connects abstract probability theory directly to practical computational efficiency.",
+    "takeaway": "Data compression is fundamentally about encoding messages using code lengths proportional to their theoretical information content."
+  },
+  {
     "id": "stem-887",
     "youtubeId": "rj-G_gmFWtE",
     "title": "Why Are There So Many Different Transmission Towers?",
