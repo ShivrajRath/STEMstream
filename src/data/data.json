@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-889",
+    "youtubeId": "3zmkq2uSFi4",
+    "title": "Nobel Prize in Chemistry 2026 - Periodic Table of Videos",
+    "coreQuestion": "What scientific breakthrough was honored with the 2026 Nobel Prize in Chemistry?",
+    "channel": "Periodic Videos",
+    "category": "Chemistry",
+    "difficulty": "Intermediate",
+    "duration": "14 min",
+    "concepts": [
+      "molecular design",
+      "chemical catalysis",
+      "structural chemistry",
+      "biochemical synthesis"
+    ],
+    "description": "The Periodic Videos team breaks down the fundamental science and real-world implications behind the 2026 Nobel Prize in Chemistry. Featuring expert commentary from Sir Martyn Poliakoff, the video explains the chemical mechanisms that made this research prize-worthy.",
+    "takeaway": "Nobel Prize-winning chemistry highlights revolutionary advances in manipulating molecular structures to solve major global challenges."
+  },
+  {
     "id": "stem-888",
     "youtubeId": "qbsb9DpdZ6s",
     "title": "This algorithm changed how I think about compression | Information theory, part 3",
