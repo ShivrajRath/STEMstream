@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-890",
+    "youtubeId": "1zvKzVyP8XA",
+    "title": "The Universe Should NOT Exist!",
+    "coreQuestion": "Why does the standard model of particle physics imply that the universe should not exist?",
+    "channel": "PBS Space Time",
+    "category": "Physics",
+    "difficulty": "Deep Dive",
+    "duration": "19 min",
+    "concepts": [
+      "Matter-antimatter asymmetry",
+      "CP violation",
+      "Baryogenesis",
+      "Quantum fluctuations"
+    ],
+    "description": "This video explores the profound cosmological mystery of why the Big Bang created equal amounts of matter and antimatter, yet the modern universe is composed entirely of matter. It breaks down the theoretical failures of our current physics models and discusses potential mechanisms that could have tipped the cosmic scale.",
+    "takeaway": "Our existence proves there is a fundamental flaw or missing piece in our current understanding of particle physics and cosmology regarding matter-antimatter symmetry."
+  },
+  {
     "id": "stem-889",
     "youtubeId": "3zmkq2uSFi4",
     "title": "Nobel Prize in Chemistry 2026 - Periodic Table of Videos",
