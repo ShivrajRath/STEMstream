@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-891",
+    "youtubeId": "NiVGpee8M7s",
+    "title": "What Voyager 1 Found Beyond the Edge of Our Solar System",
+    "coreQuestion": "What discoveries did Voyager 1 make as it ventured beyond the heliosphere and into interstellar space?",
+    "channel": "Astrum",
+    "category": "Space",
+    "difficulty": "Intermediate",
+    "duration": "22 min",
+    "concepts": [
+      "Heliosphere",
+      "Interstellar medium",
+      "Plasma density",
+      "Magnetic field"
+    ],
+    "description": "This video explores the historic journey of Voyager 1 as it crossed the termination shock and entered interstellar space. It details the unprecedented data sent back by the probe regarding solar wind, cosmic rays, and the boundary of our solar system.",
+    "takeaway": "Voyager 1's instruments continue to transmit invaluable data about the vast, dense region of space lying just beyond the protective bubble of our sun's solar wind, fundamentally expanding our understanding of the interstellar medium beyond our solar system's edge."
+  },
+  {
     "id": "stem-890",
     "youtubeId": "1zvKzVyP8XA",
     "title": "The Universe Should NOT Exist!",
