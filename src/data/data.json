@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-892",
+    "youtubeId": "ACCnhY1fKoI",
+    "title": "Why Clean Energy Is an Unstoppable Force | Michael Liebreich | TED",
+    "coreQuestion": "Why have economic scaling laws and market forces rendered the global clean energy transition inevitable?",
+    "channel": "TED",
+    "category": "Emerging Technology",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "Wright's law",
+      "technological learning curve",
+      "decarbonization economics",
+      "clean energy transition"
+    ],
+    "description": "Michael Liebreich details how exponential cost declines in solar power, wind generation, battery storage, and electric vehicles are fundamentally reshaping global energy markets. The talk demonstrates how manufacturing scale and economic tipping points are accelerating renewable adoption faster than traditional forecasting models predicted. It provides a clear, data-driven analysis of why clean technologies are outcompeting fossil fuels purely on economic merits.",
+    "takeaway": "Clean technology adoption is driven by predictable learning curves that permanently lower costs as production scales, making the renewable energy transition economically irreversible."
+  },
+  {
     "id": "stem-891",
     "youtubeId": "NiVGpee8M7s",
     "title": "What Voyager 1 Found Beyond the Edge of Our Solar System",
