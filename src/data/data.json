@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-893",
+    "youtubeId": "ETHe--0iTic",
+    "title": "What exactly IS Binary?",
+    "coreQuestion": "How do physical electronic circuits translate high and low voltage states into binary numbers and code?",
+    "channel": "Branch Education",
+    "category": "Engineering",
+    "difficulty": "Foundational",
+    "duration": "16 min",
+    "concepts": [
+      "Binary Code",
+      "Transistors",
+      "Logic Gates",
+      "Voltage Thresholds"
+    ],
+    "description": "This visual explainer breaks down how modern computing hardware uses electrical signals to represent zeros and ones. It demonstrates how microscopic transistors act as digital switches to construct basic logic gates, which assemble into complex processing units capable of executing software.",
+    "takeaway": "Binary is a physical engineering implementation that maps mathematical logic onto high and low electrical voltages across billions of switches."
+  },
+  {
     "id": "stem-892",
     "youtubeId": "ACCnhY1fKoI",
     "title": "Why Clean Energy Is an Unstoppable Force | Michael Liebreich | TED",
