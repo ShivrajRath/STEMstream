@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-894",
+    "youtubeId": "SXW9P1Dan_o",
+    "title": "That Time Teeth Got Weird",
+    "coreQuestion": "How did the evolutionary history of teeth lead to such strange and diverse dental adaptations in the fossil record?",
+    "channel": "PBS Eons",
+    "category": "Biology",
+    "difficulty": "Foundational",
+    "duration": "12 min",
+    "concepts": [
+      "odontodes",
+      "evolutionary morphology",
+      "dentition",
+      "fossil record"
+    ],
+    "description": "PBS Eons explores the fascinating and bizarre evolutionary history of teeth, tracing how these structures originated and mutated across different species over millions of years. The video examines ancient anatomical quirks to show how modern dental diversity came to be.",
+    "takeaway": "Teeth have undergone radical evolutionary transformations that reveal critical insights into the diets, lifestyles, and lineages of ancient organisms."
+  },
+  {
     "id": "stem-893",
     "youtubeId": "ETHe--0iTic",
     "title": "What exactly IS Binary?",
