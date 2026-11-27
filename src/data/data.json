@@ -1,5 +1,23 @@
 [
   {
+    "id": "stem-895",
+    "youtubeId": "ViT2FOEr6EI",
+    "title": "This Object Defies Common Sense - Numberphile",
+    "coreQuestion": "How can a geometric object exhibit physical and mathematical properties that seem to contradict everyday intuition?",
+    "channel": "Numberphile",
+    "category": "Math",
+    "difficulty": "Intermediate",
+    "duration": "16 min",
+    "concepts": [
+      "Topology",
+      "Differential Geometry",
+      "Convex Bodies",
+      "Center of Mass"
+    ],
+    "description": "This video examines a paradoxical geometric shape whose physical behavior when rolled or manipulated challenges intuitive physics. Through physical models and rigorous geometric explanations, it highlights how precise mathematical constraints produce unexpected motion.",
+    "takeaway": "Geometric constraints and mathematical dynamics can generate counterintuitive physical motion that challenges human perceptual expectations."
+  },
+  {
     "id": "stem-894",
     "youtubeId": "SXW9P1Dan_o",
     "title": "That Time Teeth Got Weird",
